@@ -1,0 +1,16 @@
+Started GET "/" for ::1 at 2021-02-08 11:37:07 -0800
+
+ActiveRecord::NoDatabaseError - FATAL:  database "my_project_name_development" does not exist:
+
+Started POST "/__better_errors/ca15caebafdb87f5/variables" for ::1 at 2021-02-08 11:37:08 -0800
+  [1m[35m (2125.0ms)[0m  [1m[35mCREATE DATABASE "my_project_name_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (1602.6ms)[0m  [1m[35mCREATE DATABASE "my_project_name_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-02-08 11:39:17 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/appkenny/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/appkenny/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.4/lib/rails/templates/rails/welcome/index.html.erb (3.7ms)
+Completed 200 OK in 35ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+
+
