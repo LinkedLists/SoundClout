@@ -1,5 +1,41 @@
 {
-  "name": "my_project_name",
+  "name": "fsp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "description": "This will be a fullstack clone of Soundcloud. [Link to my wiki](https://github.com/LinkedLists/fsp/wiki)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --watch --mode=development",
+    "postinstall": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinkedLists/fsp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LinkedLists/fsp/issues"
+  },
+  "homepage": "https://github.com/LinkedLists/fsp#readme"
 }
