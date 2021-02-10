@@ -327,3 +327,474 @@ Started GET "/api/users/show" for ::1 at 2021-02-10 00:06:57 -0800
 Errno::EACCES - Permission denied @ rb_sysopen - /home/appkenny/fsp/app/views/api/users/show.json.jbuilder:
 
 Started POST "/__better_errors/c9315606ebf36bf5/variables" for ::1 at 2021-02-10 00:06:57 -0800
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE DATABASE "my_project_name_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "my_project_name_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (14.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (31.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210208194749)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (7.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-10 09:25:52.963483"], ["updated_at", "2021-02-10 09:25:52.963483"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-02-10 09:25:52.967061"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (22.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "1"], ["email", "2"], ["password_digest", "$2a$12$y6UtcFDXoPKImsMQA/vDaOBebbtZwrlH961s8utKhdy1vPDA7ixu2"], ["session_token", "wcLTPHoqdOnnX33TH_t2Xg"], ["created_at", "2021-02-10 09:25:53.233203"], ["updated_at", "2021-02-10 09:25:53.233203"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (8.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (18.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "1"], ["email", "2"], ["password_digest", "$2a$12$y0buICWM4o2mwC0iPbVaG.1h.HS28cWE8juHMwKGWtNpFGPiQQbBy"], ["session_token", "U0eBYxqHLzpq2Yb_BZ_5_A"], ["created_at", "2021-02-10 09:26:17.182490"], ["updated_at", "2021-02-10 09:26:17.182490"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/" for ::1 at 2021-02-10 01:27:05 -0800
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/appkenny/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (11.1ms)
+Completed 200 OK in 1970ms (Views: 1961.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-02-10 01:27:20 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.3ms)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-02-10 01:27:47 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.2ms)
+Completed 200 OK in 53ms (Views: 51.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users" for ::1 at 2021-02-10 01:28:09 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/api/users"):
+  
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/session/new" for ::1 at 2021-02-10 01:28:30 -0800
+
+AbstractController::ActionNotFound - The action 'new' could not be found for Api::SessionsController:
+
+Started POST "/__better_errors/3bce70ae483f09ed/variables" for ::1 at 2021-02-10 01:28:31 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:28:41 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (3.0ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906331565200'
+
+Started POST "/__better_errors/64a7a34899f4a289/variables" for ::1 at 2021-02-10 01:28:41 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:28:52 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (5.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906514896080'
+
+Started POST "/__better_errors/8bdc68d1b65f5f75/variables" for ::1 at 2021-02-10 01:28:52 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:29:03 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.9ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906513697600'
+
+Started POST "/__better_errors/95598713dee49858/variables" for ::1 at 2021-02-10 01:29:03 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:31:41 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (311.7ms)
+Completed 500 Internal Server Error in 321ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `user' for #<#<Class:0x00007f28ac1eee30>:0x00007f28c27edb68>:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906519257760'
+
+Started POST "/__better_errors/230e750c2479a08e/variables" for ::1 at 2021-02-10 01:31:41 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:31:48 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (4.3ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906507819580'
+
+Started POST "/__better_errors/a3b8ef4d7ef43372/variables" for ::1 at 2021-02-10 01:31:49 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:34:49 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (294.4ms)
+Completed 500 Internal Server Error in 302ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `user' for #<#<Class:0x00007f28ac1eee30>:0x00007f28c144a228>:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906508963420'
+
+Started POST "/__better_errors/fa212cde220fdc76/variables" for ::1 at 2021-02-10 01:34:50 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:34:58 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (363.8ms)
+Completed 500 Internal Server Error in 371ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `user' for #<#<Class:0x00007f28ac1eee30>:0x00007f28c2016430>:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906515146420'
+
+Started POST "/__better_errors/255e75283b5fa6fb/variables" for ::1 at 2021-02-10 01:34:59 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:35:02 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (337.7ms)
+Completed 500 Internal Server Error in 345ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `user' for #<#<Class:0x00007f28ac1eee30>:0x00007f28c1de0b98>:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906513989740'
+
+Started POST "/__better_errors/1b4bc6d6ac47bd4c/variables" for ::1 at 2021-02-10 01:35:03 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:36:07 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.7ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906507887560'
+
+Started POST "/__better_errors/b0ad701d78fde73a/variables" for ::1 at 2021-02-10 01:36:07 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:36:10 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.8ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906511677620'
+
+Started POST "/__better_errors/abe6e0eb70917879/variables" for ::1 at 2021-02-10 01:36:11 -0800
+Started GET "/api/users/1" for ::1 at 2021-02-10 01:36:12 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (5.5ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_70368530767080'
+
+Started POST "/__better_errors/22243a5642e321cc/variables" for ::1 at 2021-02-10 01:36:12 -0800
+  [1m[36mUser Load (22.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:37:13 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.1ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906331929340'
+
+Started POST "/__better_errors/7241225141bb6755/variables" for ::1 at 2021-02-10 01:37:13 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:37:32 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (266.5ms)
+Completed 500 Internal Server Error in 278ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `user' for #<#<Class:0x00007f28ac1eee30>:0x00007fffe6080488>:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_70368526326420'
+
+Started POST "/__better_errors/d3c98dd914351d28/variables" for ::1 at 2021-02-10 01:37:33 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:37:36 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.9ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906331720740'
+
+Started POST "/__better_errors/d722a4209bfb2433/variables" for ::1 at 2021-02-10 01:37:36 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:37:42 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (5.6ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906515016140'
+
+Started POST "/__better_errors/28c9211d00ccd8f0/variables" for ::1 at 2021-02-10 01:37:42 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:37:53 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.6ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906518004880'
+
+Started POST "/__better_errors/c937087a5743bf77/variables" for ::1 at 2021-02-10 01:37:54 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:37:55 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (3.1ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906519307420'
+
+Started POST "/__better_errors/740a2722e32c1724/variables" for ::1 at 2021-02-10 01:37:55 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:38:02 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (3.3ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906519412320'
+
+Started POST "/__better_errors/c4695c2e8e508f9d/variables" for ::1 at 2021-02-10 01:38:02 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:38:05 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.8ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906331531540'
+
+Started POST "/__better_errors/10f01e324a1cd227/variables" for ::1 at 2021-02-10 01:38:06 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:38:39 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (3.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_69906519398040'
+
+Started POST "/__better_errors/1cda4d0c253ba4a7/variables" for ::1 at 2021-02-10 01:38:39 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:38:45 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (5.4ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder__3415839019725636943_70368516420080'
+
+Started POST "/__better_errors/8a4674ab256924dd/variables" for ::1 at 2021-02-10 01:38:46 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:40:37 -0800
+
+SyntaxError - syntax error, unexpected end-of-input, expecting keyword_end:
+  app/controllers/api/users_controller.rb:23:in `'
+
+Started POST "/__better_errors/296508c8b04c608d/variables" for ::1 at 2021-02-10 01:40:37 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:40:44 -0800
+
+SyntaxError - syntax error, unexpected end-of-input, expecting keyword_end:
+  app/controllers/api/users_controller.rb:23:in `'
+
+Started POST "/__better_errors/4846825ff2d0a28a/variables" for ::1 at 2021-02-10 01:40:45 -0800
+Started GET "/api/users/2" for ::1 at 2021-02-10 01:40:46 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:13
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.3ms)
+Completed 200 OK in 37ms (Views: 8.8ms | ActiveRecord: 8.0ms)
+
+
