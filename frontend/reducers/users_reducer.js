@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const userReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  newState = Object.assign({}, oldState);
+  let newState = Object.assign({}, oldState);
 
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
