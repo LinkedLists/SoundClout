@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SignUpForm extends React.Component {
+class SessionForm extends React.Component {
 
   constructor(props) {
     super(props)
@@ -15,7 +15,7 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.signup(user);
+    this.props.action(user);
     this.setState({
       username: '',
       password: ''
@@ -52,11 +52,11 @@ class SignUpForm extends React.Component {
           <br/>
 
           {this.renderErrors()}
-          <input type='submit' value="Sign Up" />
+          <input type='submit' value={this.props.formType} />
         </form>
       </div>
     )
   }
 }
 
-export default SignUpForm
+export default SessionForm
