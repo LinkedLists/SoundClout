@@ -22,8 +22,8 @@ export const login = (user) => (dispatch) => (
   SessionAPIUtil.login(user).then( 
     user => dispatch(receiveCurrentUser(user)), 
     error => dispatch(receiveErrors(error.responseJSON)) 
-  // SessionAPIUtil.login(user).then( user => dispatch(receiveCurrentUser(user)) ).catch(dispatch(receiveERRORS))
-  )
+    )
+    // SessionAPIUtil.login(user).then( user => dispatch(receiveCurrentUser(user)) ).catch(dispatch(receiveERRORS))
 )
 
 export const logout = () => (dispatch) => (
