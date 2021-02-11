@@ -3,7 +3,6 @@ import { RECEIVE_CURRENT_USER, RECEIVE_SESSION_ERRORS } from '../actions/session
 // ActiveRecord will be storing validation errors in an array
 const sessionErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);
-  newState = Object.assign([]. oldState);
 
   switch(action.type) {
     case RECEIVE_SESSION_ERRORS:
