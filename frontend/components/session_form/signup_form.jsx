@@ -5,7 +5,7 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
+      username: '',
       password: ''
     }
 
@@ -18,9 +18,10 @@ class SignUpForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.signup(user);
     this.setState({
-      email: '',
+      username: '',
       password: ''
     })
+
     console.log("i am here")
   }
 
@@ -33,14 +34,16 @@ class SignUpForm extends React.Component {
       <div>
         <h1>hello</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Email:
-            <input type='text' onChange={this.handleChange('email')} value={this.state.email} />
+          <label>Username:
+            <input type='text' onChange={this.handleChange('username')} value={this.state.username} />
           </label>
           <br/>
+
           <label>Password:
             <input type='text' onChange={this.handleChange('password')} value={this.state.password} />
           </label>
           <br/>
+          
           <input type='submit' value="Sign Up" />
         </form>
       </div>
