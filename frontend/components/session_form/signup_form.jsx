@@ -10,7 +10,6 @@ class SignUpForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleSubmit(e) {
@@ -21,12 +20,20 @@ class SignUpForm extends React.Component {
       username: '',
       password: ''
     })
-
-    console.log("i am here")
   }
 
   handleChange(field) {
     return e => this.setState( {[field]: e.target.value} )
+  }
+
+  renderErrors() {
+    if (this.props.errors.length > 0) {
+      return(
+        <ul>
+          { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
+        </ul>
+      )
+    }
   }
 
   render() {
@@ -43,7 +50,8 @@ class SignUpForm extends React.Component {
             <input type='text' onChange={this.handleChange('password')} value={this.state.password} />
           </label>
           <br/>
-          
+
+          {this.renderErrors()}
           <input type='submit' value="Sign Up" />
         </form>
       </div>
