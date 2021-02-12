@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './navbar'
+import { openModal } from '../../actions/modal_actions';
+
+
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +14,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (user) => dispatch(login(user)),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 
