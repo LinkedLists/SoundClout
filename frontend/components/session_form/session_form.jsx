@@ -43,7 +43,6 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    // e.preventDefault();        
     const demoAccount = {
       username: 'Demo',
       password: 'secretpasswordlol'
