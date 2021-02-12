@@ -59,7 +59,8 @@ class SessionForm extends React.Component {
 
           {/* taken from a/A */}
           Please {this.props.formType} or {this.props.otherForm}
-          <div onClick={this.props.closeModal} className="close-x">X</div>
+          <br />
+          {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
           {/* taken from a/A */}
 
           <label>Username:
