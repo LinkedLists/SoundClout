@@ -43,7 +43,6 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    // e.preventDefault();        
     const demoAccount = {
       username: 'Demo',
       password: 'secretpasswordlol'
@@ -75,16 +74,17 @@ class SessionForm extends React.Component {
 
           {this.renderErrors()}
           <input type='submit' value={this.props.formType} />
-
-          {/* 
-            If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
-            and object construction. A work around is to use a ternary operation.
-          */}
-
         </form>
-          { this.props.formType === "Sign Up" ? 
-            <button onClick={this.demoLogin}>uhh why does this work</button> : null 
-          }
+
+        {/* 
+          If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
+          and object construction. A work around is to use a ternary operation.
+        */}
+        { 
+          this.props.formType === "Sign Up" ? 
+          <button onClick={this.demoLogin}>Try as a demo user</button> : null 
+        }
+        <button onClick={this.props.closeModal}>kill the modal pls</button>
       </div>
     )
   }

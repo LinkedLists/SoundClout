@@ -17,3 +17,8 @@
  .modal-background {
    background: lightgray;
  }
+
+ .modal-child {
+   background: gray;
+   width: 500px;
+ }
