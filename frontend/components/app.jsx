@@ -5,11 +5,14 @@ import LoginFormContainer from './session_form/login_container'
 import NavBarContainer from './navbar/navbar_container'
 import Modal from './modal/modal';
 
+import { openModal } from '../actions/modal_actions';
+
 const App = () => (
   <div>
     <h1>This is the app</h1>
     <Modal />
     <Route path='/' component={NavBarContainer} />
+
     {/* <Route path='/signup' component={SignupFormContainer} />
     <Route path='/login' component={LoginFormContainer} /> */}
   </div>
