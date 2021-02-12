@@ -14,12 +14,3 @@
  *= require_self
  */
 
- .modal-background {
-   background: lightgray;
- }
-
- .modal-child {
-   background: gray;
-   width: 500px;
-   margin: 0 auto;
- }
