@@ -26,9 +26,14 @@ class SessionForm extends React.Component {
     return e => this.setState( {[field]: e.target.value} )
   }
 
+  // The following is a list of renderable errors:
+  // "Invalid credentials. Please try again!"
+  // "Username has already been taken"
+  // "Password is too short (minimum is 6 characters)"
+
   renderErrors() {
     if (this.props.errors.length > 0) {
-      return(
+      return (
         <ul>
           { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
         </ul>
@@ -46,7 +51,6 @@ class SessionForm extends React.Component {
           Please {this.props.formType} or {this.props.otherForm}
           <div onClick={this.props.closeModal} className="close-x">X</div>
           {/* taken from a/A */}
-
 
           <label>Username:
             <input type='text' onChange={this.handleChange('username')} value={this.state.username} />
