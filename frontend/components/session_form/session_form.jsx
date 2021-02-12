@@ -60,7 +60,8 @@ class SessionForm extends React.Component {
 
           {/* taken from a/A */}
           Please {this.props.formType} or {this.props.otherForm}
-          <div onClick={this.props.closeModal} className="close-x">X</div>
+          <br />
+          {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
           {/* taken from a/A */}
 
           <label>Username:
@@ -75,13 +76,12 @@ class SessionForm extends React.Component {
 
           {this.renderErrors()}
           <input type='submit' value={this.props.formType} />
+        </form>
 
           {/* 
             If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
             and object construction. A work around is to use a ternary operation.
           */}
-
-        </form>
           { this.props.formType === "Sign Up" ? 
             <button onClick={this.demoLogin}>uhh why does this work</button> : null 
           }
