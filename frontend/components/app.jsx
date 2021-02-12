@@ -1,12 +1,11 @@
 import React from "react";
 import { Route } from 'react-router-dom'
-import SignupFormContainer from './session_form/signup_container'
-import LoginFormContainer from './session_form/login_container'
+// import SignupFormContainer from './session_form/signup_container'
+// import LoginFormContainer from './session_form/login_container'
 import NavBarContainer from './navbar/navbar_container'
 import Modal from './modal/modal';
 
-import { openModal } from '../actions/modal_actions';
-
+// Note that session containers will no longer be necessary due to use of a modal
 const App = () => (
   <div>
     <h1>This is the app</h1>
