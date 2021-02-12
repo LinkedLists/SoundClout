@@ -41,6 +41,15 @@ class SessionForm extends React.Component {
     }
   }
 
+  demoLogin() {
+    e.preventDefault();
+    const demoAccount = {
+      username: "Demo",
+      password: "secretpasswordlol"
+    }
+    this.props.login(demoAccount).then(this.props.closeModal);
+  }
+
   render() {
     return (
       <div>
