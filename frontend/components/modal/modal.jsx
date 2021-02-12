@@ -14,7 +14,7 @@ class Modal extends React.Component {
   selectComponent() {
     if (!this.props.modal) {
       this.component = null;
-      return null;
+      return null
     }
     switch (this.props.modal) {
       case 'login':
