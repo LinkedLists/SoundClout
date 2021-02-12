@@ -13,6 +13,7 @@ class Modal extends React.Component {
 
   selectComponent() {
     if (!this.props.modal) {
+      this.component = null;
       return null;
     }
     switch (this.props.modal) {
@@ -23,6 +24,7 @@ class Modal extends React.Component {
         this.component = <SignupFormContainer />;
         break;
       default:
+        // this.component = null;
         return null;
     }
   }
@@ -42,13 +44,13 @@ class Modal extends React.Component {
 const mapStateToProps = state => {
   return {
     modal: state.ui.modal
-  };
+  }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal())
-  };
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
