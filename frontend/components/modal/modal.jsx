@@ -13,9 +13,8 @@ class Modal extends React.Component {
   selectComponent() {
     if (!this.props.modal) {
       this.component = null;
-      return null;
+      return null
     }
-    // let component;
     switch (this.props.modal) {
       case 'login':
         this.component = <LoginFormContainer />;
@@ -24,7 +23,8 @@ class Modal extends React.Component {
         this.component = <SignupFormContainer />;
         break;
       default:
-        return null;
+        this.component = null;
+        return null
     }
   }
 

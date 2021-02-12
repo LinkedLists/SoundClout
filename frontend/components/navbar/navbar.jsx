@@ -14,6 +14,11 @@ class NavBar extends React.Component {
           &nbsp;or&nbsp;
           <button onClick={() => this.props.openModal('signup')}>Signup</button>
         </nav>
+
+        {this.props.state.session ? 
+        <button onClick={() => this.props.logout()}>Logout</button> : null 
+        }
+
       </div>
     )
   }
