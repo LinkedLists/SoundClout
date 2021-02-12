@@ -7,15 +7,15 @@ import SignupFormContainer from '../session_form/signup_container';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.component;
-    this.selectComponent = this.selectComponent.bind(this)
+    this.component
   }
 
   selectComponent() {
     if (!this.props.modal) {
       this.component = null;
-      return null
+      return null;
     }
+    // let component;
     switch (this.props.modal) {
       case 'login':
         this.component = <LoginFormContainer />;
@@ -24,15 +24,14 @@ class Modal extends React.Component {
         this.component = <SignupFormContainer />;
         break;
       default:
-        // this.component = null;
         return null;
     }
   }
 
-  render() {
-    this.selectComponent()
-    return (
-      <div className="modal-background" onClick={closeModal}>
+  render() { 
+    this.selectComponent();
+    return(
+      <div className="modal-background" onClick={this.props.closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           { this.component }
         </div>
