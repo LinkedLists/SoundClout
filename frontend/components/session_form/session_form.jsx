@@ -15,7 +15,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.action(user);
+    this.props.action(user).then(this.props.closeModal);
     this.setState({
       username: '',
       password: ''
@@ -41,6 +41,13 @@ class SessionForm extends React.Component {
       <div>
         <h1>hello</h1>
         <form onSubmit={this.handleSubmit}>
+
+          {/* taken from a/A */}
+          Please {this.props.formType} or {this.props.otherForm}
+          <div onClick={this.props.closeModal} className="close-x">X</div>
+          {/* taken from a/A */}
+
+
           <label>Username:
             <input type='text' onChange={this.handleChange('username')} value={this.state.username} />
           </label>
