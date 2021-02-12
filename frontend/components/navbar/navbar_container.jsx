@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './navbar'
 import { openModal } from '../../actions/modal_actions';
-
+import { login, logout } from '../../actions/session_actions'
 
 
 const mapStateToProps = (state) => {
