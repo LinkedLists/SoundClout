@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this)
   }
 
   handleSubmit(e) {
@@ -42,12 +43,13 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    e.preventDefault();
+    // e.preventDefault();        
     const demoAccount = {
-      username: "Demo",
-      password: "secretpasswordlol"
+      username: 'Demo',
+      password: 'secretpasswordlol'
     }
     this.props.login(demoAccount).then(this.props.closeModal);
+    // add .then.props.history to redirect to the root i think....
   }
 
   render() {
@@ -73,7 +75,16 @@ class SessionForm extends React.Component {
 
           {this.renderErrors()}
           <input type='submit' value={this.props.formType} />
+
+          {/* 
+            If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
+            and object construction. A work around is to use a ternary operation.
+          */}
+
         </form>
+          { this.props.formType === "Sign Up" ? 
+            <button onClick={this.demoLogin}>uhh why does this work</button> : null 
+          }
       </div>
     )
   }

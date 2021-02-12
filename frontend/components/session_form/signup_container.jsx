@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SessionForm from './session_form';
-import { signup } from '../../actions/session_actions'
+import { signup, login } from '../../actions/session_actions'
 
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     action: (user) => dispatch(signup(user)),
+    login: (user) => dispatch(login(user)),
 
     // taken from open a/A
     // remeber to refactor this later
