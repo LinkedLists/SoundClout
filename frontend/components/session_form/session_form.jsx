@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
   renderErrors() {
     if (this.props.errors.length > 0) {
       return (
-        <ul>
+        <ul className="credential_errors_ul">
           { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
         </ul>
       )
@@ -54,27 +54,25 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div>
-        <h1>hello</h1>
         <form onSubmit={this.handleSubmit}>
-
           {/* taken from a/A */}
-          Please {this.props.formType} or {this.props.otherForm}
+          {/* Please {this.props.formType} or {this.props.otherForm} */}
           <br />
-          {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
+          <div onClick={this.props.closeModal} className="close-x">X</div>
           {/* taken from a/A */}
 
-          <label>Username:
-            <input type='text' onChange={this.handleChange('username')} value={this.state.username} />
-          </label>
+          {/* <label>Username: */}
+            <input type='text' onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
+          {/* </label> */}
           <br/>
 
-          <label>Password:
-            <input type='text' onChange={this.handleChange('password')} value={this.state.password} />
-          </label>
+          {/* <label>Password: */}
+            <input type='text' onChange={this.handleChange('password')} placeholder="Your password" value={this.state.password} />
+          {/* </label> */}
           <br/>
 
           {this.renderErrors()}
-          <input type='submit' value={this.props.formType} />
+          <input className="modal_form_submit_button" type='submit' value={this.props.formType} />
         </form>
 
           {/* 
@@ -82,7 +80,7 @@ class SessionForm extends React.Component {
             and object construction. A work around is to use a ternary operation.
           */}
           { this.props.formType === "Sign Up" ? 
-            <button onClick={this.demoLogin}>uhh why does this work</button> : null 
+            <button className="demo_user_login_button" onClick={this.demoLogin}>Try as a demo user!</button> : null 
           }
       </div>
     )

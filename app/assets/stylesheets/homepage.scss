@@ -1,0 +1,23 @@
+
+
+// Login/signup header is a more accurate description of this scss file
+
+.login-signup {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: center;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  width: 1200px;
+  margin: 0 auto;
+  background: skyblue;
+}
+
+.signup {
+  background: #f50;
+}
+
+.login-signup button {
+  cursor: pointer;
+  margin: 0px 0px 0px 6px;
+  padding: 2px 16px;
+}
