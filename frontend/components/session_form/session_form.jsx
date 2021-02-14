@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
   renderErrors() {
     if (this.props.errors.length > 0) {
       return (
-        <ul className="credential_errors_ul">
+        <ul className="credential-errors-ul">
           { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
         </ul>
       )
@@ -58,9 +58,22 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        {/* 
+          If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
+          and object construction. A work around is to use a ternary operation.
+        */}
+
+        <form className="modal-form" onSubmit={this.handleSubmit}>
           {/* taken from a/A */}
           {/* Please {this.props.formType} or {this.props.otherForm} */}
+          <button className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
+
+          <br />
+          <div className="auth-separator">
+
+            <span>or</span>
+
+          </div>
           <br />
           <div onClick={this.props.closeModal} className="close-x">X</div>
           {/* taken from a/A */}
@@ -76,16 +89,9 @@ class SessionForm extends React.Component {
           <br/>
 
           {this.renderErrors()}
-          <input className="modal_form_submit_button" type='submit' value={this.props.formType} />
+          <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
         </form>
 
-          {/* 
-            If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
-            and object construction. A work around is to use a ternary operation.
-          */}
-          { this.props.formType === "Sign Up" ? 
-            <button className="demo_user_login_button" onClick={this.demoLogin}>Try as a demo user!</button> : null 
-          }
       </div>
     )
   }
