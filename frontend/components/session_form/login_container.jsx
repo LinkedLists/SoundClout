@@ -17,6 +17,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     action: (user) => dispatch(login(user)),
 
+    // redundant 
+    login: (user) => dispatch(login(user)),
+
+
     // taken from open a/A
     // remeber to refactor this later
     otherForm: (
