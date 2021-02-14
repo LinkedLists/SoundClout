@@ -70,9 +70,7 @@ class SessionForm extends React.Component {
 
           <br />
           <div className="auth-separator">
-
-            <span>or</span>
-
+            or
           </div>
           <br />
           <div onClick={this.props.closeModal} className="close-x">X</div>
