@@ -9,6 +9,7 @@ import NotFound from './404/not_found'
 // Note that session containers will no longer be necessary due to use of a modal
 const App = () => (
   <div>
+    <Modal />
 
     {/* Route bugs: 
     1. rendering NotFound component does not clear entire page. If modal is open
@@ -20,7 +21,6 @@ const App = () => (
       <Route exact path='/' component={NavBarContainer} />
       <Route component={NotFound} />
     </Switch>
-    <Modal />
 
     {/* <Route path='/signup' component={SignupFormContainer} />
     <Route path='/login' component={LoginFormContainer} /> */}

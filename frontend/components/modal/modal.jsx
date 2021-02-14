@@ -12,10 +12,6 @@ class Modal extends React.Component {
   }
 
   selectComponent() {
-    if (!this.props.modal) {
-      this.component = null;
-      return null
-    }
     switch (this.props.modal) {
       case 'login':
         this.component = <LoginFormContainer />;
@@ -30,6 +26,10 @@ class Modal extends React.Component {
   }
 
   render() { 
+    if (!this.props.modal) {
+      this.component = null;
+      return null
+    }
     this.selectComponent();
     return(
       <div className="modal-background" onClick={this.props.closeModal}>
