@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     action: (user) => dispatch(login(user)),
 
-    // redundant 
+    // A little redundant if you can clean this up later
     login: (user) => dispatch(login(user)),
 
 
