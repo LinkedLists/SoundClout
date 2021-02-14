@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom'
-// import SignupFormContainer from './session_form/signup_container'
-// import LoginFormContainer from './session_form/login_container'
 import NavBarContainer from './navbar/navbar_container'
 import Modal from './modal/modal';
 import NotFound from './404/not_found'
@@ -18,12 +16,21 @@ const App = () => (
     an error and will need to refresh the page for components to rerender
     */}
     <Switch>
-      <Route exact path='/' component={NavBarContainer} />
+      {/* <header> */}
+        <Route exact path='/' component={NavBarContainer} />
+      {/* </header> */}
+        
       <Route component={NotFound} />
     </Switch>
 
-    {/* <Route path='/signup' component={SignupFormContainer} />
-    <Route path='/login' component={LoginFormContainer} /> */}
+    {/* This will be the correct routing format later 
+    <header><Route component={NavBarContainer} /></header>
+    <Switch>
+      add more routes here
+      <Route component={NotFound} />
+    </Switch> 
+    */}
+
   </div>
 );
 
