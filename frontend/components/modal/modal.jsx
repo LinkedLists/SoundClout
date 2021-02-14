@@ -8,6 +8,7 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.component
+    // this.selectComponent = this.selectComponent.bind(this)
   }
 
   selectComponent() {
