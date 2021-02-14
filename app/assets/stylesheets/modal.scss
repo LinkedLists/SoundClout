@@ -79,8 +79,6 @@
                       supported by Chrome, Edge, Opera and Firefox */
 }
 
-
-
 .demo-user-login-button {
 }
 
@@ -93,18 +91,18 @@
 .auth-separator::before, .auth-separator::after {
   content: "";
   display: block;
-  height: 0.09em;
+  height: .1em;
   width: 40%;
 }
 
 .auth-separator::before {
   background: linear-gradient(to left, #f50, #fff);
-  margin-right: 4vh;
+  margin-right: auto;
 }
 
 .auth-separator::after {
   background: linear-gradient(to right, #f50, #fff);
-  margin-left: 4vh;
+  margin-left: auto;
 }
 
 

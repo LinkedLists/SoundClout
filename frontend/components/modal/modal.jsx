@@ -10,6 +10,7 @@ class Modal extends React.Component {
     this.component
     // this.selectComponent = this.selectComponent.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
+    this.handleMouseDown = this.handleMouseDown.bind(this)
   }
 
   selectComponent() {
@@ -27,10 +28,24 @@ class Modal extends React.Component {
   }
 
   handleKeyPress(e) {
-    console.log("hei")
-    if (e.keyCode === 27) {
-      console.log("AFAFA")
+    console.log(e.key)
+    if (e.key == "Escape") {
+      this.props.closeModal()
     }
+  }
+
+  handleMouseDown(e) {
+    if (e.target.className === "modal-background") {
+      this.props.closeModal();
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
   }
 
   render() { 
@@ -40,12 +55,10 @@ class Modal extends React.Component {
     }
     this.selectComponent();
     return(
-      <div onKeyPress={this.handleKeyPress}>
-      <div className="modal-background" onClick={this.props.closeModal}>
-        <div className="modal-child" onKeyPress={this.handleKeyPress} onClick={e => e.stopPropagation()}>
+      <div className="modal-background" onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
           { this.component }
         </div>
-      </div>
       </div>
     )
   }
