@@ -9,6 +9,7 @@ class Modal extends React.Component {
     super(props);
     this.component
     // this.selectComponent = this.selectComponent.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   selectComponent() {
@@ -25,6 +26,13 @@ class Modal extends React.Component {
     }
   }
 
+  handleKeyPress(e) {
+    console.log("hei")
+    if (e.keyCode === 27) {
+      console.log("AFAFA")
+    }
+  }
+
   render() { 
     if (!this.props.modal) {
       this.component = null;
@@ -32,10 +40,12 @@ class Modal extends React.Component {
     }
     this.selectComponent();
     return(
+      <div onKeyPress={this.handleKeyPress}>
       <div className="modal-background" onClick={this.props.closeModal}>
-        <div className="modal-child" onClick={e => e.stopPropagation()}>
+        <div className="modal-child" onKeyPress={this.handleKeyPress} onClick={e => e.stopPropagation()}>
           { this.component }
         </div>
+      </div>
       </div>
     )
   }
