@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this)
+    this.demoAttempt = false;
   }
 
   componentWillUnmount() {
@@ -19,8 +20,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.action(user).then(this.props.closeModal);
+    // const user = Object.assign({}, this.state);
+    this.demoAttempt ? this.props.login(this.state).then(this.props.closeModal) : this.props.action(this.state).then(this.props.closeModal);
     this.setState({
       username: '',
       password: ''
@@ -51,7 +52,9 @@ class SessionForm extends React.Component {
       username: 'Demo',
       password: 'secretpasswordlol'
     }
-    this.props.login(demoAccount).then(this.props.closeModal);
+    this.state = demoAccount;
+    this.demoAttempt = true;
+    // this.props.login(demoAccount).then(this.props.closeModal);
     // add .then.props.history to redirect to the root i think....
   }
 
