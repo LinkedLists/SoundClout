@@ -37,11 +37,13 @@
 }
 
 .modal-form input {
+  width: 100%;
+  box-sizing: border-box;
   font-size: 18px;
   line-height: 24px;
   padding: 7px 8px;
-  border: 1px solid #ccc;
   border-radius: 5px;
+  margin-bottom: 30px;
 }
 
 .modal-form button {
@@ -67,9 +69,21 @@
   // width: 100%
 }
 
+.no-error{
+  border: 1px solid #ccc;
+}
+
+.input-error {
+  border: 1px solid red;
+  // margin-bottom: 30px;
+}
+
 .credential-errors-ul {
+  position: absolute;
   color: #cf0000;
+  margin-top: -25px;
   font-size: 12px;
+  padding: 2px;
 }
 
 .close-x {
