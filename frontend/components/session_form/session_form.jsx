@@ -32,20 +32,21 @@ class SessionForm extends React.Component {
     return e => this.setState( {[field]: e.target.value} )
   }
 
+
   // The following is a list of renderable errors:
   // "Invalid credentials. Please try again!"
   // "Username has already been taken"
   // "Password is too short (minimum is 6 characters)"
 
-  renderErrors() {
-    if (this.props.errors.length > 0) {
-      return (
-        <ul className="credential-errors-ul">
-          { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
-        </ul>
-      )
-    }
-  }
+  // renderErrors() {
+  //   if (this.props.errors.length > 0) {
+  //     return (
+  //       <ul className="credential-errors-ul">
+  //         { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
+  //       </ul>
+  //     )
+  //   }
+  // }
 
   demoLogin() {
     const demoAccount = {
@@ -59,6 +60,10 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    const errors = {}
+    this.props.errors.forEach( (error) => {
+        errors[error.split(" ")[0]] = error
+    })
     return (
       <div>
         {/* 
@@ -68,19 +73,27 @@ class SessionForm extends React.Component {
 
         <form className="modal-form" onSubmit={this.handleSubmit}>
           <button className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
-
           <br />
           <div className="auth-separator">
             or
           </div>
           <br />
-          <div onClick={this.props.closeModal} className="close-x">X</div>
-            <input type='text' onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
-          <br/>
-            <input type='text' onChange={this.handleChange('password')} placeholder="Your password" value={this.state.password} />
-          <br/>
 
-          {this.renderErrors()}
+          <div>
+            <div onClick={this.props.closeModal} className="close-x">X</div>
+            <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
+            {errors['Username'] ? <div className="credential-errors-ul">{errors['Username']}</div> : null}
+          </div>
+          {/* <br/> */}
+
+          <div>
+            <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('password')} placeholder="Your password" value={this.state.password} />
+            {errors['Password'] ? <div className="credential-errors-ul">{errors['Password']}</div> : null}
+            {errors['Invalid'] ? <div className="credential-errors-ul">{errors['Invalid']}</div> : null}
+          </div>
+
+          {/* {this.renderErrors()} */}
+          {/* <br /> */}
           <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
         </form>
 
