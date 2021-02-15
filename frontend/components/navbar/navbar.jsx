@@ -7,8 +7,6 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-
-        {/* taken from a/A */}
         {
           this.props.state.session.id ? 
           <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button> : 
@@ -18,10 +16,8 @@ class NavBar extends React.Component {
             <button className='login' onClick={() => this.props.openModal('login')}>Login</button>
           </nav>
         }
-
       </div>
     )
   }
 }
-
 export default NavBar

@@ -64,8 +64,6 @@ class SessionForm extends React.Component {
         */}
 
         <form className="modal-form" onSubmit={this.handleSubmit}>
-          {/* taken from a/A */}
-          {/* Please {this.props.formType} or {this.props.otherForm} */}
           <button className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
 
           <br />
@@ -74,16 +72,9 @@ class SessionForm extends React.Component {
           </div>
           <br />
           <div onClick={this.props.closeModal} className="close-x">X</div>
-          {/* taken from a/A */}
-
-          {/* <label>Username: */}
             <input type='text' onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
-          {/* </label> */}
           <br/>
-
-          {/* <label>Password: */}
             <input type='text' onChange={this.handleChange('password')} placeholder="Your password" value={this.state.password} />
-          {/* </label> */}
           <br/>
 
           {this.renderErrors()}
