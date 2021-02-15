@@ -6,11 +6,10 @@
   display: flex;
   flex-direction: row-reverse;
   text-align: center;
-  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
   width: 1200px;
   margin: 0 auto;
   background: skyblue;
-
+  
   
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -18,15 +17,24 @@
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
-                      supported by Chrome, Edge, Opera and Firefox */
+  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .signup {
   background: #f50;
+  border: 1px solid #f50;
+}
+
+.login {
+  background-color: transparent;
+  border: 1px solid #ccc;
 }
 
 .login-signup button {
   cursor: pointer;
   margin: 0px 0px 0px 6px;
   padding: 2px 16px;
+  color: #fff;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  border-radius: 5px;
 }
