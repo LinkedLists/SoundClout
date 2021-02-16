@@ -80,7 +80,7 @@ class SessionForm extends React.Component {
           <br />
 
           <div>
-            <div onClick={this.props.closeModal} className="close-x">X</div>
+            {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
             <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
             {errors['Username'] ? <div className="credential-errors-ul">{errors['Username']}</div> : null}
           </div>
