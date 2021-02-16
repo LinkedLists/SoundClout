@@ -36,6 +36,8 @@ navContainer() {
         <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
         <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
       </ul>
+
+      {/* login and logout does not change the url. consider change button to <Link> maybe */}
       <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
     </div>
     )
