@@ -84,7 +84,6 @@ class SessionForm extends React.Component {
             <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
             {errors['Username'] ? <div className="credential-errors-ul">{errors['Username']}</div> : null}
           </div>
-          {/* <br/> */}
 
           <div>
             <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('password')} placeholder="Your password" value={this.state.password} />
@@ -92,11 +91,8 @@ class SessionForm extends React.Component {
             {errors['Invalid'] ? <div className="credential-errors-ul">{errors['Invalid']}</div> : null}
           </div>
 
-          {/* {this.renderErrors()} */}
-          {/* <br /> */}
           <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
         </form>
-
       </div>
     )
   }
