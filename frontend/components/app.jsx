@@ -19,8 +19,10 @@ const App = () => (
     <Switch>
       {/* <Route exact path='/' component={NavBarContainer} /> */}
       <Route exact path='/discover' />
+
+      {/* remove the redirect once you have more components so that you can render 404 */}
+      <Redirect to='/' />
       <Route component={NotFound} />
-      {/* <Redirect to='/' /> */}
     </Switch>
 
     {/* This will be the correct routing format later 
