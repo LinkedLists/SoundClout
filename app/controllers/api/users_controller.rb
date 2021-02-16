@@ -11,8 +11,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    if @user
-      render 'api/users/show'
+    render 'api/users/show' if @user
     end
   end
 
