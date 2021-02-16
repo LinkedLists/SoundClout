@@ -23,6 +23,9 @@ class Api::TracksController < ApplicationController
     render 'api/tracks/show' if @track
   end
 
+  # def update
+  # end
+
   private
   def track_params
     params.require(:track).permit(:title, :uploader_id ,:description, :genre)
