@@ -16,6 +16,11 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
+  has_many :tracks,
+    primary_key: :id,
+    foreign_key: :uploader_id,
+    class_name: :Track
+
   # SPIRE 
 
   def self.find_by_credentials(username, password)
