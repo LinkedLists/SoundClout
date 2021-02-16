@@ -53,9 +53,42 @@
   height: 46px;
   background: #333;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
 }
 
-.test {
-  color: rgb(253, 253, 253);
+.nav-links-li {
+  display: block;
+  color: #ccc;
+  padding: 12px 0px;
+  border-right: 1px solid #111;
+  text-align: center;
+  height: auto;
+  width: 104px;
+  text-decoration: none;
+}
+
+.nav-links-li:hover {
+  cursor: pointer;
+  color: #eee;
+}
+
+.nav-links-li:focus {
+  background: #111;
+  color: #fff;
+}
+
+.nav-links {
+  // consider if you still need to have flex items within the ul anymore
+  display: flex;
+  
+  // copied from soundcloud
+  font: 100 14px/1.5 Interstate,Lucida Grande,Arial,sans-serif;
+}
+
+.nav-links>li {
+  // box-sizing: border-box;
   
 }

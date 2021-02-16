@@ -19,7 +19,7 @@ const App = () => (
       {/* <header> */}
       {/* </header> */}
       <Route exact path='/' component={NavBarContainer} />
-      <Route exact path='/discover'/>
+      <Route exact path='/discover' component={NavBarContainer} />
       <Route component={NotFound} />
       {/* <Redirect to='/' /> */}
     </Switch>
