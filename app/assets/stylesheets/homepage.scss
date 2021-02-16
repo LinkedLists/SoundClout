@@ -2,11 +2,11 @@
 
 // Login/signup header is a more accurate description of this scss file
 
-.nav-header-container {
+.login-signup-container {
   margin-top: 20px;
 }
 
-.nav-header {
+.login-signup-nav {
   display: flex;
   flex-direction: row;
   // flex-direction: row-reverse;
@@ -44,6 +44,6 @@
   border: 1px solid #ccc;
 }
 
-.hi {
+.site-logo {
   align-self: flex-start;
 }
