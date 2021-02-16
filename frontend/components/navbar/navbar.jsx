@@ -28,8 +28,13 @@ class NavBar extends React.Component {
 navContainer() {
   return(
     <div className="navbar-container">
-      <ul>
-        <li><Link to='/discover' className='test'>place logo here</Link></li>
+      <ul className="nav-links">
+        {/* in soundcloude the logo is outside of nav-links ul */}
+        {/* navbar is divided into ul sections */}
+        <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
+        <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
+        <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
+        <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
       </ul>
       <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
     </div>
