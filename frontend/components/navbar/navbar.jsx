@@ -22,24 +22,24 @@ class NavBar extends React.Component {
           </div>
         </nav>
       </div>
+    )
+  }
 
-)
-}
-navContainer() {
-  return(
-    <div className="navbar-container">
-      <ul className="nav-links">
-        {/* in soundcloude the logo is outside of nav-links ul */}
-        {/* navbar is divided into ul sections */}
-        <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
-        <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
-        <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
-        <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
-      </ul>
+  navContainer() {
+    return(
+      <div className="navbar-container">
+        <ul className="nav-links">
+          {/* in soundcloude the logo is outside of nav-links ul */}
+          {/* navbar is divided into ul sections */}
+          <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
+          <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
+          <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
+          <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
+        </ul>
 
-      {/* login and logout does not change the url. consider change button to <Link> maybe */}
-      <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
-    </div>
+        {/* login and logout does not change the url. consider change button to <Link> maybe */}
+        <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
+      </div>
     )
   }
   
@@ -49,4 +49,5 @@ navContainer() {
     )
   }
 }
+
 export default NavBar
