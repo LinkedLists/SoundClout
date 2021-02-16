@@ -14,7 +14,7 @@ const App = () => (
     1. rendering NotFound component does not clear entire page. If modal is open
     it will remain open when user routes to a undef. route
     2. after showing the NotFound component if user goes back one page it will display 
-    an error and will need to refresh the page for components to rerender
+    an error and will need to refresh the page for components to rerender -- resolved -- remove turbolinks
     */}
     <Switch>
       {/* <Route exact path='/' component={NavBarContainer} /> */}
