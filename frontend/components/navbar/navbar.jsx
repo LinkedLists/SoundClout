@@ -27,7 +27,12 @@ class NavBar extends React.Component {
 }
 navContainer() {
   return(
-    <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
+    <div className="navbar-container">
+      <ul>
+        <li><Link to='/discover' className='test'>place logo here</Link></li>
+      </ul>
+      <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
+    </div>
     )
   }
   
