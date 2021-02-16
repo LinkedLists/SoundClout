@@ -33925,3 +33925,368 @@ Started GET "/api/tracks" for ::1 at 2021-02-16 11:57:40 -0800
 SyntaxError - syntax error, unexpected end-of-input, expecting keyword_end:
   app/controllers/api/tracks_controller.rb:30:in `'
 
+Started GET "/api/tracks" for ::1 at 2021-02-16 11:59:14 -0800
+Processing by Api::TracksController#index as JSON
+  Rendering api/tracks/index.json.jbuilder
+  [1m[36mTrack Load (24.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/views/api/tracks/index.json.jbuilder:1
+  Rendered api/tracks/index.json.jbuilder (29.8ms)
+Completed 200 OK in 52ms (Views: 8.4ms | ActiveRecord: 27.3ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:02:43 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "description"=>"this is a song lol", "genre"=>"ambient"}}
+Completed 500 Internal Server Error in 213ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `user_params' for #<Api::TracksController:0x00007fbace4c6db0>:
+  app/controllers/api/tracks_controller.rb:3:in `create'
+
+Started POST "/api/tracks?track[title]=the%20titile&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:03:01 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 107ms (Views: 0.2ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=1&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:09:50 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"1", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 88ms (Views: 0.2ms | ActiveRecord: 9.3ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=4&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:10:13 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"4", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=4&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:10:14 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"4", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 13ms (Views: 0.3ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=4&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:10:16 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"4", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 13ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=4&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:10:19 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"4", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 12ms (Views: 0.3ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=4&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:14:53 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"4", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 12ms (Views: 5.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=1&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:14:58 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"1", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 7ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=1&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient&user[username]=asdfa&user[password]=[FILTERED]" for ::1 at 2021-02-16 12:16:10 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"1", "description"=>"this is a song lol", "genre"=>"ambient"}, "user"=>{"username"=>"asdfa", "password"=>"[FILTERED]"}}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 11ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=1&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient&user[username]=asdfa&user[password]=[FILTERED]" for ::1 at 2021-02-16 12:16:11 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"1", "description"=>"this is a song lol", "genre"=>"ambient"}, "user"=>{"username"=>"asdfa", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/users" for ::1 at 2021-02-16 12:16:55 -0800
+
+SyntaxError - syntax error, unexpected keyword_end, expecting end-of-input:
+  app/controllers/api/users_controller.rb:23:in `'
+
+Started POST "/api/users?user[username]=asdfa&user[password]=[FILTERED]" for ::1 at 2021-02-16 12:17:11 -0800
+
+SyntaxError - syntax error, unexpected keyword_end, expecting end-of-input:
+  app/controllers/api/users_controller.rb:23:in `'
+
+Started POST "/api/users?user[username]=asdfa&user[password]=[FILTERED]" for ::1 at 2021-02-16 12:17:24 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"asdfa", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "asdfa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "asdfa"], ["password_digest", "$2a$12$67k0NaKwrb1Tcepx6jrTT.IDH0j2L8cEhMEeqpiyZ4tjLZTrtLOuC"], ["session_token", "CkQstU4B6JMmlNye48u7Uw"], ["created_at", "2021-02-16 20:17:24.939076"], ["updated_at", "2021-02-16 20:17:24.939076"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:47
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "asdfa"], ["id", 30], ["LIMIT", 1]]
+  ↳ app/models/user.rb:47
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "LEUmaor_4_AEKF32DuYErA"], ["updated_at", "2021-02-16 20:17:24.958436"], ["id", 30]]
+  ↳ app/models/user.rb:47
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:47
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.3ms)
+Completed 200 OK in 325ms (Views: 12.2ms | ActiveRecord: 18.4ms)
+
+
+Started POST "/api/tracks" for ::1 at 2021-02-16 12:17:43 -0800
+Processing by Api::TracksController#create as JSON
+Completed 400 Bad Request in 15ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: track:
+  app/controllers/api/tracks_controller.rb:28:in `track_params'
+  app/controllers/api/tracks_controller.rb:3:in `create'
+
+Started POST "/api/tracks?track[title]=the%20titile&track[uploader_id]=30&track[description]=this%20is%20a%20song%20lol&track[genre]=ambient" for ::1 at 2021-02-16 12:18:09 -0800
+Processing by Api::TracksController#create as JSON
+  Parameters: {"track"=>{"title"=>"the titile", "uploader_id"=>"30", "description"=>"this is a song lol", "genre"=>"ambient"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[36mTrack Create (6.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "uploader_id", "description", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "the titile"], ["uploader_id", 30], ["description", "this is a song lol"], ["genre", "ambient"], ["created_at", "2021-02-16 20:18:09.808234"], ["updated_at", "2021-02-16 20:18:09.808234"]]
+  ↳ app/controllers/api/tracks_controller.rb:4
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:4
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (1.6ms)
+Completed 200 OK in 38ms (Views: 8.0ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2021-02-16 12:18:39 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (0.5ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:18:43 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (29.4ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.4ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220153745500'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:25 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (9.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.6ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220154823740'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:26 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (9.4ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.4ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220154050060'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:27 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (5.0ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.3ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220152335960'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:27 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (4.2ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.9ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220150178080'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:32 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (3.3ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220150795220'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:34 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (8.0ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220147425860'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/2" for ::1 at 2021-02-16 12:19:40 -0800
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:22
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/show.json.jbuilder (3.2ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.5ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder__315753102409770185_70220148188300'
+  app/controllers/api/tracks_controller.rb:23:in `show'
+
+Started GET "/api/tracks/" for ::1 at 2021-02-16 12:19:53 -0800
+Processing by Api::TracksController#index as JSON
+  Rendering api/tracks/index.json.jbuilder
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/views/api/tracks/index.json.jbuilder:1
+  Rendered api/tracks/index.json.jbuilder (17.3ms)
+Completed 200 OK in 38ms (Views: 12.6ms | ActiveRecord: 11.1ms)
+
+
+Started DELETE "/api/tracks/1" for ::1 at 2021-02-16 12:20:02 -0800
+Processing by Api::TracksController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:18
+  [1m[36mTrack Destroy (0.5ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:18
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:18
+  Rendering api/tracks/index.json.jbuilder
+  Rendered api/tracks/index.json.jbuilder (2.7ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 5.1ms)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/api/tracks/index.json.jbuilder:1:in `_app_views_api_tracks_index_json_jbuilder__2610565115256297660_70368384420920'
+  app/controllers/api/tracks_controller.rb:18:in `destroy'
+
+Started GET "/api/tracks/" for ::1 at 2021-02-16 12:20:15 -0800
+Processing by Api::TracksController#index as JSON
+  Rendering api/tracks/index.json.jbuilder
+  [1m[36mTrack Load (1.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/views/api/tracks/index.json.jbuilder:1
+  Rendered api/tracks/index.json.jbuilder (3.3ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 1.1ms)
+
+
