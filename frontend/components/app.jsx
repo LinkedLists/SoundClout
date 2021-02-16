@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import NavBarContainer from './navbar/navbar_container'
 import Modal from './modal/modal';
 import NotFound from './404/not_found'
@@ -17,10 +17,11 @@ const App = () => (
     */}
     <Switch>
       {/* <header> */}
-        <Route exact path='/' component={NavBarContainer} />
       {/* </header> */}
-        
+      <Route exact path='/' component={NavBarContainer} />
+
       <Route component={NotFound} />
+      {/* <Redirect to='/' /> */}
     </Switch>
 
     {/* This will be the correct routing format later 
