@@ -10,7 +10,8 @@ class SessionForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoLogin = this.demoLogin.bind(this)
+    this.demoLogin = this.demoLogin.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
     this.demoAttempt = false;
   }
 
@@ -59,6 +60,15 @@ class SessionForm extends React.Component {
     // add .then.props.history to redirect to the root i think....
   }
 
+  // This prevents auto login of the demo user on the enter key
+  // Note that the getElementsByClassName method returns an array-like object
+  handleEnter(e) {
+    if (e.key == "Enter") {
+      e.preventDefault();
+      document.getElementsByClassName("modal-form-submit-button")[0].click();
+    }
+  }
+
   render() {
     const errors = {}
     this.props.errors.forEach( (error) => {
@@ -71,8 +81,8 @@ class SessionForm extends React.Component {
           and object construction. A work around is to use a ternary operation.
         */}
 
-        <form className="modal-form" onSubmit={this.handleSubmit}>
-          <button type='button' className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
+        <form className="modal-form" onSubmit={this.handleSubmit} onKeyPress={this.handleEnter}>
+          <button className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
           <br />
           <div className="auth-separator">
             or
