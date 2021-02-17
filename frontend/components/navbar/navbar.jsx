@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class NavBar extends React.Component {
 
@@ -17,8 +17,8 @@ class NavBar extends React.Component {
           <div className="site-logo">logo placeholder</div>
           <div className="login-signup">
             {/* temp inline style for login */}
-            <button className='login' onClick={() => this.props.openModal('login')} style={{color: 'green'}}>Login</button>
-            <button className='signup' onClick={() => this.props.openModal('signup')}>Create Account</button>
+            <button className='login-btn' onClick={() => this.props.openModal('login')} style={{color: 'green'}}>Login</button>
+            <button className='signup-btn' onClick={() => this.props.openModal('signup')}>Create Account</button>
           </div>
         </nav>
       </div>
@@ -35,10 +35,13 @@ class NavBar extends React.Component {
           <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
           <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
           <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
+          <li><Link to='/discover' className='nav-links-li'>User #{this.props.state.session.id}</Link></li>
+          <li>
+            <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
+          </li>
         </ul>
 
         {/* login and logout does not change the url. consider change button to <Link> maybe */}
-        <button onClick={() => this.props.logout()}>Logout for user #{this.props.state.session.id}</button>
       </div>
     )
   }

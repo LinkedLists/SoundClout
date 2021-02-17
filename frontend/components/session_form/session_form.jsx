@@ -63,10 +63,14 @@ class SessionForm extends React.Component {
   // This prevents auto login of the demo user on the enter key
   // Note that the getElementsByClassName method returns an array-like object
   handleEnter(e) {
-    if (e.key == "Enter") {
-      e.preventDefault();
-      document.getElementsByClassName("modal-form-submit-button")[0].click();
-    }
+    // use this commented code if handler should listen to key presses instead
+    // if (e.key == "Enter") {
+    //   e.preventDefault();
+    //   document.getElementsByClassName("modal-form-submit-button")[0].click();
+    // }
+    this.demoLogin()
+    document.getElementsByClassName("modal-form-submit-button")[0].click();
+
   }
 
   render() {
@@ -81,8 +85,8 @@ class SessionForm extends React.Component {
           and object construction. A work around is to use a ternary operation.
         */}
 
-        <form className="modal-form" onSubmit={this.handleSubmit} onKeyPress={this.handleEnter}>
-          <button className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
+        <form className="modal-form" onSubmit={this.handleSubmit} >
+          <button type='button' className="demo-user-login-button" onClick={this.handleEnter}>Try as a demo user!</button>
           <br />
           <div className="auth-separator">
             or
