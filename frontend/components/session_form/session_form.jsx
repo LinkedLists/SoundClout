@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
         */}
 
         <form className="modal-form" onSubmit={this.handleSubmit}>
-          <button className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
+          <button type='button' className="demo-user-login-button" onClick={this.demoLogin}>Try as a demo user!</button>
           <br />
           <div className="auth-separator">
             or
