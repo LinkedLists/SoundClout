@@ -59,11 +59,12 @@
   padding: 7px 8px;
   border-radius: 5px;
   margin-bottom: 30px;
-  opacity: 0.7;
+  // opacity: 0.7;
 }
 
 .modal-form input:focus {
   outline: 0;
+  opacity: 1;
   border: 1px solid #111;
 }
 
@@ -102,7 +103,8 @@
 }
 
 .no-error{
-  border: 1px solid #ccc;
+  border: 1px solid rgba(204, 204, 204, 0.7);
+  // border: 1px solid #ccc;
 }
 
 .input-error {

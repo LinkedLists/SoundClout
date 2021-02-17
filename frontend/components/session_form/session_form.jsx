@@ -63,14 +63,12 @@ class SessionForm extends React.Component {
   // This prevents auto login of the demo user on the enter key
   // Note that the getElementsByClassName method returns an array-like object
   handleEnter(e) {
-    // use this commented code if handler should listen to key presses instead
-    // if (e.key == "Enter") {
-    //   e.preventDefault();
-    //   document.getElementsByClassName("modal-form-submit-button")[0].click();
-    // }
-    this.demoLogin()
-    document.getElementsByClassName("modal-form-submit-button")[0].click();
-
+    if (e.key == "Enter") {
+      e.preventDefault();
+    } else {
+      this.demoLogin()
+      document.getElementsByClassName("modal-form-submit-button")[0].click();
+    }
   }
 
   render() {
@@ -86,7 +84,10 @@ class SessionForm extends React.Component {
         */}
 
         <form className="modal-form" onSubmit={this.handleSubmit} >
-          <button type='button' className="demo-user-login-button" onClick={this.handleEnter}>Try as a demo user!</button>
+          <button type='button' 
+            className="demo-user-login-button" 
+            onClick={this.handleEnter} 
+            onKeyPress={this.handleEnter}>Try as a demo user!</button>
           <br />
           <div className="auth-separator">
             or
@@ -95,12 +96,20 @@ class SessionForm extends React.Component {
 
           <div>
             {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
-            <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('username')} placeholder="Your username" value={this.state.username} />
+            <input type='text' 
+              className={Object.keys(errors).length ? "input-error" : "no-error"} 
+              onChange={this.handleChange('username')} 
+              placeholder="Your username" 
+              value={this.state.username} />
             {errors['Username'] ? <div className="credential-errors-ul">{errors['Username']}</div> : null}
           </div>
 
           <div>
-            <input type='text' className={Object.keys(errors).length ? "input-error" : "no-error"} onChange={this.handleChange('password')} placeholder="Your password" value={this.state.password} />
+            <input type='text' 
+              className={Object.keys(errors).length ? "input-error" : "no-error"} 
+              onChange={this.handleChange('password')} 
+              placeholder="Your password" 
+              value={this.state.password} />
             {errors['Password'] ? <div className="credential-errors-ul">{errors['Password']}</div> : null}
             {errors['Invalid'] ? <div className="credential-errors-ul">{errors['Invalid']}</div> : null}
           </div>
