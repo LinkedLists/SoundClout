@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
-import { fetchTracks } from '../../actions/track_actions'
+// import { fetchTracks } from '../../actions/track_actions'
 
 class NavBar extends React.Component {
 
@@ -10,22 +10,26 @@ class NavBar extends React.Component {
     this.sessionContainer = this.sessionContainer.bind(this);
     this.navContainer = this.navContainer.bind(this);
 
-    this.state = {
-      tracks: {}
-    }
+
     // this.fetchTracks = this.fetchTracks.bind(this)
   }
 
-  // fetchTracks() {
-  //   $.ajax({
-  //     url: 'api/tracks',
-  //     method: 'GET'
-  //   }).then(tracks => {this.setState({tracks})})
-  // }
+  fetchTracks() {
+    $.ajax({
+      url: 'api/tracks',
+      method: 'GET'
+    }).then(tracks => {this.setState({tracks})})
+  }
 
   componentDidMount() {
     console.log("heelo")
-    dispatch(fetchTracks());
+    // dispatch(fetchTracks())
+    // fetchTracks();
+    this.props.fetchTracks();
+    this.props.state
+    debugger
+
+    console.log(this.props.state)
   }
 
   sessionContainer() {
