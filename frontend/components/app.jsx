@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import NavBarContainer from './navbar/navbar_container'
 import Modal from './modal/modal';
 import NotFound from './404/not_found'
+import ContentContainer from './content/content_container'
 
 // Note that session containers will no longer be necessary due to use of a modal
 const App = () => (
@@ -19,7 +20,7 @@ const App = () => (
     */}
     <Switch>
       {/* <Route exact path='/' component={NavBarContainer} /> */}
-      <Route exact path='/discover' />
+      <Route exact path='/discover' component={ContentContainer} />
 
       {/* remove the redirect once you have more components so that you can render 404 */}
       <Redirect to='/' />

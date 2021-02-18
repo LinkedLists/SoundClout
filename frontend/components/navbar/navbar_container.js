@@ -7,11 +7,9 @@ import { login, logout } from '../../actions/session_actions'
 // importing just to test it out
 import { fetchTracks } from '../../actions/track_actions'
 
-
-
 const mapStateToProps = (state) => {
   return {
-    state
+    state,
   }
 }
 

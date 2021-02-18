@@ -2,10 +2,10 @@ import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from "../actions/trac
 
 const TracksReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-
+  
   switch(action.type) {
     case RECEIVE_ALL_TRACKS:
-      return action.tracks
+      return Object.assign({}, oldState, action.tracks)
     case RECEIVE_TRACK:
       return Object.assign({}, oldState, {id: action.track.id})
     case REMOVE_TRACK:
