@@ -10,9 +10,18 @@ class Content extends React.Component {
   }
 
   render() {
+    // debugger
+    let tracks = Object.values(this.props.tracks)
+    
     return (
       <div className="content-container">
-        {/* render stuff here */}
+
+        <img src={tracks[0].photoUrl}/>
+        {/* {
+        tracks.forEach( (track) => {
+          <img src={track.photoUrl}/>
+        })
+        } */}
       </div>
     )
   }
