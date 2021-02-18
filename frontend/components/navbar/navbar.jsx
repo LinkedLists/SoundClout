@@ -57,6 +57,8 @@ class NavBar extends React.Component {
           <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
           <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
           <li><Link to='/discover' className='nav-links-li'>User #{this.props.state.session.id}</Link></li>
+          <li><Link to='/upload' className='nav-links-li'>upload</Link></li>
+
           <li>
             <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
           </li>
