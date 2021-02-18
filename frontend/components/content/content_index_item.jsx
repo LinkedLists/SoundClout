@@ -7,7 +7,12 @@ class ContentIndexItem extends React.Component {
 
   render() {
     return (
-      <li><img src={this.props.photoUrl}/></li>
+      <li className="content-list-item">
+        <img className="content-list-item-img" src={this.props.track.photoUrl}/>
+        <div className="content-list-item-description">
+          {this.props.track.genre}
+        </div>
+      </li>
     )
   }
 }

@@ -1,0 +1,30 @@
+.content-container {
+  background: white;
+  width: 1180px;
+  margin: 0 auto;
+  padding: 0 30px;
+  padding-top: 46px;
+}
+
+.playlist-header {
+  margin-top: 34px;
+  margin-bottom: 24px;
+  font-size: 23px;
+}
+
+.content-list-item-img {
+  height: 172px;
+  width: 172px;
+}
+
+.content-list-item:hover {
+  cursor: pointer;
+}
+
+.content-list-ul {
+  // background-position: 50% 50%;
+  // display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
