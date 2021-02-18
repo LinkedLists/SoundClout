@@ -16,7 +16,7 @@ class Content extends React.Component {
     return (
       <div className="content-container">
 
-        <img src={tracks[0].photoUrl}/>
+        {/* <img src={tracks[0].photoUrl}/> */}
         {/* {
         tracks.forEach( (track) => {
           <img src={track.photoUrl}/>
