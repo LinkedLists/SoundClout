@@ -23,10 +23,10 @@ class SessionForm extends React.Component {
     e.preventDefault();
     // const user = Object.assign({}, this.state);
     this.demoAttempt ? this.props.login(this.state).then(this.props.closeModal) : this.props.action(this.state).then(this.props.closeModal);
-    this.setState({
-      username: '',
-      password: ''
-    })
+    // this.setState({
+    //   username: '',
+    //   password: ''
+    // })
   }
 
   handleChange(field) {
@@ -105,7 +105,7 @@ class SessionForm extends React.Component {
           </div>
 
           <div>
-            <input type='text' 
+            <input type='password' 
               className={Object.keys(errors).length ? "input-error" : "no-error"} 
               onChange={this.handleChange('password')} 
               placeholder="Your password" 
