@@ -17,6 +17,14 @@ class SessionForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearErrors();
+
+    // there is still an issue where state is not clearing after logging in
+    // consider clearing the state here?
+    
+    // this.setState({
+    //   username: '',
+    //   password: ''
+    // })
   }
 
   handleSubmit(e) {

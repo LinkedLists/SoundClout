@@ -5,7 +5,7 @@ import { fetchTracks } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
   return {
-    tracks: state.entities.tracks
+    tracks: Object.values(state.entities.tracks)
   }
 }
 
