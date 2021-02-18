@@ -16,12 +16,16 @@ class Content extends React.Component {
     return (
       <div className="content-container">
 
-        {/* <img src={tracks[0].photoUrl}/> */}
-        {/* {
-        tracks.forEach( (track) => {
-          <img src={track.photoUrl}/>
-        })
-        } */}
+        <ul>
+        {
+          tracks.map( (track) => {
+            return (
+            <li>
+              <img src={track.photoUrl}/>
+            </li>)
+          })
+        }
+        </ul>
       </div>
     )
   }
