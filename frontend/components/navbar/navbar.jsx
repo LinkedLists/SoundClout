@@ -27,7 +27,6 @@ class NavBar extends React.Component {
     // fetchTracks();
     this.props.fetchTracks();
     this.props.state
-    debugger
 
     console.log(this.props.state)
   }
@@ -69,6 +68,8 @@ class NavBar extends React.Component {
   }
   
   render() {
+    // debugger
+
     return (
       this.props.state.session.id ? this.navContainer() : this.sessionContainer()
     )
