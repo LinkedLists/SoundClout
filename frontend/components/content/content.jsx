@@ -23,7 +23,7 @@ class Content extends React.Component {
     
     
     return (
-      <div >
+      <div className="content-container">
         <div className="playlist-header">Charts: New and hot</div>
         <ul className="content-list-ul">
           {trackItems}
