@@ -32,11 +32,15 @@ class Playbar extends React.Component {
               <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
             }
             <div className="current-track-description">
-              <div>
-                user {this.props.currentTrack.uploader_id}
-              </div>
-              <div>
-                {this.props.currentTrack.title}
+              <div className="description-wrapper" >
+                <div>
+                  user {this.props.currentTrack.uploader_id}
+                </div>
+                <div>
+                  {this.props.currentTrack.title}
+                </div>
+
+
               </div>
             </div>
           </div>
