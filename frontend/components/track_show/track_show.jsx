@@ -13,6 +13,7 @@ class TrackShow extends React.Component {
 
   render() {
     if (this.props.track === undefined) return null;
+    // debugger
     return (
       <div>
           <img className="content-list-item-img" src={this.props.track.photoUrl}/>
@@ -21,6 +22,7 @@ class TrackShow extends React.Component {
             <br />
             {this.props.track.description}
           </div>
+          {/* <audio src={this.props.track.audioUrl}>play</audio> */}
       </div>
     )
   }
