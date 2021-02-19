@@ -18,13 +18,28 @@ class Playbar extends React.Component {
 
     return (
       <div className="playbar-footer">
-        <audio id='audio' src={this.props.currentTrack.audioUrl} />
-        {/* <button onClick={this.playTrack}>play</button> */}
-        <button onClick={() => document.getElementById('audio').play()}>play</button>
-        <button onClick={() => document.getElementById('audio').pause()}>pause</button>
+        <div className="playbar-footer-wrapper">
+          <div className="media-container">
+            <audio id='audio' src={this.props.currentTrack.audioUrl} />
+            {/* <button onClick={this.playTrack}>play</button> */}
+            <button onClick={() => document.getElementById('audio').play()}>play</button>
+            <button onClick={() => document.getElementById('audio').pause()}>pause</button>
+          </div>
 
-        <div>
-          current song: {this.props.currentTrack.title}
+          <div className="current-track">
+            { 
+              this.props.currentTrack !== {} ? 
+              <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
+            }
+            <div className="current-track-description">
+              <div>
+                user {this.props.currentTrack.uploader_id}
+              </div>
+              <div>
+                {this.props.currentTrack.title}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )

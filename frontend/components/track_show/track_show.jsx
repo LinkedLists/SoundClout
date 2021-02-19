@@ -31,7 +31,6 @@ class TrackShow extends React.Component {
       this.props.sendTrack(this.props.track)
       document.getElementById('audio').play()
     }
-
   }
 
 
