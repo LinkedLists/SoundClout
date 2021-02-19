@@ -18,7 +18,7 @@ class ContentIndexItem extends React.Component {
             <br />
             <div>By: user {this.props.track.uploader_id}</div>
             <br />
-            <div>genre: {this.props.track.genre}</div>
+            <div>Genre: {this.props.track.genre}</div>
           </div>
         </Link>
       </li>

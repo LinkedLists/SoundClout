@@ -3,6 +3,11 @@
 // Login/signup header is a more accurate description of this scss file
 
 .login-signup-container {
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
   margin-top: 20px;
 }
 
