@@ -28,6 +28,7 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
+    # maybe add media urls as params
     params.require(:track).permit(:title, :uploader_id ,:description, :genre)
   end
 

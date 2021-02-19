@@ -18,11 +18,15 @@ class TrackShow extends React.Component {
       <div>
           <img className="content-list-item-img" src={this.props.track.photoUrl}/>
           <div className="content-list-item-description">
-            {this.props.track.genre}
+            title: {this.props.track.title}
             <br />
-            {this.props.track.description}
+            genre: {this.props.track.genre}
+            <br/>
+            description: {this.props.track.description}
           </div>
-          {/* <audio src={this.props.track.audioUrl}>play</audio> */}
+          <audio className="audio" src={this.props.track.audioUrl} />
+          <button onClick={() => document.getElementByClassName('audio').play()}>play</button>
+          <button onClick={() => document.getElementByClassName('audio').pause()}>pause</button>
       </div>
     )
   }
