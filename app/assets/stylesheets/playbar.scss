@@ -29,8 +29,16 @@
 .current-track-img {
   width: 30px;
   height: 30px;
+  margin-right: 15px;
 }
 
 .current-track-description {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.description-wrapper {
+  position: absolute;
 }
