@@ -19,4 +19,5 @@ class Track < ApplicationRecord
     class_name: :User
 
     has_one_attached :photo
+    # has_one_attached :audio
 end
