@@ -1,8 +1,9 @@
-import { RECEIVE_CURRENT_USER } from "./session_actions";
-import { RECEIVE_ALL_TRACKS } from "./track_actions";
+// import { RECEIVE_CURRENT_USER } from "./session_actions";
+// import { RECEIVE_ALL_TRACKS } from "./track_actions";
 
 export const PLAY_ACTION = "PLAY_ACTION";
 export const PAUSE_ACTION = "PAUSE_ACTION";
+export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
 
 // a play would need to receive a current track to know what its currently playing
 // as well as a receive track action to update the current track perhaps
@@ -18,3 +19,14 @@ export const pauseTrack = () => {
     type: PAUSE_ACTION
   }
 }
+
+// testing using a playbar specific receive track
+
+export const receiveTrack = (track) => {
+  return({
+    type: RECEIVE_NEW_TRACK,
+    track
+  })
+}
+
+
