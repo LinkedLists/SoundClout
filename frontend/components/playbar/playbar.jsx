@@ -3,15 +3,22 @@ import React from 'react';
 class Playbar extends React.Component {
   constructor(props) {
     super(props);
+
+
   }
 
-
+  playTrack() {
+    
+  }
 
   render() {
     // if (this.props.currentSessionId !== null) return
     return (
       <div className="playbar-footer">
-        hey this is the playbar
+        <audio id='audio' src={this.props.currentTrack.audioUrl} />
+        {/* <button onClick={this.playTrack}>play</button> */}
+        <button onClick={() => document.getElementById('audio').play()}>play</button>
+        <button onClick={() => document.getElementById('audio').pause()}>pause</button>
       </div>
     )
   }

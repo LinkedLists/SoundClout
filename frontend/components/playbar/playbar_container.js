@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Playbar from './playbar'
-import { playTrack, pauseTrack } from '../../actions/playbar_actions'
+import { playTrack, pauseTrack, receiveTrack } from '../../actions/playbar_actions'
 // import { fetchTrack } from '../../actions/track_actions'
 
 
@@ -17,9 +17,9 @@ const mapStateToProps = (state) => {
 // sent when a user wants to play something
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchTrack: (trackId) => dispatch(fetchTrack(trackId)),
     playTrack: () => dispatch(playTrack()),
-    pauseTrack: () => dispatch(pauseTrack())
+    pauseTrack: () => dispatch(pauseTrack()),
+    receiveTrack: (track) => dispatch(receiveTrack(track))
   }
 }
 
