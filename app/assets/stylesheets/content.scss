@@ -14,8 +14,18 @@
 }
 
 .content-list-item {
-  padding-bottom: 78px;
+  padding-bottom: 34px;
   margin-right: 20px;
+}
+
+.content-list-item-title {
+  font-size: 14px;
+  color: #111
+}
+
+.content-list-item-uploader, .content-list-item-genre {
+  font-size: 11px;
+  color: #999;
 }
 
 .content-list-item-link {
@@ -28,8 +38,18 @@
   width: 172px;
 }
 
+.content-list-item-description div{
+  margin-top: 5px;
+}
+
 .content-list-item:hover {
   cursor: pointer;
+}
+
+.content-description {
+  color: #111;
+  font-size: 14px;
+  padding: 10px 0;
 }
 
 .content-list-ul {
@@ -38,4 +58,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.track-show-container {
+  padding: 20px 0;
 }
