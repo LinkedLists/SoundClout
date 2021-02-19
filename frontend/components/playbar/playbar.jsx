@@ -3,14 +3,6 @@ import React from 'react';
 class Playbar extends React.Component {
   constructor(props) {
     super(props);
-
-
-  }
-
-
-
-  playTrack() {
-    
   }
 
   render() {
@@ -21,7 +13,6 @@ class Playbar extends React.Component {
         <div className="playbar-footer-wrapper">
           <div className="media-container">
             <audio id='audio' src={this.props.currentTrack.audioUrl} />
-            {/* <button onClick={this.playTrack}>play</button> */}
             <button onClick={() => document.getElementById('audio').play()}>play</button>
             <button onClick={() => document.getElementById('audio').pause()}>pause</button>
           </div>
@@ -34,17 +25,13 @@ class Playbar extends React.Component {
             <div className="current-track-description">
               <div className="description-wrapper" >
                 <div className='test'>
-
                   <div>
                     user {this.props.currentTrack.uploader_id}
                   </div>
                   <div className="current-track-title">
                     {this.props.currentTrack.title}
                   </div>
-
                 </div>
-
-
               </div>
             </div>
           </div>

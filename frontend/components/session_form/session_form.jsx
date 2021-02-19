@@ -17,7 +17,6 @@ class SessionForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearErrors();
-
     // there is still an issue where state is not clearing after logging in
     // consider clearing the state here?
     
@@ -29,7 +28,6 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // const user = Object.assign({}, this.state);
     this.demoAttempt ? this.props.login(this.state).then(this.props.closeModal) : this.props.action(this.state).then(this.props.closeModal);
     // this.setState({
     //   username: '',
@@ -40,8 +38,6 @@ class SessionForm extends React.Component {
   handleChange(field) {
     return e => this.setState( {[field]: e.target.value} )
   }
-
-
   // The following is a list of renderable errors:
   // "Invalid credentials. Please try again!"
   // "Username has already been taken"
@@ -64,8 +60,6 @@ class SessionForm extends React.Component {
     }
     this.state = demoAccount;
     this.demoAttempt = true;
-    // this.props.login(demoAccount).then(this.props.closeModal);
-    // add .then.props.history to redirect to the root i think....
   }
 
   // This prevents auto login of the demo user on the enter key
@@ -104,6 +98,7 @@ class SessionForm extends React.Component {
           <br />
 
           <div>
+            {/* an x closing button is redundant */}
             {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
             <input type='text' 
               className={Object.keys(errors).length ? "input-error" : "no-error"} 

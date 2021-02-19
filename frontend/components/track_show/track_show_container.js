@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import { fetchTrack, deleteTrack } from '../../actions/track_actions';
 import TrackShow from './track_show'
 
-// test dispatching a receive track to the playbar from the show
+// going to try dispatching a receive track to the playbar from the tracks show
 import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_actions';
 
 

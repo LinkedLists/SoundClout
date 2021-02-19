@@ -9,12 +9,13 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
-    // console.log(this.props.track.id)
-    // console.log(this.props.match.params.trackId)
   }
 
 
   sendTrack() {
+    // .play() has an issue of being async
+    // made attempts to solve this by doing try catches and promises
+
     // let pausePromise = document.getElementById('audio').pause();
     // let playPromise = document.getElementById('audio').play();
 
@@ -46,8 +47,8 @@ class TrackShow extends React.Component {
             <div className="content-description">Description: {this.props.track.description}</div>
           </div>
           {/* <audio id='audio' src={this.props.track.audioUrl} /> */}
-          <button onClick={this.sendTrack}>play (double click)</button>
           {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
+          <button onClick={this.sendTrack}>play (double click)</button>
           <button onClick={() => document.getElementById('audio').pause()}>pause</button>
         </div>
       </div>

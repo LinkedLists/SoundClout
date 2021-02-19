@@ -9,9 +9,6 @@ class NavBar extends React.Component {
 
     this.sessionContainer = this.sessionContainer.bind(this);
     this.navContainer = this.navContainer.bind(this);
-
-
-    // this.fetchTracks = this.fetchTracks.bind(this)
   }
 
   fetchTracks() {
@@ -22,9 +19,6 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    console.log("heelo")
-    // dispatch(fetchTracks())
-    // fetchTracks();
     this.props.fetchTracks();
     this.props.state
 
@@ -50,7 +44,7 @@ class NavBar extends React.Component {
     return(
       <div className="navbar-container">
         <ul className="nav-links">
-          {/* in soundcloude the logo is outside of nav-links ul */}
+          {/* in soundcloud the logo is outside of nav-links ul */}
           {/* navbar is divided into ul sections */}
           <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
           <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
@@ -63,15 +57,11 @@ class NavBar extends React.Component {
             <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
           </li>
         </ul>
-
-        {/* login and logout does not change the url. consider change button to <Link> maybe */}
       </div>
     )
   }
   
   render() {
-    // debugger
-
     return (
       this.props.state.session.id ? this.navContainer() : this.sessionContainer()
     )
