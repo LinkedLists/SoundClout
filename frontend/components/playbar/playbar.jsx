@@ -7,18 +7,25 @@ class Playbar extends React.Component {
 
   }
 
+
+
   playTrack() {
     
   }
 
   render() {
-    // if (this.props.currentSessionId !== null) return
+    if (this.props.currentSessionId === null) return <></>
+
     return (
       <div className="playbar-footer">
         <audio id='audio' src={this.props.currentTrack.audioUrl} />
         {/* <button onClick={this.playTrack}>play</button> */}
         <button onClick={() => document.getElementById('audio').play()}>play</button>
         <button onClick={() => document.getElementById('audio').pause()}>pause</button>
+
+        <div>
+          current song: {this.props.currentTrack.title}
+        </div>
       </div>
     )
   }

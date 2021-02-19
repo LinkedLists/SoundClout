@@ -3,12 +3,13 @@ import { fetchTrack, deleteTrack } from '../../actions/track_actions';
 import TrackShow from './track_show'
 
 // test dispatching a receive track to the playbar from the show
-import { receiveTrack } from '../../actions/playbar_actions';
+import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    track: state.entities.tracks[ownProps.match.params.trackId]
+    track: state.entities.tracks[ownProps.match.params.trackId],
+    currentTrack: state.ui.playbar.currentTrack
   }
 }
 
@@ -19,7 +20,10 @@ const mapDispatchToProps = (dispatch) => {
 
 
     // test dispatching a receive track to the playbar from the show
-    sendTrack: (track) => dispatch(receiveTrack(track))
+    sendTrack: (track) => dispatch(receiveNewTrack(track)),
+    playTrack: () => dispatch(playTrack()),
+    pauseTrack: () => dispatch(pauseTrack())
+
   }
 }
 
