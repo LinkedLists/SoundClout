@@ -11,10 +11,12 @@ class ContentIndexItem extends React.Component {
       <li className="content-list-item">
         {/* for now the entire item is nested in to the track show */}
         {/* eventually allow for a link to see the user would be a good idea */}
-        <Link to={`/tracks/${this.props.track.id}`}>
+        <Link className="content-list-item-link" to={`/tracks/${this.props.track.id}`}>
           <img className="content-list-item-img" src={this.props.track.photoUrl}/>
           <div className="content-list-item-description">
-            {this.props.track.genre}
+            <div>{this.props.track.title}</div>
+            <br />
+            <div>genre: {this.props.track.genre}</div>
           </div>
         </Link>
       </li>
