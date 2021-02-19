@@ -21,6 +21,7 @@ class Content extends React.Component {
       )
     })
     
+    
     return (
       <div >
         <div className="playlist-header">Charts: New and hot</div>
