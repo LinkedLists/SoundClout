@@ -26,6 +26,8 @@ const removeTrack = (trackId) => {
   })
 }
 
+// should include an error callback on the promises
+
 export const fetchTracks = () => (dispatch) => (
   TrackApiUtil.fetchTracks().then((tracks) => dispatch(receiveAllTracks(tracks)))
 )

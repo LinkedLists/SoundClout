@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     login: (user) => dispatch(login(user)),
 
     // taken from open a/A
-    // remeber to refactor this later
     otherForm: (
       <button onClick={() => dispatch(openModal('login'))}>
         Login

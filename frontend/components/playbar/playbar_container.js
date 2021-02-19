@@ -4,7 +4,7 @@ import { playTrack, pauseTrack, receiveNewTrack } from '../../actions/playbar_ac
 // import { fetchTrack } from '../../actions/track_actions'
 
 
-// will this slice of state change when you navigate through a show page? --YESSSS
+// will this slice of state change when you navigate through a show page? --YES
 // playbar will be in the ui so perhaps you can grab info about the track being played
 const mapStateToProps = (state) => {
   return {

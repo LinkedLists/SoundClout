@@ -20,8 +20,7 @@ export const pauseTrack = () => {
   }
 }
 
-// testing using a playbar specific receive track
-
+// using a playbar specific receive track action
 export const receiveNewTrack = (track) => {
   return({
     type: RECEIVE_NEW_TRACK,

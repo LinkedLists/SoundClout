@@ -11,8 +11,6 @@ class Content extends React.Component {
   }
 
   render() {
-    // debugger
-    // const tracks = this.props.tracks;
     const trackItems = this.props.tracks.map( track => {
       return (
         // for now just return an image, later uploader id will be needed

@@ -4,7 +4,7 @@ import NavBar from './navbar'
 import { openModal } from '../../actions/modal_actions';
 import { login, logout } from '../../actions/session_actions'
 
-// importing just to test it out
+// importing this to test it out in order to resolve issues with the playbar
 import { fetchTracks } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
