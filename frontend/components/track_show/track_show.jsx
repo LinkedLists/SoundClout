@@ -15,8 +15,23 @@ class TrackShow extends React.Component {
 
 
   sendTrack() {
-    this.props.sendTrack(this.props.track)
-    document.getElementById('audio').play()
+    // let pausePromise = document.getElementById('audio').pause();
+    // let playPromise = document.getElementById('audio').play();
+
+    // if (this.props.currentTrack.paused === false) {
+
+
+    if (this.props.currentTrack.paused !== false) {
+      document.getElementById('audio').pause();
+      this.props.playTrack()
+      this.props.sendTrack(this.props.track)
+      document.getElementById('audio').play();
+    } else {
+      this.props.pauseTrack()
+      this.props.sendTrack(this.props.track)
+      document.getElementById('audio').play()
+    }
+
   }
 
 
@@ -33,7 +48,7 @@ class TrackShow extends React.Component {
             <br/>
             Description: {this.props.track.description}
           </div>
-          <audio id='audio' src={this.props.track.audioUrl} />
+          {/* <audio id='audio' src={this.props.track.audioUrl} /> */}
           <button onClick={this.sendTrack}>play</button>
           {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
           <button onClick={() => document.getElementById('audio').pause()}>pause</button>
