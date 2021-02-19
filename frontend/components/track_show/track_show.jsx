@@ -20,7 +20,6 @@ class TrackShow extends React.Component {
 
     // if (this.props.currentTrack.paused === false) {
 
-
     if (this.props.currentTrack.paused !== false) {
       document.getElementById('audio').pause();
       this.props.playTrack()
@@ -47,7 +46,7 @@ class TrackShow extends React.Component {
             <div className="content-description">Description: {this.props.track.description}</div>
           </div>
           {/* <audio id='audio' src={this.props.track.audioUrl} /> */}
-          <button onClick={this.sendTrack}>play</button>
+          <button onClick={this.sendTrack}>play (double click)</button>
           {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
           <button onClick={() => document.getElementById('audio').pause()}>pause</button>
         </div>
