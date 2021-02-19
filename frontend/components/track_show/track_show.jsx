@@ -39,18 +39,18 @@ class TrackShow extends React.Component {
     // debugger
     return (
       <div className="content-container">
+        <div className="track-show-container">
           <img className="content-list-item-img" src={this.props.track.photoUrl}/>
           <div className="content-list-item-description">
-            Title: {this.props.track.title}
-            <br />
-            Genre: {this.props.track.genre}
-            <br/>
-            Description: {this.props.track.description}
+            <div className="content-list-item-title">{this.props.track.title}</div>
+            <div className="content-list-item-uploader">By: user {this.props.track.uploader_id}</div>
+            <div className="content-description">Description: {this.props.track.description}</div>
           </div>
           {/* <audio id='audio' src={this.props.track.audioUrl} /> */}
           <button onClick={this.sendTrack}>play</button>
           {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
           <button onClick={() => document.getElementById('audio').pause()}>pause</button>
+        </div>
       </div>
     )
   }

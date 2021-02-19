@@ -14,11 +14,9 @@ class ContentIndexItem extends React.Component {
         <Link className="content-list-item-link" to={`/tracks/${this.props.track.id}`}>
           <img className="content-list-item-img" src={this.props.track.photoUrl}/>
           <div className="content-list-item-description">
-            <div>{this.props.track.title}</div>
-            <br />
-            <div>By: user {this.props.track.uploader_id}</div>
-            <br />
-            <div>Genre: {this.props.track.genre}</div>
+            <div className="content-list-item-title">{this.props.track.title}</div>
+            <div className="content-list-item-uploader">By: user {this.props.track.uploader_id}</div>
+            <div className="content-list-item-genre">Genre: {this.props.track.genre}</div>
           </div>
         </Link>
       </li>
