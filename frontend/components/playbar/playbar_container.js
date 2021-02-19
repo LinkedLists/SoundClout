@@ -8,7 +8,7 @@ import { fetchTrack } from '../../actions/track_actions'
 // playbar will be in the ui so perhaps you can grab info about the track being played
 const mapStateToProps = (state) => {
   return {
-    currentTrack: state.ui.playbar.currentTrack,
+    currentTrack: state.ui.playbar,
     currentSessionId: state.session.id
   }
 }
