@@ -16,6 +16,8 @@ class ContentIndexItem extends React.Component {
           <div className="content-list-item-description">
             <div>{this.props.track.title}</div>
             <br />
+            <div>By: user {this.props.track.uploader_id}</div>
+            <br />
             <div>genre: {this.props.track.genre}</div>
           </div>
         </Link>

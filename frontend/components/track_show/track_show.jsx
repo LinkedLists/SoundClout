@@ -15,7 +15,7 @@ class TrackShow extends React.Component {
     if (this.props.track === undefined) return null;
     // debugger
     return (
-      <div>
+      <div className="content-container">
           <img className="content-list-item-img" src={this.props.track.photoUrl}/>
           <div className="content-list-item-description">
             title: {this.props.track.title}
@@ -24,9 +24,9 @@ class TrackShow extends React.Component {
             <br/>
             description: {this.props.track.description}
           </div>
-          <audio className="audio" src={this.props.track.audioUrl} />
-          <button onClick={() => document.getElementByClassName('audio').play()}>play</button>
-          <button onClick={() => document.getElementByClassName('audio').pause()}>pause</button>
+          <audio id='audio' src={this.props.track.audioUrl} />
+          <button onClick={() => document.getElementById('audio').play()}>play</button>
+          <button onClick={() => document.getElementById('audio').pause()}>pause</button>
       </div>
     )
   }

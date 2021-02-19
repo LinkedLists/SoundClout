@@ -71,6 +71,7 @@ class SessionForm extends React.Component {
   // This prevents auto login of the demo user on the enter key
   // Note that the getElementsByClassName method returns an array-like object
   handleEnter(e) {
+    
     if (e.key == "Enter") {
       e.preventDefault();
     } else {
