@@ -5,10 +5,10 @@ class Playbar extends React.Component {
     super(props);
   }
 
-  
+
 
   render() {
-    if (this.props.currentSessionId !== null) return
+    // if (this.props.currentSessionId !== null) return
     return (
       <div className="playbar-footer">
         hey this is the playbar
