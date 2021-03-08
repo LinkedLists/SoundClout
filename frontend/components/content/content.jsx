@@ -22,10 +22,12 @@ class Content extends React.Component {
     
     return (
       <div className="content-container">
-        <div className="playlist-header">Charts: New and hot</div>
-        <ul className="content-list-ul">
-          {trackItems}
-        </ul>
+        <div className="content-wrapper">
+          <div className="playlist-header">Charts: New and hot</div>
+          <ul className="content-list-ul">
+            {trackItems}
+          </ul>
+        </div>
       </div>
     )
   }
