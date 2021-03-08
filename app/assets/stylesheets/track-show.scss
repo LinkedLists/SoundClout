@@ -27,9 +27,26 @@
 }
 
 .track-show-list-uploader {
+  display: inline;
   font-size: 16px;
+  padding: 2px 3px 7px 7px;
 }
 
 .track-show-list-title {
   font-size: 24px;
+}
+
+.track-show-play-content {
+  top: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start
+  // flex-direction: row;
+}
+
+.track-show-list-item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
