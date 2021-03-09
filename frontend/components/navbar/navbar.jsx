@@ -61,6 +61,10 @@ class NavBar extends React.Component {
               <li>
                 <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
               </li>
+              <li><a href="google.com"><img src="../frontend/assets/angellist.png" /></a></li>
+              <li><a href="google.com"><img src="../frontend/assets/github.png" /></a></li>
+              <li><a href="google.com"><img src="../frontend/assets/linkedin.png" /></a></li>
+              
             </ul>
           </div>
         </div>
