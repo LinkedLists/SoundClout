@@ -41,23 +41,29 @@ class NavBar extends React.Component {
   navContainer() {
     return(
       <div className="navbar-container">
-        <ul className="nav-links">
-          {/* in soundcloud the logo is outside of nav-links ul */}
-          {/* navbar is divided into ul sections */}
-          <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
-          <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
-          <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
-          <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
-          <li><Link to='/discover' className='nav-links-li'>User #{this.props.state.session.id}</Link></li>
-          <li><Link to='/upload' className='nav-links-li'>upload</Link></li>
-          <li>
-            <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
-          </li>
-        </ul>
-        <form className="searchbar-form">
-          <input type="text" placeholder="Search for artists, bands, tracks, podcasts"></input>
-          <button type="submit" className="search-btn"/>
-        </form>
+        <div className="navbar-wrapper">
+          <ul className="nav-links">
+            {/* in soundcloud the logo is outside of nav-links ul */}
+            {/* navbar is divided into ul sections */}
+            <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
+            <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
+            <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
+            <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
+          </ul>
+          <form className="searchbar-form">
+            <input type="text" placeholder="Search for artists, bands, tracks, podcasts"></input>
+            <button type="submit" className="search-btn"/>
+          </form>
+          <div className="right-nav">
+            <ul className="nav-links">
+              <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
+              <li><Link to='/discover' className='nav-links-li'>User #{this.props.state.session.id}</Link></li>
+              <li>
+                <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }

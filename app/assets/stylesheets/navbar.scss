@@ -70,10 +70,21 @@
   background: #333;
   width: 100%;
   display: flex;
-  align-items: center;
+  // flex-direction: row;
+  // align-items: center;
   justify-content: center;
   font-size: 14px;
   z-index: 100;
+}
+
+.navbar-wrapper {
+  height: 100%;
+  width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-links-li {
@@ -82,8 +93,7 @@
   padding: 12px 0px;
   border-right: 1px solid #111;
   text-align: center;
-  height: auto;
-  width: 104px;
+  width: 105px;
   text-decoration: none;
 }
 
@@ -100,19 +110,24 @@
 .nav-links {
   // consider if you still need to have flex items within the ul anymore
   display: flex;
-  
+
   // copied from soundcloud
   font: 100 14px/1.5 Interstate,Lucida Grande,Arial,sans-serif;
 }
 
 .nav-links>li {
   // box-sizing: border-box;
-  
+}
+
+.searchbar-form {
+  // height: 46px;
+  padding: 9px 10px 8px;
+  position: relative;
 }
 
 .searchbar-form input {
   color: #666;
-  
+  padding: 9px 8px 10px 10px;
   // outline: 0;
   border: 0;
   padding: 5px 7px;
@@ -130,4 +145,35 @@
 
 .searchbar-form input:focus {
   background: #fff;
+}
+
+.search-btn {
+  border: 0;
+  padding: 0;
+  background: url(https://a-v2.sndcdn.com/assets/images/search-f5b999ac.svg) 0 0 no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  outline: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.search-btn:hover {
+  cursor: pointer;
+  
+}
+
+.right-nav .nav-links-li{
+  border: 0;
+  display: inline;
+  // padding: 0;
+  padding: 12px 10px;
 }
