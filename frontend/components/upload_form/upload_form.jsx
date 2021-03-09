@@ -5,15 +5,39 @@ class UploadForm extends React.Component {
     super(props);
 
     this.state = {
-      file: "",
+      title: "",
+      uploader_id: this.props.uploader,
+      description: "test",
+      genre: "genre",
+      audio_file: null,
+      photo_file: null,
     }
 
-    this.handleFile = this.handleFile.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleFile(e) {
-    this.setState({file: e.target.files[0]})
-    console.log(this.state.file)
+  handleChange(field) {
+    console.log(this.state)
+    return e => this.setState({[field]: e.target.files[0]})
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("track[title]",this.state.title)
+    formData.append("track[uploader_id]",this.state.uploader_id)
+    formData.append("track[description]",this.state.description)
+    formData.append("track[genre]",this.state.genre)
+    formData.append("track[audio_file]", this.state.audio_file)
+    formData.append("track[photo_file]", this.state.photo_file)
+    $.ajax({
+      url: 'api/tracks',
+      method: 'POST',
+      data: { formData },
+      contentType: false,
+      processData: false
+    })
   }
   
   render() {
@@ -22,7 +46,8 @@ class UploadForm extends React.Component {
       <div className="content-container">
         awef
         <form>
-          <input type="file" onChange={this.handleFile}/>
+          <input type="file" onChange={this.handleChange("audio_file")} placeholder="audio file" />
+          <input type="file" onChange={this.handleChange("photo_file")} placeholder="photo file" />
           <button type="submit">submit</button>
         </form>
       </div>
