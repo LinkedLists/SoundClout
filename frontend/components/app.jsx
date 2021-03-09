@@ -7,6 +7,7 @@ import ContentContainer from './content/content_container'
 import TrackShowContainer from './track_show/track_show_container'
 import Homepage from './homepage/homepage'
 import PlaybarContainer from './playbar/playbar_container'
+import UploadFormContainer from './upload_form/upload_form_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 // Note that session containers will no longer be necessary due to use of a modal
@@ -24,6 +25,7 @@ const App = () => (
     <Switch>
       <ProtectedRoute exact path='/discover' component={ContentContainer} />
       <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
+      <ProtectedRoute exact path='/upload' component={UploadFormContainer} />
       {/* Note!!!
       did not create a homepage component so NotFound component is just an empty component from
       404 since a 404 page is not necessary
