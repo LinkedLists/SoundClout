@@ -31,8 +31,8 @@ class Api::TracksController < ApplicationController
   def track_params
     # debugger
     # maybe add media urls as params
-    # params.require(:track).permit(:title, :uploader_id ,:description, :genre, :audio_file, :photo_file)
-    params.require(:track).permit(:title, :uploader_id ,:description, :genre)
+    params.require(:track).permit(:title, :uploader_id ,:description, :genre, :audio_file, :photo_file)
+    # params.require(:track).permit(:title, :uploader_id ,:description, :genre)
   end
 
 end
