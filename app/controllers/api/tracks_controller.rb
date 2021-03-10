@@ -1,14 +1,16 @@
 class Api::TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
+    # debugger
     if @track.save
+      render json: {message: "hi"}
       render 'api/tracks/show'
     else
       render json: @track.errors.full_messages, status: 422
     end
   end
 
-  def index
+  def index 
     @tracks = Track.all
     render 'api/tracks/index'
   end
@@ -28,6 +30,7 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
+    # debugger
     # maybe add media urls as params
     params.require(:track).permit(:title, :uploader_id ,:description, :genre, :audio_file, :photo_file)
     # params.require(:track).permit(:title, :uploader_id ,:description, :genre)
