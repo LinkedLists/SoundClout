@@ -45,21 +45,21 @@ audio7 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Gra
 
 
 
-track1.photo.attach(io: image1, filename: 'nlnd')
-track2.photo.attach(io: image11, filename: 'nlnd')
-track3.photo.attach(io: image2, filename: 'camila')
-track4.photo.attach(io: image3, filename: 'cc and sm')
-track5.photo.attach(io: image44, filename: 'axis')
-track6.photo.attach(io: image4, filename: 'axis')
-track7.photo.attach(io: image5, filename: 'ariana')
+track1.photo_file.attach(io: image1, filename: 'nlnd')
+track2.photo_file.attach(io: image11, filename: 'nlnd')
+track3.photo_file.attach(io: image2, filename: 'camila')
+track4.photo_file.attach(io: image3, filename: 'cc and sm')
+track5.photo_file.attach(io: image44, filename: 'axis')
+track6.photo_file.attach(io: image4, filename: 'axis')
+track7.photo_file.attach(io: image5, filename: 'ariana')
 
-track1.audio.attach(io: audio1, filename: 'saucy_audio')
-track2.audio.attach(io: audio2, filename: 'goat_audio')
-track3.audio.attach(io: audio3, filename: 'havana_audio')
-track4.audio.attach(io: audio4, filename: 'senorita')
-track5.audio.attach(io: audio5, filename: 'castles_made_of_sand_audio')
-track6.audio.attach(io: audio6, filename: 'the_wind_cries_mary_audio')
-track7.audio.attach(io: audio7, filename: 'positions_audio')
+track1.audio_file.attach(io: audio1, filename: 'saucy_audio')
+track2.audio_file.attach(io: audio2, filename: 'goat_audio')
+track3.audio_file.attach(io: audio3, filename: 'havana_audio')
+track4.audio_file.attach(io: audio4, filename: 'senorita')
+track5.audio_file.attach(io: audio5, filename: 'castles_made_of_sand_audio')
+track6.audio_file.attach(io: audio6, filename: 'the_wind_cries_mary_audio')
+track7.audio_file.attach(io: audio7, filename: 'positions_audio')
 
 
 track1.save!

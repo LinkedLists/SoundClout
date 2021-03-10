@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class UploadForm extends React.Component {
   }
 
   handleFile(field) {
-    // return e => this.setState({[field]: e.target.files[0]})
+    return e => this.setState({[field]: e.target.files[0]})
   }
 
   handleSubmit(e) {
@@ -28,18 +29,16 @@ class UploadForm extends React.Component {
     track.append("track[uploader_id]", this.state.uploader_id)
     track.append("track[description]", this.state.description)
     track.append("track[genre]", this.state.genre)
-    track.append("track[audio]", this.state.audio_file)
-    track.append("track[photo]", this.state.photo_file)
-
+    track.append("track[audio_file]", this.state.audio_file)
+    track.append("track[photo_file]", this.state.photo_file)
+    
     $.ajax({
       url: 'api/tracks',
       method: 'POST',
       data:  track ,
       contentType: false,
       processData: false
-    }).then(
-      (res) => console.log(res.message)
-    )
+    }).then()
     // debugger
     // this.props.createTrack(track)
   }
@@ -51,6 +50,7 @@ class UploadForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           audio
           <input type="file" onChange={this.handleFile("audio_file")} placeholder="audio file" />
+          photo
           <input type="file" onChange={this.handleFile("photo_file")} placeholder="photo file" />
           <button type="submit">submit</button>
         </form>
