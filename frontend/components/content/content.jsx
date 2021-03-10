@@ -10,13 +10,18 @@ class Content extends React.Component {
     this.props.fetchTracks();
   }
 
+  // componentDidUpdate() {
+  //   this.props.fetchTracks();
+  // }
+
   render() {
     const trackItems = this.props.tracks.map( track => {
+      console.log(track)
 
       return (
         // for now just return an image, later uploader id will be needed
         // so that a user can edit and delete their own tracks
-        track? <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/> : null
+        <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
       )
     })
     

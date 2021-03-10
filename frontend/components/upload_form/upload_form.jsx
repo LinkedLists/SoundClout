@@ -38,7 +38,7 @@ class UploadForm extends React.Component {
       data:  track ,
       contentType: false,
       processData: false
-    }).then()
+    }).then(console.log("song uploaded"))
     // debugger
     // this.props.createTrack(track)
   }
