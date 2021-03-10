@@ -14,10 +14,10 @@ class Api::TracksController < ApplicationController
     render 'api/tracks/index'
   end
 
-  def destroy
-    @track = Track.find_by(id: params[:id])
-    render 'api/tracks/index' if @track.destroy 
-  end
+  # def destroy
+  #   @track = Track.find_by(id: params[:id])
+  #   render 'api/tracks/index' if @track.destroy 
+  # end
 
   def show
     @track = Track.find_by(id: params[:id])
@@ -26,6 +26,12 @@ class Api::TracksController < ApplicationController
 
   # def update
   # end
+
+  def destroy
+    @track = Track.find(params[:id])
+    @track.destroy
+    # render 'api/tracks/index'
+  end
 
   private
   def track_params

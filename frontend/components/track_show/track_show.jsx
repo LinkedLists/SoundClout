@@ -5,12 +5,17 @@ class TrackShow extends React.Component {
     super(props);
 
     this.sendTrack = this.sendTrack.bind(this)
+    this.deleteTrack = this.deleteTrack.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
   }
 
+  deleteTrack(e) {
+    e.preventDefault();
+    this.props.deleteTrack(this.props.track.id);
+  }
 
   sendTrack() {
     // .play() has an issue of being async
@@ -51,6 +56,8 @@ class TrackShow extends React.Component {
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
               </div>
             </div>
+
+            <button onClick={this.deleteTrack}>delete</button>
 
 
 

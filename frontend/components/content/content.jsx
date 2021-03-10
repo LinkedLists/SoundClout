@@ -12,10 +12,11 @@ class Content extends React.Component {
 
   render() {
     const trackItems = this.props.tracks.map( track => {
+
       return (
         // for now just return an image, later uploader id will be needed
         // so that a user can edit and delete their own tracks
-        <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
+        track? <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/> : null
       )
     })
     
