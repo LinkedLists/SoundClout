@@ -1,8 +1,11 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.deleted = false;
 
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
@@ -14,7 +17,7 @@ class TrackShow extends React.Component {
 
   deleteTrack(e) {
     e.preventDefault();
-    this.props.deleteTrack(this.props.track.id);
+    this.props.deleteTrack(this.props.track.id).then(this.deleted = true);
   }
 
   sendTrack() {
