@@ -67,8 +67,6 @@ class UploadForm extends React.Component {
     return (
       <div className="content-container">
         <div className="upload-form-container">
-          <form className="upload-form" onSubmit={this.handleSubmit}>
-
             <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
             <button 
               className="upload-btn" 
@@ -83,9 +81,30 @@ class UploadForm extends React.Component {
                 e => {e.preventDefault(); this.grabInputElement("upload-photo")}
                 }>for a photo file lol</button>
 
-            <button type="submit">submit</button>
+          <form className="upload-form" onSubmit={this.handleSubmit}>
+            <label>title</label>
+            <input type="text"></input>
+
+            <label>genre</label>
+            <select>
+              <option selected="selected">None</option>
+              <option>Pop</option>
+              <option>Rock</option>
+              <option>Blues</option>
+              <option>Instrumental</option>
+              <option>Electronic</option>
+              <option>Classical</option>
+              <option>Metal</option>
+              <option>Reggae</option>
+              <option>Country</option>
+            </select>
+
+            <label>description</label>
+            <textarea type="text"></textarea>
+
           </form>
           {preview}
+          <img src={this.state.photo_preview} className="upload-photo-preview"/>
         </div>
       </div>
     )
