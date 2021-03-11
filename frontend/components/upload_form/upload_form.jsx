@@ -16,6 +16,11 @@ class UploadForm extends React.Component {
 
     this.handleChange = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleWTF = this.handleWTF.bind(this);
+  }
+
+  handleWTF(id) {
+    document.getElementById(id).click();
   }
 
   handleFile(field) {
@@ -46,14 +51,18 @@ class UploadForm extends React.Component {
   render() {
     return (
       <div className="content-container">
-        awef
-        <form onSubmit={this.handleSubmit}>
-          audio
-          <input type="file" onChange={this.handleFile("audio_file")} placeholder="audio file" />
-          photo
-          <input type="file" onChange={this.handleFile("photo_file")} placeholder="photo file" />
-          <button type="submit">submit</button>
-        </form>
+        <div className="upload-form-container">
+          <form className="upload-form" onSubmit={this.handleSubmit}>
+            {/* <label for="upload-audio">audio...</label> */}
+            <input type="file" className="upload-btn" id="upload-audio" onChange={this.handleFile("audio_file")}/>
+            <button onClick={e => {e.preventDefault(); this.handleWTF("upload-audio")}}>upload an audio file</button>
+
+            {/* <label for="upload-photo">photo...</label> */}
+            <input type="file" className="upload-btn" id="upload-photo" onChange={this.handleFile("photo_file")}/>
+            <button onClick={e => {e.preventDefault(); this.handleWTF("upload-photo")}}>for a photo file lol</button>
+            <button type="submit">submit</button>
+          </form>
+        </div>
       </div>
     )
   }
