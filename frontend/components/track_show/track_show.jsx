@@ -12,6 +12,7 @@ class TrackShow extends React.Component {
   }
 
   componentDidMount() {
+  //   this.props.fetchTrack(this.props.match.params.trackId).fail(() => this.props.history.push("/discover"))
     this.props.fetchTrack(this.props.match.params.trackId)
   }
 
@@ -41,10 +42,8 @@ class TrackShow extends React.Component {
     }
   }
 
-
   render() {
     if (this.props.track === undefined) return null;
-    // debugger
     return (
       <div className="content-container">
         <div className="track-show-container">
@@ -61,8 +60,6 @@ class TrackShow extends React.Component {
             </div>
 
             <button onClick={this.deleteTrack}>delete</button>
-
-
 
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>

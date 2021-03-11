@@ -16,10 +16,10 @@ class Playbar extends React.Component {
             <button onClick={() => document.getElementById('audio').play()}>play</button>
             <button onClick={() => document.getElementById('audio').pause()}>pause</button>
           </div>
-
           <div className="current-track">
             { 
-              this.props.currentTrack !== {} ? 
+              // this ternary is not working
+              this.props.currentTrack !== undefined ? 
               <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
             }
             <div className="current-track-description">
