@@ -18,7 +18,7 @@ class UploadForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.grabInputElement = this.grabInputElement.bind(this);
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
-    this.handleAudioFile = this.handleAudioFile.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   grabInputElement(id) {
@@ -37,8 +37,8 @@ class UploadForm extends React.Component {
     }
   }
 
-  handleAudioFile(e) {
-    this.setState({audio_file: e.target.files[0]})
+  handleChange(field) {
+    return (e) => this.setState({[field]: e.target.value})
   }
 
   handleSubmit(e) {
@@ -67,7 +67,7 @@ class UploadForm extends React.Component {
     return (
       <div className="content-container">
         <div className="upload-form-container">
-            <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
+            <input type="file" id="upload-audio" onChange={this.handleChange("audio_file")}/>
             <button 
               className="upload-btn" 
               onClick={
@@ -82,12 +82,12 @@ class UploadForm extends React.Component {
                 }>for a photo file lol</button>
 
           <form className="upload-form" onSubmit={this.handleSubmit}>
-            <label>title</label>
-            <input type="text"></input>
+            {/* <label>title</label>
+            <input type="text" onChange={this.handleChange("title")}></input>
 
             <label>genre</label>
-            <select>
-              <option selected="selected">None</option>
+            <select value={this.state.genre} onChange={this.handleChange("genre")}>
+              <option>None</option>
               <option>Pop</option>
               <option>Rock</option>
               <option>Blues</option>
@@ -100,8 +100,8 @@ class UploadForm extends React.Component {
             </select>
 
             <label>description</label>
-            <textarea type="text"></textarea>
-
+            <textarea type="text" onChange={this.handleChange("description")}></textarea> */}
+            <button type="submit">submit</button>
           </form>
           {preview}
           <img src={this.state.photo_preview} className="upload-photo-preview"/>
