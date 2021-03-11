@@ -1,7 +1,6 @@
 class Api::TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
-    # debugger
     if @track.save
       render 'api/tracks/show'
     else
@@ -13,11 +12,6 @@ class Api::TracksController < ApplicationController
     @tracks = Track.all
     render 'api/tracks/index'
   end
-
-  # def destroy
-  #   @track = Track.find_by(id: params[:id])
-  #   render 'api/tracks/index' if @track.destroy 
-  # end
 
   def show
     @track = Track.find_by(id: params[:id])

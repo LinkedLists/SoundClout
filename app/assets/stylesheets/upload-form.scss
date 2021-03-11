@@ -4,29 +4,40 @@
 }
 
 .upload-form {
-  // border: 0;
-  // clip: rect(0 0 0 0);
-  // height: 1px;
-  // margin: -1px;
-  // overflow: hidden;
-  // padding: 0;
-  // position: absolute;
-  // width: 1px;
 }
 
 .upload-btn {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+  cursor: pointer;
+  background: #f50;
+  color: #fff;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 7px 8px;
+  border: 1px solid #f50;
+  font-size: 16px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  text-align: center;
+  line-height: 18px;
+  padding: 10px 15px;
+  height: 40px;
+  border-radius: 3px;
+  transition: 0.4s;
 }
 
 .upload-btn:hover {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.upload-btn:focus {
+  outline: 0;
+  opacity: 1;
+  border: 1px solid #111;
+}
+
+#upload-audio, #upload-photo {
+  display: none;
 }
 
 
