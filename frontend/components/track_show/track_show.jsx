@@ -59,13 +59,13 @@ class TrackShow extends React.Component {
               </div>
             </div>
 
-            <button onClick={this.deleteTrack}>delete</button>
 
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
           {/* <audio id='audio' src={this.props.track.audioUrl} /> */}
           {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
         </div>
+        <button onClick={this.deleteTrack}>delete</button>
       </div>
     )
   }
