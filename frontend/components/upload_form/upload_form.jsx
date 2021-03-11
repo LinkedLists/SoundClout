@@ -12,18 +12,36 @@ class UploadForm extends React.Component {
       genre: "genere",
       audio_file: 'awefaw',
       photo_file: 'awefaw',
+      // photo_preview: null
     }
 
     this.handleChange = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleWTF = this.handleWTF.bind(this);
+    this.grabInputElement = this.grabInputElement.bind(this);
+    // this.handlePhotoFile = this.handlePhotoFile.bind(this);
+    this.handleAudioFile = this.handleAudioFile.bind(this);
   }
 
-  handleWTF(id) {
+  grabInputElement(id) {
     document.getElementById(id).click();
   }
 
-  handleFile(field) {
+  // handlePhotoFile(field) {
+  //   const file = e.target.files[0];
+  //   const fileReader = new FileReader();
+  //   fileReader.onloadend = () => {
+
+  //     this.setState({[field]: e.target.files[0]}, {photo_preview: fileReader.result})
+  //   }
+
+  //   if (file) {
+  //     fileReader.readAsDataURL(file);
+  //   }
+
+  //   return e => this.setState({[field]: e.target.files[0]})
+  // }
+
+  handleAudioFile(field) {
     return e => this.setState({[field]: e.target.files[0]})
   }
 
@@ -49,24 +67,33 @@ class UploadForm extends React.Component {
   }
   
   render() {
+    // const preview = this.state.photo_preview ? <img src={this.state.photo_preview} /> : null;
     return (
       <div className="content-container">
         <div className="upload-form-container">
           <form className="upload-form" onSubmit={this.handleSubmit}>
-            {/* <label for="upload-audio">audio...</label> */}
-            <input type="file" className="upload-btn" id="upload-audio" onChange={this.handleFile("audio_file")}/>
-            <button onClick={e => {e.preventDefault(); this.handleWTF("upload-audio")}}>upload an audio file</button>
 
-            {/* <label for="upload-photo">photo...</label> */}
-            <input type="file" className="upload-btn" id="upload-photo" onChange={this.handleFile("photo_file")}/>
-            <button onClick={e => {e.preventDefault(); this.handleWTF("upload-photo")}}>for a photo file lol</button>
+            {/* <input type="file" id="upload-audio" onChange={this.handleAudioFile("audio_file")}/>
+            <button 
+              className="upload-btn" 
+              onClick={
+                e => {e.preventDefault(); this.grabInputElement("upload-audio")}
+                }>upload an audio file</button>
+
+            <input type="file" id="upload-photo" onChange={this.handlePhotoFile("photo_file")}/>
+            <button 
+              className="upload-btn" 
+              onClick={
+                e => {e.preventDefault(); this.grabInputElement("upload-photo")}
+                }>for a photo file lol</button> */}
+
             <button type="submit">submit</button>
           </form>
+          {/* {preview} */}
         </div>
       </div>
     )
   }
 }
-
 
 export default UploadForm
