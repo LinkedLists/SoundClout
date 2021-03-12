@@ -11,7 +11,7 @@ class UploadForm extends React.Component {
       description: "teset",
       genre: "genere",
       audio_file: 'awefaw',
-      photo_file: 'awefaw',
+      photo_file: "https://img.freepik.com/free-icon/black-music-icon_318-9277.jpg?size=338&ext=jpg",
       photo_preview: null
     }
 
@@ -19,6 +19,7 @@ class UploadForm extends React.Component {
     this.grabInputElement = this.grabInputElement.bind(this);
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleAudioFile = this.handleAudioFile.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   grabInputElement(id) {
@@ -39,6 +40,10 @@ class UploadForm extends React.Component {
 
   handleAudioFile(e) {
     this.setState({audio_file: e.target.files[0]})
+  }
+
+  handleChange(field) {
+    return e => this.setState({[field]: e.target.value})
   }
 
   handleSubmit(e) {
@@ -63,7 +68,9 @@ class UploadForm extends React.Component {
   }
   
   render() {
-    const preview = this.state.photo_preview ? <img src={this.state.photo_preview} className="upload-photo-preview"/> : null;
+    const preview = this.state.photo_preview ? 
+      <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
+      <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
     return (
       <div className="content-container">
         <div className="upload-form-container">
@@ -83,11 +90,11 @@ class UploadForm extends React.Component {
 
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <label>title</label>
-            <input type="text"></input>
+            <input type="text" onChange={this.handleChange("title")}></input>
 
             <label>genre</label>
-            <select>
-              <option selected="selected">None</option>
+            <select onChange={this.handleChange("genre")}>
+              <option>None</option>
               <option>Pop</option>
               <option>Rock</option>
               <option>Blues</option>
@@ -100,11 +107,10 @@ class UploadForm extends React.Component {
             </select>
 
             <label>description</label>
-            <textarea type="text"></textarea>
-
+            <textarea type="text" onChange={this.handleChange("description")}></textarea>
+            <button type="submit">upload</button>
           </form>
           {preview}
-          <img src={this.state.photo_preview} className="upload-photo-preview"/>
         </div>
       </div>
     )
