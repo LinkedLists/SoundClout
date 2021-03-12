@@ -24,17 +24,15 @@ class Playbar extends React.Component {
             }
             <div className="current-track-description">
               <div className="description-wrapper" >
-                <div className='test'>
-                  <div>
-                    user {this.props.currentTrack.uploader_id}
-                  </div>
-                  <div className="current-track-title">
-                    {this.props.currentTrack.title}
-                  </div>
+                <div>
+                  user {this.props.currentTrack.uploader_id}
+                </div>
+                <div className="current-track-title">
+                  {this.props.currentTrack.title}
                 </div>
               </div>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     )
