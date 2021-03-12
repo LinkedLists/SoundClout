@@ -6,12 +6,12 @@ class UploadForm extends React.Component {
     super(props);
 
     this.state = {
-      title: "testeer",
+      title: "",
       uploader_id: this.props.uploader,
-      description: "teset",
-      genre: "genere",
-      audio_file: 'awefaw',
-      photo_file: "https://img.freepik.com/free-icon/black-music-icon_318-9277.jpg?size=338&ext=jpg",
+      description: "",
+      genre: "None",
+      audio_file: '',
+      photo_file: '',
       photo_preview: null
     }
 
@@ -30,7 +30,7 @@ class UploadForm extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({photo_file: e.target.files[0], photo_preview: fileReader.result})
+      this.setState({photo_file: file, photo_preview: fileReader.result})
     }
 
     if (file) {
@@ -38,8 +38,11 @@ class UploadForm extends React.Component {
     }
   }
 
-  handleChange(field) {
-    return (e) => this.setState({[field]: e.target.value})
+  handleAudioFile(e) {
+    let file = e.target.files[0];
+    console.log(file)
+    this.setState({title: file.name})
+    this.setState({audio_file: file})
   }
 
   handleChange(field) {
@@ -54,7 +57,10 @@ class UploadForm extends React.Component {
     track.append("track[description]", this.state.description)
     track.append("track[genre]", this.state.genre)
     track.append("track[audio_file]", this.state.audio_file)
-    track.append("track[photo_file]", this.state.photo_file)
+
+    if (this.state.photo_file) {
+      track.append("track[photo_file]", this.state.photo_file)
+    }
     
     $.ajax({
       url: 'api/tracks',
@@ -74,7 +80,7 @@ class UploadForm extends React.Component {
     return (
       <div className="content-container">
         <div className="upload-form-container">
-            <input type="file" id="upload-audio" onChange={this.handleChange("audio_file")}/>
+            <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
             <button 
               className="upload-btn" 
               onClick={
@@ -90,7 +96,7 @@ class UploadForm extends React.Component {
 
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <label>title</label>
-            <input type="text" onChange={this.handleChange("title")}></input>
+            <input type="text" onChange={this.handleChange("title")} value={this.state.title}></input>
 
             <label>genre</label>
             <select onChange={this.handleChange("genre")}>
