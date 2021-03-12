@@ -38,8 +38,8 @@ class UploadForm extends React.Component {
     }
   }
 
-  handleAudioFile(e) {
-    this.setState({audio_file: e.target.files[0]})
+  handleChange(field) {
+    return (e) => this.setState({[field]: e.target.value})
   }
 
   handleChange(field) {
@@ -74,7 +74,7 @@ class UploadForm extends React.Component {
     return (
       <div className="content-container">
         <div className="upload-form-container">
-            <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
+            <input type="file" id="upload-audio" onChange={this.handleChange("audio_file")}/>
             <button 
               className="upload-btn" 
               onClick={
