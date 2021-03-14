@@ -104,28 +104,31 @@ class UploadForm extends React.Component {
 
 
             <form className="upload-form" onSubmit={this.handleSubmit}>
-              <div>
-                <label>title</label>
-                <input type="text" onChange={this.handleChange("title")} value={this.state.title}></input>
+              <div className="field">
+                <label className="field-label">Title</label>
+                <input type="text" className="form-input" onChange={this.handleChange("title")} value={this.state.title} />
               </div>
-              <div>
-                <label>genre</label>
-                <select onChange={this.handleChange("genre")}>
-                  <option>None</option>
-                  <option>Pop</option>
-                  <option>Rock</option>
-                  <option>Blues</option>
-                  <option>Instrumental</option>
-                  <option>Electronic</option>
-                  <option>Classical</option>
-                  <option>Metal</option>
-                  <option>Reggae</option>
-                  <option>Country</option>
+              <div className="field">
+                <label className="field-label">Genre</label>
+                <select onChange={this.handleChange("genre")} className="form-input select">
+                  <option className="select-item">None</option>
+                  <option className="select-item">Pop</option>
+                  <option className="select-item">Rock</option>
+                  <option className="select-item">Blues</option>
+                  <option className="select-item">Instrumental</option>
+                  <option className="select-item">Electronic</option>
+                  <option className="select-item">Classical</option>
+                  <option className="select-item">Metal</option>
+                  <option className="select-item">Reggae</option>
+                  <option className="select-item">Country</option>
                 </select>
               </div>
-              <div>
-                <label>description</label>
-                <textarea type="text" onChange={this.handleChange("description")}></textarea>
+              <div className="field">
+                <label className="field-label">Description</label>
+                <textarea type="text" 
+                  className="form-input textarea" 
+                  onChange={this.handleChange("description")} 
+                  placeholder="Describe your track" />
               </div>
               <button type="submit">upload</button>
             </form>
