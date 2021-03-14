@@ -43,6 +43,15 @@ class UploadForm extends React.Component {
     console.log(file)
     this.setState({title: file.name})
     this.setState({audio_file: file})
+
+    let audio = document.getElementById('upload-audio');
+    let form = document.getElementsByClassName('upload-form-container')[0];
+    if (audio) {
+      if (form) {
+        audio.value !== "" ? form.classList.remove("closed") : null;
+        // console.log(form.classList)
+      }
+    }
   }
 
   handleChange(field) {
@@ -77,23 +86,25 @@ class UploadForm extends React.Component {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
+
+    
     return (
+
       <div className="content-container">
-        <div className="upload-form-container">
-            <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
-            <button 
-              className="upload-btn" 
-              onClick={
-                e => {e.preventDefault(); this.grabInputElement("upload-audio")}
-                }>upload an audio file</button>
+        <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
+        <button 
+          className="upload-btn" 
+          onClick={
+            e => {e.preventDefault(); this.grabInputElement("upload-audio")}
+            }>upload an audio file</button>
 
-            <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
-            <button 
-              className="upload-btn" 
-              onClick={
-                e => {e.preventDefault(); this.grabInputElement("upload-photo")}
-                }>for a photo file lol</button>
-
+        <div className="upload-form-container closed">
+          <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
+          <button 
+            className="upload-btn" 
+            onClick={
+              e => {e.preventDefault(); this.grabInputElement("upload-photo")}
+              }>for a photo file lol</button>
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <label>title</label>
             <input type="text" onChange={this.handleChange("title")} value={this.state.title}></input>
