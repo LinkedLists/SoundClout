@@ -41,17 +41,12 @@ class UploadForm extends React.Component {
   handleAudioFile(e) {
     let file = e.target.files[0];
     console.log(file)
-    this.setState({title: file.name})
-    this.setState({audio_file: file})
+    this.setState({title: file.name});
+    this.setState({audio_file: file});
 
     let audio = document.getElementById('upload-audio');
     let form = document.getElementsByClassName('upload-form-container')[0];
-    if (audio) {
-      if (form) {
-        audio.value !== "" ? form.classList.remove("closed") : null;
-        // console.log(form.classList)
-      }
-    }
+    if (audio && form) audio.value !== "" ? form.classList.remove("closed") : null;
   }
 
   handleChange(field) {
@@ -78,18 +73,14 @@ class UploadForm extends React.Component {
       contentType: false,
       processData: false
     }).then(console.log("song uploaded"))
-    // debugger
-    // this.props.createTrack(track)
   }
   
   render() {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
-
     
     return (
-
       <div className="content-container">
         <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
         <button 
@@ -99,36 +90,49 @@ class UploadForm extends React.Component {
             }>upload an audio file</button>
 
         <div className="upload-form-container closed">
-          <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
-          <button 
-            className="upload-btn" 
-            onClick={
-              e => {e.preventDefault(); this.grabInputElement("upload-photo")}
-              }>for a photo file lol</button>
-          <form className="upload-form" onSubmit={this.handleSubmit}>
-            <label>title</label>
-            <input type="text" onChange={this.handleChange("title")} value={this.state.title}></input>
+          <div className="upload-form-wrapper">
 
-            <label>genre</label>
-            <select onChange={this.handleChange("genre")}>
-              <option>None</option>
-              <option>Pop</option>
-              <option>Rock</option>
-              <option>Blues</option>
-              <option>Instrumental</option>
-              <option>Electronic</option>
-              <option>Classical</option>
-              <option>Metal</option>
-              <option>Reggae</option>
-              <option>Country</option>
-            </select>
+            <div className="upload-photo-wrapper">
+              {preview}
+              <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
+              <button 
+                className="upload-btn" 
+                onClick={
+                  e => {e.preventDefault(); this.grabInputElement("upload-photo")}
+                  }>for a photo file lol</button>
+            </div>
 
-            <label>description</label>
-            <textarea type="text" onChange={this.handleChange("description")}></textarea>
-            <button type="submit">upload</button>
-          </form>
-          {preview}
-        </div>
+
+            <form className="upload-form" onSubmit={this.handleSubmit}>
+              <div>
+                <label>title</label>
+                <input type="text" onChange={this.handleChange("title")} value={this.state.title}></input>
+              </div>
+              <div>
+                <label>genre</label>
+                <select onChange={this.handleChange("genre")}>
+                  <option>None</option>
+                  <option>Pop</option>
+                  <option>Rock</option>
+                  <option>Blues</option>
+                  <option>Instrumental</option>
+                  <option>Electronic</option>
+                  <option>Classical</option>
+                  <option>Metal</option>
+                  <option>Reggae</option>
+                  <option>Country</option>
+                </select>
+              </div>
+              <div>
+                <label>description</label>
+                <textarea type="text" onChange={this.handleChange("description")}></textarea>
+              </div>
+              <button type="submit">upload</button>
+            </form>
+          </div>
+
+          </div>
+
       </div>
     )
   }
