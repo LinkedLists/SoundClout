@@ -24,15 +24,11 @@ class Api::TracksController < ApplicationController
   def destroy
     @track = Track.find(params[:id])
     @track.destroy
-    # render 'api/tracks/index'
   end
 
   private
   def track_params
-    # debugger
-    # maybe add media urls as params
     params.require(:track).permit(:title, :uploader_id ,:description, :genre, :audio_file, :photo_file)
-    # params.require(:track).permit(:title, :uploader_id ,:description, :genre)
   end
 
 end

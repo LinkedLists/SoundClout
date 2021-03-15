@@ -3,7 +3,7 @@ import * as TrackApiUtil from "../util/track_api_util"
 export const RECEIVE_ALL_TRACKS = "RECEIVE_ALL_TRACKS";
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const REMOVE_TRACK = "REMOVE_TRACK";
-
+export const RECEIVE_TRACK_ERRORS = "RECEIVE_TRACK_ERRORS";
 
 const receiveAllTracks = (tracks) => {
   return({
@@ -26,6 +26,12 @@ const removeTrack = (trackId) => {
   })
 }
 
+const receiveTrackErrors = (errors) => ({
+  type: RECEIVE_TRACK_ERRORS,
+  errors
+})
+
+
 // should include an error callback on the promises
 
 export const fetchTracks = () => (dispatch) => (
@@ -37,7 +43,10 @@ export const fetchTrack = (trackId) => (dispatch) => (
 )
 
 export const createTrack = (track) => (dispatch) => (
-  TrackApiUtil.createTrack(track).then((track) => dispatch(receiveTrack(track)))
+  TrackApiUtil.createTrack(track).then(
+    (track) => dispatch(receiveTrack(track)),
+    error => dispatch(receiveTrackErrors(error.responseJSON))
+  )
 )
 
 export const deleteTrack = (trackId) => (dispatch) => (
