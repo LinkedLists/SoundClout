@@ -46,17 +46,17 @@ class UploadForm extends React.Component {
     this.setState({title: file.name});
     this.setState({audio_file: file});
 
-    let audio = document.getElementById('upload-audio');
     let form = document.getElementsByClassName('upload-form-container')[0];
-    if (audio && form) audio.value !== "" ? form.classList.remove("closed") : null;
+    form.classList.remove("closed")
   }
 
   handleCloseForm(e) {
     e.preventDefault();
     let form = document.getElementsByClassName('upload-form-container')[0];
-    if (audio && form) audio.value !== "" ? form.classList.add("closed") : null;
+    form.classList.add("closed")
+    let audio = document.getElementById('upload-audio');
+    audio.value = '';
     this.clearState();
-    return false;
   }
 
   clearState() {
