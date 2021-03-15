@@ -20,6 +20,8 @@ class UploadForm extends React.Component {
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCloseForm = this.handleCloseForm.bind(this);
+    this.clearState = this.clearState.bind(this);
   }
 
   grabInputElement(id) {
@@ -47,6 +49,26 @@ class UploadForm extends React.Component {
     let audio = document.getElementById('upload-audio');
     let form = document.getElementsByClassName('upload-form-container')[0];
     if (audio && form) audio.value !== "" ? form.classList.remove("closed") : null;
+  }
+
+  handleCloseForm(e) {
+    e.preventDefault();
+    let form = document.getElementsByClassName('upload-form-container')[0];
+    if (audio && form) audio.value !== "" ? form.classList.add("closed") : null;
+    this.clearState();
+    return false;
+  }
+
+  clearState() {
+    this.setState({
+      title: "",
+      uploader_id: this.props.uploader,
+      description: "",
+      genre: "None",
+      audio_file: '',
+      photo_file: '',
+      photo_preview: null
+    })
   }
 
   handleChange(field) {
@@ -130,7 +152,10 @@ class UploadForm extends React.Component {
                   onChange={this.handleChange("description")} 
                   placeholder="Describe your track" />
               </div>
-              <button type="submit">upload</button>
+              <div className="button-footer">
+                <button className="cancel-submit" onClick={this.handleCloseForm}>Cancel</button>
+                <button type="submit" className="upload-submit">Upload</button>
+              </div>
             </form>
           </div>
 
