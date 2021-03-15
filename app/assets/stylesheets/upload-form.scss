@@ -44,6 +44,7 @@
 }
 
 .textarea {
+  height: 130px;
   resize: vertical;
 }
 
@@ -71,6 +72,17 @@
 .field {
   margin: 10px 0;
 }
+
+.button-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+// .cancel-submit, .upload-submit {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: flex-end;
+// }
 
 .upload-btn {
   cursor: pointer;
@@ -126,6 +138,5 @@
     135deg
     ,#846170,#70929c);
 }
-
 
 
