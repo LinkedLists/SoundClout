@@ -2,6 +2,11 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
 // import { fetchTracks } from '../../actions/track_actions'
 
+// import angellist from "../../assets/angellist.png";
+// import github from "../../assets/github.png";
+// import linkedin from "../../assets/linkedin.png";
+
+
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -45,7 +50,7 @@ class NavBar extends React.Component {
           <ul className="nav-links">
             {/* in soundcloud the logo is outside of nav-links ul */}
             {/* navbar is divided into ul sections */}
-            <li><Link to='/discover' className='nav-links-li'>place logo here</Link></li>
+            <li><Link to='/discover' className='nav-links-li'>logo here</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
@@ -61,10 +66,15 @@ class NavBar extends React.Component {
               <li>
                 <Link to='/' className='nav-links-li' onClick={() => this.props.logout()}>Logout</Link>
               </li>
-              {/* <li><a href="google.com"><img src="../frontend/assets/angellist.png" /></a></li>
-              <li><a href="google.com"><img src="../frontend/assets/github.png" /></a></li>
-              <li><a href="google.com"><img src="../frontend/assets/linkedin.png" /></a></li> */}
-              
+              <li><a href="google.com" className="link-wrapper">
+                <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/angellist2.png" 
+                className="link-imgs" /></a></li>
+              <li><a href="google.com" className="link-wrapper">
+                <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/github2.png" 
+                className="link-imgs"/></a></li>
+              <li><a href="google.com" className="link-wrapper">
+                <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/linkedin.png" 
+                className="link-imgs"id="linkedin-img"/></a></li>
             </ul>
           </div>
         </div>
