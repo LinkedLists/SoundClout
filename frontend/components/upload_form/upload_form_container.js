@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UploadForm from './upload_form'
-import { createTrack } from '../../actions/track_actions'
+import { createTrack, clearTrackErrors } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createTrack: track => dispatch(createTrack(track)),
+    clearTrackErrors: () => dispatch(clearTrackErrors()),
   }
 }
 
