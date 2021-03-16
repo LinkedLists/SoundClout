@@ -4,7 +4,8 @@ import { createTrack } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
   return {
-    uploader: state.session.id
+    uploader: state.session.id,
+    errors: state.errors.trackErrors,
   }
 }
 
