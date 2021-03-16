@@ -24,6 +24,10 @@ class UploadForm extends React.Component {
     this.clearState = this.clearState.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearTrackErrors();
+  }
+
   grabInputElement(id) {
     document.getElementById(id).click();
   }
@@ -57,6 +61,7 @@ class UploadForm extends React.Component {
     let audio = document.getElementById('upload-audio');
     audio.value = '';
     this.clearState();
+    this.props.clearTrackErrors();
   }
 
   clearState() {
@@ -121,13 +126,15 @@ class UploadForm extends React.Component {
                   }>for a photo file lol</button>
             </div>
 
-
             <form className="upload-form" onSubmit={this.handleSubmit}>
               <div className="field">
                 <label className="field-label">Title</label>
-                <input type="text" className="form-input" onChange={this.handleChange("title")} value={this.state.title} />
-                {errors['Title'] ? <div className="upload-errors">{errors['Title']}</div> : null}
-
+                <input type="text" 
+                  className={Object.keys(errors).length ? "form-input input-error" : "form-input"}
+                  onChange={this.handleChange("title")}
+                  placeholder="Name your track" 
+                  value={this.state.title} />
+                {errors['Title'] ? <div className="upload-errors hidden">{errors['Title']}</div> : null}
               </div>
               <div className="field">
                 <label className="field-label">Genre</label>
