@@ -2,7 +2,6 @@ import { RECEIVE_TRACK_ERRORS } from '../actions/track_actions';
 
 // ActiveRecord will be storing validation errors in an array
 const trackErrorsReducer = (oldState = [], action) => {
-
   switch(action.type) {
     case RECEIVE_TRACK_ERRORS:
       return action.errors

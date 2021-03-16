@@ -88,20 +88,17 @@ class UploadForm extends React.Component {
       track.append("track[photo_file]", this.state.photo_file)
     }
     
-    $.ajax({
-      url: 'api/tracks',
-      method: 'POST',
-      data:  track ,
-      contentType: false,
-      processData: false
-    }).then(console.log("song uploaded"))
+    this.props.createTrack(track)
   }
   
   render() {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
-    
+    const errors = {}
+    this.props.errors.forEach( (error) => {
+        errors[error.split(" ")[0]] = error
+    })
     return (
       <div className="content-container">
         <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
@@ -129,6 +126,8 @@ class UploadForm extends React.Component {
               <div className="field">
                 <label className="field-label">Title</label>
                 <input type="text" className="form-input" onChange={this.handleChange("title")} value={this.state.title} />
+                {errors['Title'] ? <div className="upload-errors">{errors['Title']}</div> : null}
+
               </div>
               <div className="field">
                 <label className="field-label">Genre</label>

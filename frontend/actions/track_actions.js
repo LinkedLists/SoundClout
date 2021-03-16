@@ -44,7 +44,7 @@ export const fetchTrack = (trackId) => (dispatch) => (
 
 export const createTrack = (track) => (dispatch) => (
   TrackApiUtil.createTrack(track).then(
-    (track) => dispatch(receiveTrack(track)),
+    track => dispatch(receiveTrack(track)),
     error => dispatch(receiveTrackErrors(error.responseJSON))
   )
 )
