@@ -1,14 +1,19 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import EditFormContainer from '../track_form/track_form_container'
 
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      showEdit: false
+    }
     this.deleted = false;
 
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
+
+    this.showEdit = this.showEdit.bind(this)
   }
 
   componentDidMount() {
@@ -19,6 +24,12 @@ class TrackShow extends React.Component {
   deleteTrack(e) {
     e.preventDefault();
     this.props.deleteTrack(this.props.track.id).then(this.deleted = true);
+    return <Redirect to='/discover'/>
+  }
+
+  showEdit(e) {
+    e.preventDefault();
+    this.setState( {showEdit: true} );
   }
 
   sendTrack() {
@@ -44,10 +55,13 @@ class TrackShow extends React.Component {
 
   render() {
     if (this.props.track === undefined) return null;
+    if (this.props.deleted === false) return <Redirect to="/discover" />
     return (
       <div className="content-container">
         <div className="track-show-container">
-          
+          {
+            this.state.showEdit ? <EditFormContainer/> : null
+          }
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
@@ -66,6 +80,7 @@ class TrackShow extends React.Component {
           {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
         </div>
         <button onClick={this.deleteTrack}>delete</button>
+        <button onClick={this.showEdit}>edit</button>
       </div>
     )
   }
