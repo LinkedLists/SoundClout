@@ -58,15 +58,15 @@ class TrackShow extends React.Component {
     if (this.props.deleted === false) return <Redirect to="/discover" />
     return (
       <div className="content-container">
+        {
+          this.state.showEdit ? <EditFormContainer/> : null
+        }
         <div className="track-show-container">
-          {
-            this.state.showEdit ? <EditFormContainer/> : null
-          }
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
               <button onClick={this.sendTrack}>play (double click)</button>
-              <button onClick={() => document.getElementById('audio').pause()}>pause</button>
+              {/* <button onClick={() => document.getElementById('audio').pause()}>pause</button> */}
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">{this.props.track.uploader_id}</div>
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
