@@ -18,8 +18,10 @@ class Api::TracksController < ApplicationController
     render 'api/tracks/show' if @track
   end
 
-  # def update
-  # end
+  def update
+    @track = Track.find_by(id: params[:id])
+    
+  end
 
   def destroy
     @track = Track.find(params[:id])
