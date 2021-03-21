@@ -64,7 +64,7 @@ class Playbar extends React.Component {
               <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
             }
             <div className="current-track-description">
-              <div className="description-wrapper" >
+              <div className="description-wrapper" > 
                 <div>
                   user {this.props.currentTrack.uploader_id}
                 </div>
@@ -73,7 +73,7 @@ class Playbar extends React.Component {
                 </div>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     )

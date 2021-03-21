@@ -6,13 +6,13 @@ class TrackForm extends React.Component {
     super(props);
 
     this.state = {
-      title: "",
+      title: this.props.track.title,
       uploader_id: this.props.uploader,
-      description: "",
-      genre: "None",
-      audio_file: '',
-      photo_file: '',
-      photo_preview: null
+      description: this.props.track.description,
+      genre: this.props.track.genre,
+      audio_file: this.props.track.audio_file,
+      photo_file: this.props.track.photo_file,
+      photo_preview: this.props.track.photo_preview
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -133,17 +133,17 @@ class TrackForm extends React.Component {
                   </div>
                   <div className="field">
                     <label className="field-label">Genre</label>
-                    <select onChange={this.handleChange("genre")} className="form-input select">
-                      <option className="select-item">None</option>
-                      <option className="select-item">Pop</option>
-                      <option className="select-item">Rock</option>
-                      <option className="select-item">Blues</option>
-                      <option className="select-item">Instrumental</option>
-                      <option className="select-item">Electronic</option>
-                      <option className="select-item">Classical</option>
-                      <option className="select-item">Metal</option>
-                      <option className="select-item">Reggae</option>
-                      <option className="select-item">Country</option>
+                    <select onChange={this.handleChange("genre")} className="form-input select" value={this.state.genre}>
+                      <option value="None" className="select-item">None</option>
+                      <option value="Pop" className="select-item">Pop</option>
+                      <option value="Rock" className="select-item">Rock</option>
+                      <option value="Blues" className="select-item">Blues</option>
+                      <option value="Instrumental" className="select-item">Instrumental</option>
+                      <option value="Electronic" className="select-item">Electronic</option>
+                      <option value="Classical" className="select-item">Classical</option>
+                      <option value="Metal" className="select-item">Metal</option>
+                      <option value="Reggae" className="select-item">Reggae</option>
+                      <option value="Country" className="select-item">Country</option>
                     </select>
                   </div>
                   <div className="field">
@@ -151,7 +151,8 @@ class TrackForm extends React.Component {
                     <textarea type="text" 
                       className="form-input textarea" 
                       onChange={this.handleChange("description")} 
-                      placeholder="Describe your track" />
+                      placeholder="Describe your track"
+                      value={this.state.description} />
                   </div>
                 </div>
             </div>
