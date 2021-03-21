@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import EditFormContainer from '../track_form/track_form_container'
+import EditTrackContainer from '../track_form/edit_track_container'
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class TrackShow extends React.Component {
     return (
       <div className="content-container">
         {
-          this.state.showEdit ? <EditFormContainer/> : null
+          this.state.showEdit ? <EditTrackContainer track={this.props.track}/> : null
         }
         <div className="track-show-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
