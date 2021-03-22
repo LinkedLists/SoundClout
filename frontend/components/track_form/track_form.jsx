@@ -87,17 +87,18 @@ class TrackForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const track = new FormData();
+    track.append("track[id]", this.props.track.id)
     track.append("track[title]", this.state.title)
-    track.append("track[uploader_id]", this.state.uploader_id)
+    // track.append("track[uploader_id]", this.state.uploader_id)
     track.append("track[description]", this.state.description)
     track.append("track[genre]", this.state.genre)
-    track.append("track[audio_file]", this.state.audio_file)
+    // track.append("track[audio_file]", this.state.audio_file)
 
     if (this.state.photo_file) {
       track.append("track[photo_file]", this.state.photo_file)
     }
     
-    this.props.createTrack(track)
+    this.props.updateTrack(track)
   }
   
   render() {
@@ -105,7 +106,7 @@ class TrackForm extends React.Component {
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
     const errors = {}
-    this.props.errors.forEach( (error) => {
+    if (this.props.errors.length > 0) this.props.errors.forEach( (error) => {
         errors[error.split(" ")[0]] = error
     })
     return (
@@ -159,7 +160,7 @@ class TrackForm extends React.Component {
 
               <div className="button-footer">
                 <button className="cancel-submit" onClick={this.handleCloseForm}>Cancel</button>
-                <button type="submit" className="upload-submit">Upload</button>
+                <button type="submit" className="upload-submit">Save Chages</button>
               </div>
             </form>
           </div>

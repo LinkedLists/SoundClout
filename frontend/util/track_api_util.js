@@ -37,16 +37,15 @@ export const fetchTracks = () => {
   )
 }
 
-
-// bring this back when you have update ready
-
-// export const updateTrack = (track) => {
-//   return(
-//     $.ajax({
-//       url: `api/tracks/${track.id}`,
-//       method: 'PATCH',
-//       data: { track }
-//     })
-//   )
-// }
+export const updateTrack = (track) => {
+  return(
+    $.ajax({
+      url: `api/tracks/${track.get("track[id]")}`,
+      method: 'PATCH',
+      data: track,
+      contentType: false,
+      processData: false,
+    }).then(console.log("track is being updated"))
+  )
+}
 
