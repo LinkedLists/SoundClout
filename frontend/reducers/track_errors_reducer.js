@@ -4,7 +4,8 @@ import { RECEIVE_TRACK_ERRORS, CLEAR_TRACK_ERRORS } from '../actions/track_actio
 const trackErrorsReducer = (oldState = [], action) => {
   switch(action.type) {
     case RECEIVE_TRACK_ERRORS:
-      return action.errors
+      return Object.assign({}, oldState, action.errors)
+      // return action.errors
     case CLEAR_TRACK_ERRORS:
       return []
     default:

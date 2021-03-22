@@ -54,12 +54,17 @@ export const createTrack = (track) => (dispatch) => (
   )
 )
 
+export const updateTrack = (track) => (dispatch) => (
+  TrackApiUtil.updateTrack(track).then(
+    track => dispatch(receiveTrack(track)),
+    error => dispatch(receiveTrackErrors(error.responseJSON))
+  )
+)
+
 export const deleteTrack = (trackId) => (dispatch) => (
   TrackApiUtil.deleteTrack(trackId).then( () => dispatch(removeTrack(trackId)))
 )
   
-// add update once ready
-
 // export const updateTrack = (track) => (dispatch) => (
 //   TrackApiUtil.updateTrack(track).then((track) => dispatch(receiveTrack(track)))
 // )

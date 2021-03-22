@@ -19,8 +19,13 @@ class Api::TracksController < ApplicationController
   end
 
   def update
+    # debugger
     @track = Track.find_by(id: params[:id])
-    
+    if @track.update(track_params)
+      render 'api/tracks/show'
+    else
+      render json: @track.errors.full_messages, status: 422
+    end
   end
 
   def destroy
