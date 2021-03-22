@@ -7,7 +7,7 @@ class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEdit: false,
+      // showEdit: false,
       track: this.props.track
     }
 
@@ -19,8 +19,8 @@ class TrackShow extends React.Component {
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
 
-    this.showEdit = this.showEdit.bind(this)
-    this.closeEdit = this.closeEdit.bind(this)
+    // this.showEdit = this.showEdit.bind(this)
+    // this.closeEdit = this.closeEdit.bind(this)
   }
 
   componentDidMount() {
@@ -33,14 +33,14 @@ class TrackShow extends React.Component {
     return <Redirect to='/discover'/>
   }
 
-  showEdit(e) {
-    e.preventDefault();
-    this.setState( {showEdit: true} );
-  }
+  // showEdit(e) {
+  //   e.preventDefault();
+  //   this.setState( {showEdit: true} );
+  // }
 
-  closeEdit() {
-    this.setState( {showEdit: false} )
-  }
+  // closeEdit() {
+  //   this.setState( {showEdit: false} )
+  // }
 
   sendTrack() {
     // .play() has an issue of being async
@@ -68,7 +68,7 @@ class TrackShow extends React.Component {
     if (this.props.deleted === false) return <Redirect to="/discover" />
     return (
       <div className="content-container">
-        <Modal track={this.state.track} component="edit" />
+        <Modal track={this.props.track} component="edit" />
         {/* {
           this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
         } */}
