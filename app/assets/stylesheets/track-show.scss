@@ -38,15 +38,72 @@
 
 .track-show-play-content {
   top: 0;
-  width: 100%;
-  height: auto;
+  width: 650px;
+  // height: auto;
   display: flex;
-  align-items: flex-start
-  // flex-direction: row;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
 }
 
 .track-show-list-item-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  margin-left: 70px;
+}
+
+// .track-show-list-item-playbtn::before {
+//   height: 60px;
+//   width: 60px;
+//   left: 0;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+// }
+
+.track-show-list-item-playbtn {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  width: 60px;
+  outline: 0;
+  border-radius: 50%;
+  border-color: #f50;
+  background-color: #f50;
+  margin-right: 10px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE4cHgiIGhlaWdodD0iMjlweCIgdmlld0JveD0iMCAwIDE4IDI5IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4yLjIgKDk5ODMpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPlBsYXkgNjA8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4KICAgICAgICA8ZyBpZD0iYnV0dG9ucyIgc2tldGNoOnR5cGU9Ik1TQXJ0Ym9hcmRHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE2NjUuMDAwMDAwLCAtODE4LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8cGF0aCBkPSJNMTY2NSw4NDcgTDE2NjkuMTUzODUsODMyLjUgTDE2NjUsODE4IEwxNjgzLDgzMi41IEwxNjY1LDg0NyBaIiBpZD0iUGxheS02MCIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+);
+  background-size: 40% 60%;
+  background-position: 60%;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+  opacity: 0.8;
+}
+
+
+.track-show-list-item-playbtn:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.track-show-list-item-uploader {
+  display: inline;
+  background-color: rgba(0,0,0,.8);
+  color: #f2f2f2;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 2px 7px 3px;
+  margin-bottom: 7px;
+}
+
+.track-show-list-item-title {
+  font-size: 22px;
+  color: #fff;
+  line-height: 37px;
+  padding: 4px 7px;
+  background-color: rgba(0,0,0,.8);
 }
