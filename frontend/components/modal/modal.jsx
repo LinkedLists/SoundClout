@@ -3,11 +3,16 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_container';
 import SignupFormContainer from '../session_form/signup_container';
-
+import EditTrackContainer from '../track_form/edit_track_container'
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.component
+    // this.component
+    this.state = {
+      track: this.props.track
+    }
+    this.track = this.props.track
+    this.component = this.props.component
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
   }
@@ -19,6 +24,9 @@ class Modal extends React.Component {
         break;
       case 'signup':
         this.component = <SignupFormContainer />;
+        break;
+      case 'edit':
+        this.component = <EditTrackContainer track={this.state.track} />;
         break;
       default:
         this.component = null;
@@ -62,8 +70,9 @@ class Modal extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    // track: state.entities.tracks[ownProps.match.params.trackId],
     modal: state.ui.modal
   }
 };
