@@ -19,6 +19,8 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
+    let background = document.getElementsByClassName("track-show-container")[0];
+    if (background) background.style.background = "linear-gradient(to left, rgb(255, 255, 224), rgb(229, 229, 250), rgb(173, 216, 230))"
   }
 
   deleteTrack(e) {
@@ -40,6 +42,25 @@ class TrackShow extends React.Component {
 
   closeEdit() {
     this.setState( {showEdit: false} )
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  cuteColors(background) {
+    let one = this.getRandomInt(160, 200)
+    let two = this.getRandomInt(160, 200)
+    let three = this.getRandomInt(170, 200)
+    let one2 = one + 15
+    let two2 = two + this.getRandomInt(5, 30)
+    let three2 = three - 15
+    let one3 = one2 + 15
+    let two3 = two2 + this.getRandomInt(5, 30)
+    let three3 = three2 - 15
+    background.style.background = `linear-gradient(to left, rgb(${one}, ${two}, ${three}), rgb(${one2}, ${two2}, ${three2}), rgb(${one3}, ${two3}, ${three3}))`
   }
 
   sendTrack() {
@@ -66,6 +87,9 @@ class TrackShow extends React.Component {
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
+    let background = document.getElementsByClassName("track-show-container")[0];
+    if (background) this.cuteColors(background)
+
     return (
       <div className="content-container">
         <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} />
@@ -73,7 +97,7 @@ class TrackShow extends React.Component {
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
-              <button onClick={this.sendTrack}>play (double click)</button>
+              <a onClick={this.sendTrack} className="track-show-list-item-playbtn"></a>
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">{this.props.track.uploader_id}</div>
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
