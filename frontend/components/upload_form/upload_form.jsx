@@ -12,7 +12,8 @@ class UploadForm extends React.Component {
       genre: "None",
       audio_file: '',
       photo_file: '',
-      photo_preview: null
+      photo_preview: null,
+      errors: {}
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +23,7 @@ class UploadForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.handleValidations = this.handleValidations.bind(this);
   }
 
   componentWillUnmount() {
@@ -76,38 +78,68 @@ class UploadForm extends React.Component {
       genre: "None",
       audio_file: '',
       photo_file: '',
-      photo_preview: null
+      photo_preview: null,
+      errors: {}
     })
   }
 
+  handleValidations() {
+    let title = this.state.title.length
+    let validForm = true;
+    let errors = {}
+
+    if (title === 0){
+      errors["Title"] = "Title cannot be empty"
+      validForm = false;
+    } 
+    this.setState( {errors: errors} )
+    return validForm
+  }
+
+  handleLiveVaidation(length) {
+    let errors = Object.assign(this.state.errors)
+    
+    if (length === 0) {
+      errors["Title"] = "Title cannot be empty"
+    } else {
+      delete errors["Title"]
+    } 
+    this.setState( {errors: errors} )
+  }
+
   handleChange(field) {
-    return e => this.setState({[field]: e.target.value})
+    return e => {
+      this.setState({[field]: e.target.value})
+      if (field === "title") this.handleLiveVaidation(e.target.value.length)
+    }  
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const track = new FormData();
-    track.append("track[title]", this.state.title)
-    track.append("track[uploader_id]", this.state.uploader_id)
-    track.append("track[description]", this.state.description)
-    track.append("track[genre]", this.state.genre)
-    track.append("track[audio_file]", this.state.audio_file)
-
-    if (this.state.photo_file) {
-      track.append("track[photo_file]", this.state.photo_file)
+    if (this.handleValidations()) {
+      const track = new FormData();
+      track.append("track[title]", this.state.title)
+      track.append("track[uploader_id]", this.state.uploader_id)
+      track.append("track[description]", this.state.description)
+      track.append("track[genre]", this.state.genre)
+      track.append("track[audio_file]", this.state.audio_file)
+  
+      if (this.state.photo_file) {
+        track.append("track[photo_file]", this.state.photo_file)
+      }
+      
+      this.props.createTrack(track)
     }
-    
-    this.props.createTrack(track)
   }
   
   render() {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
-    const errors = {}
-    this.props.errors.forEach( (error) => {
-        errors[error.split(" ")[0]] = error
-    })
+    // const errors = {}
+    // this.props.errors.forEach( (error) => {
+    //     errors[error.split(" ")[0]] = error
+    // })
     return (
       <div className="content-container">
         <div className="upload-wrapper">
@@ -141,11 +173,11 @@ class UploadForm extends React.Component {
                   <div className="field">
                     <label className="field-label">Title</label>
                     <input type="text" 
-                      className={Object.keys(errors).length ? "form-input input-error" : "form-input"}
+                      className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
                       onChange={this.handleChange("title")}
                       placeholder="Name your track" 
                       value={this.state.title} />
-                    {errors['Title'] ? <div className="upload-errors hidden">{errors['Title']}</div> : null}
+                    {this.state.errors['Title'] ? <div className="upload-errors hidden">{this.state.errors['Title']}</div> : null}
                   </div>
                   <div className="field">
                     <label className="field-label">Genre</label>

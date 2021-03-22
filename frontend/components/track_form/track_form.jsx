@@ -24,7 +24,7 @@ class TrackForm extends React.Component {
     // this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
-    this.clearState = this.clearState.bind(this);
+    // this.clearState = this.clearState.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
   }
 
@@ -73,17 +73,17 @@ class TrackForm extends React.Component {
     this.props.clearTrackErrors();
   }
 
-  clearState() {
-    this.setState({
-      title: "",
-      uploader_id: this.props.uploader,
-      description: "",
-      genre: "None",
-      audio_file: '',
-      photo_file: '',
-      photo_preview: null
-    })
-  }
+  // clearState() {
+  //   this.setState({
+  //     title: "",
+  //     uploader_id: this.props.uploader,
+  //     description: "",
+  //     genre: "None",
+  //     audio_file: '',
+  //     photo_file: '',
+  //     photo_preview: null
+  //   })
+  // }
 
   handleValidations() {
     let title = this.state.title.length
