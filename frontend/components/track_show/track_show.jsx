@@ -14,10 +14,10 @@ class TrackShow extends React.Component {
     this.deleteTrack = this.deleteTrack.bind(this)
 
     this.showEdit = this.showEdit.bind(this)
+    this.closeEdit = this.closeEdit.bind(this)
   }
 
   componentDidMount() {
-  //   this.props.fetchTrack(this.props.match.params.trackId).fail(() => this.props.history.push("/discover"))
     this.props.fetchTrack(this.props.match.params.trackId)
   }
 
@@ -30,6 +30,10 @@ class TrackShow extends React.Component {
   showEdit(e) {
     e.preventDefault();
     this.setState( {showEdit: true} );
+  }
+
+  closeEdit() {
+    this.setState( {showEdit: false} )
   }
 
   sendTrack() {
@@ -59,7 +63,7 @@ class TrackShow extends React.Component {
     return (
       <div className="content-container">
         {
-          this.state.showEdit ? <EditTrackContainer track={this.props.track}/> : null
+          this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
         }
         <div className="track-show-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>

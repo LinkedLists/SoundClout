@@ -60,10 +60,11 @@ class TrackForm extends React.Component {
     e.preventDefault();
     let form = document.getElementsByClassName('upload-form-container')[0];
     form.classList.add("closed")
-    let audio = document.getElementById('upload-audio');
-    audio.value = '';
-    let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
-    audioBtn.classList.remove("closed")
+    // let audio = document.getElementById('upload-audio');
+    // audio.value = '';
+    // let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
+    // audioBtn.classList.remove("closed")
+    this.props.closeEdit()
     this.clearState();
     this.props.clearTrackErrors();
   }
