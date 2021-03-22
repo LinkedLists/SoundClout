@@ -48,42 +48,19 @@ class TrackForm extends React.Component {
     }
   }
 
-  // handleAudioFile(e) {
-  //   let file = e.target.files[0];
-  //   console.log(file)
-  //   this.setState({title: file.name});
-  //   this.setState({audio_file: file});
-
-  //   let form = document.getElementsByClassName('upload-form-container')[0];
-  //   form.classList.remove("closed")
-  //   let audio = document.getElementsByClassName("upload-wrapper")[0];
-  //   audio.classList.add("closed")
-  // }
 
   handleCloseForm(e) {
     e.preventDefault();
     let form = document.getElementsByClassName('upload-form-container')[0];
+    let background = document.getElementsByClassName('track-edit-background')[0];
+    background.classList.remove("open")
     form.classList.add("closed")
-    // let audio = document.getElementById('upload-audio');
-    // audio.value = '';
-    // let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
-    // audioBtn.classList.remove("closed")
+    background.classList.add("closed")
+    form.classList.remove("open")
+
     this.props.closeEdit()
-    // this.clearState();
     this.props.clearTrackErrors();
   }
-
-  // clearState() {
-  //   this.setState({
-  //     title: "",
-  //     uploader_id: this.props.uploader,
-  //     description: "",
-  //     genre: "None",
-  //     audio_file: '',
-  //     photo_file: '',
-  //     photo_preview: null
-  //   })
-  // }
 
   handleValidations() {
     let title = this.state.title.length
@@ -145,7 +122,8 @@ class TrackForm extends React.Component {
     //     errors[error.split(" ")[0]] = error
     // })
     return (
-        <div className="upload-form-container edit">
+      <div className="modal-background track-edit-background closed">
+        <div className="upload-form-container edit closed">
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <div className="img-field-wrapper">
               <div className="upload-photo-wrapper">
@@ -199,6 +177,7 @@ class TrackForm extends React.Component {
               </div>
             </form>
           </div>
+      </div>
     )
   }
 }

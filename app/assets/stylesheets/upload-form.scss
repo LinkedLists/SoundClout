@@ -10,11 +10,41 @@
   position: absolute;
   left: 0;
   right: 0;
-  z-index: 10;
+  top: 0;
+  bottom: 0;
+  animation: animatetop2;
+  animation-duration: 0.2s;
+}
+
+@keyframes animatetop2 {
+  from {
+    top: -1000px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatebottom {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: -1000px;
+    opacity: 0;
+  }
+}
+
+.track-edit-background {
+  animation-duration: 0.3s;
 }
 
 .closed {
-  display: none!important;
+  display: none;
+  // display: none!important;
 }
 
 .upload-form {
@@ -25,7 +55,6 @@
   width: 750px;
   background: white; 
   box-shadow: 0 2px 12px -5px lightgray;
-  z-index: 10;
 }
 
 .upload-form .input-error {
