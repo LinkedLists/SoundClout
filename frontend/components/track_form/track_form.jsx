@@ -12,16 +12,20 @@ class TrackForm extends React.Component {
       genre: this.props.track.genre,
       audio_file: this.props.track.audio_file,
       photo_file: this.props.track.photo_file,
-      photo_preview: this.props.track.photo_preview
+      photo_preview: this.props.track.photo_preview,
+      errors: {},
     }
+
+    // this.state = this.props.track
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.grabInputElement = this.grabInputElement.bind(this);
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
-    this.handleAudioFile = this.handleAudioFile.bind(this);
+    // this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.handleValidations = this.handleValidations.bind(this);
   }
 
   componentWillUnmount() {
@@ -44,17 +48,17 @@ class TrackForm extends React.Component {
     }
   }
 
-  handleAudioFile(e) {
-    let file = e.target.files[0];
-    console.log(file)
-    this.setState({title: file.name});
-    this.setState({audio_file: file});
+  // handleAudioFile(e) {
+  //   let file = e.target.files[0];
+  //   console.log(file)
+  //   this.setState({title: file.name});
+  //   this.setState({audio_file: file});
 
-    let form = document.getElementsByClassName('upload-form-container')[0];
-    form.classList.remove("closed")
-    let audio = document.getElementsByClassName("upload-wrapper")[0];
-    audio.classList.add("closed")
-  }
+  //   let form = document.getElementsByClassName('upload-form-container')[0];
+  //   form.classList.remove("closed")
+  //   let audio = document.getElementsByClassName("upload-wrapper")[0];
+  //   audio.classList.add("closed")
+  // }
 
   handleCloseForm(e) {
     e.preventDefault();
@@ -65,7 +69,7 @@ class TrackForm extends React.Component {
     // let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
     // audioBtn.classList.remove("closed")
     this.props.closeEdit()
-    this.clearState();
+    // this.clearState();
     this.props.clearTrackErrors();
   }
 
@@ -81,37 +85,67 @@ class TrackForm extends React.Component {
     })
   }
 
+  handleValidations() {
+    let title = this.state.title.length
+    let validForm = true;
+    let errors = {}
+
+    if (title === 0){
+      errors["Title"] = "Title cannot be empty"
+      validForm = false;
+    } 
+    this.setState( {errors: errors} )
+    return validForm
+  }
+
+  handleLiveVaidation(length) {
+    let errors = Object.assign(this.state.errors)
+    
+    if (length === 0) {
+      errors["Title"] = "Title cannot be empty"
+    } else {
+      delete errors["Title"]
+    } 
+    this.setState( {errors: errors} )
+  }
+
   handleChange(field) {
-    return e => this.setState({[field]: e.target.value})
+    return e => {
+      this.setState({[field]: e.target.value})
+      if (field === "title") this.handleLiveVaidation(e.target.value.length)
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const track = new FormData();
-    track.append("track[id]", this.props.track.id)
-    track.append("track[title]", this.state.title)
-    // track.append("track[uploader_id]", this.state.uploader_id)
-    track.append("track[description]", this.state.description)
-    track.append("track[genre]", this.state.genre)
-    // track.append("track[audio_file]", this.state.audio_file)
-
-    if (this.state.photo_file) {
-      track.append("track[photo_file]", this.state.photo_file)
+    if (this.handleValidations()) {
+      const track = new FormData();
+      track.append("track[id]", this.props.track.id)
+      track.append("track[title]", this.state.title)
+      // track.append("track[uploader_id]", this.state.uploader_id)
+      track.append("track[description]", this.state.description)
+      track.append("track[genre]", this.state.genre)
+      // track.append("track[audio_file]", this.state.audio_file)
+  
+      if (this.state.photo_file) {
+        track.append("track[photo_file]", this.state.photo_file)
+      }
+      this.handleCloseForm(e);
+      this.props.updateTrack(track)
     }
-    
-    this.props.updateTrack(track)
   }
   
   render() {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
-      <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
-    const errors = {}
-    if (this.props.errors.length > 0) this.props.errors.forEach( (error) => {
-        errors[error.split(" ")[0]] = error
-    })
+      <img src={this.props.track.photoUrl} className="upload-photo-preview default-preview"/>
+    // const errors = {}
+    // console.log(this.state.errors)
+    // if (this.state.errors.length > 0 && this.state.errors) this.state.errors.forEach( (error) => {
+    //     errors[error.split(" ")[0]] = error
+    // })
     return (
-        <div className="upload-form-container">
+        <div className="upload-form-container edit">
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <div className="img-field-wrapper">
               <div className="upload-photo-wrapper">
@@ -127,11 +161,11 @@ class TrackForm extends React.Component {
                   <div className="field">
                     <label className="field-label">Title</label>
                     <input type="text" 
-                      className={Object.keys(errors).length ? "form-input input-error" : "form-input"}
+                      className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
                       onChange={this.handleChange("title")}
                       placeholder="Name your track" 
                       value={this.state.title} />
-                    {errors['Title'] ? <div className="upload-errors hidden">{errors['Title']}</div> : null}
+                    {this.state.errors['Title'] ? <div className="upload-errors hidden">{this.state.errors['Title']}</div> : null}
                   </div>
                   <div className="field">
                     <label className="field-label">Genre</label>
