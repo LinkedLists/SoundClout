@@ -5,6 +5,14 @@
   margin-top: 60px;
 }
 
+.edit {
+  margin-top: 160px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
 .closed {
   display: none!important;
 }
@@ -15,7 +23,9 @@
   align-self: center;
   margin: 0 auto;
   width: 750px;
+  background: white; 
   box-shadow: 0 2px 12px -5px lightgray;
+  z-index: 10;
 }
 
 .img-field-wrapper {
