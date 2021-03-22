@@ -5,27 +5,27 @@
   margin-top: 60px;
 }
 
-// .edit {
-//   margin-top: 160px;
+.edit {
+  margin-top: 160px;
 //   position: absolute;
 //   left: 0;
 //   right: 0;
 //   z-index: 10;
 
-//   animation: animatetop;
-//   animation-duration: 0.2s;
-// }
+  animation: animatetop2;
+  animation-duration: 0.2s;
+}
 
-// @keyframes animatetop {
-//   from {
-//     top: -500px;
-//     opacity: 0;
-//   }
-//   to {
-//     top: 0;
-//     opacity: 1;
-//   }
-// }
+@keyframes animatetop2 {
+  from {
+    top: -1000px;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
 
 // .track-edit-background {
 //   position: fixed;

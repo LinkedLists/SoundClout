@@ -7,10 +7,8 @@ class TrackForm extends React.Component {
 
     this.state = {
       title: this.props.track.title,
-      // uploader_id: this.props.uploader,
       description: this.props.track.description,
       genre: this.props.track.genre,
-      // audio_file: this.props.track.audio_file,
       photo_file: this.props.track.photo_file,
       photo_preview: this.props.track.photo_preview,
       errors: {},
@@ -21,10 +19,8 @@ class TrackForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.grabInputElement = this.grabInputElement.bind(this);
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
-    // this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
-    // this.clearState = this.clearState.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
   }
 
@@ -48,42 +44,11 @@ class TrackForm extends React.Component {
     }
   }
 
-  // handleAudioFile(e) {
-  //   let file = e.target.files[0];
-  //   console.log(file)
-  //   this.setState({title: file.name});
-  //   this.setState({audio_file: file});
-
-  //   let form = document.getElementsByClassName('upload-form-container')[0];
-  //   form.classList.remove("closed")
-  //   let audio = document.getElementsByClassName("upload-wrapper")[0];
-  //   audio.classList.add("closed")
-  // }
-
   handleCloseForm(e) {
     e.preventDefault();
-    // let form = document.getElementsByClassName('upload-form-container')[0];
-    // form.classList.add("closed")
-    // let audio = document.getElementById('upload-audio');
-    // audio.value = '';
-    // let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
-    // audioBtn.classList.remove("closed")
     this.props.closeModal();
-    // this.clearState();
     this.props.clearTrackErrors();
   }
-
-  // clearState() {
-  //   this.setState({
-  //     title: "",
-  //     uploader_id: this.props.uploader,
-  //     description: "",
-  //     genre: "None",
-  //     audio_file: '',
-  //     photo_file: '',
-  //     photo_preview: null
-  //   })
-  // }
 
   handleValidations() {
     let title = this.state.title.length
@@ -136,17 +101,14 @@ class TrackForm extends React.Component {
   }
   
   render() {
+    // if (this.state.track === undefined) return null
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.props.track.photoUrl} className="upload-photo-preview default-preview"/>
-    // const errors = {}
-    // console.log(this.state.errors)
-    // if (this.state.errors.length > 0 && this.state.errors) this.state.errors.forEach( (error) => {
-    //     errors[error.split(" ")[0]] = error
-    // })
     return (
       // <div className="track-edit-background">
         <div className="upload-form-container edit">
+          {console.log(this.props.track)}
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <div className="img-field-wrapper">
               <div className="upload-photo-wrapper">
@@ -164,13 +126,13 @@ class TrackForm extends React.Component {
                     <input type="text" 
                       className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
                       onChange={this.handleChange("title")}
-                      placeholder="Name your track" 
-                      value={this.state.title} />
+                      placeholder="Name your track"
+                      value={this.props.track.title} />
                     {this.state.errors['Title'] ? <div className="upload-errors hidden">{this.state.errors['Title']}</div> : null}
                   </div>
                   <div className="field">
                     <label className="field-label">Genre</label>
-                    <select onChange={this.handleChange("genre")} className="form-input select" value={this.state.genre}>
+                    <select onChange={this.handleChange("genre")} className="form-input select" value={this.props.track.genre}>
                       <option value="None" className="select-item">None</option>
                       <option value="Pop" className="select-item">Pop</option>
                       <option value="Rock" className="select-item">Rock</option>
@@ -189,7 +151,7 @@ class TrackForm extends React.Component {
                       className="form-input textarea" 
                       onChange={this.handleChange("description")} 
                       placeholder="Describe your track"
-                      value={this.state.description} />
+                      value={this.props.track.description} />
                   </div>
                 </div>
             </div>
