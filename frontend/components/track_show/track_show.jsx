@@ -95,6 +95,9 @@ class TrackShow extends React.Component {
     return (
       <div className="content-container">
         <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} />
+        {/* {
+          this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
+        } */}
         <div className="track-show-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">

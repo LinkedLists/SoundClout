@@ -19,8 +19,7 @@ class TrackForm extends React.Component {
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
-    this.clearState = this.clearState.bind(this);
-    this.clearTrackErrors = this.clearTrackErrors.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -75,33 +74,17 @@ class TrackForm extends React.Component {
 
     this.props.closeEdit()
     this.props.clearTrackErrors();
-    this.clearState();
+    this.resetState();
   }
 
-  clearTrackErrors() {
-    this.props.clearTrackErrors(
-      () => {
-        this.setState({
-          title: this.props.track.title,
-          description: this.props.track.description,
-          genre: this.props.track.genre,
-          photo_file: this.props.track.photo_file,
-          photo_preview: this.props.track.photo_preview,
-          errors: {},
-        })
-      }
-    );
-  }
-
-  clearState() {
+  resetState() {
     this.setState({
-      title: "",
-      uploader_id: this.props.uploader,
-      description: "",
-      genre: "None",
-      audio_file: '',
-      photo_file: '',
-      photo_preview: null
+      title: this.props.track.title,
+      description: this.props.track.description,
+      genre: this.props.track.genre,
+      photo_file: this.props.track.photo_file,
+      photo_preview: this.props.track.photo_preview,
+      errors: {},
     })
   }
 
