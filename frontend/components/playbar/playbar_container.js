@@ -9,6 +9,7 @@ import { playTrack, pauseTrack, receiveNewTrack } from '../../actions/playbar_ac
 const mapStateToProps = (state) => {
   return {
     currentTrack: state.ui.playbar.currentTrack,
+    paused: state.ui.playbar.paused,
     currentSessionId: state.session.id
   }
 }

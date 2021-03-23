@@ -9,13 +9,14 @@ const defaultState = {
 // play and pause actions are useless i think
 
 const PlaybarReducer = (state = defaultState, action) => {
+  let newState = Object.assign({}, state)
   switch (action.type) {
     case PLAY_ACTION:
-      action["paused"] = false
-      return action
+      newState["paused"] = false
+      return newState
     case PAUSE_ACTION:
-      action["paused"] = true
-      return true
+      newState["paused"] = true
+      return newState
     case RECEIVE_NEW_TRACK:
       return Object.assign({}, defaultState, {currentTrack: action.track});
     default:

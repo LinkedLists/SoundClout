@@ -5,7 +5,7 @@ class Playbar extends React.Component {
     super(props);
 
     this.state= {
-      playing: false,
+      // playing: false,
       muted: false
     }
 
@@ -25,12 +25,14 @@ class Playbar extends React.Component {
 
   handlePlay() {
     let audio = document.getElementById('audio')
-    if (this.state.playing) {
+    if (!this.props.paused) {
       audio.pause()
-      this.setState( {playing: false} )
+      this.props.pauseTrack();
+      // this.setState( {playing: false} )
     } else {
+      this.props.playTrack();
       audio.play()
-      this.setState( {playing: true} )
+      // this.setState( {playing: true} )
     }
   }
 
@@ -47,15 +49,14 @@ class Playbar extends React.Component {
 
   render() {
     if (this.props.currentSessionId === null) return <></>
+    console.log(this.props.currentTrack.audioUrl)
     return (
       <div className="playbar-footer">
         <div className="playbar-footer-wrapper">
           <div className="media-container">
-            <audio id='audio' src={this.props.currentTrack.audioUrl} />
-            <button onClick={this.handlePlay}>{this.state.playing ? "Pause" : "Play"}</button>
-            {/* <button onClick={() => audio.pause()}>pause</button> */}
+            <audio id='audio' autoPlay src={this.props.currentTrack.audioUrl} />
+            <button onClick={this.handlePlay}>{this.props.paused ? "Play" : "Pause"}</button>
             <button onClick={this.handleMute}>{this.state.muted ? "Unmute" : "Mute"}</button>
-            {/* <button onClick={() => audio.muted = false}>unmute</button> */}
           </div>
           <div className="current-track">
             { 
