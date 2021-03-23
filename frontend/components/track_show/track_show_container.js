@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     track: state.entities.tracks[ownProps.match.params.trackId],
     currentTrack: state.ui.playbar.currentTrack,
-    playbar: state.ui.playbar
+    playbar: state.ui.playbar,
+    // username: state.entities.user[state.entities.tracks[ownProps.match.params.trackId].uploader_id].username
   }
 }
 

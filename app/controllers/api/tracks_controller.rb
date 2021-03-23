@@ -19,7 +19,6 @@ class Api::TracksController < ApplicationController
   end
 
   def update
-    # debugger
     @track = Track.find_by(id: params[:id])
     if @track.update(track_params)
       render 'api/tracks/show'
