@@ -9,7 +9,8 @@ import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_ac
 const mapStateToProps = (state, ownProps) => {
   return {
     track: state.entities.tracks[ownProps.match.params.trackId],
-    currentTrack: state.ui.playbar.currentTrack
+    currentTrack: state.ui.playbar.currentTrack,
+    playbar: state.ui.playbar
   }
 }
 

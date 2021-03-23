@@ -19,8 +19,6 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
-    let background = document.getElementsByClassName("track-show-container")[0];
-    if (background) background.style.background = "linear-gradient(to left, rgb(255, 255, 224), rgb(229, 229, 250), rgb(173, 216, 230))"
   }
 
   deleteTrack(e) {
@@ -54,33 +52,27 @@ class TrackShow extends React.Component {
     let one = this.getRandomInt(160, 200)
     let two = this.getRandomInt(160, 200)
     let three = this.getRandomInt(170, 200)
-    let one2 = one + 15
+    let one2 = one + this.getRandomInt(5, 30)
     let two2 = two + this.getRandomInt(5, 30)
-    let three2 = three - 15
-    let one3 = one2 + 15
+    let three2 = three - this.getRandomInt(5, 30)
+    let one3 = one2 + this.getRandomInt(5, 30)
     let two3 = two2 + this.getRandomInt(5, 30)
-    let three3 = three2 - 15
+    let three3 = three2 - this.getRandomInt(5, 30)
     background.style.background = `linear-gradient(to left, rgb(${one}, ${two}, ${three}), rgb(${one2}, ${two2}, ${three2}), rgb(${one3}, ${two3}, ${three3}))`
   }
 
   sendTrack() {
-    // .play() has an issue of being async
-    // made attempts to solve this by doing try catches and promises
-
-    // let pausePromise = document.getElementById('audio').pause();
-    // let playPromise = document.getElementById('audio').play();
-
-    // if (this.props.currentTrack.paused === false) {
-
-    if (this.props.currentTrack.paused !== false) {
-      document.getElementById('audio').pause();
+    if (this.props.track !== this.props.currentTrack) {
       this.props.playTrack()
       this.props.sendTrack(this.props.track)
+    }
+
+    else if (this.props.playbar.paused) {
+      this.props.playTrack()
       document.getElementById('audio').play();
     } else {
       this.props.pauseTrack()
-      this.props.sendTrack(this.props.track)
-      document.getElementById('audio').play()
+      document.getElementById('audio').pause()
     }
   }
 
@@ -97,7 +89,7 @@ class TrackShow extends React.Component {
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
-              <a onClick={this.sendTrack} className="track-show-list-item-playbtn"></a>
+              <a onClick={this.sendTrack} className="track-show-list-item-playbtn"/>
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">{this.props.track.uploader_id}</div>
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
@@ -107,8 +99,6 @@ class TrackShow extends React.Component {
 
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
-          {/* <audio id='audio' src={this.props.track.audioUrl} /> */}
-          {/* <button onClick={() => document.getElementById('audio').play()}>play</button> */}
         </div>
         <button onClick={this.deleteTrack}>delete</button>
         <button onClick={this.showEdit}>edit</button>
