@@ -49,3 +49,12 @@
 .current-track-title {
   margin-top: 10px;
 }
+
+.media-container button {
+  outline: 0;
+  border: none;
+}
+
+.media-container button:hover {
+  cursor: pointer;
+}

@@ -7,6 +7,7 @@ class TrackShow extends React.Component {
     super(props);
     this.state = {
       showEdit: false,
+      colored: false
     }
     this.deleted = false;
     this.sendTrack = this.sendTrack.bind(this)
@@ -17,6 +18,11 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
+  }
+
+  componentDidUpdate() {
+    const background = document.getElementsByClassName("track-show-container")[0];
+    if (background) this.cuteColors(background)
   }
 
   deleteTrack(e) {
@@ -47,36 +53,44 @@ class TrackShow extends React.Component {
   }
 
   cuteColors(background) {
-    const one = this.getRandomInt(160, 200)
-    const two = this.getRandomInt(160, 200)
-    const three = this.getRandomInt(170, 200)
-    const one2 = one + this.getRandomInt(5, 30)
-    const two2 = two + this.getRandomInt(5, 30)
-    const three2 = three - this.getRandomInt(5, 30)
-    const one3 = one2 + this.getRandomInt(5, 30)
-    const two3 = two2 + this.getRandomInt(5, 30)
-    const three3 = three2 - this.getRandomInt(5, 30)
-    background.style.background = `linear-gradient(to left, rgb(${one}, ${two}, ${three}), rgb(${one2}, ${two2}, ${three2}), rgb(${one3}, ${two3}, ${three3}))`
+    if (!this.state.colored) {
+      this.setState( {colored: true} )
+      const r1 = this.getRandomInt(160, 200)
+      const g1 = this.getRandomInt(160, 200)
+      const b1 = this.getRandomInt(170, 250)
+      const r2 = r1 + this.getRandomInt(5, 30)
+      const g2 = g1 + this.getRandomInt(5, 30)
+      const b2 = b1 - this.getRandomInt(5, 30)
+      const r3 = r2 + this.getRandomInt(5, 30)
+      const g3 = g2 + this.getRandomInt(5, 30)
+      const b3 = b2 - this.getRandomInt(5, 30)
+      background.style.background = `linear-gradient(to left, 
+          rgb(${r1}, ${g1}, ${b1}), 
+          rgb(${r2}, ${g2}, ${b2}), 
+          rgb(${r3}, ${g3}, ${b3}))`
+    }
   }
 
   sendTrack() {
+    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
     if (this.props.track !== this.props.currentTrack) {
       this.props.playTrack(this.props.sendTrack(this.props.track))
+      playbtn.classList.add("playing");
     }
     else if (this.props.playbar.paused) {
       this.props.playTrack()
       document.getElementById('audio').play();
+      playbtn.classList.add("playing");
     } else {
       this.props.pauseTrack()
       document.getElementById('audio').pause()
+      playbtn.classList.remove("playing");
     }
   }
 
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
-    const background = document.getElementsByClassName("track-show-container")[0];
-    if (background) this.cuteColors(background)
 
     return (
       <div className="content-container">
@@ -91,14 +105,14 @@ class TrackShow extends React.Component {
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
               </div>
             </div>
-
-
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
         </div>
-        <button onClick={this.deleteTrack}>delete</button>
-        {/* <button onClick={() => this.props.openModal('edit')}>edit</button> */}
-        <button onClick={this.showEdit}>edit</button>
+        <div className="track-show-btns">
+          <button onClick={this.deleteTrack}>delete</button>
+          <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
+
+        </div>
       </div>
     )
   }

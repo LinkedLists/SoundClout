@@ -9,6 +9,7 @@ import Homepage from './homepage/homepage'
 import PlaybarContainer from './playbar/playbar_container'
 import UploadFormContainer from './upload_form/upload_form_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 // Note that session containers will no longer be necessary due to use of a modal
 const App = () => (
