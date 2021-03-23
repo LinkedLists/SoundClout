@@ -1,4 +1,4 @@
-import { PLAY_ACTION, PAUSE_ACTION, RECEIVE_NEW_TRACK } from '../actions/playbar_actions'
+import { PLAY_ACTION, PAUSE_ACTION, RECEIVE_NEW_TRACK, CLEAR_PLAYBAR_STATE } from '../actions/playbar_actions'
 
 const defaultState = {
   currentTrack: {},
@@ -19,6 +19,8 @@ const PlaybarReducer = (state = defaultState, action) => {
       return newState
     case RECEIVE_NEW_TRACK:
       return Object.assign({}, defaultState, {currentTrack: action.track});
+    case CLEAR_PLAYBAR_STATE:
+      return defaultState
     default:
       return state
   }
