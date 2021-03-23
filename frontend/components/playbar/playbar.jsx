@@ -5,7 +5,6 @@ class Playbar extends React.Component {
     super(props);
 
     this.state= {
-      // playing: false,
       muted: false
     }
 
@@ -23,16 +22,18 @@ class Playbar extends React.Component {
   //   this.setState( {playing: audio.paused} )
   // }
 
+  componentWillUnmount() {
+    this.props.clearPlaybarState();
+  }
+
   handlePlay() {
     let audio = document.getElementById('audio')
     if (!this.props.paused) {
       audio.pause()
       this.props.pauseTrack();
-      // this.setState( {playing: false} )
     } else {
       this.props.playTrack();
       audio.play()
-      // this.setState( {playing: true} )
     }
   }
 

@@ -14,6 +14,7 @@ class NavBar extends React.Component {
 
     this.sessionContainer = this.sessionContainer.bind(this);
     this.navContainer = this.navContainer.bind(this);
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   fetchTracks() {
@@ -43,6 +44,12 @@ class NavBar extends React.Component {
     )
   }
 
+  handleLogout() {
+    this.props.logout();
+    this.props.pauseTrack();
+    this.props.clearPlaybarState();
+  }
+
   navContainer() {
     return(
       <div className="navbar-container">
@@ -64,7 +71,7 @@ class NavBar extends React.Component {
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
               <li><Link to='/discover' className='nav-links-li'>User #{this.props.state.session.id}</Link></li>
               <li>
-                <Link to='/' className='nav-links-li' id="logout" onClick={() => this.props.logout()}>Logout</Link>
+                <Link to='/' className='nav-links-li' id="logout" onClick={this.handleLogout}>Logout</Link>
               </li>
               <li><a href="google.com" className="link-wrapper">
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/angellist2.png" 

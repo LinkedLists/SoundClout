@@ -47,15 +47,15 @@ class TrackShow extends React.Component {
   }
 
   cuteColors(background) {
-    let one = this.getRandomInt(160, 200)
-    let two = this.getRandomInt(160, 200)
-    let three = this.getRandomInt(170, 200)
-    let one2 = one + this.getRandomInt(5, 30)
-    let two2 = two + this.getRandomInt(5, 30)
-    let three2 = three - this.getRandomInt(5, 30)
-    let one3 = one2 + this.getRandomInt(5, 30)
-    let two3 = two2 + this.getRandomInt(5, 30)
-    let three3 = three2 - this.getRandomInt(5, 30)
+    const one = this.getRandomInt(160, 200)
+    const two = this.getRandomInt(160, 200)
+    const three = this.getRandomInt(170, 200)
+    const one2 = one + this.getRandomInt(5, 30)
+    const two2 = two + this.getRandomInt(5, 30)
+    const three2 = three - this.getRandomInt(5, 30)
+    const one3 = one2 + this.getRandomInt(5, 30)
+    const two3 = two2 + this.getRandomInt(5, 30)
+    const three3 = three2 - this.getRandomInt(5, 30)
     background.style.background = `linear-gradient(to left, rgb(${one}, ${two}, ${three}), rgb(${one2}, ${two2}, ${three2}), rgb(${one3}, ${two3}, ${three3}))`
   }
 
@@ -75,7 +75,7 @@ class TrackShow extends React.Component {
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
-    let background = document.getElementsByClassName("track-show-container")[0];
+    const background = document.getElementsByClassName("track-show-container")[0];
     if (background) this.cuteColors(background)
 
     return (
