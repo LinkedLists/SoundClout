@@ -7,10 +7,10 @@ class TrackForm extends React.Component {
 
     this.state = {
       title: this.props.track.title,
-      uploader_id: this.props.uploader,
+      // uploader_id: this.props.uploader,
       description: this.props.track.description,
       genre: this.props.track.genre,
-      audio_file: this.props.track.audio_file,
+      // audio_file: this.props.track.audio_file,
       photo_file: this.props.track.photo_file,
       photo_preview: this.props.track.photo_preview,
       errors: {},

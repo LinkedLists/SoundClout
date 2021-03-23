@@ -1,20 +1,26 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import EditTrackContainer from '../track_form/edit_track_container'
+import Modal from "../modal/modal"
+
 
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEdit: false
+      // showEdit: false,
+      track: this.props.track
     }
+
+    this.track = this.props.track
+
+
     this.deleted = false;
 
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
 
-    this.showEdit = this.showEdit.bind(this)
-    this.closeEdit = this.closeEdit.bind(this)
+    // this.showEdit = this.showEdit.bind(this)
+    // this.closeEdit = this.closeEdit.bind(this)
   }
 
   componentDidMount() {
@@ -38,9 +44,9 @@ class TrackShow extends React.Component {
     this.setState( {showEdit: true} );
   }
 
-  closeEdit() {
-    this.setState( {showEdit: false} )
-  }
+  // closeEdit() {
+  //   this.setState( {showEdit: false} )
+  // }
 
   getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -101,7 +107,8 @@ class TrackShow extends React.Component {
           </div>
         </div>
         <button onClick={this.deleteTrack}>delete</button>
-        <button onClick={this.showEdit}>edit</button>
+        <button onClick={() => this.props.openModal('edit')}>edit</button>
+        {/* <button onClick={this.showEdit}>edit</button> */}
       </div>
     )
   }

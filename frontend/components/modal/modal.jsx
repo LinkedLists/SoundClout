@@ -3,11 +3,19 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_container';
 import SignupFormContainer from '../session_form/signup_container';
+import EditTrackContainer from '../track_form/edit_track_container';
+import { fetchTracks } from '../../actions/track_actions'
+import { fetchTrack, deleteTrack } from '../../actions/track_actions';
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.component
+    // this.component
+    this.state = {
+      track: this.props.track
+    }
+    this.track = this.props.track
+    this.component = this.props.component
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
   }
@@ -19,6 +27,11 @@ class Modal extends React.Component {
         break;
       case 'signup':
         this.component = <SignupFormContainer />;
+        break;
+      case 'edit':
+        // console.log(this.props)
+        // debugger
+        this.component = <EditTrackContainer track={this.props.track} />;
         break;
       default:
         this.component = null;
@@ -40,6 +53,7 @@ class Modal extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
+    // this.props.fetchTrack(this.props.match.params.trackId)
   }
 
   componentWillUnmount() {
@@ -54,23 +68,28 @@ class Modal extends React.Component {
     this.selectComponent();
     return(
       <div className="modal-background" onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
-        <div className="modal-child" onClick={e => e.stopPropagation()}>
+        {/* <div className="modal-child" onClick={e => e.stopPropagation()}> */}
           { this.component }
-        </div>
+        {/* </div> */}
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  // console.log(ownProps.track)
   return {
-    modal: state.ui.modal
+    track: ownProps,
+    modal: state.ui.modal,
+    // tracks: Object.values(state.entities.tracks)
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    fetchTracks: () => dispatch(fetchTracks()),
+    fetchTrack: (trackId) => dispatch(fetchTrack(trackId)),
   }
 };
 

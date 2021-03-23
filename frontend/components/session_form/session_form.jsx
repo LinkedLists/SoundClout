@@ -69,7 +69,7 @@ class SessionForm extends React.Component {
         errors[error.split(" ")[0]] = error
     })
     return (
-      <div>
+      <div className="modal-child" onClick={e => e.stopPropagation()}>
         {/* 
           If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
           and object construction. A work around is to use a ternary operation.

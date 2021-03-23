@@ -1,9 +1,16 @@
 .modal-background {
   position: fixed;
   top: 0;
+<<<<<<< HEAD
   left: 0;
   right: 0;
   bottom: 0;
+=======
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+>>>>>>> adaeeb32e429e2141f2970bf450ff9c316778d0d
   width: 100%;
   height: 100%;
   z-index: 1000;
