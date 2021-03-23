@@ -7,29 +7,32 @@ class TrackForm extends React.Component {
 
     this.state = {
       title: this.props.track.title,
-      // uploader_id: this.props.uploader,
       description: this.props.track.description,
       genre: this.props.track.genre,
-      // audio_file: this.props.track.audio_file,
       photo_file: this.props.track.photo_file,
       photo_preview: this.props.track.photo_preview,
       errors: {},
     }
 
-    // this.state = this.props.track
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.grabInputElement = this.grabInputElement.bind(this);
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
-    // this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
-    // this.clearState = this.clearState.bind(this);
+    this.clearState = this.clearState.bind(this);
+    this.clearTrackErrors = this.clearTrackErrors.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+  }
+  
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
   }
 
   componentWillUnmount() {
     this.props.clearTrackErrors();
+    document.removeEventListener('keydown', this.handleKeyPress);
   }
 
   grabInputElement(id) {
@@ -48,6 +51,18 @@ class TrackForm extends React.Component {
     }
   }
 
+  handleKeyPress(e) {
+    if (e.key == "Escape") {
+      this.handleCloseForm(e)
+    }
+  }
+
+  handleMouseDown(e) {
+    console.log(e.target.classList)
+    if (e.target.classList.contains("open")) {
+      this.handleCloseForm(e);
+    }
+  }
 
   handleCloseForm(e) {
     e.preventDefault();
@@ -60,6 +75,34 @@ class TrackForm extends React.Component {
 
     this.props.closeEdit()
     this.props.clearTrackErrors();
+    this.clearState();
+  }
+
+  clearTrackErrors() {
+    this.props.clearTrackErrors(
+      () => {
+        this.setState({
+          title: this.props.track.title,
+          description: this.props.track.description,
+          genre: this.props.track.genre,
+          photo_file: this.props.track.photo_file,
+          photo_preview: this.props.track.photo_preview,
+          errors: {},
+        })
+      }
+    );
+  }
+
+  clearState() {
+    this.setState({
+      title: "",
+      uploader_id: this.props.uploader,
+      description: "",
+      genre: "None",
+      audio_file: '',
+      photo_file: '',
+      photo_preview: null
+    })
   }
 
   handleValidations() {
@@ -99,10 +142,8 @@ class TrackForm extends React.Component {
       const track = new FormData();
       track.append("track[id]", this.props.track.id)
       track.append("track[title]", this.state.title)
-      // track.append("track[uploader_id]", this.state.uploader_id)
       track.append("track[description]", this.state.description)
       track.append("track[genre]", this.state.genre)
-      // track.append("track[audio_file]", this.state.audio_file)
   
       if (this.state.photo_file) {
         track.append("track[photo_file]", this.state.photo_file)
@@ -116,13 +157,8 @@ class TrackForm extends React.Component {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.props.track.photoUrl} className="upload-photo-preview default-preview"/>
-    // const errors = {}
-    // console.log(this.state.errors)
-    // if (this.state.errors.length > 0 && this.state.errors) this.state.errors.forEach( (error) => {
-    //     errors[error.split(" ")[0]] = error
-    // })
     return (
-      <div className="modal-background track-edit-background closed">
+      <div className="modal-background track-edit-background closed" onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
         <div className="upload-form-container edit closed">
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <div className="img-field-wrapper">
