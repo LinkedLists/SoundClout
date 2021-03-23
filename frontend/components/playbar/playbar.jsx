@@ -49,7 +49,6 @@ class Playbar extends React.Component {
 
   render() {
     if (this.props.currentSessionId === null) return <></>
-    console.log(this.props.currentTrack.audioUrl)
     return (
       <div className="playbar-footer">
         <div className="playbar-footer-wrapper">
