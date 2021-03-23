@@ -32,16 +32,6 @@ class SessionForm extends React.Component {
   // "Username has already been taken"
   // "Password is too short (minimum is 6 characters)"
 
-  // renderErrors() {
-  //   if (this.props.errors.length > 0) {
-  //     return (
-  //       <ul className="credential-errors-ul">
-  //         { this.props.errors.map( (error, i) => <li key={i}>{error}</li>) }
-  //       </ul>
-  //     )
-  //   }
-  // }
-
   demoLogin() {
     const demoAccount = {
       username: 'Demo',
@@ -54,7 +44,6 @@ class SessionForm extends React.Component {
   // This prevents auto login of the demo user on the enter key
   // Note that the getElementsByClassName method returns an array-like object
   handleEnter(e) {
-    
     if (e.key == "Enter") {
       e.preventDefault();
     } else {
