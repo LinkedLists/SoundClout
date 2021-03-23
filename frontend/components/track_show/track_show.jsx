@@ -1,26 +1,18 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Modal from "../modal/modal"
-
+import EditTrackContainer from '../track_form/edit_track_container'
 
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // showEdit: false,
-      track: this.props.track
+      showEdit: false,
     }
-
-    this.track = this.props.track
-
-
     this.deleted = false;
-
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
-
-    // this.showEdit = this.showEdit.bind(this)
-    // this.closeEdit = this.closeEdit.bind(this)
+    this.showEdit = this.showEdit.bind(this)
+    this.closeEdit = this.closeEdit.bind(this)
   }
 
   componentDidMount() {
@@ -44,9 +36,9 @@ class TrackShow extends React.Component {
     this.setState( {showEdit: true} );
   }
 
-  // closeEdit() {
-  //   this.setState( {showEdit: false} )
-  // }
+  closeEdit() {
+    this.setState( {showEdit: false} )
+  }
 
   getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -69,10 +61,8 @@ class TrackShow extends React.Component {
 
   sendTrack() {
     if (this.props.track !== this.props.currentTrack) {
-      this.props.playTrack()
-      this.props.sendTrack(this.props.track)
+      this.props.playTrack(this.props.sendTrack(this.props.track))
     }
-
     else if (this.props.playbar.paused) {
       this.props.playTrack()
       document.getElementById('audio').play();
@@ -107,8 +97,8 @@ class TrackShow extends React.Component {
           </div>
         </div>
         <button onClick={this.deleteTrack}>delete</button>
-        <button onClick={() => this.props.openModal('edit')}>edit</button>
-        {/* <button onClick={this.showEdit}>edit</button> */}
+        {/* <button onClick={() => this.props.openModal('edit')}>edit</button> */}
+        <button onClick={this.showEdit}>edit</button>
       </div>
     )
   }

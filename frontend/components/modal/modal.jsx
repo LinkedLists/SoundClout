@@ -3,19 +3,11 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_container';
 import SignupFormContainer from '../session_form/signup_container';
-import EditTrackContainer from '../track_form/edit_track_container';
-import { fetchTracks } from '../../actions/track_actions'
-import { fetchTrack, deleteTrack } from '../../actions/track_actions';
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    // this.component
-    this.state = {
-      track: this.props.track
-    }
-    this.track = this.props.track
-    this.component = this.props.component
+    this.component
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
   }
@@ -27,11 +19,6 @@ class Modal extends React.Component {
         break;
       case 'signup':
         this.component = <SignupFormContainer />;
-        break;
-      case 'edit':
-        // console.log(this.props)
-        // debugger
-        this.component = <EditTrackContainer track={this.props.track} />;
         break;
       default:
         this.component = null;
@@ -53,7 +40,6 @@ class Modal extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
-    // this.props.fetchTrack(this.props.match.params.trackId)
   }
 
   componentWillUnmount() {
@@ -76,20 +62,15 @@ class Modal extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  // console.log(ownProps.track)
+const mapStateToProps = (state) => {
   return {
-    track: ownProps,
     modal: state.ui.modal,
-    // tracks: Object.values(state.entities.tracks)
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
-    fetchTracks: () => dispatch(fetchTracks()),
-    fetchTrack: (trackId) => dispatch(fetchTrack(trackId)),
   }
 };
 
