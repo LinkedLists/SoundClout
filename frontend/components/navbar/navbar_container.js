@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     pauseTrack: () => dispatch(pauseTrack()),
     clearPlaybarState: () => dispatch(clearPlaybarState()),
 
-    // fetching tracks just for a test
-    fetchTracks: () => dispatch(fetchTracks())
+    // possibly for the splash page
+    // fetchTracks: () => dispatch(fetchTracks())
   }
 }
 

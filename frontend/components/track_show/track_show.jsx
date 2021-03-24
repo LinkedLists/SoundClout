@@ -27,13 +27,13 @@ class TrackShow extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.removeComments();
+    // this.props.removeComments();
   }
 
   deleteTrack(e) {
     e.preventDefault();
     this.props.deleteTrack(this.props.track.id).then(this.deleted = true);
-    this.props.removeComments();
+    // this.props.removeComments();
     return <Redirect to='/discover'/>
   }
 

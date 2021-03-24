@@ -1,12 +1,5 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
-// import { fetchTracks } from '../../actions/track_actions'
-
-// import angellist from "../../assets/angellist.png";
-// import github from "../../assets/github.png";
-// import linkedin from "../../assets/linkedin.png";
-
-
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -17,15 +10,8 @@ class NavBar extends React.Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
 
-  fetchTracks() {
-    $.ajax({
-      url: 'api/tracks',
-      method: 'GET'
-    }).then(tracks => {this.setState({tracks})})
-  }
-
   componentDidMount() {
-    this.props.fetchTracks();
+    // this.props.fetchTracks();
     this.props.state
   }
 
