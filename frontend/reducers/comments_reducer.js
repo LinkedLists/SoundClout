@@ -1,5 +1,7 @@
 import { RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_COMMENTS } from '../actions/comment_actions'
 
+import { RECEIVE_TRACK } from '../actions/track_actions'
+
 const CommentsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let nextState = Object.assign({}, oldState);
@@ -10,6 +12,8 @@ const CommentsReducer = (oldState = {}, action) => {
     case REMOVE_COMMENT:
       delete newState[action.commentId]
       return newState
+    case RECEIVE_TRACK:
+      return Object.assign({}, action.track.comments);
     case REMOVE_COMMENTS:
       return {}
     default: 
