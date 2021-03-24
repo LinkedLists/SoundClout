@@ -57,7 +57,6 @@ class TrackForm extends React.Component {
   }
 
   handleMouseDown(e) {
-    console.log(e.target.classList)
     if (e.target.classList.contains("open")) {
       this.handleCloseForm(e);
     }
