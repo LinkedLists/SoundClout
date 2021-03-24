@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import EditTrackContainer from '../track_form/edit_track_container'
+import CommentFormContainer from '../comment_form/comment_form_container'
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -116,6 +117,7 @@ class TrackShow extends React.Component {
           <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
 
         </div>
+        <CommentFormContainer track={this.props.track} />
       </div>
     )
   }

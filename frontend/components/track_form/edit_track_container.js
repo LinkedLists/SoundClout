@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import TrackForm from './track_form';
 import { updateTrack, clearTrackErrors } from '../../actions/track_actions'
-import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,8 +13,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updateTrack: track => dispatch(updateTrack(track)),
     clearTrackErrors: () => dispatch(clearTrackErrors()),
-    closeModal: () => dispatch(closeModal()),
-
   }
 }
 

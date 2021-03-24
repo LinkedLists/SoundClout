@@ -16,3 +16,5 @@ const CommentsReducer = (oldState = {}, action) => {
       return oldState
   }
 }
+
+export default CommentsReducer
