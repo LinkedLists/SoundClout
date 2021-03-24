@@ -24,7 +24,7 @@ const removeComments = () => {
   }
 }
 
-export const receiveComment = (comment) => (dispatch) => (
+export const createComment = (comment) => (dispatch) => (
   CommentApiUtil.createComment(comment).then(comment => dispatch(receiveComment(comment)))
 )
 
