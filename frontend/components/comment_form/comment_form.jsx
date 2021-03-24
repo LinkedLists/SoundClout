@@ -5,16 +5,16 @@ class CommentForm extends React.Component {
     super(props);
 
     this.state = {
-      trackId: this.props.track.id,
+      track_id: this.props.track.id,
       uploader_id: this.props.currentUserId,
       body: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(e) {
+  handleSubmit(e) {
     e.preventDefault();
 
     this.props.createComment(this.state)
