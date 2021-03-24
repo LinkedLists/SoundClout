@@ -22,7 +22,6 @@ class TrackShow extends React.Component {
   }
 
   componentDidUpdate() {
-    debugger
     const background = document.getElementsByClassName("track-show-container")[0];
     if (background) this.cuteColors(background)
   }
