@@ -19,7 +19,7 @@ const removeComment = (commentId) => {
   };
 };
 
-const removeComments = () => {
+export const removeComments = () => {
   return {
     type: REMOVE_COMMENTS
   }
