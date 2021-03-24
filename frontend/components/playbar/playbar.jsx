@@ -5,11 +5,13 @@ class Playbar extends React.Component {
     super(props);
 
     this.state= {
-      muted: false
+      muted: false,
+      repeat: false
     }
 
     this.handlePlay = this.handlePlay.bind(this);
     this.handleMute = this.handleMute.bind(this);
+    this.handleRepeat = this.handleRepeat.bind(this);
   }
 
   // componentDidMount() {
@@ -48,8 +50,20 @@ class Playbar extends React.Component {
     }
   }
 
+  handleRepeat() {
+    let audio = document.getElementById('audio')
+    if (this.state.repeat) {
+      audio.removeAttribute("loop")
+      this.setState( {repeat: false} )
+    } else {
+      audio.setAttribute("loop", true)
+      this.setState( {repeat: true} )
+    }
+  }
+
   render() {
     if (this.props.currentSessionId === null) return <></>
+    
     return (
       <div className="playbar-footer">
         <div className="playbar-footer-wrapper">
@@ -57,6 +71,7 @@ class Playbar extends React.Component {
             <audio id='audio' autoPlay src={this.props.currentTrack.audioUrl} />
             <button onClick={this.handlePlay}>{this.props.paused ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
             <button onClick={this.handleMute}>{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
+            <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
           </div>
           <div className="current-track">
             { 
