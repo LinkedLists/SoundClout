@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class Playbar extends React.Component {
   constructor(props) {
     super(props);
@@ -54,8 +55,8 @@ class Playbar extends React.Component {
         <div className="playbar-footer-wrapper">
           <div className="media-container">
             <audio id='audio' autoPlay src={this.props.currentTrack.audioUrl} />
-            <button onClick={this.handlePlay}>{this.props.paused ? <i className="fas fa-play"/> : <i className="fas fa-pause"/>}</button>
-            <button onClick={this.handleMute}>{this.state.muted ? <i className="fas fa-volume-mute"/> : <i className="fas fa-volume-up"/>}</button>
+            <button onClick={this.handlePlay}>{this.props.paused ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
+            <button onClick={this.handleMute}>{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
           </div>
           <div className="current-track">
             { 
