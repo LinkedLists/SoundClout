@@ -18,6 +18,12 @@ class Track < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :User
 
-    has_one_attached :photo_file
-    has_one_attached :audio_file
+  has_many :comments, 
+    primary_key: :id,
+    foreign_key: :track_id,
+    class_name: :Comment,
+    dependent: :destroy 
+
+  has_one_attached :photo_file
+  has_one_attached :audio_file
 end

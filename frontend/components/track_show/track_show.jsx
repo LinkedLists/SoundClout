@@ -22,13 +22,19 @@ class TrackShow extends React.Component {
   }
 
   componentDidUpdate() {
+    debugger
     const background = document.getElementsByClassName("track-show-container")[0];
     if (background) this.cuteColors(background)
+  }
+
+  componentWillUnmount() {
+    this.props.removeComments();
   }
 
   deleteTrack(e) {
     e.preventDefault();
     this.props.deleteTrack(this.props.track.id).then(this.deleted = true);
+    this.props.removeComments();
     return <Redirect to='/discover'/>
   }
 
