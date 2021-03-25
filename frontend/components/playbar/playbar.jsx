@@ -8,7 +8,8 @@ class Playbar extends React.Component {
       muted: false,
       repeat: false,
       currentTime: 0,
-      duration: 0
+      duration: 0,
+      percentPlayed: 0
     }
 
     this.handlePlay = this.handlePlay.bind(this);
@@ -16,6 +17,7 @@ class Playbar extends React.Component {
     this.handleRepeat = this.handleRepeat.bind(this);
     this.setDuration = this.setDuration.bind(this);
     this.timeIncrementer = this.timeIncrementer.bind(this);
+    this.prettifyTime = this.prettifyTime.bind(this);
     this.timeIncrementerInstance
   }
 
@@ -37,16 +39,33 @@ class Playbar extends React.Component {
     // console.log("i")
   }
 
+  prettifyTime(time) {
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time - (minutes * 60));
+    if (seconds < 10) seconds = '0' + seconds;
+    time = minutes + ':' + seconds;
+    return time;
+  }
+
   timeIncrementer() {
     let audio = document.getElementById('audio')
+    let progressBar = document.getElementsByClassName('progress-bar')[0];
     return setInterval(() => {
-      this.setState( {currentTime: audio.currentTime} )
-    }, 100);
+      let percentPlayed = 100 * (audio.currentTime / audio.duration)
+      progressBar.style.width = `${percentPlayed}%`;
+      this.setState({
+        currentTime: this.prettifyTime(audio.currentTime),
+        percentPlayed: percentPlayed
+      })
+    }, 100)
   }
 
   setDuration() {
     let audio = document.getElementById('audio')
-    this.setState( {duration: audio.duration} )
+    this.setState({
+      duration: this.prettifyTime(audio.duration),
+      percentPlayed: 0
+    })
     this.timeIncrementerInstance = this.timeIncrementer()
   }
 
@@ -87,7 +106,6 @@ class Playbar extends React.Component {
 
   render() {
     if (this.props.currentSessionId === null) return <></>
-    let audio = document.getElementById('audio')
     return (
       <div className="playbar-footer">
         <div className="playbar-footer-wrapper">
@@ -104,7 +122,13 @@ class Playbar extends React.Component {
             <button onClick={this.handleMute}>{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
             <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
           </div>
-          <div>{audio ? this.state.currentTime + " " + this.state.duration : null}</div>
+
+          <div>{this.state.currentTime}</div>
+          <div className="progress-background">
+            <div className="progress-bar"></div>
+          </div>
+          <div>{this.state.duration}</div>
+          
           <div className="current-track">
             { 
               // this ternary is not working
