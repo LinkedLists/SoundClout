@@ -1,4 +1,4 @@
-.track-show-container {
+.track-show-header-container {
   position: relative;
   width: 100%;
   height: 380px;
@@ -115,18 +115,3 @@
   padding: 4px 7px;
   background-color: rgba(0,0,0,.8);
 }
-
-.track-show-btns {
-  display: flex;
-}
-
-.track-show-edit-btn {
-  width: 32px;
-  box-sizing: content-box;
-}
-
-// .test {
-//   content: "";
-//   background-image: url(https://a-v2.sndcdn.com/assets/images/edit-2fe52d66.svg);
-//   background-size: 20px 20px;
-// }

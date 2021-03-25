@@ -1,0 +1,42 @@
+.track-show-body-container {
+  display: block;
+}
+
+.track-show-body-wrapper {
+  position: relative;
+  margin: 0 30px;
+}
+
+.track-show-body-left-wrapper {
+  display: block;
+  margin-right: 330px;
+  padding-top: 20px;
+}
+
+.track-show-body-left-content {
+  padding-right: 30px;
+  border-right: 1px solid #f2f2f2;
+}
+
+.track-body-left-header {
+  display: block;
+  height: 90px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.track-show-btns {
+  display: flex;
+  height: 35px;
+}
+
+.track-show-edit-btn {
+  width: 32px;
+  box-sizing: content-box;
+}
+
+// .test {
+//   content: "";
+//   background-image: url(https://a-v2.sndcdn.com/assets/images/edit-2fe52d66.svg);
+//   background-size: 20px 20px;
+// }
