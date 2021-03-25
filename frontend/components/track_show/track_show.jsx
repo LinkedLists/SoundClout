@@ -110,7 +110,7 @@ class TrackShow extends React.Component {
             <div className="track-show-play-content">
               <a onClick={this.sendTrack} className="track-show-list-item-playbtn"/>
               <div className="track-show-list-item-info">
-                <div className="track-show-list-item-uploader">{this.props.track.uploader_id}</div>
+                <div className="track-show-list-item-uploader">{this.props.track.username}</div>
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
               </div>
             </div>

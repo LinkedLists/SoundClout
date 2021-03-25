@@ -11,7 +11,7 @@ User.destroy_all
 Track.destroy_all
 
 
-demo = User.create!(username: "Demo", password: "secretpasswordlol")
+demo = User.create!(username: "Demo User", password: "secretpasswordlol")
 # user1.save!
 # track1 = Track.create!(title: "hello", uploader_id: demo.id, description: "hhahaha", genre: "duh")
 track1 = Track.new(title: "Saucy", uploader_id: demo.id, description: "hhahaha", genre: "Rock")
