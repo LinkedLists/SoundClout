@@ -14,10 +14,15 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    let profileContainer = document.getElementsByClassName("comment-form-profile-img")[0];
+    profileContainer.style.backgroundImage = `url(${this.props.track.photoUrl})`
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-
     this.props.createComment(this.state)
+    this.setState( {body: ''} )
   }
 
   handleChange(field) {
@@ -30,6 +35,7 @@ class CommentForm extends React.Component {
     return (
       <div className="comment-form-container">
         <div className="comment-form-wrapper">
+          <span className="comment-form-profile-img" />
           <form onSubmit={this.handleSubmit}>
             <div className="comment-form-input-wrapper">
               <input onChange={this.handleChange("body")} placeholder="Write a comment"/>

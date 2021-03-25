@@ -40,3 +40,26 @@
 //   background-image: url(https://a-v2.sndcdn.com/assets/images/edit-2fe52d66.svg);
 //   background-size: 20px 20px;
 // }
+
+.track-body-main-content {
+  position: relative;
+}
+
+.track-show-uploader-container {
+  width: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.track-show-uploader-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.comment-show-container {
+  margin-left: 150px;
+}
+
+

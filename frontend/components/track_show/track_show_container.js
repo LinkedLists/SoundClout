@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     track: state.entities.tracks[ownProps.match.params.trackId],
     currentTrack: state.ui.playbar.currentTrack,
     playbar: state.ui.playbar,
+    currentUserId: state.session.id,
   }
 }
 
