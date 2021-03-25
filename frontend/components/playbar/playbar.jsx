@@ -6,12 +6,17 @@ class Playbar extends React.Component {
 
     this.state= {
       muted: false,
-      repeat: false
+      repeat: false,
+      currentTime: 0,
+      duration: 0
     }
 
     this.handlePlay = this.handlePlay.bind(this);
     this.handleMute = this.handleMute.bind(this);
     this.handleRepeat = this.handleRepeat.bind(this);
+    this.setDuration = this.setDuration.bind(this);
+    this.timeIncrementer = this.timeIncrementer.bind(this);
+    this.timeIncrementerInstance
   }
 
   // componentDidMount() {
@@ -28,14 +33,33 @@ class Playbar extends React.Component {
     this.props.clearPlaybarState();
   }
 
+  componentDidUpdate() {
+    // console.log("i")
+  }
+
+  timeIncrementer() {
+    let audio = document.getElementById('audio')
+    return setInterval(() => {
+      this.setState( {currentTime: audio.currentTime} )
+    }, 100);
+  }
+
+  setDuration() {
+    let audio = document.getElementById('audio')
+    this.setState( {duration: audio.duration} )
+    this.timeIncrementerInstance = this.timeIncrementer()
+  }
+
   handlePlay() {
     let audio = document.getElementById('audio')
     if (!this.props.paused) {
       audio.pause()
+      clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
       this.props.playTrack();
       audio.play()
+      this.timeIncrementerInstance = this.timeIncrementer()
     }
   }
 
@@ -63,16 +87,24 @@ class Playbar extends React.Component {
 
   render() {
     if (this.props.currentSessionId === null) return <></>
-    
+    let audio = document.getElementById('audio')
     return (
       <div className="playbar-footer">
         <div className="playbar-footer-wrapper">
           <div className="media-container">
-            <audio id='audio' autoPlay src={this.props.currentTrack.audioUrl} />
+
+            <audio 
+              id='audio' 
+              autoPlay 
+              onLoadedMetadata={this.setDuration}
+              src={this.props.currentTrack.audioUrl} 
+            />
+
             <button onClick={this.handlePlay}>{this.props.paused ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
             <button onClick={this.handleMute}>{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
             <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
           </div>
+          <div>{audio ? this.state.currentTime + " " + this.state.duration : null}</div>
           <div className="current-track">
             { 
               // this ternary is not working
