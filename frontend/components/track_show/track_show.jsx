@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import EditTrackContainer from '../track_form/edit_track_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
+import CommentShow from '../comment_show/comment_show_container';
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -22,18 +23,18 @@ class TrackShow extends React.Component {
   }
 
   componentDidUpdate() {
-    const background = document.getElementsByClassName("track-show-container")[0];
+    const background = document.getElementsByClassName("track-show-header-container")[0];
     if (background) this.cuteColors(background)
   }
 
   componentWillUnmount() {
-    // this.props.removeComments();
+    this.props.removeComments();
   }
 
   deleteTrack(e) {
     e.preventDefault();
     this.props.deleteTrack(this.props.track.id).then(this.deleted = true);
-    // this.props.removeComments();
+    this.props.removeComments();
     return <Redirect to='/discover'/>
   }
 
@@ -104,7 +105,7 @@ class TrackShow extends React.Component {
         {/* {
           this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
         } */}
-        <div className="track-show-container">
+        <div className="track-show-header-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
@@ -117,12 +118,23 @@ class TrackShow extends React.Component {
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
         </div>
-        <div className="track-show-btns">
-          <button onClick={this.deleteTrack}>delete</button>
-          <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
+        <div className="track-show-body-container">
+          <div className="track-show-body-wrapper">
+            <div className="track-show-body-left-wrapper">
+              <div className="track-show-body-left-content">
+                <div className="track-body-left-header">
+                  <CommentFormContainer track={this.props.track} />
+                  <div className="track-show-btns">
+                    <button onClick={this.deleteTrack}>delete</button>
+                    <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
+                  </div>
+                </div>
 
+                <CommentShow track={this.props.track} />
+              </div>
+            </div>
+          </div>
         </div>
-        <CommentFormContainer track={this.props.track} />
       </div>
     )
   }
