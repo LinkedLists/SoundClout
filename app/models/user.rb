@@ -21,6 +21,8 @@ class User < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :Track
 
+  has_one_attached :profile_img
+
   # SPIRE 
 
   def self.find_by_credentials(username, password)

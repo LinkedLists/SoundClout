@@ -129,8 +129,13 @@ class TrackShow extends React.Component {
                     <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
                   </div>
                 </div>
-
-                <CommentShow track={this.props.track} />
+                <div className="track-body-main-content">
+                  <div className="track-show-uploader-container">
+                    <img src={this.props.track.photoUrl} className="track-show-uploader-img"/>
+                    <span>i am the auther lol</span>
+                  </div>
+                  <CommentShow track={this.props.track} />
+                </div>
               </div>
             </div>
           </div>

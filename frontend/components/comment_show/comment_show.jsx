@@ -14,9 +14,11 @@ class CommentShow extends React.Component {
       return <li key={comment.id}>{comment.body}</li>
     })
     return (
-      <ul>
-        {bodies}
-      </ul>
+      <div className="comment-show-container">
+        <ul>
+          {bodies}
+        </ul>
+      </div>
     )
   }
 }

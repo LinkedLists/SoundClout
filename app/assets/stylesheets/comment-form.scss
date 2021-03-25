@@ -1,13 +1,24 @@
 .comment-form-container {
-  box-sizing: border-box;
+  position: relative;
   height: 40px;
-  padding: 5px;
   background: #f2f2f2;
-  border: 1px solid #e5e5e5;
   margin-bottom: 10px;
 }
 
 .comment-form-wrapper {
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  padding: 5px;
+  height: 100%;
+}
+
+.comment-form-profile-img {
+  position: absolute;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  left: 0;
+  top: 0;
 }
 
 .comment-form-input-wrapper {
@@ -20,12 +31,21 @@
 .comment-form-input-wrapper input {
   box-sizing: border-box;
   width: 100%;
-  background: #fff;
+  background: #fafafa;
   padding: 0 9px;
   border-radius: 4px;
   height: 27px;
   font-size: 14px;
   outline: none;
-  cursor: pointer;
   border: 1px solid #e5e5e5;
+  transition: 0.3s
+}
+
+.comment-form-input-wrapper input:focus {
+  border-color: #ccc;
+  background: #fff;
+}
+
+.comment-form-container:focus {
+  background: #e5e5e5
 }
