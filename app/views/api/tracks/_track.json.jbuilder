@@ -1,4 +1,5 @@
 json.extract! track, :id, :title, :uploader_id, :genre, :description
+json.username track.uploader.username
 
 if track.photo_file.attached?
   json.photoUrl url_for(track.photo_file)
@@ -11,3 +12,4 @@ if track.audio_file.attached?
 else
   json.audioURL 'https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Marshmello+Halsey++Be+Kind+Halsey+Lyric+Video.mp3'
 end
+

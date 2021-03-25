@@ -5,6 +5,7 @@ import { RECEIVE_TRACK } from '../actions/track_actions'
 const CommentsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let nextState = Object.assign({}, oldState);
+  
   switch(action.type) {
     case RECEIVE_COMMENT:
       nextState[action.comment.comment.id] = action.comment.comment
