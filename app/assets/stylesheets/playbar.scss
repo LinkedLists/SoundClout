@@ -58,3 +58,16 @@
 .media-container button:hover {
   cursor: pointer;
 }
+
+.progress-background {
+  position: relative;
+  width: 40%;
+  height: 1px;
+  background: #ccc;
+}
+
+.progress-bar {
+  position: absolute;
+  height: 1px;
+  background: #f50;
+}
