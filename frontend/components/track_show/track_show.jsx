@@ -84,17 +84,30 @@ class TrackShow extends React.Component {
 
     if (this.props.track !== this.props.currentTrack) {
       this.props.playTrack(this.props.sendTrack(this.props.track))
+      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
+      audio.setAttribute("autoPlay", true)
+      audio.play()
     }
     else if (this.props.playbar.paused) {
       this.props.playTrack()
+      audio.setAttribute("autoPlay", true)
       audio.play();
       playbtn.classList.add("playing");
     } else {
       this.props.pauseTrack()
       audio.pause()
+      audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
     }
+
+    // window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
+    // setTimeout(() => {
+    //     this.props.fetchWeather(this.props.currentPark)
+    //         .then( window.localStorage.setItem('weather', this.props.weather))
+    //         .then( window.localStorage.setItem("currentPark", JSON.stringify(this.props.currentPark)) )
+    // }, 10);
+
   }
 
   render() {

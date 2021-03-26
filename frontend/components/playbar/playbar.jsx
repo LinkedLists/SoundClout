@@ -21,14 +21,22 @@ class Playbar extends React.Component {
     this.timeIncrementerInstance
   }
 
+  componentDidMount() {
+    let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    if (Object.keys(track).length > 0) {
+      this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
+    }
+  }
+
   // componentDidMount() {
   //   let audio = document.getElementById('audio')
   //   this.setState( {playing: audio.paused} )
   // }
 
   // componentDidUpdate() {
-  //   let audio = document.getElementById('audio')
-  //   this.setState( {playing: audio.paused} )
+    // debugger
+    // let audio = document.getElementById('audio')
+    // this.setState( {playing: audio.paused} )
   // }
 
   componentWillUnmount() {
@@ -50,9 +58,11 @@ class Playbar extends React.Component {
   timeIncrementer() {
     let audio = document.getElementById('audio')
     let progressBar = document.getElementsByClassName('progress-bar')[0];
+    // let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
     return setInterval(() => {
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
+      // progressBarSlider.style.width = `${percentPlayed}%`;
       this.setState({
         currentTime: this.prettifyTime(audio.currentTime),
         percentPlayed: percentPlayed
@@ -73,10 +83,12 @@ class Playbar extends React.Component {
     let audio = document.getElementById('audio')
     if (!this.props.paused) {
       audio.pause()
+      audio.removeAttribute("autoPlay")
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
       this.props.playTrack();
+      audio.setAttribute("autoPlay", true)
       audio.play()
       this.timeIncrementerInstance = this.timeIncrementer()
     }
@@ -104,18 +116,25 @@ class Playbar extends React.Component {
     }
   }
 
+  revealSlider() {
+    document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "1"
+  }
+
+  hideSlider() {
+    document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "0"
+  }
+
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = document.getElementById('audio')
     
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
-        {/* <div className="playbar-footer"> */}
           <div className="playbar-footer-wrapper">
             <div className="media-container">
               <audio 
                 id='audio' 
-                autoPlay 
+                // autoPlay 
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
@@ -127,20 +146,22 @@ class Playbar extends React.Component {
             </div>
             <div className="progress-bar-container">
               <div className="progress-current-time">{this.state.currentTime}</div>
-              <div className="progress-background">
-                <div className="progress-bar"/>
+              <div className="progress-timeline-wrapper" onMouseEnter={this.revealSlider} onMouseLeave={this.hideSlider}>
+                <div className="progress-background">
+                  <div className="progress-bar"> <div className="progress-bar-slider"/></div>
+                </div>
               </div>
               <div className="progress-duration">{this.state.duration}</div>
             </div>
 
 
-            <div className="test-wrapper">
+            <div className="volume-control-container">
               <button onClick={this.handleMute} id="volume-btn">{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
               <div className="thumb" onClick={this.handleMute}>
                 <div className="volume-control-wrapper">
                   <div className="slider-container" />
-                  <div className="slider-background"></div>
-                  <div className="slider-ball" />
+                  <div className="slider-background" />
+                  <div className="volume-slider-ball" />
                 </div>
               </div>
             </div>
@@ -165,7 +186,6 @@ class Playbar extends React.Component {
               </div>
             </div>
           </div>
-        {/* </div> */}
       </div>
     )
   }
