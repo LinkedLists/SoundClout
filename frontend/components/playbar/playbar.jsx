@@ -119,8 +119,10 @@ class Playbar extends React.Component {
               src={this.props.currentTrack.audioUrl} 
             />
 
+            <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
             <button onClick={this.handlePlay}>{this.props.paused || audio.ended ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
-            <button onClick={this.handleMute}>{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
+            <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-forward" color="red"/> </button>
+            <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button>
             <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
           </div>
           <div className="progress-bar-container">
@@ -130,6 +132,19 @@ class Playbar extends React.Component {
             </div>
             <div className="progress-duration">{this.state.duration}</div>
           </div>
+
+
+          <div className="test-wrapper">
+            <button onClick={this.handleMute} id="volume-btn">{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
+            <div className="thumb" onClick={this.handleMute}>
+              <div className="volume-control-wrapper">
+                <div className="slider-background"></div>
+              </div>
+            </div>
+          </div>
+
+
+
           <div className="current-track-info-container">
             <div className="current-track">
               { 
