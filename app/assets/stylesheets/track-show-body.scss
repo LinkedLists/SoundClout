@@ -99,5 +99,19 @@
 
 .comment-items {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   padding: 10px 10px 10px 0;
+}
+
+.trash {
+  cursor: pointer;
+}
+
+.wtf {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
