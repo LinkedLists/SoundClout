@@ -138,6 +138,7 @@ class Playbar extends React.Component {
             <button onClick={this.handleMute} id="volume-btn">{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
             <div className="thumb" onClick={this.handleMute}>
               <div className="volume-control-wrapper">
+                <div className="slider-container" />
                 <div className="slider-background"></div>
               </div>
             </div>
