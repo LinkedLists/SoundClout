@@ -11,8 +11,8 @@ const CommentsReducer = (oldState = {}, action) => {
       nextState[action.comment.comment.id] = action.comment.comment
       return nextState
     case REMOVE_COMMENT:
-      delete newState[action.commentId]
-      return newState
+      delete nextState[action.commentId]
+      return nextState
     case RECEIVE_TRACK:
       return Object.assign({}, action.track.comments);
     case REMOVE_COMMENTS:

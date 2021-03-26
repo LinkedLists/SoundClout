@@ -1,10 +1,12 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CommentIndexItem from './comment_index_item'
 
 class CommentShow extends React.Component {
   constructor(props) {
     super(props);
 
+    // this.handleDelete = this.handleDelete.bind(this)
   }
 
 
@@ -12,7 +14,8 @@ class CommentShow extends React.Component {
     let comments = Object.values(this.props.comments)
     let bodies
     bodies = comments.map( comment => {
-      return <li key={comment.id} className="comment-items">{comment.body}</li>
+      return <CommentIndexItem key={comment.id} photoUrl={comment.profileUrl} deleteComment={this.props.deleteComment} comment={comment}/>
+        
     })
     return (
       <div className="comment-show-container">
