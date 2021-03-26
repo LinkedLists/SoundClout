@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +39,7 @@ class CommentForm extends React.Component {
           <span className="comment-form-profile-img" />
           <form onSubmit={this.handleSubmit}>
             <div className="comment-form-input-wrapper">
-              <input onChange={this.handleChange("body")} placeholder="Write a comment"/>
+              <input onChange={this.handleChange("body")} placeholder="Write a comment" value={this.state.body}/>
             </div>
           </form>
         </div>

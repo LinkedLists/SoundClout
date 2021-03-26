@@ -19,6 +19,7 @@ class Playbar extends React.Component {
     this.timeIncrementer = this.timeIncrementer.bind(this);
     this.prettifyTime = this.prettifyTime.bind(this);
     this.timeIncrementerInstance
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +48,12 @@ class Playbar extends React.Component {
     // console.log("i")
   }
 
+  handleChange(e) {
+    let audio = this.props.audio
+    audio.currentTime = e.target.value
+    this.setState( {percentPlayed: e.target.value} )
+  }
+
   prettifyTime(time) {
     let minutes = Math.floor(time / 60);
     let seconds = Math.floor(time - (minutes * 60));
@@ -56,7 +63,7 @@ class Playbar extends React.Component {
   }
 
   timeIncrementer() {
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
     // let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
     return setInterval(() => {
@@ -71,7 +78,7 @@ class Playbar extends React.Component {
   }
 
   setDuration() {
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     this.setState({
       duration: this.prettifyTime(audio.duration),
       percentPlayed: 0
@@ -80,7 +87,7 @@ class Playbar extends React.Component {
   }
 
   handlePlay() {
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     if (!this.props.paused) {
       audio.pause()
       audio.removeAttribute("autoPlay")
@@ -95,7 +102,7 @@ class Playbar extends React.Component {
   }
 
   handleMute() {
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     if (this.state.muted) {
       audio.muted = false;
       this.setState( {muted: false} )
@@ -106,7 +113,7 @@ class Playbar extends React.Component {
   }
 
   handleRepeat() {
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     if (this.state.repeat) {
       audio.removeAttribute("loop")
       this.setState( {repeat: false} )
@@ -126,7 +133,7 @@ class Playbar extends React.Component {
 
   render() {
     if (this.props.currentSessionId === null) return <></>
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
@@ -148,6 +155,7 @@ class Playbar extends React.Component {
               <div className="progress-current-time">{this.state.currentTime}</div>
               <div className="progress-timeline-wrapper" onMouseEnter={this.revealSlider} onMouseLeave={this.hideSlider}>
                 <div className="progress-background">
+                  {/* <input type="range" className="progress-bar2" min={0} max={100} step="1" value={this.state.percentPlayed} onChange={this.handleChange} /> */}
                   <div className="progress-bar"> <div className="progress-bar-slider"/></div>
                 </div>
               </div>
