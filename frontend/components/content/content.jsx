@@ -7,7 +7,7 @@ class Content extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTracks();
+    this.props.fetchTracks()
   }
 
   render() {

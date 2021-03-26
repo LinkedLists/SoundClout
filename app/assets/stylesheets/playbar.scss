@@ -11,19 +11,6 @@
   transition: 0.3s;
 }
 
-.playbar-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 48px;
-  background: #f2f2f2;
-  border-top: 1px solid #cecece;
-  text-align: center;
-  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-  font-size: 11px;
-  transition: 0.3s;
-}
-
 .playbar-footer-close {
   position: fixed;
   bottom: -50px;
@@ -32,7 +19,6 @@
   background: #f2f2f2;
   // transition: 0.3s;
 }
-
 
 .playbar-footer-wrapper {
   width: 1220px;
@@ -130,6 +116,17 @@
   background: #f50;
 }
 
+.progress-bar2 {
+  display: block;
+  // justify-content: flex-end;
+  position: absolute;
+  height: 1px;
+  background: #f50;
+  color: #f50;
+  width: 100%;
+  z-index: 1000;
+}
+
 .progress-bar-slider{
   position: absolute;
   border: 1px solid #f50;
@@ -194,6 +191,7 @@
   bottom: 0;
   width: 100%;
   height: 50px;
+  display: 0;
   // background-color: #f2f2f2;
   // left: -4px;
   // top: 30px;
@@ -213,7 +211,7 @@
 }
 
 .slider-container {
-  background-color: green;
+  background-color: rgb(230, 230, 230);
   height: 120px;
 }
 
@@ -225,7 +223,8 @@
   transform: translateX(-50%);
   top: 120px;
   // box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
-  border-top: 7px solid #ffffff;
+
+  border-top: 7px solid rgb(189, 189, 189);
   border-bottom: 0;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
@@ -237,7 +236,7 @@
 }
 
 .volume-control-wrapper:hover:before {
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
 }
 
 .slider-background {

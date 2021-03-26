@@ -8,6 +8,7 @@ import { playTrack, pauseTrack, receiveNewTrack, clearPlaybarState } from '../..
 // playbar will be in the ui so perhaps you can grab info about the track being played
 const mapStateToProps = (state) => {
   return {
+    audio: document.getElementById('audio'),
     currentTrack: state.ui.playbar.currentTrack,
     paused: state.ui.playbar.paused,
     currentSessionId: state.session.id,
