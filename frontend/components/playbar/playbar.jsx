@@ -107,65 +107,65 @@ class Playbar extends React.Component {
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = document.getElementById('audio')
+    
     return (
-      <div className="playbar-footer">
-        <div className="playbar-footer-wrapper">
-          <div className="media-container">
-
-            <audio 
-              id='audio' 
-              autoPlay 
-              onLoadedMetadata={this.setDuration}
-              src={this.props.currentTrack.audioUrl} 
-            />
-
-            <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
-            <button onClick={this.handlePlay}>{this.props.paused || audio.ended ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
-            <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-forward" color="red"/> </button>
-            <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button>
-            <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
-          </div>
-          <div className="progress-bar-container">
-            <div className="progress-current-time">{this.state.currentTime}</div>
-            <div className="progress-background">
-              <div className="progress-bar"/>
+      <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
+        {/* <div className="playbar-footer"> */}
+          <div className="playbar-footer-wrapper">
+            <div className="media-container">
+              <audio 
+                id='audio' 
+                autoPlay 
+                onLoadedMetadata={this.setDuration}
+                src={this.props.currentTrack.audioUrl} 
+              />
+              <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
+              <button onClick={this.handlePlay}>{this.props.paused || audio.ended ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
+              <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-forward" color="red"/> </button>
+              <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button>
+              <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
             </div>
-            <div className="progress-duration">{this.state.duration}</div>
-          </div>
+            <div className="progress-bar-container">
+              <div className="progress-current-time">{this.state.currentTime}</div>
+              <div className="progress-background">
+                <div className="progress-bar"/>
+              </div>
+              <div className="progress-duration">{this.state.duration}</div>
+            </div>
 
 
-          <div className="test-wrapper">
-            <button onClick={this.handleMute} id="volume-btn">{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
-            <div className="thumb" onClick={this.handleMute}>
-              <div className="volume-control-wrapper">
-                <div className="slider-container" />
-                <div className="slider-background"></div>
+            <div className="test-wrapper">
+              <button onClick={this.handleMute} id="volume-btn">{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
+              <div className="thumb" onClick={this.handleMute}>
+                <div className="volume-control-wrapper">
+                  <div className="slider-container" />
+                  <div className="slider-background"></div>
+                  <div className="slider-ball" />
+                </div>
               </div>
             </div>
-          </div>
 
-
-
-          <div className="current-track-info-container">
-            <div className="current-track">
-              { 
-                // this ternary is not working
-                this.props.currentTrack !== undefined ? 
-                <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
-              }
-              <div className="current-track-description">
-                <div className="description-wrapper" > 
-                  <div>
-                    user {this.props.currentTrack.uploader_id}
-                  </div>
-                  <div className="current-track-title">
-                    {this.props.currentTrack.title}
+            <div className="current-track-info-container">
+              <div className="current-track">
+                { 
+                  // this ternary is not working
+                  this.props.currentTrack !== undefined ? 
+                  <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
+                }
+                <div className="current-track-description">
+                  <div className="description-wrapper" > 
+                    <div>
+                      {this.props.currentUser.username}
+                    </div>
+                    <div className="current-track-title">
+                      {this.props.currentTrack.title}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </div>
     )
   }
