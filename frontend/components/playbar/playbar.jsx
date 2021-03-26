@@ -57,7 +57,7 @@ class Playbar extends React.Component {
         currentTime: this.prettifyTime(audio.currentTime),
         percentPlayed: percentPlayed
       })
-    }, 100)
+    }, 40)
   }
 
   setDuration() {
@@ -106,6 +106,7 @@ class Playbar extends React.Component {
 
   render() {
     if (this.props.currentSessionId === null) return <></>
+    let audio = document.getElementById('audio')
     return (
       <div className="playbar-footer">
         <div className="playbar-footer-wrapper">
@@ -118,30 +119,32 @@ class Playbar extends React.Component {
               src={this.props.currentTrack.audioUrl} 
             />
 
-            <button onClick={this.handlePlay}>{this.props.paused ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
+            <button onClick={this.handlePlay}>{this.props.paused || audio.ended ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
             <button onClick={this.handleMute}>{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
             <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
           </div>
-
-          <div>{this.state.currentTime}</div>
-          <div className="progress-background">
-            <div className="progress-bar"></div>
+          <div className="progress-bar-container">
+            <div className="progress-current-time">{this.state.currentTime}</div>
+            <div className="progress-background">
+              <div className="progress-bar"/>
+            </div>
+            <div className="progress-duration">{this.state.duration}</div>
           </div>
-          <div>{this.state.duration}</div>
-          
-          <div className="current-track">
-            { 
-              // this ternary is not working
-              this.props.currentTrack !== undefined ? 
-              <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
-            }
-            <div className="current-track-description">
-              <div className="description-wrapper" > 
-                <div>
-                  user {this.props.currentTrack.uploader_id}
-                </div>
-                <div className="current-track-title">
-                  {this.props.currentTrack.title}
+          <div className="current-track-info-container">
+            <div className="current-track">
+              { 
+                // this ternary is not working
+                this.props.currentTrack !== undefined ? 
+                <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
+              }
+              <div className="current-track-description">
+                <div className="description-wrapper" > 
+                  <div>
+                    user {this.props.currentTrack.uploader_id}
+                  </div>
+                  <div className="current-track-title">
+                    {this.props.currentTrack.title}
+                  </div>
                 </div>
               </div>
             </div>

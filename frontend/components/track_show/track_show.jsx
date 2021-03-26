@@ -80,17 +80,19 @@ class TrackShow extends React.Component {
 
   sendTrack() {
     let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+    let audio = document.getElementById('audio')
+
     if (this.props.track !== this.props.currentTrack) {
       this.props.playTrack(this.props.sendTrack(this.props.track))
       playbtn.classList.add("playing");
     }
     else if (this.props.playbar.paused) {
       this.props.playTrack()
-      document.getElementById('audio').play();
+      audio.play();
       playbtn.classList.add("playing");
     } else {
       this.props.pauseTrack()
-      document.getElementById('audio').pause()
+      audio.pause()
       playbtn.classList.remove("playing");
     }
   }
@@ -98,6 +100,7 @@ class TrackShow extends React.Component {
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
+    let audio = document.getElementById('audio')
 
     return (
       <div className="content-container">
@@ -109,7 +112,12 @@ class TrackShow extends React.Component {
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
-              <a onClick={this.sendTrack} className="track-show-list-item-playbtn"/>
+              <a 
+                onClick={this.sendTrack} 
+                // not working
+                className="track-show-list-item-playbtn"
+                // className={ audio.ended  ? "track-show-list-item-playbtn" : "track-show-list-item-playbtn playing" }
+                />
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">{this.props.track.username}</div>
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
