@@ -16,9 +16,6 @@ class TrackShow extends React.Component {
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showEdit = this.showEdit.bind(this)
     this.closeEdit = this.closeEdit.bind(this)
-
-    this.addListeners = this.addListeners.bind(this)
-
   }
 
   componentDidMount() {
@@ -94,10 +91,6 @@ class TrackShow extends React.Component {
       audio.setAttribute("autoPlay", true)
       audio.play()
     }
-    // else if (audio.ended) {
-    //   this.props.pauseTrack()
-    //   playbtn.classList.remove("playing");
-    // }
     else if (this.props.playbar.paused) {
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
@@ -109,23 +102,6 @@ class TrackShow extends React.Component {
       audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
     }
-
-    // window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
-    // setTimeout(() => {
-    //     this.props.fetchWeather(this.props.currentPark)
-    //         .then( window.localStorage.setItem('weather', this.props.weather))
-    //         .then( window.localStorage.setItem("currentPark", JSON.stringify(this.props.currentPark)) )
-    // }, 10);
-
-  }
-
-  addListeners() {
-    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-    // let audio = document.getElementById('audio')
-    document.addEventListener("ended", () => {
-      this.props.pauseTrack()
-      playbtn.classList.remove("playing");
-    })
   }
 
   render() {
@@ -138,16 +114,13 @@ class TrackShow extends React.Component {
         {/* {
           this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
         } */}
-        {this.addListeners()}
         <div className="track-show-header-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
               <a 
                 onClick={this.sendTrack} 
-                // not working
                 className="track-show-list-item-playbtn"
-                // className={ audio.ended  ? "track-show-list-item-playbtn" : "track-show-list-item-playbtn playing" }
                 />
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">{this.props.track.username}</div>
@@ -157,6 +130,7 @@ class TrackShow extends React.Component {
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
         </div> 
+
         <div className="track-show-body-container">
           <div className="track-show-body-wrapper">
             <div className="track-show-body-left-wrapper">
@@ -171,11 +145,12 @@ class TrackShow extends React.Component {
                       </div> : null
                   }
                 </div>
+
                 <div className="track-body-main-content">
                   <div className="track-show-uploader-container">
                     <img src={this.props.track.photoUrl} className="track-show-uploader-img"/>
                     <div className="track-show-uploader-details">
-                      <div className="track-show-uploader-name">i am the auther lol</div>
+                      <div className="track-show-uploader-name">{this.props.track.username}</div>
                     </div>
                   </div>
                   <CommentShow track={this.props.track} />

@@ -98,20 +98,41 @@ class Playbar extends React.Component {
     let percentPlayed
     let x
 
+    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+    audio.addEventListener("ended", () => {
+      this.props.pauseTrack()
+      playbtn.classList.remove("playing");
+    })
+
     playbar.addEventListener("click", (e) => {
-      x = e.offsetX;
+      x = e.offsetX + 4;
       percentPlayed = (x / width)
       currentTime = this.props.audio.duration * percentPlayed
 
-      console.log("X Position: " + x);
-      console.log("percent played " + percentPlayed * 100)
       this.setState({
         currentTime: this.prettifyTime(currentTime),
         percentPlayed: percentPlayed * 100
       })
       audio.currentTime = currentTime
-      console.log(this.state.currentTime)
     })
+
+    // slider.addEventListener("drag", (e) => {
+    //   x = e.offsetX;
+      
+    //   percentPlayed = ( (x + 8) / width)
+    //   currentTime = this.props.audio.duration * percentPlayed
+
+    //   console.log("X Position: " + x);
+    //   console.log("percent played " + percentPlayed * 100)
+    //   this.setState({
+    //     currentTime: this.prettifyTime(currentTime),
+    //     percentPlayed: percentPlayed * 100
+    //   })
+    //   audio.currentTime = currentTime
+    //   console.log(this.state.currentTime)
+
+    //   progressBar.style.width = `${percentPlayed * 100}%`
+    // })
   }
 
 
@@ -206,8 +227,7 @@ class Playbar extends React.Component {
             <div className="current-track-info-container">
               <div className="current-track">
                 { 
-                  // this ternary is not working
-                  this.props.currentTrack !== undefined ? 
+                  Object.keys(this.props.currentTrack).length > 0 ? 
                   <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
                 }
                 <div className="current-track-description">

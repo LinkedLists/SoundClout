@@ -72,6 +72,7 @@
   margin: 5px 0px;
   font-size: 14px;
   color: #333;
+  text-align: center;
 }
 
 .comment-show-container {
@@ -97,12 +98,20 @@
   font-size: 14px;
 }
 
+.comment-items-ul {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .comment-items {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 10px 10px 10px 0;
+  padding: 10px 10px 10px 10px;
+  margin-left: -10px;
+  opacity: 1;
+  transition: opacity .15s;
 }
 
 .comment-item-content {
