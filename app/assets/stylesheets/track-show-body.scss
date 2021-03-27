@@ -105,6 +105,25 @@
   padding: 10px 10px 10px 0;
 }
 
+.comment-item-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.comment-item-username {
+  display: inline;
+  font-size: 12px;
+  color: #999
+}
+
+.comment-item-body {
+  font-size: 12px;
+  color: #333;
+  word-break: break-all;
+}
+
+
 .trash {
   cursor: pointer;
 }

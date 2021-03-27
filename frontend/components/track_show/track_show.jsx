@@ -16,10 +16,14 @@ class TrackShow extends React.Component {
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showEdit = this.showEdit.bind(this)
     this.closeEdit = this.closeEdit.bind(this)
+
+    this.addListeners = this.addListeners.bind(this)
+
   }
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
+
   }
 
   componentDidUpdate() {
@@ -50,6 +54,7 @@ class TrackShow extends React.Component {
   }
 
   closeEdit() {
+    
     this.setState( {showEdit: false} )
   }
 
@@ -89,12 +94,16 @@ class TrackShow extends React.Component {
       audio.setAttribute("autoPlay", true)
       audio.play()
     }
+    // else if (audio.ended) {
+    //   this.props.pauseTrack()
+    //   playbtn.classList.remove("playing");
+    // }
     else if (this.props.playbar.paused) {
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
       audio.play();
       playbtn.classList.add("playing");
-    } else {
+    } else if (!this.props.playbar.paused) {
       this.props.pauseTrack()
       audio.pause()
       audio.removeAttribute("autoPlay")
@@ -110,17 +119,26 @@ class TrackShow extends React.Component {
 
   }
 
+  addListeners() {
+    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+    // let audio = document.getElementById('audio')
+    document.addEventListener("ended", () => {
+      this.props.pauseTrack()
+      playbtn.classList.remove("playing");
+    })
+  }
+
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
     let audio = document.getElementById('audio')
-
     return (
       <div className="content-container">
         <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} />
         {/* {
           this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
         } */}
+        {this.addListeners()}
         <div className="track-show-header-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
