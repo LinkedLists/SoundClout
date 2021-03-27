@@ -7,7 +7,6 @@ class CommentIndexItem extends React.Component {
     super(props);
 
     this.getDateMeta = this.getDateMeta.bind(this)
-    // this.test=this.test.bind(this)
   }
 
   // ActiveRecord timestamps are UTC by default
@@ -73,6 +72,15 @@ class CommentIndexItem extends React.Component {
     }
   }
 
+  colorOwner() {
+    if (this.props.comment.uploader_id === this.props.currentUserId) {
+      document.getElementsByClassName("comment-items")[0].style.background = "#f2f2f2"
+      return <span>You</span>
+    } else {
+      return <span>{this.props.comment.username}</span>
+    }
+  }
+
   render() {
     return (
       <li className="comment-items">
@@ -80,6 +88,11 @@ class CommentIndexItem extends React.Component {
         <div className="comment-item-content">
           <div className="comment-item-username">
             {this.props.comment.username}
+            {/* {
+              this.props.comment.uploader_id === this.props.currentUserId?
+                this.colorOwner() : this.props.comment.username
+            } */}
+            {/* {this.colorOwner()} */}
           </div>
           <div className="comment-item-body">
             {this.props.comment.body}

@@ -6,9 +6,14 @@ class CommentShow extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.handleDelete = this.handleDelete.bind(this)
   }
 
+  // for the future - add opacity transition when creating a new comment
+  // componentDidUpdate() {
+  //   let recentComment = document.getElementsByClassName("comment-items")
+  //   recentComment = recentComment[recentComment.length - 1]
+  //   recentComment.style.opacity = "1"
+  // }
 
   render() {
     let comments = Object.values(this.props.comments)
@@ -29,7 +34,7 @@ class CommentShow extends React.Component {
           <FontAwesomeIcon icon="comment-alt" color="#999" id="comment-icon"/>
           <span id="test">{Object.keys(this.props.comments).length + " comments"}</span>
         </div>
-        <ul>
+        <ul className="comment-items-ul">
           {bodies}
         </ul>
       </div>

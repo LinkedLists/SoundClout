@@ -136,10 +136,6 @@ class UploadForm extends React.Component {
     const preview = this.state.photo_preview ? 
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
-    // const errors = {}
-    // this.props.errors.forEach( (error) => {
-    //     errors[error.split(" ")[0]] = error
-    // })
     return (
       <div className="content-container">
         <div className="upload-wrapper">
