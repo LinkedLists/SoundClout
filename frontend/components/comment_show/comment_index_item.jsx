@@ -87,13 +87,16 @@ class CommentIndexItem extends React.Component {
         </div>
         <div className="comment-item-meta">
           {this.getDateMeta(this.props.comment.created_at)}
-          <FontAwesomeIcon 
-            icon="trash" 
-            color="#999" 
-            className="trash" 
-            id="comment-icon" 
-            onClick={() => this.props.deleteComment(this.props.comment.id)}
-            />
+          {
+            this.props.currentUserId === this.props.comment.uploader_id ?
+              <FontAwesomeIcon 
+                icon="trash" 
+                color="#999" 
+                className="trash" 
+                id="comment-icon" 
+                onClick={() => this.props.deleteComment(this.props.comment.id)}
+                /> : null
+          }
         </div>
       </li>
     )

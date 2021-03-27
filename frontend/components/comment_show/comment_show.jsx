@@ -14,7 +14,13 @@ class CommentShow extends React.Component {
     let comments = Object.values(this.props.comments)
     let bodies
     bodies = comments.map( comment => {
-      return <CommentIndexItem key={comment.id} photoUrl={comment.profileUrl} deleteComment={this.props.deleteComment} comment={comment}/>
+      return <CommentIndexItem 
+          key={comment.id} 
+          photoUrl={comment.profileUrl} 
+          deleteComment={this.props.deleteComment} 
+          comment={comment}
+          currentUserId={this.props.currentUserId}
+          />
         
     })
     return (
