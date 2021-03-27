@@ -6,63 +6,70 @@ class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.dateMeta = this.dateMeta.bind(this)
+    this.getDateMeta = this.getDateMeta.bind(this)
+    // this.test=this.test.bind(this)
   }
 
   // ActiveRecord timestamps are UTC by default
   // comment.created_at format 2021-03-26T22:10:40.062Z
-  dateMeta() {
+  getDateMeta(time) {
+    if (this.props.comment.created_at) {
     const now = new Date();
-    let years = now.getUTCFullYear() - this.props.comment.created_at.slice(0, 4);
-    let months = now.getUTCMonth() + 1 - this.props.comment.created_at.slice(5, 7);
-    let days = now.getUTCDate() - this.props.comment.created_at.slice(8, 10);
-    let hours = now.getUTCHours() - this.props.comment.created_at.slice(11, 13);
-    let minutes = now.getUTCMinutes() - this.props.comment.created_at.slice(14, 16);
-    let seconds = now.getUTCSeconds() - this.props.comment.created_at.slice(17, 19);
+    let years = now.getUTCFullYear() - time.slice(0, 4);
+    let months = now.getUTCMonth() + 1 - time.slice(5, 7);
+    let days = now.getUTCDate() - time.slice(8, 10);
+    let hours = now.getUTCHours() - time.slice(11, 13);
+    let minutes = now.getUTCMinutes() - time.slice(14, 16);
+    let seconds = now.getUTCSeconds() - time.slice(17, 19);
 
     if (months > 0 && months % 12 < 1) {
       if (months === 1) {
-        return <span>1 month ago</span>
+        return <span className="comment-item-timestamp">1 month ago</span>
       } else {
-        return <span>{`${months} months ago`}</span>
+        return <span className="comment-item-timestamp">{`${months} months ago`}</span>
       }
     }
     else if (years > 0) {
       if (years === 1) {
-        return <span>1 year ago</span>
+        return <span className="comment-item-timestamp">1 year ago</span>
       } else {
-        return <span>{`${years} years ago`}</span>
+        return <span className="comment-item-timestamp">{`${years} years ago`}</span>
       }
     }
     else if (days > 0) {
       if (days === 1) {
-        return <span>1 day ago</span>
+        return <span className="comment-item-timestamp">1 day ago</span>
       } else {
-        return <span>{`${days} days ago`}</span>
+        return <span className="comment-item-timestamp">{`${days} days ago`}</span>
       }
     }
     else if (hours > 0) {
       if (hours === 1) {
-        return <span>1 hour ago</span>
+        return <span className="comment-item-timestamp">1 hour ago</span>
       } else {
-        return <span>{`${hours} hours ago`}</span>
+        return <span className="comment-item-timestamp">{`${hours} hours ago`}</span>
       }
     }
     else if (minutes > 0) {
       if (minutes === 1) {
-        return <span>1 minute ago</span>
+        return <span className="comment-item-timestamp">1 minute ago</span>
       } else {
-        return <span>{`${minutes} minutes ago`}</span>
+        return <span className="comment-item-timestamp">{`${minutes} minutes ago`}</span>
       }
     }
     else if (seconds > 0) {
       if (seconds === 1) {
-        return <span>1 second ago</span>
+        return <span className="comment-item-timestamp">1 second ago</span>
       } else {
-        return <span>{`${seconds} seconds ago`}</span>
+        return <span className="comment-item-timestamp">{`${seconds} seconds ago`}</span>
       }
     } else {
-      return <span>Right now</span>
+      return <span className="comment-item-timestamp">Right now</span>
+    }
+  }
+    
+    else {
+      return <span className="comment-item-timestamp">Right now</span>
     }
   }
 
@@ -77,18 +84,17 @@ class CommentIndexItem extends React.Component {
           <div className="comment-item-body">
             {this.props.comment.body}
           </div>
-          <div className="comment-item-meta">
-            {this.dateMeta()}
-          </div>
-
         </div>
-        <FontAwesomeIcon 
-          icon="trash" 
-          color="#999" 
-          className="trash" 
-          id="comment-icon" 
-          onClick={() => this.props.deleteComment(this.props.comment.id)}
-          />
+        <div className="comment-item-meta">
+          {this.getDateMeta(this.props.comment.created_at)}
+          <FontAwesomeIcon 
+            icon="trash" 
+            color="#999" 
+            className="trash" 
+            id="comment-icon" 
+            onClick={() => this.props.deleteComment(this.props.comment.id)}
+            />
+        </div>
       </li>
     )
   }
