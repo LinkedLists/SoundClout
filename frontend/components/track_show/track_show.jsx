@@ -156,17 +156,20 @@ class TrackShow extends React.Component {
             </div>
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
-        </div>
+        </div> 
         <div className="track-show-body-container">
           <div className="track-show-body-wrapper">
             <div className="track-show-body-left-wrapper">
               <div className="track-show-body-left-content">
                 <div className="track-body-left-header">
                   <CommentFormContainer track={this.props.track} />
-                  <div className="track-show-btns">
-                    <button onClick={this.deleteTrack}>delete</button>
-                    <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
-                  </div>
+                  {
+                    this.props.currentUserId === this.props.track.uploader_id ?
+                      <div className="track-show-btns">
+                        <button onClick={this.deleteTrack}>delete</button>
+                        <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
+                      </div> : null
+                  }
                 </div>
                 <div className="track-body-main-content">
                   <div className="track-show-uploader-container">
