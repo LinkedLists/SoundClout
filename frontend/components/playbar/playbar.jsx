@@ -20,11 +20,13 @@ class Playbar extends React.Component {
     this.prettifyTime = this.prettifyTime.bind(this);
     this.timeIncrementerInstance
     this.handleChange = this.handleChange.bind(this);
+
+    this.addBarListener = this.addBarListener.bind(this)
   }
 
   componentDidMount() {
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
-    if (Object.keys(track).length > 0) {
+    if (track && Object.keys(track).length > 0) {
       this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
   }
@@ -83,8 +85,35 @@ class Playbar extends React.Component {
       duration: this.prettifyTime(audio.duration),
       percentPlayed: 0
     })
+    this.addBarListener()
+    
     this.timeIncrementerInstance = this.timeIncrementer()
   }
+  
+  addBarListener() {
+    let playbar = document.getElementsByClassName("progress-timeline-wrapper")[0]
+    let width = playbar.getBoundingClientRect().width
+    let audio = this.props.audio
+    let currentTime
+    let percentPlayed
+    let x
+
+    playbar.addEventListener("click", (e) => {
+      x = e.offsetX;
+      percentPlayed = (x / width)
+      currentTime = this.props.audio.duration * percentPlayed
+
+      console.log("X Position: " + x);
+      console.log("percent played " + percentPlayed * 100)
+      this.setState({
+        currentTime: this.prettifyTime(currentTime),
+        percentPlayed: percentPlayed * 100
+      })
+      audio.currentTime = currentTime
+      console.log(this.state.currentTime)
+    })
+  }
+
 
   handlePlay() {
     let audio = this.props.audio
