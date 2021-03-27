@@ -8,11 +8,13 @@ class CommentForm extends React.Component {
     this.state = {
       track_id: this.props.track.id,
       uploader_id: this.props.currentUserId,
-      body: ''
+      body: '',
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleValidations = this.handleValidations.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +32,30 @@ class CommentForm extends React.Component {
     return e => {
       this.setState({[field]: e.target.value})
     }  
+  }
+
+  handleValidations() {
+    let body = this.state.body.length
+    let validForm = true;
+    let errors = {}
+
+    if (body === 0){
+      errors["Body"] = "body cannot be empty"
+      validForm = false;
+    } 
+    this.setState( {errors: errors} )
+    return validForm
+  }
+
+  handleLiveVaidation(length) {
+    let errors = Object.assign(this.state.errors)
+    
+    if (length === 0) {
+      errors["Body"] = "body cannot be empty"
+    } else {
+      delete errors["Body"]
+    } 
+    this.setState( {errors: errors} )
   }
 
   render() {
