@@ -67,8 +67,9 @@ class Playbar extends React.Component {
   timeIncrementer() {
     let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
-    // let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
+    let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
     return setInterval(() => {
+      // console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
       // progressBarSlider.style.width = `${percentPlayed}%`;
@@ -82,12 +83,13 @@ class Playbar extends React.Component {
   setDuration() {
     let audio = this.props.audio
     this.setState({
+      currentTime: '0:00',
       duration: this.prettifyTime(audio.duration),
       percentPlayed: 0
     })
     this.addBarListener()
     
-    this.timeIncrementerInstance = this.timeIncrementer()
+    // this.timeIncrementerInstance = this.timeIncrementer()
   }
   
   addBarListener() {
@@ -116,6 +118,18 @@ class Playbar extends React.Component {
       audio.currentTime = currentTime
     })
 
+    audio.addEventListener("play", () => {
+      this.timeIncrementerInstance = this.timeIncrementer()
+      console.log("play")
+    })
+
+    audio.addEventListener("pause", () => {
+      clearInterval(this.timeIncrementerInstance)
+      console.log("pause")
+    })
+
+
+
     // slider.addEventListener("drag", (e) => {
     //   x = e.offsetX;
       
@@ -141,13 +155,13 @@ class Playbar extends React.Component {
     if (!this.props.paused) {
       audio.pause()
       audio.removeAttribute("autoPlay")
-      clearInterval(this.timeIncrementerInstance)
+      // clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
       audio.play()
-      this.timeIncrementerInstance = this.timeIncrementer()
+      // this.timeIncrementerInstance = this.timeIncrementer()
     }
   }
 
