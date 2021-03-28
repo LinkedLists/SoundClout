@@ -14,7 +14,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 // Note that session containers will no longer be necessary due to use of a modal
 const App = () => (
   <div>
-    <Modal />
+    {/* <Modal /> */}
     <NavBarContainer />
     {/* Routing bugs: 
     1. rendering NotFound component does not clear entire page. If modal is open
