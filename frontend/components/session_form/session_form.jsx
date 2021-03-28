@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
 
           <div>
             {/* an x closing button is redundant */}
-            {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
+            <div onClick={this.props.closeModal} className="close-x">X</div>
             <input type='text' 
               className={Object.keys(errors).length ? "input-error" : "no-error"} 
               onChange={this.handleChange('username')} 
@@ -97,6 +97,13 @@ class SessionForm extends React.Component {
           </div>
 
           <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
+          <span className="session-form-footer">
+            {
+              this.props.formType === "Login" ? 
+                <p>Don't already have an account? {this.props.otherForm} instead</p>:
+                <p>Already have an account? {this.props.otherForm} instead</p>
+            }
+          </span>
         </form>
       //</div>
     )

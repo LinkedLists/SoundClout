@@ -50,8 +50,6 @@ class Modal extends React.Component {
         this.switchModalState()
         this.props.closeModal();
       }, 600)
-      // setTimeout(() => {
-      // }, 666)
     }
   }
 
@@ -66,10 +64,8 @@ class Modal extends React.Component {
   switchModalState() {
     if (this.state.open === "open") {
       this.setState({open: "close"})
-      // return "close"
     } else if(this.state.open === "close"){
       this.setState({open: "open"})
-      // return "open"
     }
   }
 
@@ -80,7 +76,7 @@ class Modal extends React.Component {
     }
     this.selectComponent();
     return(
-      <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
+      <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown}>
         <div className={`modal-child-${this.state.open}`} onClick={e => e.stopPropagation()}>
           { this.component }
         </div>

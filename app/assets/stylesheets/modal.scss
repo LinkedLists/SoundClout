@@ -35,7 +35,7 @@
 }
 
 @keyframes background-out {
-  0%{
+  40%{
     background: hsla(0,0%,94.9%,.7);
   }
   100%{
@@ -54,7 +54,6 @@
   height: auto;
   position: relative;
   margin: 0 auto;
-  // margin-top: 80px;
   top: 20%;
   padding: 25px;
   animation: animatetop;
@@ -70,7 +69,6 @@
   height: auto;
   position: relative;
   margin: 0 auto;
-  // margin-top: 80px;
   top: 20%;
   padding: 25px;
   animation: animatebottomwtf;
@@ -107,6 +105,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .modal-form input {
@@ -126,7 +125,7 @@
   border: 1px solid #111;
 }
 
-.modal-form button {
+.demo-user-login-button, .modal-form-submit-button {
   cursor: pointer;
   background: #f50;
   color: #fff;
@@ -139,11 +138,11 @@
   transition: 0.4s;
 }
 
-.modal-form button:focus {
+.modal-form > button:focus {
   outline: 0;
 }
 
-.modal-form button:hover {
+.modal-form > button:hover {
   opacity: 0.7;
 }
 
@@ -178,20 +177,21 @@
   padding: 2px;
 }
 
-// .close-x {
-//   cursor: pointer;
-//   position: absolute;
-//   top: 20px;
-//   right: 20px;
-
-//   -webkit-touch-callout: none; /* iOS Safari */
-//   -webkit-user-select: none; /* Safari */
-//   -khtml-user-select: none; /* Konqueror HTML */
-//   -moz-user-select: none; /* Old versions of Firefox */
-//   -ms-user-select: none; /* Internet Explorer/Edge  */
-//   user-select: none; /* Non-prefixed version, currently
-//                       supported by Chrome, Edge, Opera and Firefox */
-// }
+.close-x {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge  */
+  user-select: none; /* Non-prefixed version, currently
+                      supported by Chrome, Edge, Opera and Firefox */
+}
 
 .demo-user-login-button {
 }
@@ -217,6 +217,23 @@
 .auth-separator::after {
   background: linear-gradient(to right, #f50, #fff);
   margin-left: auto;
+}
+
+.session-form-footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.other-form {
+  color: #f50;
+  // font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
 }
 
 
