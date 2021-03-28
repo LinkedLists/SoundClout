@@ -7,9 +7,16 @@ import SignupFormContainer from '../session_form/signup_container';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      open: "close"
+    }
+
     this.component
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
+
+    this.switchModalState = this.switchModalState.bind(this)
   }
 
   selectComponent() {
@@ -28,13 +35,23 @@ class Modal extends React.Component {
 
   handleKeyPress(e) {
     if (e.key == "Escape") {
-      this.props.closeModal()
+      this.switchModalState()
+      setTimeout(() => {
+        this.switchModalState()
+        this.props.closeModal();
+      }, 600)
     }
   }
 
   handleMouseDown(e) {
-    if (e.target.className === "modal-background") {
-      this.props.closeModal();
+    if (e.target.className === "modal-background-close") {
+      this.switchModalState()
+      setTimeout(() => {
+        this.switchModalState()
+        this.props.closeModal();
+      }, 600)
+      // setTimeout(() => {
+      // }, 666)
     }
   }
 
@@ -46,6 +63,16 @@ class Modal extends React.Component {
     document.removeEventListener('keydown', this.handleKeyPress);
   }
 
+  switchModalState() {
+    if (this.state.open === "open") {
+      this.setState({open: "close"})
+      // return "close"
+    } else if(this.state.open === "close"){
+      this.setState({open: "open"})
+      // return "open"
+    }
+  }
+
   render() { 
     if (!this.props.modal) {
       this.component = null;
@@ -53,10 +80,10 @@ class Modal extends React.Component {
     }
     this.selectComponent();
     return(
-      <div className="modal-background" onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
-        {/* <div className="modal-child" onClick={e => e.stopPropagation()}> */}
+      <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
+        <div className={`modal-child-${this.state.open}`} onClick={e => e.stopPropagation()}>
           { this.component }
-        {/* </div> */}
+        </div>
       </div>
     )
   }

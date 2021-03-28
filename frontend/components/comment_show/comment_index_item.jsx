@@ -79,15 +79,20 @@ class CommentIndexItem extends React.Component {
   }
 
   handleHover(comment) {
-    console.log(comment.id)
     if (comment.uploader_id === this.props.currentUserId) {
+      let li = document.getElementById(`li-${comment.id}`)
       document.getElementById(`${comment.id}`).style.opacity = "1"
+      li.style.outline = "1px solid #e0e0e0"
+      li.style.zIndex = "10"
     }
   }
 
   handleLeave(comment) {
     if (comment.uploader_id === this.props.currentUserId) {
+      let li = document.getElementById(`li-${comment.id}`)
       document.getElementById(`${comment.id}`).style.opacity = "0"
+      li.style.outline = "none"
+      li.style.zIndex = "0"
     }
   }
 
@@ -96,7 +101,7 @@ class CommentIndexItem extends React.Component {
     return (
       <li 
         className={this.colorOwner()} 
-        
+        id={`li-${this.props.comment.id}`}
         onMouseEnter={() => this.handleHover(this.props.comment)} 
         onMouseLeave={() => this.handleLeave(this.props.comment)}>
         <img src={this.props.photoUrl} className="wtf" />
