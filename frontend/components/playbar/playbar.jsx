@@ -131,29 +131,27 @@ class Playbar extends React.Component {
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
       this.clearState()
-      // playbtn.classList.remove("playing");
     })
 
     audio.addEventListener("ended", () => {
-      // this.props.pauseTrack(() => {
-      //   let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-      //   playbtn.classList.remove("playing")
-      // })
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
-      document.getElementsByClassName("track-show-list-item-playbtn")[0].classList.remove("playing");
-      // playbtn.classList.remove("playing");
+      let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+      playbtn ? playbtn.classList.remove("playing") : null
     })
 
     audio.addEventListener("play", () => {
       this.timeIncrementerInstance = this.timeIncrementer()
-      console.log("play")
+      // console.log("play")
     })
 
     audio.addEventListener("pause", () => {
       clearInterval(this.timeIncrementerInstance)
-      console.log("pause")
+      // console.log("pause")
     })
+
+
+    // attempt at media scrubbing by dragging the play ball
 
     // slider.addEventListener("drag", (e) => {
     //   x = e.offsetX;
@@ -179,12 +177,12 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     if (!this.props.paused) {
       audio.pause()
-      audio.removeAttribute("autoPlay")
+      // audio.removeAttribute("autoPlay")
       // clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
       this.props.playTrack();
-      audio.setAttribute("autoPlay", true)
+      // audio.setAttribute("autoPlay", true)
       audio.play()
       // this.timeIncrementerInstance = this.timeIncrementer()
     }
@@ -230,7 +228,7 @@ class Playbar extends React.Component {
             <div className="media-container">
               <audio 
                 id='audio' 
-                // autoPlay 
+                autoPlay
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />

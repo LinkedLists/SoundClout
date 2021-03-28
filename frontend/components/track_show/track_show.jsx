@@ -83,25 +83,26 @@ class TrackShow extends React.Component {
     let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
     let audio = document.getElementById('audio')
 
-    if (this.props.track !== this.props.currentTrack) {
+    if (this.props.track.id !== this.props.currentTrack.id) {
       this.props.playTrack(this.props.sendTrack(this.props.track))
       // window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
-      audio.setAttribute("autoPlay", true)
+      // audio.setAttribute("autoPlay", true)
       // audio.play()
       setTimeout(() => {
         audio.paused? audio.play() : null
       }, 10)
     }
-    else if (this.props.playbar.paused) {
+    else if (audio.paused) {
+      console.log(audio.paused)
       this.props.playTrack()
-      audio.setAttribute("autoPlay", true)
+      // audio.setAttribute("autoPlay", true)
       audio.play();
       playbtn.classList.add("playing");
-    } else if (!this.props.playbar.paused) {
+    } else if (!audio.paused) {
       this.props.pauseTrack()
       audio.pause()
-      audio.removeAttribute("autoPlay")
+      // audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
     }
   }
@@ -109,6 +110,7 @@ class TrackShow extends React.Component {
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
+    let audio = document.getElementById('audio')
     return (
       <div className="content-container">
         <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} />
@@ -121,7 +123,11 @@ class TrackShow extends React.Component {
             <div className="track-show-play-content">
               <a 
                 onClick={this.sendTrack} 
-                className="track-show-list-item-playbtn"
+                className={
+                  !audio.paused && this.props.track.id === this.props.currentTrack.id ?
+                  "track-show-list-item-playbtn playing" :
+                  "track-show-list-item-playbtn"
+                }
                 />
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">{this.props.track.username}</div>

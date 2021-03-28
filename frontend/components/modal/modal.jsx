@@ -15,10 +15,10 @@ class Modal extends React.Component {
   selectComponent() {
     switch (this.props.modal) {
       case 'login':
-        this.component = <LoginFormContainer />;
+        this.component = <LoginFormContainer/>;
         break;
       case 'signup':
-        this.component = <SignupFormContainer />;
+        this.component = <SignupFormContainer/>;
         break;
       default:
         this.component = null;
@@ -65,6 +65,7 @@ class Modal extends React.Component {
 const mapStateToProps = (state) => {
   return {
     modal: state.ui.modal,
+    currentUserId: state.session.id
   }
 };
 
