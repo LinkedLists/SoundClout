@@ -51,7 +51,6 @@ class TrackShow extends React.Component {
   }
 
   closeEdit() {
-    
     this.setState( {showEdit: false} )
   }
 
@@ -89,7 +88,10 @@ class TrackShow extends React.Component {
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
-      audio.play()
+      // audio.play()
+      setTimeout(() => {
+        audio.paused? audio.play() : null
+      }, 10)
     }
     else if (this.props.playbar.paused) {
       this.props.playTrack()
