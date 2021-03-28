@@ -85,7 +85,7 @@ class TrackShow extends React.Component {
 
     if (this.props.track !== this.props.currentTrack) {
       this.props.playTrack(this.props.sendTrack(this.props.track))
-      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
+      // window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
       // audio.play()
@@ -109,7 +109,6 @@ class TrackShow extends React.Component {
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
-    let audio = document.getElementById('audio')
     return (
       <div className="content-container">
         <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} />

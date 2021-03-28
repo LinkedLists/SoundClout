@@ -20,15 +20,15 @@ class Playbar extends React.Component {
     this.prettifyTime = this.prettifyTime.bind(this);
     this.timeIncrementerInstance
     this.handleChange = this.handleChange.bind(this);
-
+    this.clearState = this.clearState.bind(this)
     this.addBarListener = this.addBarListener.bind(this)
   }
 
   componentDidMount() {
-    let track = JSON.parse(window.localStorage.getItem("currentTrack"))
-    if (track && Object.keys(track).length > 0) {
-      this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
-    }
+    // let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    // if (track && Object.keys(track).length > 0) {
+    //   this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
+    // }
   }
 
   // componentDidMount() {
@@ -56,6 +56,16 @@ class Playbar extends React.Component {
     this.setState( {percentPlayed: e.target.value} )
   }
 
+  clearState() {
+    this.setState({
+      muted: false,
+      repeat: false,
+      currentTime: '0:00',
+      duration: 0,
+      percentPlayed: 0
+    })
+  }
+
   prettifyTime(time) {
     let minutes = Math.floor(time / 60);
     let seconds = Math.floor(time - (minutes * 60));
@@ -68,8 +78,9 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
     let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
+    console.log("in time")
     return setInterval(() => {
-      // console.log("f")
+      console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
       // progressBarSlider.style.width = `${percentPlayed}%`;
@@ -87,19 +98,17 @@ class Playbar extends React.Component {
       percentPlayed: 0
     })
     this.addBarListener()
-    // this.timeIncrementerInstance = this.timeIncrementer()
+    this.timeIncrementerInstance = this.timeIncrementer()
   }
   
   addBarListener() {
+    let progressBar
     let playbar = document.getElementsByClassName("progress-timeline-wrapper")[0]
     let width = playbar.getBoundingClientRect().width
     let audio = this.props.audio
     let currentTime
     let percentPlayed
     let x
-
-    
-
 
     playbar.addEventListener("click", (e) => {
       x = e.offsetX + 4;
@@ -111,6 +120,8 @@ class Playbar extends React.Component {
         percentPlayed: percentPlayed * 100
       })
       audio.currentTime = currentTime
+      progressBar = document.getElementsByClassName('progress-bar')[0];
+      progressBar.style.width = `${percentPlayed * 100}%`;
     })
 
     // playbtn.addEventListener("click", (e) => {
@@ -119,6 +130,7 @@ class Playbar extends React.Component {
     document.getElementById("logout").addEventListener("click", () => {
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
+      this.clearState()
       // playbtn.classList.remove("playing");
     })
 
@@ -127,7 +139,7 @@ class Playbar extends React.Component {
       //   let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
       //   playbtn.classList.remove("playing")
       // })
-
+      clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
       document.getElementsByClassName("track-show-list-item-playbtn")[0].classList.remove("playing");
       // playbtn.classList.remove("playing");
@@ -142,8 +154,6 @@ class Playbar extends React.Component {
       clearInterval(this.timeIncrementerInstance)
       console.log("pause")
     })
-
-
 
     // slider.addEventListener("drag", (e) => {
     //   x = e.offsetX;
