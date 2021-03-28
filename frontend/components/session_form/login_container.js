@@ -22,11 +22,14 @@ const mapDispatchToProps = (dispatch) => {
 
     // taken from open a/A
     otherForm: (
-      <button onClick={() => dispatch(openModal('signup'))}>
+      <a 
+        onClick={() => dispatch(openModal('signup'))}
+        className="other-form">
         Signup
-      </button>
+      </a>
     ),
     closeModal: () => dispatch(closeModal()),
+    openModal: () => dispatch(openModal()),
     clearErrors: () => dispatch(clearErrors())
   }
 }
