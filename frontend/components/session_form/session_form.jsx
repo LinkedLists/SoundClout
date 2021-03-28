@@ -58,11 +58,11 @@ class SessionForm extends React.Component {
         errors[error.split(" ")[0]] = error
     })
     return (
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        {/* 
-          If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
-          and object construction. A work around is to use a ternary operation.
-        */}
+      //<div className="modal-child" onClick={e => e.stopPropagation()}>
+
+        //If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
+        //and object construction. A work around is to use a ternary operation.
+
 
         <form className="modal-form" onSubmit={this.handleSubmit} >
           <button type='button' 
@@ -98,7 +98,7 @@ class SessionForm extends React.Component {
 
           <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
         </form>
-      </div>
+      //</div>
     )
   }
 }
