@@ -7,7 +7,7 @@ class Playbar extends React.Component {
     this.state= {
       muted: false,
       repeat: false,
-      currentTime: 0,
+      currentTime: '0:00',
       duration: 0,
       percentPlayed: 0
     }
@@ -83,12 +83,10 @@ class Playbar extends React.Component {
   setDuration() {
     let audio = this.props.audio
     this.setState({
-      currentTime: '0:00',
       duration: this.prettifyTime(audio.duration),
       percentPlayed: 0
     })
     this.addBarListener()
-    
     // this.timeIncrementerInstance = this.timeIncrementer()
   }
   
@@ -100,11 +98,8 @@ class Playbar extends React.Component {
     let percentPlayed
     let x
 
-    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-    audio.addEventListener("ended", () => {
-      this.props.pauseTrack()
-      playbtn.classList.remove("playing");
-    })
+    
+
 
     playbar.addEventListener("click", (e) => {
       x = e.offsetX + 4;
@@ -116,6 +111,26 @@ class Playbar extends React.Component {
         percentPlayed: percentPlayed * 100
       })
       audio.currentTime = currentTime
+    })
+
+    // playbtn.addEventListener("click", (e) => {
+    // })
+
+    document.getElementById("logout").addEventListener("click", () => {
+      clearInterval(this.timeIncrementerInstance)
+      this.props.pauseTrack()
+      // playbtn.classList.remove("playing");
+    })
+
+    audio.addEventListener("ended", () => {
+      // this.props.pauseTrack(() => {
+      //   let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+      //   playbtn.classList.remove("playing")
+      // })
+
+      this.props.pauseTrack()
+      document.getElementsByClassName("track-show-list-item-playbtn")[0].classList.remove("playing");
+      // playbtn.classList.remove("playing");
     })
 
     audio.addEventListener("play", () => {
