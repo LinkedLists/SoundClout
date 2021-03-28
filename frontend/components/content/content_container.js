@@ -6,7 +6,8 @@ import { playTrack, pauseTrack, receiveNewTrack, clearPlaybarState } from '../..
 
 const mapStateToProps = (state) => {
   return {
-    tracks: Object.values(state.entities.tracks)
+    tracks: Object.values(state.entities.tracks),
+    currentTrack: state.ui.playbar.currentTrack,
   }
 }
 
