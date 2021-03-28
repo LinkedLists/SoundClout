@@ -7,6 +7,7 @@ class CommentIndexItem extends React.Component {
     super(props);
 
     this.getDateMeta = this.getDateMeta.bind(this)
+    this.handleHover = this.handleHover.bind(this)
   }
 
   // ActiveRecord timestamps are UTC by default
@@ -73,26 +74,39 @@ class CommentIndexItem extends React.Component {
   }
 
   colorOwner() {
-    if (this.props.comment.uploader_id === this.props.currentUserId) {
-      document.getElementsByClassName("comment-items")[0].style.background = "#f2f2f2"
-      return <span>You</span>
-    } else {
-      return <span>{this.props.comment.username}</span>
+    return this.props.comment.uploader_id === this.props.currentUserId ?
+     "comment-items owner" : "comment-items"
+  }
+
+  handleHover(comment) {
+    console.log(comment.id)
+    if (comment.uploader_id === this.props.currentUserId) {
+      document.getElementById(`${comment.id}`).style.opacity = "1"
+    }
+  }
+
+  handleLeave(comment) {
+    if (comment.uploader_id === this.props.currentUserId) {
+      document.getElementById(`${comment.id}`).style.opacity = "0"
     }
   }
 
   render() {
+    this.colorOwner()
     return (
-      <li className="comment-items">
+      <li 
+        className={this.colorOwner()} 
+        
+        onMouseEnter={() => this.handleHover(this.props.comment)} 
+        onMouseLeave={() => this.handleLeave(this.props.comment)}>
         <img src={this.props.photoUrl} className="wtf" />
         <div className="comment-item-content">
           <div className="comment-item-username">
-            {this.props.comment.username}
-            {/* {
-              this.props.comment.uploader_id === this.props.currentUserId?
-                this.colorOwner() : this.props.comment.username
-            } */}
-            {/* {this.colorOwner()} */}
+            {/* {this.props.comment.username} */}
+            {
+              this.props.comment.uploader_id === this.props.currentUserId ?
+                "You" : this.props.comment.username
+            }
           </div>
           <div className="comment-item-body">
             {this.props.comment.body}
@@ -104,9 +118,10 @@ class CommentIndexItem extends React.Component {
             this.props.currentUserId === this.props.comment.uploader_id ?
               <FontAwesomeIcon 
                 icon="trash" 
-                color="#999" 
-                className="trash" 
-                id="comment-icon" 
+                size="lg"
+                // color="#999" 
+                className="trash"
+                id={this.props.comment.id} 
                 onClick={() => this.props.deleteComment(this.props.comment.id)}
                 /> : null
           }
