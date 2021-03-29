@@ -12,7 +12,7 @@ class NavBar extends React.Component {
 
   componentDidMount() {
     // this.props.fetchTracks();
-    this.props.state
+    // this.props.state
   }
 
   sessionContainer() {

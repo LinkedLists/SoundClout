@@ -9,7 +9,8 @@ class Playbar extends React.Component {
       repeat: false,
       currentTime: '0:00',
       duration: 0,
-      percentPlayed: 0
+      percentPlayed: 0,
+      volume: 0.6,
     }
 
     this.handlePlay = this.handlePlay.bind(this);
@@ -22,6 +23,7 @@ class Playbar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.clearState = this.clearState.bind(this)
     this.addBarListener = this.addBarListener.bind(this)
+    this.handleVolume = this.handleVolume.bind(this)
   }
 
   componentDidMount() {
@@ -142,12 +144,10 @@ class Playbar extends React.Component {
 
     audio.addEventListener("play", () => {
       this.timeIncrementerInstance = this.timeIncrementer()
-      // console.log("play")
     })
 
     audio.addEventListener("pause", () => {
       clearInterval(this.timeIncrementerInstance)
-      // console.log("pause")
     })
 
 
@@ -199,6 +199,11 @@ class Playbar extends React.Component {
     }
   }
 
+  handleVolume(e) {
+    this.setState( {volume: e.target.value} )
+    this.props.audio.volume = this.state.volume;
+  }
+
   handleRepeat() {
     let audio = this.props.audio
     if (this.state.repeat) {
@@ -221,7 +226,7 @@ class Playbar extends React.Component {
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = this.props.audio
-    
+    // audio.volume = 0.6
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
@@ -232,11 +237,22 @@ class Playbar extends React.Component {
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
+              {audio ? audio.volume = this.state.volume : null}
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
-              <button onClick={this.handlePlay}>{this.props.paused || audio.ended ? <FontAwesomeIcon icon="play"/> : <FontAwesomeIcon icon="pause"/>}</button>
+              <button 
+                onClick={this.handlePlay}>
+                  {this.props.paused || audio.ended ? 
+                    <FontAwesomeIcon icon="play"/> : 
+                    <FontAwesomeIcon icon="pause"/>}
+              </button>
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-forward" color="red"/> </button>
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button>
-              <button onClick={this.handleRepeat}>{this.state.repeat ? <FontAwesomeIcon icon="redo" color="#f50" /> : <FontAwesomeIcon icon="redo" /> }</button>
+              <button 
+                onClick={this.handleRepeat}>
+                  {this.state.repeat ? 
+                    <FontAwesomeIcon icon="redo" color="#f50" /> : 
+                    <FontAwesomeIcon icon="redo" /> }
+              </button>
             </div>
             <div className="progress-bar-container">
               <div className="progress-current-time">{this.state.currentTime}</div>
@@ -251,11 +267,21 @@ class Playbar extends React.Component {
 
 
             <div className="volume-control-container">
-              <button onClick={this.handleMute} id="volume-btn">{this.state.muted ? <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}</button>
+              <button 
+                onClick={this.handleMute} 
+                id="volume-btn">{this.state.muted ? 
+                  <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}
+                </button>
               <div className="thumb" onClick={this.handleMute}>
                 <div className="volume-control-wrapper">
                   <div className="slider-container" />
-                  <div className="slider-background" />
+                  <input 
+                    type="range" 
+                    className="slider-background" 
+                    min={0} max={1} step="0.01" 
+                    onChange={this.handleVolume} 
+                    value={this.state.volume}/>
+                  {/* <div className="slider-background" /> */}
                   <div className="volume-slider-ball" />
                 </div>
               </div>
