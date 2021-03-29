@@ -79,10 +79,10 @@ class TrackShow extends React.Component {
 
     if (this.props.track.id !== this.props.currentTrack.id) {
       this.props.playTrack(this.props.sendTrack(this.props.track))
-      // window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
+      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
-      // audio.setAttribute("autoPlay", true)
-      // audio.play()
+      audio.setAttribute("autoPlay", true)
+      audio.play()
       setTimeout(() => {
         audio.paused? audio.play() : null
       }, 10)
@@ -90,13 +90,13 @@ class TrackShow extends React.Component {
     else if (audio.paused) {
       console.log(audio.paused)
       this.props.playTrack()
-      // audio.setAttribute("autoPlay", true)
+      audio.setAttribute("autoPlay", true)
       audio.play();
       playbtn.classList.add("playing");
     } else if (!audio.paused) {
       this.props.pauseTrack()
       audio.pause()
-      // audio.removeAttribute("autoPlay")
+      audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
     }
   }
