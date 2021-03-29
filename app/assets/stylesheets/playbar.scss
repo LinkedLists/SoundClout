@@ -122,12 +122,14 @@
   display: block;
   // justify-content: flex-end;
   position: absolute;
+  cursor: pointer;
   height: 1px;
-  // background: #f50;
   color: #f50;
   width: 100%;
   margin: 0px;
   z-index: 1000;
+  opacity: 0;
+  transition: opacity .15s;
   -webkit-appearance: none;
   outline: none;
 }
@@ -142,20 +144,20 @@
   cursor: pointer;
 }
 
-.progress-bar-slider{
-  position: absolute;
-  border: 1px solid #f50;
-  border-radius: 100%;
-  height: 8px;
-  width: 8px;
-  background-color: #f50;
-  box-sizing: border-box;
-  margin-top: -4px;
-  margin-left: -4px;
-  opacity: 0;
-  transition: opacity .15s;
-  // z-index: 5;
-}
+// .progress-bar-slider{
+//   position: absolute;
+//   border: 1px solid #f50;
+//   border-radius: 100%;
+//   height: 8px;
+//   width: 8px;
+//   background-color: #f50;
+//   box-sizing: border-box;
+//   margin-top: -4px;
+//   margin-left: -4px;
+//   opacity: 0;
+//   transition: opacity .15s;
+//   // z-index: 5;
+// }
 
 .progress-current-time {
   display: block;

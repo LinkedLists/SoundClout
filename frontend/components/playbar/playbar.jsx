@@ -78,13 +78,13 @@ class Playbar extends React.Component {
 
   timeIncrementer() {
     let audio = this.props.audio
-    // let progressBar = document.getElementsByClassName('progress-bar')[0];
+    let progressBar = document.getElementsByClassName('progress-bar')[0];
     // let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
     console.log("in time")
     return setInterval(() => {
       console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
-      // progressBar.style.width = `${percentPlayed}%`;
+      progressBar.style.width = `${percentPlayed}%`;
       // progressBarSlider.style.width = `${percentPlayed}%`;
       this.setState({
         currentTime: this.prettifyTime(audio.currentTime),
@@ -219,11 +219,11 @@ class Playbar extends React.Component {
   }
 
   revealSlider() {
-    // document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "1"
+    document.getElementsByClassName('progress-bar2')[0].style.opacity = "1"
   }
 
   hideSlider() {
-    // document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "0"
+    document.getElementsByClassName('progress-bar2')[0].style.opacity = "0"
   }
 
   render() {
@@ -232,12 +232,13 @@ class Playbar extends React.Component {
     audio ? audio.volume = this.state.volume : null
 
     let progress_bar2 = document.getElementsByClassName("progress-bar2")[0]
-    if (progress_bar2)
-    progress_bar2.style.background = `linear-gradient(to right, 
-      #f50 0%, 
-      #f50 ${progress_bar2.value}%,
-      #ccc ${progress_bar2.value}%,
-      #ccc 100%`
+    if (progress_bar2) {
+      progress_bar2.style.background = `linear-gradient(to right, 
+        #f50 0%, 
+        #f50 ${progress_bar2.value}%,
+        #ccc ${progress_bar2.value}%,
+        #ccc 100%`
+    }
 
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
@@ -276,7 +277,7 @@ class Playbar extends React.Component {
                     min={0} max={100} step="0.01" 
                     value={audio ? this.state.percentPlayed: this.state.currentTime} 
                     onChange={this.handleChange} />
-                  {/* <div className="progress-bar"> <div className="progress-bar-slider"/></div> */}
+                  <div className="progress-bar"> <div className="progress-bar-slider"/></div>
                 </div>
               </div>
               <div className="progress-duration">{this.state.duration}</div>
