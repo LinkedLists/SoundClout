@@ -1,4 +1,4 @@
-.upload-form-container-close {
+.edit-form-container-close {
   position: relative;
   font-size: 12px;
   top: 20%;
@@ -6,7 +6,7 @@
   animation-duration: 0.6s;
 }
 
-.upload-form-container-open {
+.edit-form-container-open {
   position: relative;
   font-size: 12px;
   top: 20%;
@@ -14,19 +14,16 @@
   animation-duration: 0.6s;
 }
 
-@keyframes animatebottomwtf {
-  0%{
-    top: 20%;
-    opacity: 1;
-  }
-  40% {
-    top: 40%;
-    opacity: 0.9;
-  }
-  100%{
-    top: -1000px;
-    opacity: 0.5;
-  }
+.upload-form-container-close {
+  position: relative;
+  top: 20%;
+  font-size: 12px;
+  animation: animatetop;
+  animation-duration: 0.6s;
+}
+
+.closed {
+  display: none!important;
 }
 
 .upload-form {
@@ -35,8 +32,8 @@
   align-self: center;
   margin: 0 auto;
   width: 750px;
-  background: white; 
-  box-shadow: 0 2px 12px -5px lightgray;
+  background: white;
+  box-shadow: 0 2px 12px -5px lightgrey;
 }
 
 .upload-form .input-error {

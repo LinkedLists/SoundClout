@@ -13,7 +13,8 @@ class UploadForm extends React.Component {
       audio_file: '',
       photo_file: '',
       photo_preview: null,
-      errors: {}
+      errors: {},
+      open: "close"
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +25,7 @@ class UploadForm extends React.Component {
     this.handleCloseForm = this.handleCloseForm.bind(this);
     this.clearState = this.clearState.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
+    this.switchModalState = this.switchModalState.bind(this);
   }
 
   componentWillUnmount() {
@@ -52,22 +54,55 @@ class UploadForm extends React.Component {
     this.setState({title: file.name});
     this.setState({audio_file: file});
 
-    let form = document.getElementsByClassName('upload-form-container')[0];
+    let form = document.getElementsByClassName('modal-background-close')[0];
     form.classList.remove("closed")
-    let audio = document.getElementsByClassName("upload-wrapper")[0];
-    audio.classList.add("closed")
+  }
+
+  handleKeyPress(e) {
+    if (e.key == "Escape") {
+      this.switchModalState()
+      setTimeout(() => {
+        this.handleCloseForm(e)
+      }, 600)
+    }
+  }
+
+  handleMouseDown(e) {
+    if (e.target.className === "modal-background-close" ||
+      e.target.className === "cancel-submit") {
+        this.switchModalState()
+        setTimeout(() => {
+          this.handleCloseForm(e)
+        }, 600)
+    }
+  }
+
+  switchModalState() {
+    if (this.state.open === "open") {
+      this.setState({open: "close"})
+    } else if(this.state.open === "close"){
+      this.setState({open: "open"})
+    }
   }
 
   handleCloseForm(e) {
     e.preventDefault();
-    let form = document.getElementsByClassName('upload-form-container')[0];
-    form.classList.add("closed")
     let audio = document.getElementById('upload-audio');
     audio.value = '';
-    let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
-    audioBtn.classList.remove("closed")
-    this.clearState();
-    this.props.clearTrackErrors();
+    
+    // setTimeout(() => {
+      // setState is asyc so modal background will still be closed before state changes it to
+      // modal-background-open
+      let form = document.getElementsByClassName('modal-background-close')[0];
+      form.classList.add("closed")
+      this.clearState();
+      this.props.clearTrackErrors();
+      this.switchModalState()
+    // }, 600)
+    // let audioBtn = document.getElementsByClassName("upload-wrapper")[0];
+    // audioBtn.classList.remove("closed")
+    // this.clearState();
+    // this.props.clearTrackErrors();
   }
 
   clearState() {
@@ -149,66 +184,68 @@ class UploadForm extends React.Component {
               }>upload an audio file</button>
 
         </div>
+              
 
-        <div className="upload-form-container closed">
-          {/* <div className="upload-form-wrapper"> */}
-
-
-          <form className="upload-form" onSubmit={this.handleSubmit}>
-            <div className="img-field-wrapper">
-              <div className="upload-photo-wrapper">
-                {preview}
-                <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
-                <button 
-                  className="upload-btn" 
-                  onClick={
-                    e => {e.preventDefault(); this.grabInputElement("upload-photo")}
-                    }>for a photo file lol</button>
-              </div>
-              <div className="upload-field-wrapper">
-                  <div className="field">
-                    <label className="field-label">Title</label>
-                    <input type="text" 
-                      className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
-                      onChange={this.handleChange("title")}
-                      placeholder="Name your track" 
-                      value={this.state.title} />
-                    {this.state.errors['Title'] ? <div className="upload-errors hidden">{this.state.errors['Title']}</div> : null}
-                  </div>
-                  <div className="field">
-                    <label className="field-label">Genre</label>
-                    <select onChange={this.handleChange("genre")} className="form-input select">
-                      <option className="select-item">None</option>
-                      <option className="select-item">Pop</option>
-                      <option className="select-item">Rock</option>
-                      <option className="select-item">Blues</option>
-                      <option className="select-item">Instrumental</option>
-                      <option className="select-item">Electronic</option>
-                      <option className="select-item">Classical</option>
-                      <option className="select-item">Metal</option>
-                      <option className="select-item">Reggae</option>
-                      <option className="select-item">Country</option>
-                    </select>
-                  </div>
-                  <div className="field">
-                    <label className="field-label">Description</label>
-                    <textarea type="text" 
-                      className="form-input textarea" 
-                      onChange={this.handleChange("description")} 
-                      placeholder="Describe your track" />
-                  </div>
+        <div className={`modal-background-${this.state.open} closed`} >
+          <div className={`edit-form-container-${this.state.open}`}>
+            {/* <div className="upload-form-wrapper"> */}
+            <form className="upload-form" onSubmit={this.handleSubmit}>
+              <div className="img-field-wrapper">
+                <div className="upload-photo-wrapper">
+                  {preview}
+                  <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
+                  <button 
+                    className="upload-btn" 
+                    onClick={
+                      e => {e.preventDefault(); this.grabInputElement("upload-photo")}
+                      }>for a photo file lol</button>
                 </div>
-            </div>
-
-              <div className="button-footer">
-                <button className="cancel-submit" onClick={this.handleCloseForm}>Cancel</button>
-                <button type="submit" className="upload-submit">Upload</button>
+                <div className="upload-field-wrapper">
+                    <div className="field">
+                      <label className="field-label">Title</label>
+                      <input type="text" 
+                        className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
+                        onChange={this.handleChange("title")}
+                        placeholder="Name your track" 
+                        value={this.state.title} />
+                      {this.state.errors['Title'] ? <div className="upload-errors hidden">{this.state.errors['Title']}</div> : null}
+                    </div>
+                    <div className="field">
+                      <label className="field-label">Genre</label>
+                      <select onChange={this.handleChange("genre")} className="form-input select">
+                        <option className="select-item">None</option>
+                        <option className="select-item">Pop</option>
+                        <option className="select-item">Rock</option>
+                        <option className="select-item">Blues</option>
+                        <option className="select-item">Instrumental</option>
+                        <option className="select-item">Rap</option>
+                        <option className="select-item">Hip-hop</option>
+                        <option className="select-item">Electronic</option>
+                        <option className="select-item">Classical</option>
+                        <option className="select-item">Metal</option>
+                        <option className="select-item">Reggae</option>
+                        <option className="select-item">Country</option>
+                      </select>
+                    </div>
+                    <div className="field">
+                      <label className="field-label">Description</label>
+                      <textarea type="text" 
+                        className="form-input textarea" 
+                        onChange={this.handleChange("description")} 
+                        placeholder="Describe your track" />
+                    </div>
+                  </div>
               </div>
-            </form>
+
+                <div className="button-footer">
+                  <button className="cancel-submit" onClick={this.handleCloseForm}>Cancel</button>
+                  <button type="submit" className="upload-submit">Upload</button>
+                </div>
+              </form>
           </div>
 
           {/* </div> */}
-
+        </div>        
       </div>
     )
   }
