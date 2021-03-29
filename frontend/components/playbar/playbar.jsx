@@ -11,6 +11,7 @@ class Playbar extends React.Component {
       duration: 0,
       percentPlayed: 0,
       volume: 0.6,
+      mounted: false
     }
 
     this.handlePlay = this.handlePlay.bind(this);
@@ -50,11 +51,12 @@ class Playbar extends React.Component {
   }
 
   clearState() {
+    clearInterval(this.timeIncrementerInstance)
     this.setState({
       muted: false,
       repeat: false,
       currentTime: '0:00',
-      duration: 0,
+      duration: this.prettifyTime(this.props.audio.duration),
       percentPlayed: 0
     })
   }
@@ -70,11 +72,13 @@ class Playbar extends React.Component {
   timeIncrementer() {
     let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
+    let progressBar2 = document.getElementsByClassName('progress-bar2')[0];
     console.log("in time")
-    return setInterval(() => {
+    this.timeIncrementerInstance = setInterval(() => {
       console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
+      if (progressBar2) progressBar2.value = percentPlayed
       this.setState({
         currentTime: this.prettifyTime(audio.currentTime),
         percentPlayed: percentPlayed
@@ -88,8 +92,14 @@ class Playbar extends React.Component {
       duration: this.prettifyTime(audio.duration),
       percentPlayed: 0
     })
-    this.addBarListener()
-    // this.timeIncrementerInstance = this.timeIncrementer()
+
+    // EVENT LISTENERS ARE ALL UNIQUE
+    // I need to make sure that event listeners will
+    // only ever be called once
+    if (!this.state.mounted) {
+      this.addBarListener()
+      this.setState( {mounted: true} )
+    }
   }
   
   addBarListener() {
@@ -122,17 +132,27 @@ class Playbar extends React.Component {
     })
 
     audio.addEventListener("ended", () => {
+      console.log("track ended")
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
       let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
       playbtn ? playbtn.classList.remove("playing") : null
+      this.clearState()
     })
 
     audio.addEventListener("play", () => {
-      this.timeIncrementerInstance = this.timeIncrementer()
+      console.log("track is played")
+      if (this.timeIncrementerInstance) {
+        clearInterval(this.timeIncrementerInstance)
+        this.timeIncrementer()
+      } else {
+        this.timeIncrementer()
+      }
+      // this.timeIncrementerInstance = this.timeIncrementer()
     })
 
     audio.addEventListener("pause", () => {
+      console.log("track is paused")
       clearInterval(this.timeIncrementerInstance)
     })
 
@@ -170,7 +190,13 @@ class Playbar extends React.Component {
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
       audio.play()
-      this.timeIncrementerInstance = this.timeIncrementer()
+      if (this.timeIncrementerInstance) {
+        clearInterval(this.timeIncrementerInstance)
+        this.timeIncrementer()
+      } else {
+        this.timeIncrementer()
+      }
+      // this.timeIncrementerInstance = this.timeIncrementer()
     }
   }
 
@@ -264,7 +290,7 @@ class Playbar extends React.Component {
                     type="range" 
                     className="progress-bar2" 
                     min={0} max={100} step="0.01" 
-                    value={audio ? this.state.percentPlayed: this.state.currentTime} 
+                    // value={ 1} 
                     onChange={this.handleChange} />
                   <div className="progress-bar"> <div className="progress-bar-slider"/></div>
                 </div>
@@ -286,7 +312,7 @@ class Playbar extends React.Component {
                     className="slider-background" 
                     min={0} max={1} step="0.01" 
                     onChange={this.handleVolume} 
-                    value={this.state.volume}/>
+                    value={ audio ? this.state.volume : 0.6}/>
                   {/* <div className="slider-background" /> */}
                   {/* <div className="volume-slider-ball" /> */}
                 </div>
