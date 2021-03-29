@@ -1,50 +1,32 @@
-.upload-form-container {
-  top: 0;
-  bottom: 0;
+.upload-form-container-close {
+  position: relative;
   font-size: 12px;
-  margin-top: 60px;
+  top: 20%;
+  animation: animatetop;
+  animation-duration: 0.6s;
 }
 
-.edit {
-  margin-top: 160px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  animation: animatetop2;
-  animation-duration: 0.2s;
+.upload-form-container-open {
+  position: relative;
+  font-size: 12px;
+  top: 20%;
+  animation: animatebottomwtf;
+  animation-duration: 0.6s;
 }
 
-@keyframes animatetop2 {
-  from {
-    top: -1000px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
+@keyframes animatebottomwtf {
+  0%{
+    top: 20%;
     opacity: 1;
   }
-}
-
-@keyframes animatebottom {
-  from {
-    top: 0;
-    opacity: 1;
+  40% {
+    top: 40%;
+    opacity: 0.9;
   }
-  to {
+  100%{
     top: -1000px;
-    opacity: 0;
+    opacity: 0.5;
   }
-}
-
-.track-edit-background {
-  animation-duration: 0.3s;
-}
-
-.closed {
-  // display: none;
-  display: none!important;
 }
 
 .upload-form {
@@ -182,6 +164,7 @@
   text-align: center;
   line-height: 18px;
   padding: 10px 15px;
+  margin-top: 8px;
   height: 40px;
   border-radius: 3px;
   transition: 0.4s;
