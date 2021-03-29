@@ -8,14 +8,14 @@ class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEdit: false,
+      showForm: false,
       colored: false
     }
     this.deleted = false;
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
-    this.showEdit = this.showEdit.bind(this)
-    this.closeEdit = this.closeEdit.bind(this)
+    this.showForm = this.showForm.bind(this)
+    this.closeForm = this.closeForm.bind(this)
   }
 
   componentDidMount() {
@@ -39,7 +39,7 @@ class TrackShow extends React.Component {
     return <Redirect to='/discover'/>
   }
 
-  showEdit(e) {
+  showForm(e) {
     e.preventDefault();
     // let form = document.getElementsByClassName('upload-form-container')[0];
     // let background = document.getElementsByClassName('track-edit-background')[0];
@@ -47,11 +47,11 @@ class TrackShow extends React.Component {
     // background.classList.add("open")
     // form.classList.remove("closed")
     // form.classList.add("open")
-    this.setState( {showEdit: true} );
+    this.setState( {showForm: true} );
   }
 
-  closeEdit() {
-    this.setState( {showEdit: false} )
+  closeForm() {
+    this.setState( {showForm: false} )
   }
 
   getRandomInt(min, max) {
@@ -113,9 +113,9 @@ class TrackShow extends React.Component {
     let audio = document.getElementById('audio')
     return (
       <div className="content-container">
-        {/* <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> */}
+        {/* <EditTrackContainer track={this.props.track} closeForm={this.closeForm} /> */}
         {
-          this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
+          this.state.showForm ? <EditTrackContainer track={this.props.track} closeForm={this.closeForm} /> : null
         }
         <div className="track-show-header-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
@@ -148,7 +148,7 @@ class TrackShow extends React.Component {
                     this.props.currentUserId === this.props.track.uploader_id ?
                       <div className="track-show-btns">
                         <button onClick={this.deleteTrack}>delete</button>
-                        <button onClick={this.showEdit} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
+                        <button onClick={this.showForm} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
                       </div> : null
                   }
                 </div>

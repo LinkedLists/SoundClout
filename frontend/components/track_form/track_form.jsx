@@ -7,8 +7,10 @@ class TrackForm extends React.Component {
 
     this.state = {
       title: this.props.track.title,
+      uploader_id: this.props.track.uploader_id,
       description: this.props.track.description,
       genre: this.props.track.genre,
+      audio_file: this.props.track.audio_file,
       photo_file: this.props.track.photo_file,
       photo_preview: this.props.track.photo_preview,
       errors: {},
@@ -78,8 +80,8 @@ class TrackForm extends React.Component {
     e.preventDefault();
     this.switchModalState()
     setTimeout(() => {
-      this.props.closeEdit()
-      this.props.clearTrackErrors();
+      this.props.closeForm()
+      // this.props.clearTrackErrors();
       // this.resetState();
     }, 600)
   }
@@ -130,15 +132,24 @@ class TrackForm extends React.Component {
     e.preventDefault();
     if (this.handleValidations()) {
       const track = new FormData();
-      track.append("track[id]", this.props.track.id)
-      track.append("track[title]", this.state.title)
-      track.append("track[description]", this.state.description)
-      track.append("track[genre]", this.state.genre)
+      if (this.props.formType === "Save Changes") {
+        track.append("track[id]", this.props.track.id)
+        track.append("track[title]", this.state.title)
+        track.append("track[description]", this.state.description)
+        track.append("track[genre]", this.state.genre)
+      }
+      else if (this.props.formType === "Upload") {
+        track.append("track[title]", this.state.title)
+        track.append("track[uploader_id]", this.state.uploader_id)
+        track.append("track[description]", this.state.description)
+        track.append("track[genre]", this.state.genre)
+        track.append("track[audio_file]", this.state.audio_file)
+      }
   
       if (this.state.photo_file) {
         track.append("track[photo_file]", this.state.photo_file)
       }
-      this.props.updateTrack(track, this.handleCloseForm(e))
+      this.props.trackAction(track, this.handleCloseForm(e))
     }
   }
   
@@ -198,7 +209,7 @@ class TrackForm extends React.Component {
 
               <div className="button-footer">
                 <button className="cancel-submit" onClick={this.handleMouseDown}>Cancel</button>
-                <button type="submit" className="upload-submit">Save Chages</button>
+                <button type="submit" className="upload-submit">{this.props.formType}</button>
               </div>
             </form>
           </div>

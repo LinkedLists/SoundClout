@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UploadTrackContainer from '../track_form/upload_track_container'
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -14,18 +15,21 @@ class UploadForm extends React.Component {
       photo_file: '',
       photo_preview: null,
       errors: {},
-      open: "close"
+      open: "close",
+      showForm: false,
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.grabInputElement = this.grabInputElement.bind(this);
-    this.handlePhotoFile = this.handlePhotoFile.bind(this);
+    // this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleCloseForm = this.handleCloseForm.bind(this);
+    // this.handleCloseForm = this.handleCloseForm.bind(this);
     this.clearState = this.clearState.bind(this);
-    this.handleValidations = this.handleValidations.bind(this);
-    this.switchModalState = this.switchModalState.bind(this);
+    // this.handleValidations = this.handleValidations.bind(this);
+    // this.switchModalState = this.switchModalState.bind(this);
+    this.showForm = this.showForm.bind(this)
+    this.closeForm = this.closeForm.bind(this)
   }
 
   componentWillUnmount() {
@@ -53,9 +57,18 @@ class UploadForm extends React.Component {
     console.log(file)
     this.setState({title: file.name});
     this.setState({audio_file: file});
+    if (file) this.showForm()
+    // let form = document.getElementsByClassName('modal-background-close')[0];
+    // form.classList.remove("closed")
+  }
 
-    let form = document.getElementsByClassName('modal-background-close')[0];
-    form.classList.remove("closed")
+  showForm() {
+    // e.preventDefault();
+    this.setState( {showForm: true} );
+  }
+
+  closeForm() {
+    this.setState( {showForm: false} )
   }
 
   handleKeyPress(e) {
@@ -168,9 +181,9 @@ class UploadForm extends React.Component {
   }
   
   render() {
-    const preview = this.state.photo_preview ? 
-      <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
-      <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
+    // const preview = this.state.photo_preview ? 
+    //   <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
+    //   <img src={this.state.photo_preview} className="upload-photo-preview default-preview"/>
     return (
       <div className="content-container">
         <div className="upload-wrapper">
@@ -184,68 +197,10 @@ class UploadForm extends React.Component {
               }>upload an audio file</button>
 
         </div>
+        {
+          this.state.showForm ? <UploadTrackContainer track={this.state} closeForm={this.closeForm} /> : null
+        }
               
-
-        <div className={`modal-background-${this.state.open} closed`} >
-          <div className={`edit-form-container-${this.state.open}`}>
-            {/* <div className="upload-form-wrapper"> */}
-            <form className="upload-form" onSubmit={this.handleSubmit}>
-              <div className="img-field-wrapper">
-                <div className="upload-photo-wrapper">
-                  {preview}
-                  <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
-                  <button 
-                    className="upload-btn" 
-                    onClick={
-                      e => {e.preventDefault(); this.grabInputElement("upload-photo")}
-                      }>for a photo file lol</button>
-                </div>
-                <div className="upload-field-wrapper">
-                    <div className="field">
-                      <label className="field-label">Title</label>
-                      <input type="text" 
-                        className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
-                        onChange={this.handleChange("title")}
-                        placeholder="Name your track" 
-                        value={this.state.title} />
-                      {this.state.errors['Title'] ? <div className="upload-errors hidden">{this.state.errors['Title']}</div> : null}
-                    </div>
-                    <div className="field">
-                      <label className="field-label">Genre</label>
-                      <select onChange={this.handleChange("genre")} className="form-input select">
-                        <option className="select-item">None</option>
-                        <option className="select-item">Pop</option>
-                        <option className="select-item">Rock</option>
-                        <option className="select-item">Blues</option>
-                        <option className="select-item">Instrumental</option>
-                        <option className="select-item">Rap</option>
-                        <option className="select-item">Hip-hop</option>
-                        <option className="select-item">Electronic</option>
-                        <option className="select-item">Classical</option>
-                        <option className="select-item">Metal</option>
-                        <option className="select-item">Reggae</option>
-                        <option className="select-item">Country</option>
-                      </select>
-                    </div>
-                    <div className="field">
-                      <label className="field-label">Description</label>
-                      <textarea type="text" 
-                        className="form-input textarea" 
-                        onChange={this.handleChange("description")} 
-                        placeholder="Describe your track" />
-                    </div>
-                  </div>
-              </div>
-
-                <div className="button-footer">
-                  <button className="cancel-submit" onClick={this.handleCloseForm}>Cancel</button>
-                  <button type="submit" className="upload-submit">Upload</button>
-                </div>
-              </form>
-          </div>
-
-          {/* </div> */}
-        </div>        
       </div>
     )
   }

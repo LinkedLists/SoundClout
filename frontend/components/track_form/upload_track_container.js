@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import TrackForm from './track_form';
-import { updateTrack, clearTrackErrors } from '../../actions/track_actions'
+import { createTrack, clearTrackErrors } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
   return {
     uploader: state.session.id,
     errors: state.errors.trackErrors,
-    formType: "Save Changes"
+    formType: "Upload"
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    trackAction: track => dispatch(updateTrack(track)),
+    trackAction: track => dispatch(createTrack(track)),
     clearTrackErrors: () => dispatch(clearTrackErrors()),
   }
 }
