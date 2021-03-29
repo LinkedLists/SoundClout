@@ -20,7 +20,7 @@ class TrackForm extends React.Component {
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
-    this.resetState = this.resetState.bind(this);
+    // this.resetState = this.resetState.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -55,22 +55,14 @@ class TrackForm extends React.Component {
 
   handleKeyPress(e) {
     if (e.key == "Escape") {
-      // this.switchModalState()
-      // setTimeout(() => {
-      //   // this.switchModalState()
-        this.handleCloseForm(e)
-      // }, 600)
+      this.handleCloseForm(e)
     }
   }
 
   handleMouseDown(e) {
     if (e.target.className === "modal-background-close" ||
       e.target.className === "cancel-submit") {
-        // this.switchModalState()
-      //   setTimeout(() => {
-      //     // this.switchModalState()
-          this.handleCloseForm(e);
-      // }, 600)
+        this.handleCloseForm(e);
     }
   }
 
@@ -89,19 +81,19 @@ class TrackForm extends React.Component {
       this.props.closeEdit()
       this.props.clearTrackErrors();
       // this.resetState();
-  }, 600)
+    }, 600)
   }
 
-  resetState() {
-    this.setState({
-      title: this.props.track.title,
-      description: this.props.track.description,
-      genre: this.props.track.genre,
-      photo_file: this.props.track.photo_file,
-      photo_preview: this.props.track.photo_preview,
-      errors: {},
-    })
-  }
+  // resetState() {
+  //   this.setState({
+  //     title: this.props.track.title,
+  //     description: this.props.track.description,
+  //     genre: this.props.track.genre,
+  //     photo_file: this.props.track.photo_file,
+  //     photo_preview: this.props.track.photo_preview,
+  //     errors: {},
+  //   })
+  // }
 
   handleValidations() {
     let title = this.state.title.length
@@ -156,7 +148,7 @@ class TrackForm extends React.Component {
       <img src={this.props.track.photoUrl} className="upload-photo-preview default-preview"/>
     return (
       <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown} >
-        <div className={`upload-form-container-${this.state.open}`}>
+        <div className={`edit-form-container-${this.state.open}`}>
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <div className="img-field-wrapper">
               <div className="upload-photo-wrapper">
