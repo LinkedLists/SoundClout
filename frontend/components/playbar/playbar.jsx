@@ -54,8 +54,8 @@ class Playbar extends React.Component {
 
   handleChange(e) {
     let audio = this.props.audio
-    audio.currentTime = e.target.value
     this.setState( {percentPlayed: e.target.value} )
+    audio.currentTime = e.target.value / 100 * audio.duration
   }
 
   clearState() {
@@ -78,13 +78,13 @@ class Playbar extends React.Component {
 
   timeIncrementer() {
     let audio = this.props.audio
-    let progressBar = document.getElementsByClassName('progress-bar')[0];
-    let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
+    // let progressBar = document.getElementsByClassName('progress-bar')[0];
+    // let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
     console.log("in time")
     return setInterval(() => {
       console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
-      progressBar.style.width = `${percentPlayed}%`;
+      // progressBar.style.width = `${percentPlayed}%`;
       // progressBarSlider.style.width = `${percentPlayed}%`;
       this.setState({
         currentTime: this.prettifyTime(audio.currentTime),
@@ -122,8 +122,8 @@ class Playbar extends React.Component {
         percentPlayed: percentPlayed * 100
       })
       audio.currentTime = currentTime
-      progressBar = document.getElementsByClassName('progress-bar')[0];
-      progressBar.style.width = `${percentPlayed * 100}%`;
+      // progressBar = document.getElementsByClassName('progress-bar')[0];
+      // progressBar.style.width = `${percentPlayed * 100}%`;
     })
 
     // playbtn.addEventListener("click", (e) => {
@@ -188,14 +188,17 @@ class Playbar extends React.Component {
     }
   }
 
-  handleMute() {
-    let audio = this.props.audio
-    if (this.state.muted) {
-      audio.muted = false;
-      this.setState( {muted: false} )
-    } else {
-      audio.muted = true;
-      this.setState( {muted: true} )
+  handleMute(e) {
+    if (e.target.className === "thumb" ||
+      e.target.className === "volume-control-wrapper") {
+        let audio = this.props.audio
+        if (this.state.muted) {
+          audio.muted = false;
+          this.setState( {muted: false} )
+        } else {
+          audio.muted = true;
+          this.setState( {muted: true} )
+        }
     }
   }
 
@@ -216,17 +219,26 @@ class Playbar extends React.Component {
   }
 
   revealSlider() {
-    document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "1"
+    // document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "1"
   }
 
   hideSlider() {
-    document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "0"
+    // document.getElementsByClassName('progress-bar-slider')[0].style.opacity = "0"
   }
 
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = this.props.audio
-    // audio.volume = 0.6
+    audio ? audio.volume = this.state.volume : null
+
+    let progress_bar2 = document.getElementsByClassName("progress-bar2")[0]
+    if (progress_bar2)
+    progress_bar2.style.background = `linear-gradient(to right, 
+      #f50 0%, 
+      #f50 ${progress_bar2.value}%,
+      #ccc ${progress_bar2.value}%,
+      #ccc 100%`
+
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
@@ -237,7 +249,7 @@ class Playbar extends React.Component {
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
-              {audio ? audio.volume = this.state.volume : null}
+              {/* {audio ? audio.volume = this.state.volume : null} */}
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
               <button 
                 onClick={this.handlePlay}>
@@ -258,18 +270,22 @@ class Playbar extends React.Component {
               <div className="progress-current-time">{this.state.currentTime}</div>
               <div className="progress-timeline-wrapper" onMouseEnter={this.revealSlider} onMouseLeave={this.hideSlider}>
                 <div className="progress-background">
-                  {/* <input type="range" className="progress-bar2" min={0} max={100} step="1" value={this.state.percentPlayed} onChange={this.handleChange} /> */}
-                  <div className="progress-bar"> <div className="progress-bar-slider"/></div>
+                  <input 
+                    type="range" 
+                    className="progress-bar2" 
+                    min={0} max={100} step="0.01" 
+                    value={audio ? this.state.percentPlayed: this.state.currentTime} 
+                    onChange={this.handleChange} />
+                  {/* <div className="progress-bar"> <div className="progress-bar-slider"/></div> */}
                 </div>
               </div>
               <div className="progress-duration">{this.state.duration}</div>
             </div>
 
-
             <div className="volume-control-container">
               <button 
                 onClick={this.handleMute} 
-                id="volume-btn">{this.state.muted ? 
+                id="volume-btn">{this.state.muted || (audio && audio.volume === 0) ? 
                   <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}
                 </button>
               <div className="thumb" onClick={this.handleMute}>
