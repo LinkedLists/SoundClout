@@ -78,13 +78,13 @@ class TrackShow extends React.Component {
     let audio = document.getElementById('audio')
 
     if (this.props.track.id !== this.props.currentTrack.id) {
-      this.props.sendTrack(this.props.track)
+      this.props.sendTrack(this.props.track, () => audio.play())
       this.props.playTrack()
       // this.props.playTrack(this.props.sendTrack(this.props.track))
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
-      // audio.play()
+      
       setTimeout(() => {
         audio.paused? audio.play() : null
       }, 10)
