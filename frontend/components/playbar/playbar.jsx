@@ -78,7 +78,11 @@ class Playbar extends React.Component {
       console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
-      if (progressBar2) progressBar2.value = percentPlayed
+      if (progressBar2) {
+        progressBar2.value = percentPlayed
+      } else {
+        progressBar2.value = 0
+      }
       this.setState({
         currentTime: this.prettifyTime(audio.currentTime),
         percentPlayed: percentPlayed
@@ -87,7 +91,12 @@ class Playbar extends React.Component {
   }
 
   setDuration() {
+    console.log("meta loaded")
     let audio = this.props.audio
+    if (!this.timeIncrementerInstance && !audio.paused) {
+      this.timeIncrementer();
+    }
+
     this.setState({
       duration: this.prettifyTime(audio.duration),
       percentPlayed: 0
@@ -104,6 +113,7 @@ class Playbar extends React.Component {
   
   addBarListener() {
     let playbar = document.getElementsByClassName("progress-timeline-wrapper")[0]
+    let progressBar = document.getElementsByClassName("progress-bar")[0]
     let width = playbar.getBoundingClientRect().width
     let audio = this.props.audio
     let currentTime
@@ -114,7 +124,7 @@ class Playbar extends React.Component {
     //   x = e.offsetX + 4;
     //   percentPlayed = (x / width)
     //   currentTime = this.props.audio.duration * percentPlayed
-
+    //   progressBar.style.width = `${percentPlayed * 100}%`
     //   this.setState({
     //     currentTime: this.prettifyTime(currentTime),
     //     percentPlayed: percentPlayed * 100
@@ -131,6 +141,7 @@ class Playbar extends React.Component {
       this.clearState()
     })
 
+    // NOTE: looping does not end or pause track
     audio.addEventListener("ended", () => {
       console.log("track ended")
       clearInterval(this.timeIncrementerInstance)
@@ -148,7 +159,6 @@ class Playbar extends React.Component {
       } else {
         this.timeIncrementer()
       }
-      // this.timeIncrementerInstance = this.timeIncrementer()
     })
 
     audio.addEventListener("pause", () => {
@@ -196,7 +206,6 @@ class Playbar extends React.Component {
       } else {
         this.timeIncrementer()
       }
-      // this.timeIncrementerInstance = this.timeIncrementer()
     }
   }
 
@@ -290,7 +299,7 @@ class Playbar extends React.Component {
                     type="range" 
                     className="progress-bar2" 
                     min={0} max={100} step="0.01" 
-                    // value={ 1} 
+                    defaultValue={0}
                     onChange={this.handleChange} />
                   <div className="progress-bar"> <div className="progress-bar-slider"/></div>
                 </div>
