@@ -41,12 +41,12 @@ class TrackShow extends React.Component {
 
   showEdit(e) {
     e.preventDefault();
-    let form = document.getElementsByClassName('upload-form-container')[0];
-    let background = document.getElementsByClassName('track-edit-background')[0];
-    background.classList.remove("closed")
-    background.classList.add("open")
-    form.classList.remove("closed")
-    form.classList.add("open")
+    // let form = document.getElementsByClassName('upload-form-container')[0];
+    // let background = document.getElementsByClassName('track-edit-background')[0];
+    // background.classList.remove("closed")
+    // background.classList.add("open")
+    // form.classList.remove("closed")
+    // form.classList.add("open")
     this.setState( {showEdit: true} );
   }
 
@@ -113,10 +113,10 @@ class TrackShow extends React.Component {
     let audio = document.getElementById('audio')
     return (
       <div className="content-container">
-        <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} />
-        {/* {
+        {/* <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> */}
+        {
           this.state.showEdit ? <EditTrackContainer track={this.props.track} closeEdit={this.closeEdit} /> : null
-        } */}
+        }
         <div className="track-show-header-container">
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">

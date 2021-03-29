@@ -12,6 +12,7 @@ class TrackForm extends React.Component {
       photo_file: this.props.track.photo_file,
       photo_preview: this.props.track.photo_preview,
       errors: {},
+      open: "close"
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,6 +24,8 @@ class TrackForm extends React.Component {
     this.handleValidations = this.handleValidations.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.switchModalState = this.switchModalState.bind(this);
+
   }
   
   componentDidMount() {
@@ -52,28 +55,41 @@ class TrackForm extends React.Component {
 
   handleKeyPress(e) {
     if (e.key == "Escape") {
-      this.handleCloseForm(e)
+      // this.switchModalState()
+      // setTimeout(() => {
+      //   // this.switchModalState()
+        this.handleCloseForm(e)
+      // }, 600)
     }
   }
 
   handleMouseDown(e) {
-    if (e.target.classList.contains("open")) {
-      this.handleCloseForm(e);
+    if (e.target.className === "modal-background-close" ||
+      e.target.className === "cancel-submit") {
+        // this.switchModalState()
+      //   setTimeout(() => {
+      //     // this.switchModalState()
+          this.handleCloseForm(e);
+      // }, 600)
+    }
+  }
+
+  switchModalState() {
+    if (this.state.open === "open") {
+      this.setState({open: "close"})
+    } else if(this.state.open === "close"){
+      this.setState({open: "open"})
     }
   }
 
   handleCloseForm(e) {
     e.preventDefault();
-    let form = document.getElementsByClassName('upload-form-container')[0];
-    let background = document.getElementsByClassName('track-edit-background')[0];
-    background.classList.remove("open")
-    form.classList.add("closed")
-    background.classList.add("closed")
-    form.classList.remove("open")
-
-    this.props.closeEdit()
-    this.props.clearTrackErrors();
-    this.resetState();
+    this.switchModalState()
+    setTimeout(() => {
+      this.props.closeEdit()
+      this.props.clearTrackErrors();
+      // this.resetState();
+  }, 600)
   }
 
   resetState() {
@@ -130,8 +146,7 @@ class TrackForm extends React.Component {
       if (this.state.photo_file) {
         track.append("track[photo_file]", this.state.photo_file)
       }
-      this.handleCloseForm(e);
-      this.props.updateTrack(track)
+      this.props.updateTrack(track, this.handleCloseForm(e))
     }
   }
   
@@ -140,8 +155,8 @@ class TrackForm extends React.Component {
       <img src={this.state.photo_preview} className="upload-photo-preview"/> : 
       <img src={this.props.track.photoUrl} className="upload-photo-preview default-preview"/>
     return (
-      <div className="modal-background track-edit-background closed" onMouseDown={this.handleMouseDown} onKeyDown={this.handleKeyPress}>
-        <div className="upload-form-container edit closed">
+      <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown} >
+        <div className={`upload-form-container-${this.state.open}`}>
           <form className="upload-form" onSubmit={this.handleSubmit}>
             <div className="img-field-wrapper">
               <div className="upload-photo-wrapper">
@@ -190,7 +205,7 @@ class TrackForm extends React.Component {
             </div>
 
               <div className="button-footer">
-                <button className="cancel-submit" onClick={this.handleCloseForm}>Cancel</button>
+                <button className="cancel-submit" onClick={this.handleMouseDown}>Cancel</button>
                 <button type="submit" className="upload-submit">Save Chages</button>
               </div>
             </form>

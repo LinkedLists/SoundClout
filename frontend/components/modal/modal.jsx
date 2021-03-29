@@ -44,11 +44,12 @@ class Modal extends React.Component {
   }
 
   handleMouseDown(e) {
-    if (e.target.className === "modal-background-close") {
-      this.switchModalState()
-      setTimeout(() => {
+    if (e.target.className === "modal-background-close" ||
+      e.target.className === "close-x") {
         this.switchModalState()
-        this.props.closeModal();
+        setTimeout(() => {
+          this.switchModalState()
+          this.props.closeModal();
       }, 600)
     }
   }
