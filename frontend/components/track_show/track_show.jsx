@@ -41,12 +41,6 @@ class TrackShow extends React.Component {
 
   showForm(e) {
     e.preventDefault();
-    // let form = document.getElementsByClassName('upload-form-container')[0];
-    // let background = document.getElementsByClassName('track-edit-background')[0];
-    // background.classList.remove("closed")
-    // background.classList.add("open")
-    // form.classList.remove("closed")
-    // form.classList.add("open")
     this.setState( {showForm: true} );
   }
 
