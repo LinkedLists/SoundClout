@@ -27,25 +27,16 @@ class Playbar extends React.Component {
   }
 
   componentDidMount() {
-    // let track = JSON.parse(window.localStorage.getItem("currentTrack"))
-    // if (track && Object.keys(track).length > 0) {
-    //   this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
-    // }
+    clearInterval(this.timeIncrementerInstance)
+    let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    if (track && Object.keys(track).length > 0) {
+      this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
+    }
   }
-
-  // componentDidMount() {
-  //   let audio = document.getElementById('audio')
-  //   this.setState( {playing: audio.paused} )
-  // }
-
-  // componentDidUpdate() {
-    // debugger
-    // let audio = document.getElementById('audio')
-    // this.setState( {playing: audio.paused} )
-  // }
 
   componentWillUnmount() {
     this.props.clearPlaybarState();
+    clearInterval(this.timeIncrementerInstance)
   }
 
   componentDidUpdate() {
@@ -79,13 +70,11 @@ class Playbar extends React.Component {
   timeIncrementer() {
     let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
-    // let progressBarSlider = document.getElementsByClassName('progress-bar-slider')[0];
     console.log("in time")
     return setInterval(() => {
       console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
-      // progressBarSlider.style.width = `${percentPlayed}%`;
       this.setState({
         currentTime: this.prettifyTime(audio.currentTime),
         percentPlayed: percentPlayed
@@ -100,11 +89,10 @@ class Playbar extends React.Component {
       percentPlayed: 0
     })
     this.addBarListener()
-    this.timeIncrementerInstance = this.timeIncrementer()
+    // this.timeIncrementerInstance = this.timeIncrementer()
   }
   
   addBarListener() {
-    let progressBar
     let playbar = document.getElementsByClassName("progress-timeline-wrapper")[0]
     let width = playbar.getBoundingClientRect().width
     let audio = this.props.audio
@@ -112,19 +100,17 @@ class Playbar extends React.Component {
     let percentPlayed
     let x
 
-    playbar.addEventListener("click", (e) => {
-      x = e.offsetX + 4;
-      percentPlayed = (x / width)
-      currentTime = this.props.audio.duration * percentPlayed
+    // playbar.addEventListener("click", (e) => {
+    //   x = e.offsetX + 4;
+    //   percentPlayed = (x / width)
+    //   currentTime = this.props.audio.duration * percentPlayed
 
-      this.setState({
-        currentTime: this.prettifyTime(currentTime),
-        percentPlayed: percentPlayed * 100
-      })
-      audio.currentTime = currentTime
-      // progressBar = document.getElementsByClassName('progress-bar')[0];
-      // progressBar.style.width = `${percentPlayed * 100}%`;
-    })
+    //   this.setState({
+    //     currentTime: this.prettifyTime(currentTime),
+    //     percentPlayed: percentPlayed * 100
+    //   })
+    //   audio.currentTime = currentTime
+    // })
 
     // playbtn.addEventListener("click", (e) => {
     // })
@@ -177,14 +163,14 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     if (!this.props.paused) {
       audio.pause()
-      // audio.removeAttribute("autoPlay")
-      // clearInterval(this.timeIncrementerInstance)
+      audio.removeAttribute("autoPlay")
+      clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
       this.props.playTrack();
-      // audio.setAttribute("autoPlay", true)
+      audio.setAttribute("autoPlay", true)
       audio.play()
-      // this.timeIncrementerInstance = this.timeIncrementer()
+      this.timeIncrementerInstance = this.timeIncrementer()
     }
   }
 
@@ -231,6 +217,9 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     audio ? audio.volume = this.state.volume : null
 
+    // workaround to styling the input type range
+    // color only up to the progress value and fill
+    // remaining play time with white
     let progress_bar2 = document.getElementsByClassName("progress-bar2")[0]
     if (progress_bar2) {
       progress_bar2.style.background = `linear-gradient(to right, 
@@ -246,7 +235,7 @@ class Playbar extends React.Component {
             <div className="media-container">
               <audio 
                 id='audio' 
-                autoPlay
+                // autoPlay
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
@@ -299,7 +288,7 @@ class Playbar extends React.Component {
                     onChange={this.handleVolume} 
                     value={this.state.volume}/>
                   {/* <div className="slider-background" /> */}
-                  <div className="volume-slider-ball" />
+                  {/* <div className="volume-slider-ball" /> */}
                 </div>
               </div>
             </div>

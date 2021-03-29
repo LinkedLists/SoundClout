@@ -274,18 +274,28 @@
   cursor: pointer;
 }
 
-.slider-ball {
-  position: absolute;
-  top: 0;
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 100%;
-  background-color: #f50;
-  margin-left: 11px;
-}
+// .slider-background::-webkit-slider-thumb {
+//   -webkit-appearance: none;
+//   appearance: none;
+//   width: 8px;
+//   height: 8px;
+//   border-radius: 50%;
+//   background: #f50;
+//   cursor: pointer;
+// }
 
-.volume-slider {
-  -webkit-appearance: slider-vertical;
-  position: absolute;
-}
+// .slider-ball {
+//   position: absolute;
+//   top: 0;
+//   display: block;
+//   width: 8px;
+//   height: 8px;
+//   border-radius: 100%;
+//   background-color: #f50;
+//   margin-left: 11px;
+// }
+
+// .volume-slider {
+//   -webkit-appearance: slider-vertical;
+//   position: absolute;
+// }
