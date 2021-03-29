@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import UploadForm from './upload_form'
+import UploadShow from './upload_show'
 import { createTrack, clearTrackErrors } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UploadForm)
+export default connect(mapStateToProps, mapDispatchToProps)(UploadShow)

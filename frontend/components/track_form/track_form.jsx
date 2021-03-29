@@ -81,11 +81,11 @@ class TrackForm extends React.Component {
     this.switchModalState()
     setTimeout(() => {
       this.props.closeForm()
-      // this.props.clearTrackErrors();
-      // this.resetState();
     }, 600)
   }
 
+  // you do not want to be setting the state when the component
+  // is trying to unmount
   // resetState() {
   //   this.setState({
   //     title: this.props.track.title,
