@@ -7,7 +7,7 @@ import ContentContainer from './content/content_container'
 import TrackShowContainer from './track_show/track_show_container'
 import Homepage from './homepage/homepage'
 import PlaybarContainer from './playbar/playbar_container'
-import UploadShowContainer from './upload_form/upload_show_container'
+import UploadShowContainer from './upload_show/upload_show_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import '@fortawesome/fontawesome-free/js/all.js';
 

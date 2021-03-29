@@ -186,11 +186,13 @@ class TrackForm extends React.Component {
                     <select onChange={this.handleChange("genre")} className="form-input select" value={this.state.genre}>
                       <option value="None" className="select-item">None</option>
                       <option value="Pop" className="select-item">Pop</option>
+                      <option value="Hip-hop" className="select-item">Hip-hop</option>
+                      <option value="Rap" className="select-item">Rap</option>
                       <option value="Rock" className="select-item">Rock</option>
-                      <option value="Blues" className="select-item">Blues</option>
                       <option value="Instrumental" className="select-item">Instrumental</option>
                       <option value="Electronic" className="select-item">Electronic</option>
                       <option value="Classical" className="select-item">Classical</option>
+                      <option value="Blues" className="select-item">Blues</option>
                       <option value="Metal" className="select-item">Metal</option>
                       <option value="Reggae" className="select-item">Reggae</option>
                       <option value="Country" className="select-item">Country</option>

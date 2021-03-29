@@ -254,7 +254,9 @@
   box-shadow: none;
   border-radius: 0;
   outline: 0;
-  margin-left: 14px
+  margin-left: 14px;
+  -webkit-appearance: slider-vertical;
+  cursor: pointer;
 }
 
 .slider-ball {
@@ -266,4 +268,9 @@
   border-radius: 100%;
   background-color: #f50;
   margin-left: 11px;
+}
+
+.volume-slider {
+  -webkit-appearance: slider-vertical;
+  position: absolute;
 }
