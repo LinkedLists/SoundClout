@@ -97,6 +97,7 @@ class Playbar extends React.Component {
   setDuration() {
     console.log("meta loaded")
     let audio = this.props.audio
+    audio.volume = this.state.volume
     if (!this.timeIncrementerInstance && !audio.paused) {
       this.timeIncrementer();
     }
@@ -173,59 +174,31 @@ class Playbar extends React.Component {
       clearInterval(this.timeIncrementerInstance)
       // this.bringDownVolume()
     })
-
-
-    // attempt at media scrubbing by dragging the play ball
-
-    // slider.addEventListener("drag", (e) => {
-    //   x = e.offsetX;
-      
-    //   percentPlayed = ( (x + 8) / width)
-    //   currentTime = this.props.audio.duration * percentPlayed
-
-    //   console.log("X Position: " + x);
-    //   console.log("percent played " + percentPlayed * 100)
-    //   this.setState({
-    //     currentTime: this.prettifyTime(currentTime),
-    //     percentPlayed: percentPlayed * 100
-    //   })
-    //   audio.currentTime = currentTime
-    //   console.log(this.state.currentTime)
-
-    //   progressBar.style.width = `${percentPlayed * 100}%`
-    // })
   }
 
   bringBackVolume() {
-    this.props.audio.volume = 0;
     let interval = setInterval(() => {
-      // if (this.props.audio.volume === this.state.volume) {
-      //   clearInterval(interval)
-      // }
       console.log("up")
-      if (this.props.audio.volume <= (this.state.volume - 0.01)) {
+      if (this.props.audio.volume <= (this.state.volume - 0.02)) {
         this.props.audio.volume += 0.01
       } else {
-        this.props.audio.volume = this.state.volume
-        audio.play()
+        // this.props.audio.volume = this.state.volume
+        this.props.audio.play()
         clearInterval(interval)
       }
-    }, 5)
+    }, 3)
   }
 
   bringDownVolume() {
     let interval = setInterval(() => {
-      // if (this.props.audio.volume <= 0) {
-      //   clearInterval(interval)
-      // }
       console.log("down")
       if (this.props.audio.volume >= 0.01) {
         this.props.audio.volume -= 0.01
       } else {
-        audio.pause()
+        this.props.audio.pause()
         clearInterval(interval)
       }
-    }, 5)
+    }, 3)
   }
 
 
@@ -238,6 +211,7 @@ class Playbar extends React.Component {
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
+      this.props.audio.volume = 0;
       this.bringBackVolume()
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
@@ -292,7 +266,7 @@ class Playbar extends React.Component {
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = this.props.audio
-    audio ? audio.volume = this.state.volume : null
+    // audio ? audio.volume = this.state.volume : null
 
     // workaround to styling the input type range
     // color only up to the progress value and fill
