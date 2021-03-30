@@ -19,7 +19,7 @@ class CommentForm extends React.Component {
 
   componentDidMount() {
     let profileContainer = document.getElementsByClassName("comment-form-profile-img")[0];
-    profileContainer.style.backgroundImage = `url(${this.props.track.photoUrl})`
+    profileContainer.style.backgroundImage = `url(${this.props.currentUser.profileUrl})`
   }
 
   handleSubmit(e) {

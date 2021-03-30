@@ -6,13 +6,28 @@ class SessionForm extends React.Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      // profile_img: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
     this.demoAttempt = false;
+    this.handlePhotoFile = this.handlePhotoFile.bind(this);
+  }
+
+  
+  handlePhotoFile(e) {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({profile_img: file})
+    }
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   componentWillUnmount() {
@@ -20,11 +35,16 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
+
+    const user = new FormData();
+    user.append("user[username]", this.state.username)
+    user.append("user[password]", this.state.password)
+    if (this.state.profile_img) user.append("user[profile_img]", this.state.profile_img)
+
     e.preventDefault();
-    // this.props.handleCloseModal()
     this.demoAttempt ? 
       this.props.login(this.state).then(this.props.closeModal()) : 
-      this.props.action(this.state).then(this.props.closeModal())
+      this.props.action(user).then(this.props.closeModal())
   }
 
   handleChange(field) {
@@ -98,6 +118,8 @@ class SessionForm extends React.Component {
             {errors['Password'] ? <div className="credential-errors-ul">{errors['Password']}</div> : null}
             {errors['Invalid'] ? <div className="credential-errors-ul">{errors['Invalid']}</div> : null}
           </div>
+          {/* users can create a profile w/picture if needed later */}
+          {/* <input type="file"  onChange={this.handlePhotoFile}/> */}
 
           <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
           <span className="session-form-footer">

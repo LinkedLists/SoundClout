@@ -105,22 +105,24 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     // bandaid fix. Some reason when page intially loads there is 
     // an error where the state does not exist yet
-    audio.volume = this.state.volume ? this.state.volume : 0.6
-    if (!this.timeIncrementerInstance && !audio.paused) {
-      this.timeIncrementer();
-    }
-
-    this.setState({
-      duration: this.prettifyTime(audio.duration),
-      percentPlayed: 0
-    })
-
-    // EVENT LISTENERS ARE ALL UNIQUE
-    // I need to make sure that event listeners will
-    // only ever be called once
-    if (!this.state.mounted) {
-      this.addBarListener()
-      this.setState( {mounted: true} )
+    if (audio) {
+      audio ? audio.volume = this.state.volume : null
+      if (!this.timeIncrementerInstance && !audio.paused) {
+        this.timeIncrementer();
+      }
+  
+      this.setState({
+        duration: this.prettifyTime(audio.duration),
+        percentPlayed: 0
+      })
+  
+      // EVENT LISTENERS ARE ALL UNIQUE!!!
+      // I need to make sure that event listeners will
+      // only ever be called once
+      if (!this.state.mounted) {
+        this.addBarListener()
+        this.setState( {mounted: true} )
+      }
     }
   }
   
@@ -134,6 +136,9 @@ class Playbar extends React.Component {
     let percentPlayed
     let x
 
+    // Although there is an input type range that handles play timeline,
+    // this is still necessary because it makes the pseudo hover effect possible.
+    // There is no solution that I know of that allows for thumb only hover
     playbar.addEventListener("click", (e) => {
       x = e.offsetX + 4;
       percentPlayed = (x / width)
@@ -156,7 +161,7 @@ class Playbar extends React.Component {
       })
     }
 
-    // NOTE: looping does not end or pause track
+    // NOTE: looping is continous play and does not end or pause a track
     audio.addEventListener("ended", () => {
       console.log("track ended")
       clearInterval(this.timeIncrementerInstance)
@@ -301,8 +306,8 @@ class Playbar extends React.Component {
     if (this.props.currentSessionId === null) return <></>
     let audio = this.props.audio
 
-    // workaround to styling the input type range
-    // color only up to the progress value and fill
+    // Workaround to styling the input type range:
+    // Color only up to the progress value and fill
     // remaining play time with white
     let progress_bar2 = document.getElementsByClassName("progress-bar2")[0]
     if (progress_bar2) {
@@ -330,6 +335,8 @@ class Playbar extends React.Component {
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
             <div className="media-container">
+              {/* Autoplay should not be included or else the 
+              user will have music on autoplay on refresh. */}
               <audio 
                 id='audio' 
                 // autoPlay
