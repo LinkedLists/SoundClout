@@ -9,13 +9,16 @@ class TrackShow extends React.Component {
     super(props);
     this.state = {
       showForm: false,
-      colored: false
+      colored: false,
+      volume: 0.6
     }
     this.deleted = false;
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showForm = this.showForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
+    this.bringBackVolume = this.bringBackVolume.bind(this)
+    this.bringDownVolume = this.bringDownVolume.bind(this)
   }
 
   componentDidMount() {
@@ -75,7 +78,7 @@ class TrackShow extends React.Component {
 
   sendTrack() {
     let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
 
     if (this.props.track.id !== this.props.currentTrack.id) {
       this.props.sendTrack(this.props.track, () => audio.play())
@@ -93,20 +96,50 @@ class TrackShow extends React.Component {
       console.log(audio.paused)
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
-      audio.play();
+      // audio.play();
+      this.bringBackVolume();
       playbtn.classList.add("playing");
     } else if (!audio.paused) {
       this.props.pauseTrack()
-      audio.pause()
+      // audio.pause()
+      this.bringDownVolume()
       audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
     }
   }
 
+  bringBackVolume() {
+    this.props.audio.volume = 0;
+    let interval = setInterval(() => {
+      console.log("up")
+      // console.log(this.state.volume)
+      if (this.props.audio.volume <= (this.state.volume - 0.02)) {
+        this.props.audio.volume += 0.01
+      } else {
+        this.props.audio.volume = this.state.volume
+        this.props.audio.play()
+        clearInterval(interval)
+      }
+    }, 3)
+  }
+
+  bringDownVolume() {
+    this.setState( {volume: this.props.audio.volume} )
+    let interval = setInterval(() => {
+      console.log("down")
+      if (this.props.audio.volume >= 0.01) {
+        this.props.audio.volume -= 0.01
+      } else {
+        this.props.audio.pause()
+        clearInterval(interval)
+      }
+    }, 3)
+  }
+
   render() {
     if (this.props.track === undefined) return null;
     if (this.props.deleted === false) return <Redirect to="/discover" />
-    let audio = document.getElementById('audio')
+    let audio = this.props.audio
     return (
       <div className="content-container">
         {/* <EditTrackContainer track={this.props.track} closeForm={this.closeForm} /> */}
