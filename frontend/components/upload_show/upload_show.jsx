@@ -95,7 +95,7 @@ class UploadShow extends React.Component {
     return (
       <div className="content-container">
         <div className="upload-wrapper">
-          <h4>Drag and drop your tracks and albums here</h4>
+          <h4>Drag and drop your tracks and albums here (Soon)</h4>
           <input type="file" id="upload-audio" onChange={this.handleAudioFile}/>
           <button 
             className="upload-btn"
