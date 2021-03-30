@@ -10,7 +10,7 @@ class TrackShow extends React.Component {
     this.state = {
       showForm: false,
       colored: false,
-      volume: 0.6
+      volume: this.props.audio ? this.props.audio.volume : 0.6
     }
     this.deleted = false;
     this.sendTrack = this.sendTrack.bind(this)
@@ -96,44 +96,50 @@ class TrackShow extends React.Component {
       console.log(audio.paused)
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
-      // audio.play();
       this.bringBackVolume();
       playbtn.classList.add("playing");
     } else if (!audio.paused) {
       this.props.pauseTrack()
-      // audio.pause()
       this.bringDownVolume()
       audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
     }
   }
 
+  // volume swells to gradually change volume on pause/play
+  // so that user does not experience abrupt volume changes
   bringBackVolume() {
-    this.props.audio.volume = 0;
-    let interval = setInterval(() => {
-      console.log("up")
-      // console.log(this.state.volume)
-      if (this.props.audio.volume <= (this.state.volume - 0.02)) {
-        this.props.audio.volume += 0.01
-      } else {
-        this.props.audio.volume = this.state.volume
-        this.props.audio.play()
-        clearInterval(interval)
-      }
-    }, 3)
+    let volume = document.getElementsByClassName("slider-background")[0].value
+    if (volume) {
+      this.props.audio.volume = 0;
+      this.props.audio.play()
+      let interval = setInterval(() => {
+        // console.log("up")
+        if (this.props.audio.volume <= (volume - volume/60 )) {
+          this.props.audio.volume += volume/60 
+        } else {
+          this.props.audio.volume = volume
+          clearInterval(interval)
+        }
+      }, 3)
+    }
   }
 
   bringDownVolume() {
-    this.setState( {volume: this.props.audio.volume} )
-    let interval = setInterval(() => {
-      console.log("down")
-      if (this.props.audio.volume >= 0.01) {
-        this.props.audio.volume -= 0.01
-      } else {
-        this.props.audio.pause()
-        clearInterval(interval)
-      }
-    }, 3)
+    // this.setState( {volume: this.props.audio.volume} )
+    let volume = document.getElementsByClassName("slider-background")[0].value
+    if (volume) {
+      let interval = setInterval(() => {
+        // console.log(this.props.audio.volume)
+        if (this.props.audio.volume >= volume/60 ) {
+          this.props.audio.volume -= volume/60 
+        } else {
+          this.props.audio.volume = 0
+          this.props.audio.pause()
+          clearInterval(interval)
+        }
+      }, 3)
+    }
   }
 
   render() {
