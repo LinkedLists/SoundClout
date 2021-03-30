@@ -166,24 +166,23 @@ class Playbar extends React.Component {
         this.timeIncrementer()
       }
 
-      // this.bringBackVolume()
     })
 
     audio.addEventListener("pause", () => {
       console.log("track is paused")
       clearInterval(this.timeIncrementerInstance)
-      // this.bringDownVolume()
     })
   }
 
+  // volume swells to gradually change volume on pause/play
+  // so that user does not experience abrupt volume changes
   bringBackVolume() {
+    this.props.audio.play()
     let interval = setInterval(() => {
-      console.log("up")
-      if (this.props.audio.volume <= (this.state.volume - 0.02)) {
-        this.props.audio.volume += 0.01
+      if (this.props.audio.volume <= (this.state.volume - this.state.volume/60 )) {
+        this.props.audio.volume += this.state.volume/60 
       } else {
-        // this.props.audio.volume = this.state.volume
-        this.props.audio.play()
+        this.props.audio.volume = this.state.volume
         clearInterval(interval)
       }
     }, 3)
@@ -191,10 +190,10 @@ class Playbar extends React.Component {
 
   bringDownVolume() {
     let interval = setInterval(() => {
-      console.log("down")
-      if (this.props.audio.volume >= 0.01) {
-        this.props.audio.volume -= 0.01
+      if (this.props.audio.volume >= this.state.volume/60 ) {
+        this.props.audio.volume -= this.state.volume/60 
       } else {
+        this.props.audio.volume = 0
         this.props.audio.pause()
         clearInterval(interval)
       }
@@ -241,7 +240,11 @@ class Playbar extends React.Component {
 
   handleVolume(e) {
     this.setState( {volume: e.target.value} )
-    this.props.audio.volume = this.state.volume;
+    if (e.target.value === "0") {
+      this.props.audio.volume = 0.00
+    } else {
+      this.props.audio.volume = this.state.volume;
+    }
   }
 
   handleRepeat() {
@@ -266,7 +269,6 @@ class Playbar extends React.Component {
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = this.props.audio
-    // audio ? audio.volume = this.state.volume : null
 
     // workaround to styling the input type range
     // color only up to the progress value and fill
@@ -280,6 +282,16 @@ class Playbar extends React.Component {
         #ccc 100%`
     }
 
+    let volumeIcon;
+    if (this.state.muted || this.state.volume < 0.01) {
+      volumeIcon = <FontAwesomeIcon icon="volume-mute" />
+    }
+    else if(!this.state.muted && this.state.volume < 0.35){
+      volumeIcon = <FontAwesomeIcon icon="volume-down" />
+    }
+    else{
+        volumeIcon = <FontAwesomeIcon icon="volume-up" />
+    }
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
@@ -326,8 +338,7 @@ class Playbar extends React.Component {
             <div className="volume-control-container">
               <button 
                 onClick={this.handleMute} 
-                id="volume-btn">{this.state.muted || (audio && audio.volume === 0) ? 
-                  <FontAwesomeIcon icon="volume-mute" /> : <FontAwesomeIcon icon="volume-up" />}
+                id="volume-btn">{volumeIcon}
                 </button>
               <div className="thumb" onClick={this.handleMute}>
                 <div className="volume-control-wrapper">
@@ -338,8 +349,6 @@ class Playbar extends React.Component {
                     min={0} max={1} step="0.01" 
                     onChange={this.handleVolume} 
                     value={ audio ? this.state.volume : 0.6}/>
-                  {/* <div className="slider-background" /> */}
-                  {/* <div className="volume-slider-ball" /> */}
                 </div>
               </div>
             </div>
