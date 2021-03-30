@@ -25,13 +25,17 @@ class Playbar extends React.Component {
     this.clearState = this.clearState.bind(this)
     this.addBarListener = this.addBarListener.bind(this)
     this.handleVolume = this.handleVolume.bind(this)
+    this.bringBackVolume = this.bringBackVolume.bind(this)
+    this.bringDownVolume = this.bringDownVolume.bind(this)
   }
 
   componentDidMount() {
     clearInterval(this.timeIncrementerInstance)
-    let track = JSON.parse(window.localStorage.getItem("currentTrack"))
-    if (track && Object.keys(track).length > 0) {
-      this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
+    if (this.props.currentSessionId) {
+      let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+      if (track && Object.keys(track).length > 0) {
+        this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
+      }
     }
   }
 
@@ -75,7 +79,7 @@ class Playbar extends React.Component {
     let progressBar2 = document.getElementsByClassName('progress-bar2')[0];
     console.log("in time")
     this.timeIncrementerInstance = setInterval(() => {
-      console.log("f")
+      // console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
       if (progressBar2) {
@@ -120,17 +124,17 @@ class Playbar extends React.Component {
     let percentPlayed
     let x
 
-    // playbar.addEventListener("click", (e) => {
-    //   x = e.offsetX + 4;
-    //   percentPlayed = (x / width)
-    //   currentTime = this.props.audio.duration * percentPlayed
-    //   progressBar.style.width = `${percentPlayed * 100}%`
-    //   this.setState({
-    //     currentTime: this.prettifyTime(currentTime),
-    //     percentPlayed: percentPlayed * 100
-    //   })
-    //   audio.currentTime = currentTime
-    // })
+    playbar.addEventListener("click", (e) => {
+      x = e.offsetX + 4;
+      percentPlayed = (x / width)
+      currentTime = this.props.audio.duration * percentPlayed
+      progressBar.style.width = `${percentPlayed * 100}%`
+      this.setState({
+        currentTime: this.prettifyTime(currentTime),
+        percentPlayed: percentPlayed * 100
+      })
+      audio.currentTime = currentTime
+    })
 
     // playbtn.addEventListener("click", (e) => {
     // })
@@ -160,11 +164,14 @@ class Playbar extends React.Component {
       } else {
         this.timeIncrementer()
       }
+
+      // this.bringBackVolume()
     })
 
     audio.addEventListener("pause", () => {
       console.log("track is paused")
       clearInterval(this.timeIncrementerInstance)
+      // this.bringDownVolume()
     })
 
 
@@ -189,18 +196,52 @@ class Playbar extends React.Component {
     // })
   }
 
+  bringBackVolume() {
+    this.props.audio.volume = 0;
+    let interval = setInterval(() => {
+      // if (this.props.audio.volume === this.state.volume) {
+      //   clearInterval(interval)
+      // }
+      console.log("up")
+      if (this.props.audio.volume <= (this.state.volume - 0.01)) {
+        this.props.audio.volume += 0.01
+      } else {
+        this.props.audio.volume = this.state.volume
+        audio.play()
+        clearInterval(interval)
+      }
+    }, 5)
+  }
+
+  bringDownVolume() {
+    let interval = setInterval(() => {
+      // if (this.props.audio.volume <= 0) {
+      //   clearInterval(interval)
+      // }
+      console.log("down")
+      if (this.props.audio.volume >= 0.01) {
+        this.props.audio.volume -= 0.01
+      } else {
+        audio.pause()
+        clearInterval(interval)
+      }
+    }, 5)
+  }
+
 
   handlePlay() {
     let audio = this.props.audio
     if (!this.props.paused) {
-      audio.pause()
+      // audio.pause()
+      this.bringDownVolume();
       audio.removeAttribute("autoPlay")
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack();
     } else {
+      this.bringBackVolume()
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
-      audio.play()
+      // audio.play()
       if (this.timeIncrementerInstance) {
         clearInterval(this.timeIncrementerInstance)
         this.timeIncrementer()

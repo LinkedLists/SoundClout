@@ -7,7 +7,7 @@ const sessionReducer = (oldState = {}, action) => {
       return action.user
       // return Object.assign({}, oldState, action.user)
     case LOGOUT_CURRENT_USER:
-      return {}
+      return {id: null}
     default:
       return oldState
   }
