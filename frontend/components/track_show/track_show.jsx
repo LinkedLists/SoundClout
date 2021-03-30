@@ -141,7 +141,8 @@ class TrackShow extends React.Component {
                 <div className="track-body-left-header">
                   <CommentFormContainer track={this.props.track} />
                   {
-                    this.props.currentUserId === this.props.track.uploader_id ?
+                    this.props.currentUserId === this.props.track.uploader_id ||
+                    this.props.currentUsername === "God Hand"?
                       <div className="track-show-btns">
                         <button onClick={this.deleteTrack}>delete</button>
                         <button onClick={this.showForm} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
@@ -151,7 +152,7 @@ class TrackShow extends React.Component {
 
                 <div className="track-body-main-content">
                   <div className="track-show-uploader-container">
-                    <img src={this.props.track.photoUrl} className="track-show-uploader-img"/>
+                    <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
                     <div className="track-show-uploader-details">
                       <div className="track-show-uploader-name">{this.props.track.username}</div>
                     </div>

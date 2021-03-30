@@ -134,12 +134,13 @@ class Playbar extends React.Component {
 
     // playbtn.addEventListener("click", (e) => {
     // })
-
-    document.getElementById("logout").addEventListener("click", () => {
-      clearInterval(this.timeIncrementerInstance)
-      this.props.pauseTrack()
-      this.clearState()
-    })
+    if (this.props.currentSessionId) {
+      document.getElementById("logout").addEventListener("click", () => {
+        clearInterval(this.timeIncrementerInstance)
+        this.props.pauseTrack()
+        this.clearState()
+      })
+    }
 
     // NOTE: looping does not end or pause track
     audio.addEventListener("ended", () => {
@@ -337,7 +338,7 @@ class Playbar extends React.Component {
                 <div className="current-track-description">
                   <div className="description-wrapper" > 
                     <div>
-                      {this.props.currentUser.username}
+                      {this.props.currentTrack.username}
                     </div>
                     <div className="current-track-title">
                       {this.props.currentTrack.title}
