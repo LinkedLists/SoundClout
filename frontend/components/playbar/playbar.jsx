@@ -27,6 +27,12 @@ class Playbar extends React.Component {
     this.handleVolume = this.handleVolume.bind(this)
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
+
+    // Set instance variable that will get assigned to a setInterval ID
+    // during volume swelling. Prevent a play/pause async error
+    // when a user spam clicks play/pause by clearing the other asyc process
+    this.intervalUp;
+    this.intervalDown;
   }
 
   componentDidMount() {
@@ -97,7 +103,9 @@ class Playbar extends React.Component {
   setDuration() {
     console.log("meta loaded")
     let audio = this.props.audio
-    audio.volume = this.state.volume
+    // bandaid fix. Some reason when page intially loads there is 
+    // an error where the state does not exist yet
+    audio.volume = this.state.volume ? this.state.volume : 0.6
     if (!this.timeIncrementerInstance && !audio.paused) {
       this.timeIncrementer();
     }
@@ -180,37 +188,45 @@ class Playbar extends React.Component {
   // so that user does not experience abrupt volume changes
   bringBackVolume(playbtn) {
     playbtn ? playbtn.classList.add("playing") : null
+
+    // This ternary is NECESSARY for the volume/mute icon.
+    // If volume was set to mute or 0 by user then do not allow the audio
+    // volume to deviate from 0; otherwise, the mute icon will have
+    // a sudden jitter. 
+    this.props.audio.volume === 0 ? 
+      null : this.props.audio.volume = 0.01
+
     this.props.audio.play()
-    let interval = setInterval(() => {
+    this.intervalUp = setInterval(() => {
       console.log("up")
       if (this.props.audio.volume <= (this.state.volume - this.state.volume/60 )) {
         if (this.state.volume/60 === 0 ) {
           this.props.audio.volume = this.state.volume
-          clearInterval(interval)
+          clearInterval(this.intervalUp)
         }
         this.props.audio.volume += this.state.volume/60 
       } else {
         this.props.audio.volume = this.state.volume
-        clearInterval(interval)
+        clearInterval(this.intervalUp)
       }
     }, 3)
   }
 
   bringDownVolume(playbtn) {
     playbtn ? playbtn.classList.remove("playing") : null
-    let interval = setInterval(() => {
+    this.intervalDown = setInterval(() => {
       // console.log("down")
       if (this.props.audio.volume >= this.state.volume/60 ) {
         if (this.state.volume/60 === 0 ) {
-          this.props.audio.volume = 0
+          // this.props.audio.volume = 0
           this.props.audio.pause()
-          clearInterval(interval)
+          clearInterval(this.intervalDown)
         }
         this.props.audio.volume -= this.state.volume/60 
       } else {
-        this.props.audio.volume = 0
+        // this.props.audio.volume = 0
         this.props.audio.pause()
-        clearInterval(interval)
+        clearInterval(this.intervalDown)
       }
     }, 3)
   }
@@ -222,15 +238,18 @@ class Playbar extends React.Component {
     if (!this.props.paused) {
       // audio.pause()
       this.bringDownVolume(playbtn);
-      audio.removeAttribute("autoPlay")
+      clearInterval(this.intervalUp)
       clearInterval(this.timeIncrementerInstance)
+
+      audio.removeAttribute("autoPlay")
       this.props.pauseTrack();
     } else {
-      this.props.audio.volume = 0;
+      // audio.play()
       this.bringBackVolume(playbtn)
+
+      clearInterval(this.intervalDown)
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
-      // audio.play()
       if (this.timeIncrementerInstance) {
         clearInterval(this.timeIncrementerInstance)
         this.timeIncrementer()
@@ -256,16 +275,7 @@ class Playbar extends React.Component {
 
   handleVolume(e) {
     this.props.audio.volume = e.target.value
-    if (e.target.value === 0) {
-      console.log("im at 0")
-      this.setState( {volume: 0} )
-    }
-    else if (e.target.value === 1) {
-      this.setState( {volume: 1} )
-    }
     this.setState( {volume: e.target.value} )
-    console.log(this.state.volume + "   " + e.target.value)
-    // this.props.audio.volume = this.props.audio.volume
   }
 
   handleRepeat() {
@@ -305,7 +315,7 @@ class Playbar extends React.Component {
 
     let volumeIcon;
     if (audio) {
-      if (this.state.muted || this.state.volume === 0) {
+      if (this.state.muted || audio.volume === 0) {
         volumeIcon = <FontAwesomeIcon icon="volume-mute" />
       }
       else if(!this.state.muted && this.state.volume < 0.35){
@@ -315,6 +325,7 @@ class Playbar extends React.Component {
         volumeIcon = <FontAwesomeIcon icon="volume-up" />
       }
     }
+
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
