@@ -5,7 +5,8 @@ import CommentForm from './comment_form'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.entities.users[state.session.id],
+    // currentUser: state.entities.users[state.session.id],
+    currentUser: state.session,
     currentUserId: state.session.id,
     track: ownProps.track,
   }

@@ -74,12 +74,14 @@ class CommentIndexItem extends React.Component {
   }
 
   colorOwner() {
-    return this.props.comment.uploader_id === this.props.currentUserId ?
+    return this.props.comment.uploader_id === this.props.currentUserId || 
+    this.props.currentUsername === "God Hand" ?
      "comment-items owner" : "comment-items"
   }
 
   handleHover(comment) {
-    if (comment.uploader_id === this.props.currentUserId) {
+    if (comment.uploader_id === this.props.currentUserId || 
+      this.props.currentUsername === "God Hand" ) {
       let li = document.getElementById(`li-${comment.id}`)
       document.getElementById(`${comment.id}`).style.opacity = "1"
       li.style.outline = "1px solid #e0e0e0"
@@ -88,7 +90,8 @@ class CommentIndexItem extends React.Component {
   }
 
   handleLeave(comment) {
-    if (comment.uploader_id === this.props.currentUserId) {
+    if (comment.uploader_id === this.props.currentUserId || 
+      this.props.currentUsername === "God Hand" ) {
       let li = document.getElementById(`li-${comment.id}`)
       document.getElementById(`${comment.id}`).style.opacity = "0"
       li.style.outline = "none"
@@ -107,7 +110,6 @@ class CommentIndexItem extends React.Component {
         <img src={this.props.photoUrl} className="wtf" />
         <div className="comment-item-content">
           <div className="comment-item-username">
-            {/* {this.props.comment.username} */}
             {
               this.props.comment.uploader_id === this.props.currentUserId ?
                 "You" : this.props.comment.username
@@ -120,7 +122,8 @@ class CommentIndexItem extends React.Component {
         <div className="comment-item-meta">
           {this.getDateMeta(this.props.comment.created_at)}
           {
-            this.props.currentUserId === this.props.comment.uploader_id ?
+            this.props.currentUserId === this.props.comment.uploader_id || 
+            this.props.currentUsername === "God Hand" ?
               <FontAwesomeIcon 
                 icon="trash" 
                 size="lg"

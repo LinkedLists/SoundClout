@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
     currentTrack: state.ui.playbar.currentTrack,
     paused: state.ui.playbar.paused,
     currentSessionId: state.session.id,
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.session,
+    // currentUser: state.entities.users[state.session.id],
   }
 }
 

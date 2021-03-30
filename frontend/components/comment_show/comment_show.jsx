@@ -37,6 +37,7 @@ class CommentShow extends React.Component {
           deleteComment={this.props.deleteComment} 
           comment={comment}
           currentUserId={this.props.currentUserId}
+          currentUsername={this.props.currentUsername}
           />
     })
     return (
