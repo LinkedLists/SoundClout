@@ -49,7 +49,7 @@ class NavBar extends React.Component {
             <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
           </ul>
           <form className="searchbar-form">
-            <input type="text" placeholder="Search for artists, bands, tracks, podcasts"></input>
+            <input type="text" placeholder="Search for artists, bands, tracks, podcasts (soon)"></input>
             <button type="submit" className="search-btn"/>
           </form>
           <div className="right-nav">
