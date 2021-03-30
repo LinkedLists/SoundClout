@@ -15,17 +15,17 @@ class Modal extends React.Component {
     this.component
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
-
+    this.handleCloseModal = this.handleCloseModal.bind(this)
     this.switchModalState = this.switchModalState.bind(this)
   }
 
   selectComponent() {
     switch (this.props.modal) {
       case 'login':
-        this.component = <LoginFormContainer/>;
+        this.component = <LoginFormContainer handleCloseModal={this.handleCloseModal} switchModalState={this.switchModalState}/>;
         break;
       case 'signup':
-        this.component = <SignupFormContainer/>;
+        this.component = <SignupFormContainer  handleCloseModal={this.handleCloseModal} switchModalState={this.switchModalState}/>;
         break;
       default:
         this.component = null;
@@ -33,24 +33,28 @@ class Modal extends React.Component {
     }
   }
 
+  // componentWillUnmount() {
+  //   this.handleCloseModal()
+  // }
+
+  handleCloseModal() {
+    this.switchModalState()
+    setTimeout(() => {
+      this.switchModalState()
+      this.props.closeModal();
+    }, 600)
+  }
+
   handleKeyPress(e) {
     if (e.key == "Escape") {
-      this.switchModalState()
-      setTimeout(() => {
-        this.switchModalState()
-        this.props.closeModal();
-      }, 600)
+      this.handleCloseModal()
     }
   }
 
   handleMouseDown(e) {
     if (e.target.className === "modal-background-close" ||
       e.target.className === "close-x") {
-        this.switchModalState()
-        setTimeout(() => {
-          this.switchModalState()
-          this.props.closeModal();
-      }, 600)
+        this.handleCloseModal()
     }
   }
 
@@ -75,6 +79,7 @@ class Modal extends React.Component {
       this.component = null;
       return null
     }
+    // if (this.props.currentUserId) this.handleCloseModal()
     this.selectComponent();
     return(
       <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown}>

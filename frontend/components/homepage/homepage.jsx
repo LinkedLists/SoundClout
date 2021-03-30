@@ -11,8 +11,8 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className='homepage-container'>
-        {this.props.state.session.id ? null : <Modal />}
-        {/* <Modal /> */}
+        {/* {this.props.state.session.id ? null : <Modal />} */}
+        <Modal />
       </div>
     )
   }

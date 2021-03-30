@@ -21,7 +21,10 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.demoAttempt ? this.props.login(this.state).then(this.props.closeModal) : this.props.action(this.state).then(this.props.closeModal);
+    // this.props.handleCloseModal()
+    this.demoAttempt ? 
+      this.props.login(this.state).then(this.props.closeModal()) : 
+      this.props.action(this.state).then(this.props.closeModal())
   }
 
   handleChange(field) {
