@@ -9,7 +9,21 @@
   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
   font-size: 11px;
   z-index: 1000;
-  transition: 0.4s;
+  // transition: 0.4s;
+  animation: animatebottomwtf2;
+  animation-duration: 0.8s;
+}
+
+@keyframes animatebottomwtf2 {
+  0%{
+    bottom: -1000px;
+  }
+  30%{
+    bottom: -1000px;
+  }
+  100%{
+    bottom: 0px;
+  }
 }
 
 .playbar-footer-close {
@@ -18,7 +32,7 @@
   width: 100%;
   height: 0px;
   background: #f2f2f2;
-  // transition: 0.3s;
+  // transition: 0.4s;
 }
 
 .playbar-footer-wrapper {
