@@ -10,7 +10,7 @@ class TrackShow extends React.Component {
     this.state = {
       showForm: false,
       colored: false,
-      volume: this.props.audio ? this.props.audio.volume : 0.6
+      // volume: this.props.audio ? this.props.audio.volume : 0.6
     }
     this.deleted = false;
     this.sendTrack = this.sendTrack.bind(this)
@@ -97,9 +97,11 @@ class TrackShow extends React.Component {
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
       this.bringBackVolume();
+      // audio.play()
       playbtn.classList.add("playing");
     } else if (!audio.paused) {
       this.props.pauseTrack()
+      // audio.pause()
       this.bringDownVolume()
       audio.removeAttribute("autoPlay")
       playbtn.classList.remove("playing");
@@ -109,13 +111,17 @@ class TrackShow extends React.Component {
   // volume swells to gradually change volume on pause/play
   // so that user does not experience abrupt volume changes
   bringBackVolume() {
-    let volume = document.getElementsByClassName("slider-background")[0].value
+    const volume = document.getElementsByClassName("slider-background")[0].value
     if (volume) {
       this.props.audio.volume = 0;
       this.props.audio.play()
       let interval = setInterval(() => {
         // console.log("up")
         if (this.props.audio.volume <= (volume - volume/60 )) {
+          if (volume/60 === 0 ) {
+            this.props.audio.volume = volume
+            clearInterval(interval)
+          }
           this.props.audio.volume += volume/60 
         } else {
           this.props.audio.volume = volume
@@ -127,11 +133,16 @@ class TrackShow extends React.Component {
 
   bringDownVolume() {
     // this.setState( {volume: this.props.audio.volume} )
-    let volume = document.getElementsByClassName("slider-background")[0].value
+    const volume = document.getElementsByClassName("slider-background")[0].value
     if (volume) {
       let interval = setInterval(() => {
         // console.log(this.props.audio.volume)
         if (this.props.audio.volume >= volume/60 ) {
+          if (volume/60 === 0 ) {
+            this.props.audio.volume = 0
+            this.props.audio.pause()
+            clearInterval(interval)
+          }
           this.props.audio.volume -= volume/60 
         } else {
           this.props.audio.volume = 0
