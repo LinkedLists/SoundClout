@@ -39,7 +39,7 @@ class Playbar extends React.Component {
     clearInterval(this.timeIncrementerInstance)
     if (this.props.currentSessionId) {
       let track = JSON.parse(window.localStorage.getItem("currentTrack"))
-      if (track && Object.keys(track).length > 0) {
+      if (track && Object.keys(track).length > 0 && !this.props.currentTrack.id) {
         this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
     }

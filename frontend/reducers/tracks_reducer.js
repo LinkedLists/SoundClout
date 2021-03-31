@@ -3,7 +3,6 @@ import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from "../actions/trac
 const TracksReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
-
   switch(action.type) {
     case RECEIVE_ALL_TRACKS:
       return Object.assign({}, oldState, action.tracks)
