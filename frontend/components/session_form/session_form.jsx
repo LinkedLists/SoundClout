@@ -14,21 +14,21 @@ class SessionForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
     this.demoAttempt = false;
-    this.handlePhotoFile = this.handlePhotoFile.bind(this);
+    // this.handlePhotoFile = this.handlePhotoFile.bind(this);
   }
 
   
-  handlePhotoFile(e) {
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({profile_img: file})
-    }
+  // handlePhotoFile(e) {
+  //   const file = e.target.files[0];
+  //   const fileReader = new FileReader();
+  //   fileReader.onloadend = () => {
+  //     this.setState({profile_img: file})
+  //   }
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-  }
+  //   if (file) {
+  //     fileReader.readAsDataURL(file);
+  //   }
+  // }
 
   componentWillUnmount() {
     this.props.clearErrors();
@@ -36,15 +36,16 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
 
-    const user = new FormData();
-    user.append("user[username]", this.state.username)
-    user.append("user[password]", this.state.password)
-    if (this.state.profile_img) user.append("user[profile_img]", this.state.profile_img)
+    // const user = new FormData();
+    // user.append("user[username]", this.state.username)
+    // user.append("user[password]", this.state.password)
+    // if (this.state.profile_img) user.append("user[profile_img]", this.state.profile_img)
 
     e.preventDefault();
     this.demoAttempt ? 
-      this.props.login(this.state).then(this.props.closeModal()) : 
-      this.props.action(user).then(this.props.closeModal())
+      this.props.login(this.state).then(this.props.closeModal) : 
+      this.props.action(this.state).then(this.props.closeModal)
+      // this.props.action(user).then(this.props.closeModal())
   }
 
   handleChange(field) {
