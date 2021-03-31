@@ -235,6 +235,14 @@ lofi_track5 = Track.new(title: "Motu One", uploader_id: tohaj.id, description: "
 lofi_track6 = Track.new(title: "What Could've Been", uploader_id: stfspkn.id, description: "And what should never be", genre: "Lofi")
 lofi_track7 = Track.new(title: "Remind", uploader_id: bido.id, description: "Just remind me when you need be to drop another one", genre: "Lofi")
 
+lofi_track1_photo = open("s3://fsp-seed/lofi1.jpg")
+lofi_track2_photo = open("s3://fsp-seed/lofi2.jpg")
+lofi_track3_photo = open("s3://fsp-seed/lofi3.jpg")
+lofi_track4_photo = open("s3://fsp-seed/lofi 4.jpg")
+lofi_track5_photo = open("s3://fsp-seed/lofi 5.jpg")
+lofi_track6_photo = open("s3://fsp-seed/lofi6.jpeg")
+lofi_track7_photo = open("s3://fsp-seed/lofi7.jpg")
+
 lofi_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+E+I+S+U++Trauerfall+w+Tzelun.mp3")
 lofi_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Searching+by+Tzelun.mp3")
 lofi_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Watch+What+I+Do+by+Tzelun.mp3")
@@ -250,6 +258,14 @@ lofi_track4.audio_file.attach(io: lofi_track4_audio, filename: "lofi#{lofi_track
 lofi_track5.audio_file.attach(io: lofi_track5_audio, filename: "lofi#{lofi_track5.id}.mp3")
 lofi_track6.audio_file.attach(io: lofi_track6_audio, filename: "lofi#{lofi_track6.id}.mp3")
 lofi_track7.audio_file.attach(io: lofi_track7_audio, filename: "lofi#{lofi_track7.id}.mp3")
+
+lofi_track1.photo_file.attach(io: lofi_track1_photo, filename: "lofi#{lofi_track1.id} img")
+lofi_track2.photo_file.attach(io: lofi_track2_photo, filename: "lofi#{lofi_track2.id} img")
+lofi_track3.photo_file.attach(io: lofi_track3_photo, filename: "lofi#{lofi_track3.id} img")
+lofi_track4.photo_file.attach(io: lofi_track4_photo, filename: "lofi#{lofi_track4.id} img")
+lofi_track5.photo_file.attach(io: lofi_track5_photo, filename: "lofi#{lofi_track5.id} img")
+lofi_track6.photo_file.attach(io: lofi_track6_photo, filename: "lofi#{lofi_track6.id} img")
+lofi_track7.photo_file.attach(io: lofi_track7_photo, filename: "lofi#{lofi_track7.id} img")
 
 lofi_track1.save!
 lofi_track2.save!
@@ -267,6 +283,14 @@ dance_track5 = Track.new(title: "Whitney Houston - Higher Love (Remix)", uploade
 dance_track6 = Track.new(title: "Right Now ft. Nick Jonas", uploader_id: robinSchulz.id, description: "Your heart is all I need", genre: "House")
 dance_track7 = Track.new(title: "Sugar ft. Francesco Yates", uploader_id: robinSchulz.id, description: "Sweet groove", genre: "House")
 
+dance_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/futur+e+nostalgia.jpg")
+dance_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/futur+e+nostalgia.jpg")
+dance_track3_photo = open("s3://fsp-seed/moonlight.jpg")
+dance_track4_photo = open("s3://fsp-seed/hot stuff.jpg")
+dance_track5_photo = open("s3://fsp-seed/higher love.jpg")
+dance_track6_photo = open("s3://fsp-seed/right now.jpg")
+dance_track7_photo = open("s3://fsp-seed/sugar.jpg")
+
 dance_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Break+My+Heart+Lyrics.mp3")
 dance_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Hallucinate+Official+Lyrics+Video.mp3")
 dance_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Levitating+Official+Lyrics+Video.mp3")
@@ -282,6 +306,14 @@ dance_track4.audio_file.attach(io: dance_track4_audio, filename: "dance#{dance_t
 dance_track5.audio_file.attach(io: dance_track5_audio, filename: "dance#{dance_track5.id}.mp3")
 dance_track6.audio_file.attach(io: dance_track6_audio, filename: "dance#{dance_track6.id}.mp3")
 dance_track7.audio_file.attach(io: dance_track7_audio, filename: "dance#{dance_track7.id}.mp3")
+
+dance_track1_photo_file.attach(io: dance_track1_photo, filename: "dance#{dance_track1.id} img")
+dance_track2_photo_file.attach(io: dance_track2_photo, filename: "dance#{dance_track2.id} img")
+dance_track3_photo_file.attach(io: dance_track3_photo, filename: "dance#{dance_track3.id} img")
+dance_track4_photo_file.attach(io: dance_track4_photo, filename: "dance#{dance_track4.id} img")
+dance_track5_photo_file.attach(io: dance_track5_photo, filename: "dance#{dance_track5.id} img")
+dance_track6_photo_file.attach(io: dance_track6_photo, filename: "dance#{dance_track6.id} img")
+dance_track7_photo_file.attach(io: dance_track7_photo, filename: "dance#{dance_track7.id} img")
 
 dance_track1.save!
 dance_track2.save!
@@ -299,6 +331,14 @@ vibe_track5 = Track.new(title: "Night Light", uploader_id: ryyzn.id, description
 vibe_track6 = Track.new(title: "Searching For You", uploader_id: rammor.id, description: "We can fly away to a higher place", genre: "House")
 vibe_track7 = Track.new(title: "Sun Goes Down ft. Jasmine Thompson", uploader_id: robinSchulz.id, description: "Nothings ever what we expect", genre: "House")
 
+vibe_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/fading.jpg")#fading
+vibe_track2_photo = open("s3://fsp-seed/happy now.png")#happy now
+vibe_track3_photo = open("s3://fsp-seed/jubel.jpg")#jubel
+vibe_track4_photo = open("s3://fsp-seed/are you with me.jpg")# r u with me
+vibe_track5_photo = open("s3://fsp-seed/warning sign.jpg")#warning sign
+vibe_track6_photo = open("s3://fsp-seed/searhing.jpg")#searching
+vibe_track7_photo = open("s3://fsp-seed/sun goes down.jpg")#sun goes down
+
 vibe_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Alle+Farben-+Fading.mp3")
 vibe_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Happy+Now+by+kygo.mp3")
 vibe_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Jubel+by+Klingande.mp3")
@@ -314,6 +354,14 @@ vibe_track4.audio_file.attach(io: vibe_track4_audio, filename: "vibe#{vibe_track
 vibe_track5.audio_file.attach(io: vibe_track5_audio, filename: "vibe#{vibe_track5.id}.mp3")
 vibe_track6.audio_file.attach(io: vibe_track6_audio, filename: "vibe#{vibe_track6.id}.mp3")
 vibe_track7.audio_file.attach(io: vibe_track7_audio, filename: "vibe#{vibe_track7.id}.mp3")
+
+vibe_track1.photo_file.attach(io: vibe_track1_photo, filename: "vibe#{vibe_track1.id} img")
+vibe_track2.photo_file.attach(io: vibe_track2_photo, filename: "vibe#{vibe_track2.id} img")
+vibe_track3.photo_file.attach(io: vibe_track3_photo, filename: "vibe#{vibe_track3.id} img")
+vibe_track4.photo_file.attach(io: vibe_track4_photo, filename: "vibe#{vibe_track4.id} img")
+vibe_track5.photo_file.attach(io: vibe_track5_photo, filename: "vibe#{vibe_track5.id} img")
+vibe_track6.photo_file.attach(io: vibe_track6_photo, filename: "vibe#{vibe_track6.id} img")
+vibe_track7.photo_file.attach(io: vibe_track7_photo, filename: "vibe#{vibe_track7.id} img")
 
 vibe_track1.save!
 vibe_track2.save!
