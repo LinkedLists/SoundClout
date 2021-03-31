@@ -46,7 +46,72 @@ ryyzn = User.create!(username: "RYYZN", password: "secretpasswordlol")
 rammor = User.create!(username: "Rammor", password: "secretpasswordlol")
 # robinschulz
 
+#demo
+profile1 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/rick.jpg") #rick
+# top hits users
+profile2 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/ariana.jpg") #ariana
+profile3 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/weeknd.jpg") #weeknd
+profile4 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/camila.jpg") #camila
+profile5 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/halsey.jpg") #halsey
+# polyphia users
+profile6 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/polyphia.png") #polyphia
+profile7 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/tim.jpg") #tim
+# kpop users
+profile8 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Blackpink.png") #bp
+profile9 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/bts.jpg") #bts
+profile10 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/itzy.png") #itzy
+profile11 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/everglow.jpg") #everglow
+profile12 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/red+velvet.jpg") #red v
+profile13 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/taeyeon.jpg") #taeyeon
+# lofi users
+profile14 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/tzelun.jpg") #tzelun
+profile15 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofty.jpg") #lofty
+profile16 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/tohaj.jpg") #tohaj
+profile17 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/bido.jpg") #bido
+profile18 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi-girl.jpg") #lofi
+# top dance users
+profile19 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/dua_lipa.jpg") #dua lipa
+profile20 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/kygo.jpg") #kygo
+profile21 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Robin-Schulz.jpg") #robin
+#fresh vibe users
+profile22 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/alle.jpg") #alle
+profile23 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/klingande.jpg") #kling
+profile24 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lost+req.jpg") #lost freq
+profile25 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/ryyzn.jpg") #ryyzn
+profile26 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/rammor.jpg") #rammor
 
+demo.profile_img.attach(io: profile1, filename: "#{demo.id} img")
+
+arianaGrande.profile_img.attach(io: profile2, filename: "#{arianaGrande.id} img")
+theWeeknd.profile_img.attach(io: profile3, filename: "#{theWeeknd.id} img")
+camilaCabello.profile_img.attach(io: profile4, filename: "#{camilaCabello.id} img")
+halsey.profile_img.attach(io: profile5, filename: "#{halsey.id} img")
+
+polyphia.profile_img.attach(io: profile6, filename: "#{polyphia.id} img")
+timHenson.profile_img.attach(io: profile7, filename: "#{timHenson.id} img")
+
+blackPink.profile_img.attach(io: profile8, filename: "#{blackPink.id} img")
+bts.profile_img.attach(io: profile9, filename: "#{bts.id} img")
+itzy.profile_img.attach(io: profile10, filename: "#{itzy.id} img")
+everglow.profile_img.attach(io: profile11, filename: "#{everglow.id} img")
+redVelvet.profile_img.attach(io: profile12, filename: "#{redVelvet.id} img")
+taeyeon.profile_img.attach(io: profile13, filename: "#{taeyeon.id} img")
+
+tzelun.profile_img.attach(io: profile14, filename: "#{tzelun.id} img")
+lofty.profile_img.attach(io: profile15, filename: "#{lofty.id} img")
+tohaj.profile_img.attach(io: profile16, filename: "#{tohaj.id} img")
+bido.profile_img.attach(io: profile17, filename: "#{bido.id} img")
+stfspkn.profile_img.attach(io: profile18, filename: "#{stfspkn.id} img")
+
+duaLipa.profile_img.attach(io: profile19, filename: "#{duaLipa.id} img")
+kygo.profile_img.attach(io: profile20, filename: "#{kygo.id} img")
+robinSchulz.profile_img.attach(io: profile21, filename: "#{robinSchulz.id} img")
+
+alleFarben.profile_img.attach(io: profile22, filename: "#{alleFarben.id} img")
+klingande.profile_img.attach(io: profile23, filename: "#{klingande.id} img")
+lostFrequencies.profile_img.attach(io: profile24, filename: "#{lostFrequencies.id} img")
+ryyzn.profile_img.attach(io: profile25, filename: "#{ryyzn.id} img")
+rammor.profile_img.attach(io: profile26, filename: "#{rammor.id} img")
 
 
 # user1.save!
@@ -76,7 +141,7 @@ topHits_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.co
 topHits_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++positions+Lyrics.mp3")
 topHits_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Camila+Cabello++Havana+Official+Audio+ft+Young+Thug.mp3")
 topHits_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Shawn+Mendes+Camila+Cabello++Se%C3%B1orita+Lyrics.mp3")
-topHits_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Halsey++Without+Me.mp3")
+topHits_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Halsey++Without+Me+Lyrics.mp3")
 topHits_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Marshmello+Halsey++Be+Kind+Halsey+Lyric+Video.mp3")
 topHits_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+In+Your+Eyes.mp3")
 topHits_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Blinding+Lights.mp3")
@@ -235,13 +300,13 @@ lofi_track5 = Track.new(title: "Motu One", uploader_id: tohaj.id, description: "
 lofi_track6 = Track.new(title: "What Could've Been", uploader_id: stfspkn.id, description: "And what should never be", genre: "Lofi")
 lofi_track7 = Track.new(title: "Remind", uploader_id: bido.id, description: "Just remind me when you need be to drop another one", genre: "Lofi")
 
-lofi_track1_photo = open("s3://fsp-seed/lofi1.jpg")
-lofi_track2_photo = open("s3://fsp-seed/lofi2.jpg")
-lofi_track3_photo = open("s3://fsp-seed/lofi3.jpg")
-lofi_track4_photo = open("s3://fsp-seed/lofi 4.jpg")
-lofi_track5_photo = open("s3://fsp-seed/lofi 5.jpg")
-lofi_track6_photo = open("s3://fsp-seed/lofi6.jpeg")
-lofi_track7_photo = open("s3://fsp-seed/lofi7.jpg")
+lofi_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi1.jpg")
+lofi_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi2.jpg")
+lofi_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi3.jpg")
+lofi_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi+4.jpg")
+lofi_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi+5.jpg")
+lofi_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi6.jpeg")
+lofi_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi7.jpg")
 
 lofi_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+E+I+S+U++Trauerfall+w+Tzelun.mp3")
 lofi_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Searching+by+Tzelun.mp3")
@@ -285,11 +350,11 @@ dance_track7 = Track.new(title: "Sugar ft. Francesco Yates", uploader_id: robinS
 
 dance_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/futur+e+nostalgia.jpg")
 dance_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/futur+e+nostalgia.jpg")
-dance_track3_photo = open("s3://fsp-seed/moonlight.jpg")
-dance_track4_photo = open("s3://fsp-seed/hot stuff.jpg")
-dance_track5_photo = open("s3://fsp-seed/higher love.jpg")
-dance_track6_photo = open("s3://fsp-seed/right now.jpg")
-dance_track7_photo = open("s3://fsp-seed/sugar.jpg")
+dance_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/moonlight.jpg")
+dance_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/hot+stuff.jpg")
+dance_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/higher+love.jpg")
+dance_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/right+now.jpg")
+dance_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/sugar.jpg")
 
 dance_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Break+My+Heart+Lyrics.mp3")
 dance_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Hallucinate+Official+Lyrics+Video.mp3")
@@ -307,13 +372,13 @@ dance_track5.audio_file.attach(io: dance_track5_audio, filename: "dance#{dance_t
 dance_track6.audio_file.attach(io: dance_track6_audio, filename: "dance#{dance_track6.id}.mp3")
 dance_track7.audio_file.attach(io: dance_track7_audio, filename: "dance#{dance_track7.id}.mp3")
 
-dance_track1_photo_file.attach(io: dance_track1_photo, filename: "dance#{dance_track1.id} img")
-dance_track2_photo_file.attach(io: dance_track2_photo, filename: "dance#{dance_track2.id} img")
-dance_track3_photo_file.attach(io: dance_track3_photo, filename: "dance#{dance_track3.id} img")
-dance_track4_photo_file.attach(io: dance_track4_photo, filename: "dance#{dance_track4.id} img")
-dance_track5_photo_file.attach(io: dance_track5_photo, filename: "dance#{dance_track5.id} img")
-dance_track6_photo_file.attach(io: dance_track6_photo, filename: "dance#{dance_track6.id} img")
-dance_track7_photo_file.attach(io: dance_track7_photo, filename: "dance#{dance_track7.id} img")
+dance_track1.photo_file.attach(io: dance_track1_photo, filename: "dance#{dance_track1.id} img")
+dance_track2.photo_file.attach(io: dance_track2_photo, filename: "dance#{dance_track2.id} img")
+dance_track3.photo_file.attach(io: dance_track3_photo, filename: "dance#{dance_track3.id} img")
+dance_track4.photo_file.attach(io: dance_track4_photo, filename: "dance#{dance_track4.id} img")
+dance_track5.photo_file.attach(io: dance_track5_photo, filename: "dance#{dance_track5.id} img")
+dance_track6.photo_file.attach(io: dance_track6_photo, filename: "dance#{dance_track6.id} img")
+dance_track7.photo_file.attach(io: dance_track7_photo, filename: "dance#{dance_track7.id} img")
 
 dance_track1.save!
 dance_track2.save!
@@ -332,12 +397,12 @@ vibe_track6 = Track.new(title: "Searching For You", uploader_id: rammor.id, desc
 vibe_track7 = Track.new(title: "Sun Goes Down ft. Jasmine Thompson", uploader_id: robinSchulz.id, description: "Nothings ever what we expect", genre: "House")
 
 vibe_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/fading.jpg")#fading
-vibe_track2_photo = open("s3://fsp-seed/happy now.png")#happy now
-vibe_track3_photo = open("s3://fsp-seed/jubel.jpg")#jubel
-vibe_track4_photo = open("s3://fsp-seed/are you with me.jpg")# r u with me
-vibe_track5_photo = open("s3://fsp-seed/warning sign.jpg")#warning sign
-vibe_track6_photo = open("s3://fsp-seed/searhing.jpg")#searching
-vibe_track7_photo = open("s3://fsp-seed/sun goes down.jpg")#sun goes down
+vibe_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/happy+now.png")#happy now
+vibe_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/jubel.jpg")#jubel
+vibe_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/are+you+with+me.jpg")# r u with me
+vibe_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/warning+sign.jpg")#warning sign
+vibe_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/searhing.jpg")#searching
+vibe_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/sun+goes+down.jpg")#sun goes down
 
 vibe_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Alle+Farben-+Fading.mp3")
 vibe_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Happy+Now+by+kygo.mp3")
