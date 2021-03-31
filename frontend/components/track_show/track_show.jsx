@@ -25,7 +25,6 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
-
   }
 
   componentDidUpdate() {
@@ -196,7 +195,7 @@ class TrackShow extends React.Component {
                   <CommentFormContainer track={this.props.track} />
                   {
                     this.props.currentUserId === this.props.track.uploader_id ||
-                    this.props.currentUsername === "God Hand"?
+                    this.props.currentUser.username === "God Hand"?
                       <div className="track-show-btns">
                         <button onClick={this.deleteTrack}>delete</button>
                         <button onClick={this.showForm} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
