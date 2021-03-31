@@ -188,7 +188,9 @@ class TrackForm extends React.Component {
                       <option value="Pop" className="select-item">Pop</option>
                       <option value="Hip-hop" className="select-item">Hip-hop</option>
                       <option value="Rap" className="select-item">Rap</option>
+                      <option value="Kpop" className="select-item">Kpop</option>
                       <option value="Rock" className="select-item">Rock</option>
+                      <option value="Lofi" className="select-item">Lofi</option>
                       <option value="Instrumental" className="select-item">Instrumental</option>
                       <option value="Electronic" className="select-item">Electronic</option>
                       <option value="Classical" className="select-item">Classical</option>
