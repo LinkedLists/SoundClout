@@ -11,9 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     currentTrack: state.ui.playbar.currentTrack,
     playbar: state.ui.playbar,
     currentUserId: state.session.id,
-    currentUsername: state.session,
+    currentUser: state.session,
     audio: document.getElementById('audio'),
-    // volume: document.getElementsByClassName("slider-background")[0].value
   }
 }
 
