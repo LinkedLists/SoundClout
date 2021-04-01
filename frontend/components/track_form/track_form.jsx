@@ -14,7 +14,8 @@ class TrackForm extends React.Component {
       photo_file: this.props.track.photo_file,
       photo_preview: this.props.track.photo_preview,
       errors: {},
-      open: "close"
+      open: "close",
+      uploading: false,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,7 +65,11 @@ class TrackForm extends React.Component {
   handleMouseDown(e) {
     if (e.target.className === "modal-background-close" ||
       e.target.className === "cancel-submit") {
-        this.handleCloseForm(e);
+        // this.handleCloseForm(e);
+        this.switchModalState()
+        setTimeout(() => {
+          this.props.closeForm()
+        }, 600)
     }
   }
 
@@ -79,15 +84,18 @@ class TrackForm extends React.Component {
   handleCloseForm(e) {
     e.preventDefault();
     this.switchModalState()
-    if (this.props.formType === "Upload") {
+    if (this.props.formType === "Upload" && this.state.uploading) {
       setTimeout(() => {
+        this.setState( {uploading: false} ) 
         this.props.closeForm()
         let keys = Object.keys(this.props.tracks)
         let id = keys[keys.length - 1]
         this.props.history.push(`/tracks/${id}`)
       }, 600)
     } else {
-      this.props.closeForm()
+      setTimeout(() => {
+        this.props.closeForm()
+      }, 600)
     }
   }
 
@@ -159,9 +167,10 @@ class TrackForm extends React.Component {
 
       if (this.props.formType === "Upload") {
         this.props.trackAction(track)
+        this.setState( {uploading: true} )
         setTimeout(() => {
           this.handleCloseForm(e)
-        }, 400)
+        }, 2000)
       } else {
         this.props.trackAction(track, this.handleCloseForm(e))
       }
@@ -228,7 +237,12 @@ class TrackForm extends React.Component {
 
               <div className="button-footer">
                 <button className="cancel-submit" onClick={this.handleMouseDown}>Cancel</button>
-                <button type="submit" className="upload-submit">{this.props.formType}</button>
+
+                {
+                  this.state.uploading ? 
+                    <button className="uploading-submit">Saving</button> :
+                    <button type="submit" className="upload-submit">{this.props.formType}</button>
+                }
               </div>
             </form>
           </div>

@@ -131,6 +131,18 @@
   transition: 0.4s;
 }
 
+.uploading-submit {
+  color: black;
+  margin-left: 3px;
+  margin: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background-color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.4s;
+}
+
 .upload-submit:hover {
   cursor: pointer;
   opacity: 0.8;
