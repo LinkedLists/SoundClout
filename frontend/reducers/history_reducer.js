@@ -1,11 +1,13 @@
 import { RECEIVE_NEW_TRACK } from '../actions/playbar_actions'
 
-const HistoryReducer = (state = [], action) => {
-  let newState = state.splice()
+const HistoryReducer = (state = {}, action) => {
+  // let newState = state.slice()
+  
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
-      newState.push(action.track.id)
-      return newState
+      // newState.push(action.track)
+      return Object.assign({}, state, {[action.track.id]: action.track});
+      
     // case CLEAR_HISTORY:
     //   return {}
     default:

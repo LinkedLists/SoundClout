@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class History extends React.Component {
@@ -19,6 +20,9 @@ class History extends React.Component {
               size="lg"
               className="calendar-icon" />Listening History
           </div>
+          <ul>
+            
+          </ul>
         </div>
       </div>
     )
@@ -27,11 +31,16 @@ class History extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    history: state.ui.history
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    sendTrack: (track) => dispatch(receiveNewTrack(track)),
+    playTrack: () => dispatch(playTrack()),
+    pauseTrack: () => dispatch(pauseTrack()),
+
   }
 };
 

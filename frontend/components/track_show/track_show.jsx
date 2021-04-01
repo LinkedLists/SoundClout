@@ -189,6 +189,7 @@ class TrackShow extends React.Component {
         </div> 
 
         <div className="track-show-body-container">
+          <History />
           <div className="track-show-body-wrapper">
             <div className="track-show-body-left-wrapper">
               <div className="track-show-body-left-content">
@@ -215,7 +216,6 @@ class TrackShow extends React.Component {
                 </div>
               </div>
             </div>
-            <History />
           </div>
         </div>
       </div>

@@ -29,6 +29,7 @@ class Content extends React.Component {
     
     return (
       <div className="content-container">
+        <History />
         <div className="content-wrapper">
           <div className="content-playlist-main-wrapper">
             <div className="playlist-wrapper">
@@ -38,19 +39,7 @@ class Content extends React.Component {
               </ul>
             </div>
           </div>
-
-
-          {/* this should be its own container */}
-          {/* <div className="content-sidebar-right-container">
-            <div className="history-container">
-              <div className="history-header">
-                Listening History
-              </div>
-            </div>
-          </div> */}
-          <History />
-
-
+          {/* <History /> */}
         </div>
       </div>
     )
