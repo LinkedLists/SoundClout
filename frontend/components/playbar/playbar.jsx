@@ -40,7 +40,7 @@ class Playbar extends React.Component {
     if (this.props.currentSessionId) {
       let track = JSON.parse(window.localStorage.getItem("currentTrack"))
       if (track && Object.keys(track).length > 0 && !this.props.currentTrack.id) {
-        this.props.receiveNewTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
+        this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
     }
   }
@@ -138,8 +138,9 @@ class Playbar extends React.Component {
 
     // Although there is an input type range that handles play timeline,
     // this is still necessary because it makes the pseudo hover effect possible.
-    // There is no solution that I know of that allows for thumb only hover
+    // There is no solution that I know of that allows for thumb only hover via css
     playbar.addEventListener("click", (e) => {
+      // slider ball has a radius of 4
       x = e.offsetX + 4;
       percentPlayed = (x / width)
       currentTime = this.props.audio.duration * percentPlayed
@@ -192,7 +193,11 @@ class Playbar extends React.Component {
   // volume swells to gradually change volume on pause/play
   // so that user does not experience abrupt volume changes
   bringBackVolume(playbtn) {
-    playbtn ? playbtn.classList.add("playing") : null
+    // Only change the track show play button if its the same as current track.
+    // playbtn ternary maybe redundant but Heroku is very slow to load DOM
+    if (this.props.track.id === this.props.currentTrack.id) {
+      playbtn ? playbtn.classList.add("playing") : null
+    }
 
     // This ternary is NECESSARY for the volume/mute icon.
     // If volume was set to mute or 0 by user then do not allow the audio

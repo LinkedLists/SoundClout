@@ -4,6 +4,7 @@
 export const PLAY_ACTION = "PLAY_ACTION";
 export const PAUSE_ACTION = "PAUSE_ACTION";
 export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
+export const REFRESH_TRACK = "REFRESH_TRACK";
 export const CLEAR_PLAYBAR_STATE = "CLEAR_PLAYBAR_STATE";
 
 // a play would need to receive a current track to know what its currently playing
@@ -25,6 +26,13 @@ export const pauseTrack = () => {
 export const receiveNewTrack = (track) => {
   return({
     type: RECEIVE_NEW_TRACK,
+    track
+  })
+}
+
+export const refreshTrack = (track) => {
+  return({
+    type: REFRESH_TRACK,
     track
   })
 }
