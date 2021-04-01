@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentIndexItem from './content_index_item'
+import History from '../history/history'
 
 class Content extends React.Component {
   constructor(props) {
@@ -29,10 +30,27 @@ class Content extends React.Component {
     return (
       <div className="content-container">
         <div className="content-wrapper">
-          <div className="playlist-header">Charts: New and hot</div>
-          <ul className="content-list-ul">
-            {trackItems}
-          </ul>
+          <div className="content-playlist-main-wrapper">
+            <div className="playlist-wrapper">
+              <div className="playlist-header">Charts: New and hot</div>
+              <ul className="content-list-ul">
+                {trackItems}
+              </ul>
+            </div>
+          </div>
+
+
+          {/* this should be its own container */}
+          {/* <div className="content-sidebar-right-container">
+            <div className="history-container">
+              <div className="history-header">
+                Listening History
+              </div>
+            </div>
+          </div> */}
+          <History />
+
+
         </div>
       </div>
     )

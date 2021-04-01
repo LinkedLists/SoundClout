@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import EditTrackContainer from '../track_form/edit_track_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import CommentShow from '../comment_show/comment_show_container';
+import History from '../history/history'
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -214,6 +215,7 @@ class TrackShow extends React.Component {
                 </div>
               </div>
             </div>
+            <History />
           </div>
         </div>
       </div>
