@@ -4,5 +4,5 @@ bundle.js.map
 /public/assets
 /node_modules
 /tmp
-/log
-log/
+/log/development.log
+log/development.log
