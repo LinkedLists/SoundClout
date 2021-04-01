@@ -105,7 +105,12 @@ class UploadShow extends React.Component {
               }>upload an audio file</button>
         </div>
         {
-          this.state.showForm ? <UploadTrackContainer track={this.state} closeForm={this.closeForm} /> : null
+          this.state.showForm ? 
+            <UploadTrackContainer 
+              track={this.state} 
+              closeForm={this.closeForm} 
+              history={this.props.history}
+            /> : null
         }
       </div>
     )

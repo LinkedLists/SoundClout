@@ -79,9 +79,16 @@ class TrackForm extends React.Component {
   handleCloseForm(e) {
     e.preventDefault();
     this.switchModalState()
-    setTimeout(() => {
+    if (this.props.formType === "Upload") {
+      setTimeout(() => {
+        this.props.closeForm()
+        let keys = Object.keys(this.props.tracks)
+        let id = keys[keys.length - 1]
+        this.props.history.push(`/tracks/${id}`)
+      }, 600)
+    } else {
       this.props.closeForm()
-    }, 600)
+    }
   }
 
   // you do not want to be setting the state when the component
@@ -149,7 +156,15 @@ class TrackForm extends React.Component {
       if (this.state.photo_file) {
         track.append("track[photo_file]", this.state.photo_file)
       }
-      this.props.trackAction(track, this.handleCloseForm(e))
+
+      if (this.props.formType === "Upload") {
+        this.props.trackAction(track)
+        setTimeout(() => {
+          this.handleCloseForm(e)
+        }, 400)
+      } else {
+        this.props.trackAction(track, this.handleCloseForm(e))
+      }
     }
   }
   

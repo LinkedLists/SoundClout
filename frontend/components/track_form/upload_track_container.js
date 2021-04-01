@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     uploader: state.session.id,
     errors: state.errors.trackErrors,
+    tracks: state.entities.tracks,
     formType: "Upload"
   }
 }

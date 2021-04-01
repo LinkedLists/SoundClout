@@ -41,9 +41,8 @@ class TrackShow extends React.Component {
 
   deleteTrack(e) {
     e.preventDefault();
-    this.props.deleteTrack(this.props.track.id).then(this.deleted = true);
+    this.props.deleteTrack(this.props.track.id).then(() => this.props.history.push("/"));
     this.props.removeComments();
-    return <Redirect to='/discover'/>
   }
 
   showForm(e) {
@@ -81,11 +80,11 @@ class TrackShow extends React.Component {
   }
 
   setHistory() {
-    window.localStorage.setItem("history", JSON.stringify(this.props.history))
+    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
     let history = JSON.parse(window.localStorage.getItem("history"))
     setTimeout(() => {
-      if (history.length !== this.props.history.length) {
-        window.localStorage.setItem("history", JSON.stringify(this.props.history))
+      if (history.length !== this.props.trackHistory.length) {
+        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
       }
     }, 70)
   }
@@ -220,6 +219,7 @@ class TrackShow extends React.Component {
                         <button onClick={this.deleteTrack} className="track-show-edit-btn">
                           <FontAwesomeIcon icon="trash" id="trash"/>
                           Delete Track
+                          {this.deleted ? <Redirect to='/'/> : null}
                         </button>
                         <button onClick={this.showForm} className="track-show-edit-btn">
                           <FontAwesomeIcon icon="pen" id="pen"/>
