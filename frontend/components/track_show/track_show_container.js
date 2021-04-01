@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId: state.session.id,
     currentUser: state.session,
     audio: document.getElementById('audio'),
+    history: state.ui.history
   }
 }
 

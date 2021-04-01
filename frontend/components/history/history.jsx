@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_actions';
+import { clearHistory } from '../../actions/history_actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import HistoryIndexItem from './history_index_item'
 
@@ -9,23 +10,22 @@ class History extends React.Component {
     super(props);
 
     this.state={}
+    this.handleClearHistory = this.handleClearHistory.bind(this)
+  }
+
+  handleClearHistory(e) {
+    e.preventDefault()
+    this.props.clearHistory();
+    window.localStorage.setItem("history", JSON.stringify([]))
   }
 
   render() {
-    // let history = Object.values(this.props.history)[0]
     let history = this.props.history
     let tracks
-    // if (history) {
-      tracks = history.map((track, i) => {
-        // if (track) {
-          console.log("made it")
-          return <HistoryIndexItem key={i} track={track} />
-        // } else {
-          // return <></>
-        // }
-      })
-    // }
 
+    tracks = history.map((track, i) => {
+        return <HistoryIndexItem key={i} track={track} />
+    })
     return(
       <div className="content-sidebar-right-container">
         <div className="history-container">
@@ -34,33 +34,10 @@ class History extends React.Component {
               icon="calendar-day"
               size="lg"
               className="calendar-icon" />Listening History
+              <button onClick={this.handleClearHistory}>Clear History</button>
           </div>
           <ul className="history-track-ul">
             {tracks}
-            {/* <HistoryIndexItem track={history} /> */}
-            {/* <li className="history-track-item">
-              {
-                history ? <img src={history.photoUrl} className="history-track-icon"/>: null
-              }
-              <div className="history-track-details">
-                {
-                  history ? <span>{history.username}</span> : null
-                }
-                {
-                  history ? <span>{history.title}</span> : null
-                }
-                {
-                  history ? 
-                      <div>
-                          <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
-                          <span style={{fontSize: 11}}>{history.comments && Object.values(history.comments).length ? 
-                              Object.values(history.comments).length : null }
-                          </span>
-                      </div> 
-                      : null
-                }
-              </div>
-            </li> */}
           </ul>
         </div>
       </div>
@@ -79,7 +56,7 @@ const mapDispatchToProps = dispatch => {
     sendTrack: (track) => dispatch(receiveNewTrack(track)),
     playTrack: () => dispatch(playTrack()),
     pauseTrack: () => dispatch(pauseTrack()),
-
+    clearHistory: () => dispatch(clearHistory())
   }
 };
 

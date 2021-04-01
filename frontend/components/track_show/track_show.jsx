@@ -87,6 +87,7 @@ class TrackShow extends React.Component {
       this.props.playTrack()
       // this.props.playTrack(this.props.sendTrack(this.props.track))
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
+      window.localStorage.setItem("history", JSON.stringify(this.props.history))
       playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
       

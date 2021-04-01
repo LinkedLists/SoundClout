@@ -42,6 +42,10 @@ class Playbar extends React.Component {
       if (track && Object.keys(track).length > 0 && !this.props.currentTrack.id) {
         this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
+      let history = JSON.parse(window.localStorage.getItem("history"))
+      if (history && Object.keys(history).length > 0) {
+        this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")));
+      }
     }
   }
 

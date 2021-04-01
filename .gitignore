@@ -6,3 +6,5 @@ bundle.js.map
 /tmp
 /log/development.log
 log/development.log
+/log
+log/

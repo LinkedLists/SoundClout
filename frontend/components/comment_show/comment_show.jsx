@@ -42,6 +42,7 @@ class CommentShow extends React.Component {
     })
     return (
       <div className="comment-show-container">
+        <p className="track-show-description">{this.props.track.description}</p>
         <div className="comment-show-container-header">
           <FontAwesomeIcon icon="comment-alt" color="#999" id="comment-icon"/>
           <span id="test">{Object.keys(this.props.comments).length + " comments"}</span>
