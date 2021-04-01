@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class HistoryIndexItem extends React.Component {
   constructor(props) {
@@ -9,26 +10,16 @@ class HistoryIndexItem extends React.Component {
   render() {
     return (
       <li className="history-track-item">
-        {
-          history.length > 0 ? <img src={history.photoUrl} className="history-track-icon"/>: null
-        }
+        <img src={this.props.track.photoUrl} className="history-track-icon"/>
         <div className="history-track-details">
-          {
-            history.length > 0 ? <span>{history.username}</span> : null
-          }
-          {
-            history.length > 0 ? <span>{history.title}</span> : null
-          }
-          {
-            history.length > 0 ? 
-                <div>
-                    <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
-                    <span style="font-size:11px">{history.comments && Object.values(history.comments).length ? 
-                        Object.values(history.comments).length : null }
-                    </span>
-                </div> 
-                : null
-          }
+          <span>{this.props.track.username}</span> 
+          <span>{this.props.track.title}</span> 
+          <div>
+            <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
+            <span style={{fontSize: 11}}>{this.props.track.comments && Object.values(this.props.track.comments).length ? 
+                Object.values(this.props.track.comments).length : 0 }
+            </span>
+          </div>  
         </div>
       </li>
     )

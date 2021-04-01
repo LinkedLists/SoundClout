@@ -12,8 +12,20 @@ class History extends React.Component {
   }
 
   render() {
-    let history = Object.values(this.props.history)[0]
-    
+    // let history = Object.values(this.props.history)[0]
+    let history = this.props.history
+    let tracks
+    // if (history) {
+      tracks = history.map((track, i) => {
+        // if (track) {
+          console.log("made it")
+          return <HistoryIndexItem key={i} track={track} />
+        // } else {
+          // return <></>
+        // }
+      })
+    // }
+
     return(
       <div className="content-sidebar-right-container">
         <div className="history-container">
@@ -24,8 +36,9 @@ class History extends React.Component {
               className="calendar-icon" />Listening History
           </div>
           <ul className="history-track-ul">
-            {/* <HistoryIndexItem history={history} /> */}
-            <li className="history-track-item">
+            {tracks}
+            {/* <HistoryIndexItem track={history} /> */}
+            {/* <li className="history-track-item">
               {
                 history ? <img src={history.photoUrl} className="history-track-icon"/>: null
               }
@@ -47,7 +60,7 @@ class History extends React.Component {
                       : null
                 }
               </div>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
