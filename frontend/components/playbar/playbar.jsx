@@ -156,8 +156,6 @@ class Playbar extends React.Component {
       audio.currentTime = currentTime
     })
 
-    // playbtn.addEventListener("click", (e) => {
-    // })
     if (this.props.currentSessionId) {
       document.getElementById("logout").addEventListener("click", () => {
         clearInterval(this.timeIncrementerInstance)
@@ -184,7 +182,7 @@ class Playbar extends React.Component {
       } else {
         this.timeIncrementer()
       }
-      
+      playbtn ? playbtn.classList.add("playing") : null
     })
 
     audio.addEventListener("pause", () => {
@@ -232,13 +230,11 @@ class Playbar extends React.Component {
       // console.log("down")
       if (this.props.audio.volume >= this.state.volume/60 ) {
         if (this.state.volume/60 === 0 ) {
-          // this.props.audio.volume = 0
           this.props.audio.pause()
           clearInterval(this.intervalDown)
         }
         this.props.audio.volume -= this.state.volume/60 
       } else {
-        // this.props.audio.volume = 0
         this.props.audio.pause()
         clearInterval(this.intervalDown)
       }
@@ -250,7 +246,6 @@ class Playbar extends React.Component {
     let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
     let audio = this.props.audio
     if (!this.props.paused) {
-      // audio.pause()
       this.bringDownVolume(playbtn);
       clearInterval(this.intervalUp)
       clearInterval(this.timeIncrementerInstance)
@@ -258,12 +253,12 @@ class Playbar extends React.Component {
       audio.removeAttribute("autoPlay")
       this.props.pauseTrack();
     } else {
-      // audio.play()
       this.bringBackVolume(playbtn)
 
       clearInterval(this.intervalDown)
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
+
       if (this.timeIncrementerInstance) {
         clearInterval(this.timeIncrementerInstance)
         this.timeIncrementer()
@@ -352,7 +347,6 @@ class Playbar extends React.Component {
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
-              {/* {audio ? audio.volume = this.state.volume : null} */}
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
               <button 
                 onClick={this.handlePlay}>
