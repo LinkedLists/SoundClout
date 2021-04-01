@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import EditTrackContainer from '../track_form/edit_track_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import CommentShow from '../comment_show/comment_show_container';
@@ -204,10 +204,9 @@ class TrackShow extends React.Component {
             </div>
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
-        </div> 
-
+        </div>
         <div className="track-show-body-container">
-          <History />
+          <History fetchTrack={this.props.fetchTrack} cuteColors={this.cuteColors} colored={this.state.colored}/>
           <div className="track-show-body-wrapper">
             <div className="track-show-body-left-wrapper">
               <div className="track-show-body-left-content">

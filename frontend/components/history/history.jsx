@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_actions';
 import { clearHistory } from '../../actions/history_actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,6 +14,7 @@ class History extends React.Component {
     this.handleClearHistory = this.handleClearHistory.bind(this)
   }
 
+
   handleClearHistory(e) {
     e.preventDefault()
     this.props.clearHistory();
@@ -24,7 +26,12 @@ class History extends React.Component {
     let tracks
 
     tracks = history.map((track, i) => {
-        return <HistoryIndexItem key={i} track={track} />
+        return <HistoryIndexItem 
+            key={i} 
+            track={track} 
+            fetchTrack={this.props.fetchTrack}
+            cuteColors={this.props.cuteColors}
+            colored={this.props.colored}/>
     })
     return(
       <div className="content-sidebar-right-container">
@@ -60,4 +67,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(History);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(History));

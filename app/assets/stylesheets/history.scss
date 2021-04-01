@@ -9,7 +9,7 @@
   margin-right: 30px;
   font-size: 14px;
   z-index: 1000;
-  
+
   // position: absolute;
   // top: 30px;
   // bottom: 0;
@@ -42,12 +42,16 @@
 }
 
 .history-track-item {
+  font-size: 14px;
+  padding: 5px 0;
+}
+
+.history-track-item-link {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-size: 14px;
   color: #999;
-  padding: 5px 0;
+  text-decoration: none;
 }
 
 .history-track-icon {

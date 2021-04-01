@@ -28,6 +28,8 @@ class Playbar extends React.Component {
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
 
+    this.prevVolume;
+
     // Set instance variable that will get assigned to a setInterval ID
     // during volume swelling. Prevent a play/pause async error
     // when a user spam clicks play/pause by clearing the other asyc process
@@ -269,16 +271,21 @@ class Playbar extends React.Component {
   }
 
   handleMute(e) {
+    let volume = document.getElementsByClassName("slider-background")[0]
     if (e.target.className === "thumb" ||
-      e.target.className === "volume-control-wrapper") {
-        let audio = this.props.audio
-        if (this.state.muted) {
-          audio.muted = false;
-          this.setState( {muted: false} )
-        } else {
-          audio.muted = true;
-          this.setState( {muted: true} )
-        }
+    e.target.className === "volume-control-wrapper") {
+      if (this.props.audio.volume !== 0) {
+        this.prevVolume = this.props.audio.volume
+        this.props.audio.volume = 0
+        volume.value = 0
+      } 
+      else if (this.props.audio.volume === 0) {
+        volume.value = this.prevVolume
+        this.props.audio.volume = this.state.volume
+      }
+      else {
+        volume.value = 0
+      }
     }
   }
 
@@ -309,6 +316,7 @@ class Playbar extends React.Component {
   render() {
     if (this.props.currentSessionId === null) return <></>
     let audio = this.props.audio
+    let volume = document.getElementsByClassName("slider-background")[0]
 
     // Workaround to styling the input type range:
     // Color only up to the progress value and fill
@@ -323,11 +331,11 @@ class Playbar extends React.Component {
     }
 
     let volumeIcon;
-    if (audio) {
-      if (this.state.muted || audio.volume === 0) {
+    if (volume) {
+      if (volume.value === 0 || audio.volume === 0) {
         volumeIcon = <FontAwesomeIcon icon="volume-mute" />
       }
-      else if(!this.state.muted && this.state.volume < 0.35){
+      else if(volume.value < 0.35){
         volumeIcon = <FontAwesomeIcon icon="volume-down" />
       }
       else{
@@ -392,7 +400,9 @@ class Playbar extends React.Component {
                     className="slider-background" 
                     min={0} max={1} step="0.01" 
                     onChange={this.handleVolume} 
-                    value={ audio ? this.state.volume : 0.6}/>
+                    // value={ audio ? this.state.volume : 0.6}
+                    defaultValue={0.6}
+                    />
                 </div>
               </div>
             </div>
