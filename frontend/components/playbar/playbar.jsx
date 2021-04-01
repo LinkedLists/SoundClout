@@ -186,7 +186,7 @@ class Playbar extends React.Component {
     audio.addEventListener("pause", () => {
       console.log("track is paused")
       clearInterval(this.timeIncrementerInstance)
-      
+      playbtn ? playbtn.classList.remove("playing") : null
     })
   }
 
