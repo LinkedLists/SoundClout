@@ -31,17 +31,19 @@ class History extends React.Component {
             track={track} 
             fetchTrack={this.props.fetchTrack}
             cuteColors={this.props.cuteColors}
-            colored={this.props.colored}/>
+            currentTrack={this.props.currentTrack}/>
     })
     return(
       <div className="content-sidebar-right-container">
         <div className="history-container">
           <div className="history-header">
-            <FontAwesomeIcon 
-              icon="calendar-day"
-              size="lg"
-              className="calendar-icon" />Listening History
-              <button onClick={this.handleClearHistory}>Clear History</button>
+            <div>
+              <FontAwesomeIcon 
+                icon="calendar-day"
+                size="lg"
+                className="calendar-icon" />Listening History
+            </div>
+            <button onClick={this.handleClearHistory} id="view-history-btn">Clear History</button>
           </div>
           <ul className="history-track-ul">
             {tracks}

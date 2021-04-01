@@ -4,6 +4,7 @@ import EditTrackContainer from '../track_form/edit_track_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import CommentShow from '../comment_show/comment_show_container';
 import History from '../history/history'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -206,7 +207,7 @@ class TrackShow extends React.Component {
           </div>
         </div>
         <div className="track-show-body-container">
-          <History fetchTrack={this.props.fetchTrack} cuteColors={this.cuteColors} colored={this.state.colored}/>
+          <History fetchTrack={this.props.fetchTrack} currentTrack={this.props.track}/>
           <div className="track-show-body-wrapper">
             <div className="track-show-body-left-wrapper">
               <div className="track-show-body-left-content">
@@ -216,9 +217,19 @@ class TrackShow extends React.Component {
                     this.props.currentUserId === this.props.track.uploader_id ||
                     this.props.currentUser.username === "God Hand"?
                       <div className="track-show-btns">
-                        <button onClick={this.deleteTrack}>delete</button>
-                        <button onClick={this.showForm} className="track-show-edit-btn"><div className="test"><p>edit</p></div></button>
-                      </div> : null
+                        <button onClick={this.deleteTrack} className="track-show-edit-btn">
+                          <FontAwesomeIcon icon="trash" id="trash"/>
+                          Delete Track
+                        </button>
+                        <button onClick={this.showForm} className="track-show-edit-btn">
+                          <FontAwesomeIcon icon="pen" id="pen"/>
+                          Edit
+                        </button>
+                      </div> 
+                        :
+                      <div className="track-show-no-btns">
+                        <span id="asterisk">*</span> You can update or delete a track if you are the uploader
+                      </div>
                   }
                 </div>
 

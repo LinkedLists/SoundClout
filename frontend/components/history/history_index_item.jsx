@@ -45,7 +45,13 @@ class HistoryIndexItem extends React.Component {
   }
   
   handleRoute() {
-    if (this.props.fetchTrack) this.props.fetchTrack(this.props.track.id).then(() => this.cuteColors()) 
+    // Make sure you only fetch a track if you are inside the track show page
+    // and make sure you dont change the backdrop color if you are trying to
+    // go to the same history track as the show track
+    if (this.props.fetchTrack && this.props.currentTrack.id !== this.props.track.id) {
+      this.props.fetchTrack(this.props.track.id)
+        .then(() => this.cuteColors()) 
+    }
   }
 
   render() {
@@ -58,7 +64,8 @@ class HistoryIndexItem extends React.Component {
             <span>{this.props.track.title}</span> 
             <div>
               <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
-              <span style={{fontSize: 11}}>{this.props.track.comments && Object.values(this.props.track.comments).length ? 
+              <span style={{fontSize: 11}}>
+                {this.props.track.comments && Object.values(this.props.track.comments).length ? 
                   Object.values(this.props.track.comments).length : 0 }
               </span>
             </div>  

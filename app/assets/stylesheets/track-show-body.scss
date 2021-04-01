@@ -30,12 +30,51 @@
 
 .track-show-btns {
   display: flex;
+  align-items: center;
   height: 35px;
 }
 
+.track-show-no-btns {
+  font-size: 14px;
+  color: #999;
+  margin-top: 18px;
+}
+
+#asterisk{
+  color: #f50;
+  font-size: 16px;
+}
+
 .track-show-edit-btn {
-  width: 32px;
+  height: 20px;
+  padding: 2px 11px 2px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: 0;
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+  // font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  text-align: center;
   box-sizing: content-box;
+}
+
+.track-show-edit-btn:first-child {
+  margin-right: 5px;
+}
+
+.track-show-edit-btn:hover {
+  border: 1px solid #ccc;
+}
+
+#pen {
+  margin-right: 7px;
+}
+
+#trash {
+  margin-right: 7px;
 }
 
 // .test {

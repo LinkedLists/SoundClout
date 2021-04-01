@@ -8,7 +8,7 @@
   width: 300px;
   margin-right: 30px;
   font-size: 14px;
-  z-index: 1000;
+  z-index: 100;
 
   // position: absolute;
   // top: 30px;
@@ -23,8 +23,9 @@
 }
 
 .history-header {
-  align-items: center;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: #999;
   height: 30px;
   line-height: 24px;
@@ -33,6 +34,18 @@
 
 .calendar-icon {
   margin-right: 7px;
+}
+
+#view-history-btn {
+  border: none;
+  background: none;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  color: #999;
+  cursor: pointer;
+}
+
+#view-history-btn:hover {
+  color: black;
 }
 
 .history-track-ul {
