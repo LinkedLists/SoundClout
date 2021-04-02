@@ -17,14 +17,9 @@ const TracksReducer = (oldState = {}, action) => {
       // SUPER UGLY!!!!
       let key = Object.keys(newState)[0]
       const values = Object.values(newState)[0]
-      let newValues
-      if (values.comments) {
-        newValues = values.comments[action.comment.comment.id] = action.comment.comment
-      } else {
-        values.comments = {}
-        newValues = values.comments[action.comment.comment.id] = action.comment.comment
-      }
+      const newValues = values.comments[action.comment.comment.id] = action.comment.comment
       newState[key].comments[newValues.id] = newValues
+      debugger
       return newState
 
     case REMOVE_COMMENT:
