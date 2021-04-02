@@ -174,10 +174,10 @@ class Playbar extends React.Component {
       
       playbtn ? playbtn.classList.remove("playing") : null
       this.clearState()
-      
+
       // failsafe
       setTimeout(() => {
-        !audio.paused || !audio.ended ? () => {
+        audio.ended ? () => {
           clearInterval(this.timeIncrementerInstance)
           this.props.pauseTrack()
           playbtn ? playbtn.classList.remove("playing") : null

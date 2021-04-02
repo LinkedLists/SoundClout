@@ -12,6 +12,10 @@ class HistoryIndexItem extends React.Component {
     this.handleRoute = this.handleRoute.bind(this)
   }
 
+  componentDidUpdate() {
+    console.log("history index updated")
+  }
+
   getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -39,7 +43,6 @@ class HistoryIndexItem extends React.Component {
             rgb(${r1}, ${g1}, ${b1}), 
             rgb(${r2}, ${g2}, ${b2}), 
             rgb(${r3}, ${g3}, ${b3}))`
-        console.log(background.style.background)
       }
     }
   }
@@ -65,8 +68,10 @@ class HistoryIndexItem extends React.Component {
             <div>
               <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
               <span style={{fontSize: 11}}>
+
                 {this.props.track.comments && Object.values(this.props.track.comments).length ? 
                   Object.values(this.props.track.comments).length : 0 }
+
               </span>
             </div>  
           </div>

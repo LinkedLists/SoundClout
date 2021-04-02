@@ -64,7 +64,8 @@ class TrackForm extends React.Component {
 
   handleMouseDown(e) {
     if (e.target.className === "modal-background-close" ||
-      e.target.className === "cancel-submit") {
+      e.target.className === "cancel-submit" ||
+      e.target.className === "edit-form-container-close") {
         // this.handleCloseForm(e);
         this.switchModalState()
         setTimeout(() => {
@@ -170,7 +171,7 @@ class TrackForm extends React.Component {
         this.setState( {uploading: true} )
         setTimeout(() => {
           this.handleCloseForm(e)
-        }, 2000)
+        }, 3000)
       } else {
         this.props.trackAction(track, this.handleCloseForm(e))
       }

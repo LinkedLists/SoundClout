@@ -1,4 +1,5 @@
 import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from "../actions/track_actions";
+import { RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_COMMENTS } from '../actions/comment_actions'
 
 const TracksReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -11,7 +12,20 @@ const TracksReducer = (oldState = {}, action) => {
     case REMOVE_TRACK:
       delete newState[action.trackId]
       return newState
-      // return {Object.assign({}, oldState, {id: null})}
+
+    case RECEIVE_COMMENT:
+      // SUPER UGLY!!!!
+      let key = Object.keys(newState)[0]
+      const values = Object.values(newState)[0]
+      const newValues = values.comments[action.comment.comment.id] = action.comment.comment
+      newState[key].comments[newValues.id] = newValues
+      return newState
+
+
+    case REMOVE_COMMENT:
+      key = Object.keys(newState)[0]
+      delete newState[key].comments[action.commentId]
+      return newState
     default:
       return oldState
   }
