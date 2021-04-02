@@ -240,7 +240,9 @@ class TrackShow extends React.Component {
                       <div className="track-show-uploader-name">{this.props.track.username}</div>
                     </div>
                   </div>
-                  <CommentShow track={this.props.track} />
+                  <CommentShow 
+                    track={this.props.track}
+                    setHistory={this.setHistory} />
                 </div>
               </div>
             </div>

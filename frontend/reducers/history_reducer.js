@@ -34,7 +34,6 @@ const HistoryReducer = (state = [], action) => {
 
     case REMOVE_COMMENT:
       // this is really bad
-
       trackId = action.trackCommentPair[0]
       console.log(trackId + " track ids " + action.trackCommentPair[0])
       newState = state.map( track => {

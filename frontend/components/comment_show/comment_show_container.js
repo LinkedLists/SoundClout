@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     track: ownProps.track,
     comments: state.entities.comments,
     currentUsername: state.session.username,
+    history: state.ui.history
   }
 }
 

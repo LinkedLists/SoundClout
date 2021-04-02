@@ -8,6 +8,7 @@ class CommentIndexItem extends React.Component {
 
     this.getDateMeta = this.getDateMeta.bind(this)
     this.handleHover = this.handleHover.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   // ActiveRecord timestamps are UTC by default
@@ -99,6 +100,21 @@ class CommentIndexItem extends React.Component {
     }
   }
 
+  setHistory() {
+    window.localStorage.setItem("history", JSON.stringify(this.props.history))
+    let history = JSON.parse(window.localStorage.getItem("history"))
+    setTimeout(() => {
+      if (history.length !== this.props.history.length) {
+        window.localStorage.setItem("history", JSON.stringify(this.props.history))
+      }
+    }, 70)
+  }
+
+  handleDelete() {
+    this.props.deleteComment([this.props.currentTrackId, this.props.comment.id])
+    this.setHistory()
+  }
+
   render() {
     this.colorOwner()
     return (
@@ -130,7 +146,7 @@ class CommentIndexItem extends React.Component {
                 // color="#999" 
                 className="trash"
                 id={this.props.comment.id} 
-                onClick={() => this.props.deleteComment([this.props.currentTrackId, this.props.comment.id])}
+                onClick={this.handleDelete}
                 /> : null
           }
         </div>
