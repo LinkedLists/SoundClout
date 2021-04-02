@@ -22,7 +22,7 @@ class CommentShow extends React.Component {
     //     comment.style.background = "#f2f2f2"
     //   } 
     // })
-
+    // console.log(Object.values(this.props.track.comments).length)
     // recentComment = recentComment[recentComment.length - 1]
     // recentComment.classList.add("new")
   }

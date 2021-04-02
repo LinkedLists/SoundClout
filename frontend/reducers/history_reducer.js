@@ -1,19 +1,39 @@
 import { RECEIVE_NEW_TRACK } from '../actions/playbar_actions'
+import { RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_COMMENTS } from '../actions/comment_actions'
 import { RECEIVE_HISTORY, CLEAR_HISTORY } from '../actions/history_actions'
 
 
 const HistoryReducer = (state = [], action) => {
   let newState = state.slice()
-  
+  // let newState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
+      if (action.track.comments) {
+        action.track.comments = Object.keys(action.track.comments).length
+      } else {
+        action.track.comments = 0
+      }
       newState.push(action.track)
       return newState
-      // return Object.assign({}, state, {[action.track.id]: action.track});
     case RECEIVE_HISTORY:
       return action.history
     case CLEAR_HISTORY:
       return []
+    case RECEIVE_COMMENT:
+      // SUPER UGLY!!!!
+      let trackId = action.comment.comment.track_id
+      newState = state.map( track => {
+        if (trackId === track.id.toString()) {
+          track.comments === 0 ? 
+            track.comments = 1 : track.comments += 1
+        }
+        return track
+      })
+      return newState 
+
+    case REMOVE_COMMENT:
+      // this is really bad
+      
     default:
       return state
   }

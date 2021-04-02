@@ -7,13 +7,23 @@ class HistoryIndexItem extends React.Component {
     super(props);
 
     this.state = {
+      numComments: 0
     }
     this.flag = false
     this.handleRoute = this.handleRoute.bind(this)
+    this.numComments = 0
+  }
+
+  componentDidMount() {
   }
 
   componentDidUpdate() {
-    console.log("history index updated")
+    // console.log("history index updated")
+  }
+
+  componentWillUnmount() {
+    // console.log("unmount")
+    // this.setState( {numComments: this.numComments} )
   }
 
   getRandomInt(min, max) {
@@ -58,6 +68,20 @@ class HistoryIndexItem extends React.Component {
   }
 
   render() {
+    // we are in the track show page
+    if (this.props.track && this.props.currentTrack) {
+      // history and track are matched
+      if (this.props.track.id === this.props.currentTrack.id) {
+        // a track might not have comments yet
+        if (this.props.currentTrack.comments) {
+          this.numComments = Object.keys(this.props.currentTrack.comments).length
+        }
+      }
+    } 
+    else if (this.props.comments) {
+      this.numComments = this.props.comments
+    }
+
     return (
       <li className="history-track-item" onClick={this.handleRoute}>
         <Link className="history-track-item-link" to={`/tracks/${this.props.track.id}`}>
@@ -69,8 +93,10 @@ class HistoryIndexItem extends React.Component {
               <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
               <span style={{fontSize: 11}}>
 
-                {this.props.track.comments && Object.values(this.props.track.comments).length ? 
-                  Object.values(this.props.track.comments).length : 0 }
+                {this.props.comments}
+                {/* {console.log(this.state.numComments)} */}
+                {/* {this.props.track.comments && Object.values(this.props.track.comments).length ? 
+                  Object.values(this.props.track.comments).length : 0 } */}
 
               </span>
             </div>  

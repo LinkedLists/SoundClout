@@ -23,6 +23,7 @@ class History extends React.Component {
 
   render() {
     let history = this.props.history.slice(-7)
+    // let history = Object.values(this.props.history).slice(-7)
     let tracks
 
     tracks = history.map((track, i) => {
@@ -31,7 +32,8 @@ class History extends React.Component {
             track={track} 
             fetchTrack={this.props.fetchTrack}
             cuteColors={this.props.cuteColors}
-            currentTrack={this.props.currentTrack}/>
+            currentTrack={this.props.currentTrack}
+            comments={this.props.history[i].comments}/>
     })
     return(
       <div className="content-sidebar-right-container">
@@ -56,6 +58,7 @@ class History extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    comments: state.entities.comments,
     history: state.ui.history
   }
 };
