@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import { fetchTrack, deleteTrack } from '../../actions/track_actions';
 import TrackShow from './track_show'
-import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_actions';
+import { receiveNewTrack, playTrack, pauseTrack, clearPlaybarState } from '../../actions/playbar_actions';
 import { removeComments } from '../../actions/comment_actions'
 
 
@@ -25,6 +25,8 @@ const mapDispatchToProps = (dispatch) => {
     playTrack: () => dispatch(playTrack()),
     pauseTrack: () => dispatch(pauseTrack()),
     removeComments: () => dispatch(removeComments()),
+    clearPlaybarState: () => dispatch(clearPlaybarState())
+
   }
 }
 

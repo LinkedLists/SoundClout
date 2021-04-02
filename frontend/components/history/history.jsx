@@ -23,7 +23,6 @@ class History extends React.Component {
 
   render() {
     let history = this.props.history.slice(-7)
-    // let history = Object.values(this.props.history).slice(-7)
     let tracks
 
     tracks = history.map((track, i) => {

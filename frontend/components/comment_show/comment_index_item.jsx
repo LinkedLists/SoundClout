@@ -100,19 +100,8 @@ class CommentIndexItem extends React.Component {
     }
   }
 
-  setHistory() {
-    window.localStorage.setItem("history", JSON.stringify(this.props.history))
-    let history = JSON.parse(window.localStorage.getItem("history"))
-    setTimeout(() => {
-      if (history.length !== this.props.history.length) {
-        window.localStorage.setItem("history", JSON.stringify(this.props.history))
-      }
-    }, 70)
-  }
-
   handleDelete() {
     this.props.deleteComment([this.props.currentTrackId, this.props.comment.id])
-    this.setHistory()
   }
 
   render() {

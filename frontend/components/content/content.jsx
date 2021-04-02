@@ -9,7 +9,6 @@ class Content extends React.Component {
 
   componentDidMount() {
     this.props.fetchTracks()
-
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {
       if (!this.props.currentTrack.id)

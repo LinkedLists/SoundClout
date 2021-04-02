@@ -41,8 +41,13 @@ class TrackShow extends React.Component {
 
   deleteTrack(e) {
     e.preventDefault();
-    this.props.deleteTrack(this.props.track.id).then(() => this.props.history.push("/"));
+    if (this.props.track.id === this.props.currentTrack.id) {
+      this.props.clearPlaybarState()
+      window.localStorage.setItem("currentTrack", JSON.stringify({}))
+    }
+    this.props.deleteTrack(this.props.track.id);
     this.props.removeComments();
+    this.props.history.push("/")
   }
 
   showForm(e) {
@@ -81,10 +86,11 @@ class TrackShow extends React.Component {
 
   setHistory() {
     window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-    let history = JSON.parse(window.localStorage.getItem("history"))
     setTimeout(() => {
+      let history = JSON.parse(window.localStorage.getItem("history"))
       if (history.length !== this.props.trackHistory.length) {
         window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+        console.log(this.props.trackHistory)
       }
     }, 70)
   }
