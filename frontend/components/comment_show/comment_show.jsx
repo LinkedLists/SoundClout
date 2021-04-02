@@ -38,6 +38,7 @@ class CommentShow extends React.Component {
           comment={comment}
           currentUserId={this.props.currentUserId}
           currentUsername={this.props.currentUsername}
+          currentTrackId={this.props.track.id}
           />
     })
     return (

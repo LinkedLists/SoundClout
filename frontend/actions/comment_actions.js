@@ -12,12 +12,18 @@ const receiveComment = (comment) => {
   };
 };
 
-const removeComment = (commentId) => {
+const removeComment = (trackCommentPair) => {
   return {
     type: REMOVE_COMMENT,
-    commentId
+    trackCommentPair
   };
 };
+// const removeComment = (commentId) => {
+//   return {
+//     type: REMOVE_COMMENT,
+//     commentId
+//   };
+// };
 
 export const removeComments = () => {
   return {
@@ -39,8 +45,12 @@ export const createComment = (comment) => (dispatch) => (
   )
 )
 
-export const deleteComment = (commentId) => (dispatch) => (
-  CommentApiUtil.deleteComment(commentId).then( () => dispatch(removeComment(commentId)))
+export const deleteComment = (trackCommentPair) => (dispatch) => (
+  CommentApiUtil.deleteComment(trackCommentPair[1]).then( () => dispatch(removeComment(trackCommentPair)))
 )
+
+// export const deleteComment = (commentId) => (dispatch) => (
+//   CommentApiUtil.deleteComment(commentId).then( () => dispatch(removeComment(commentId)))
+// )
 
 

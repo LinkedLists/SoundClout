@@ -23,6 +23,7 @@ const HistoryReducer = (state = [], action) => {
       // SUPER UGLY!!!!
       let trackId = action.comment.comment.track_id
       newState = state.map( track => {
+        // some reason action.comment.comment.track_id is a string
         if (trackId === track.id.toString()) {
           track.comments === 0 ? 
             track.comments = 1 : track.comments += 1
@@ -33,6 +34,17 @@ const HistoryReducer = (state = [], action) => {
 
     case REMOVE_COMMENT:
       // this is really bad
+
+      trackId = action.trackCommentPair[0]
+      console.log(trackId + " track ids " + action.trackCommentPair[0])
+      newState = state.map( track => {
+        if (trackId === track.id) {
+          console.log("here")
+          track.comments -= 1
+        }
+        return track
+      })
+      return newState 
       
     default:
       return state

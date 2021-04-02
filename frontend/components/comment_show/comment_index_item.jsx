@@ -130,7 +130,7 @@ class CommentIndexItem extends React.Component {
                 // color="#999" 
                 className="trash"
                 id={this.props.comment.id} 
-                onClick={() => this.props.deleteComment(this.props.comment.id)}
+                onClick={() => this.props.deleteComment([this.props.currentTrackId, this.props.comment.id])}
                 /> : null
           }
         </div>
