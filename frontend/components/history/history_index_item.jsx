@@ -74,7 +74,8 @@ class HistoryIndexItem extends React.Component {
       if (this.props.track.id === this.props.currentTrack.id) {
         // a track might not have comments yet
         if (this.props.currentTrack.comments) {
-          this.numComments = Object.keys(this.props.currentTrack.comments).length
+          // this.numComments = Object.keys(this.props.currentTrack.comments).length
+          this.numComments = this.props.currentTrack.numComments
         }
       }
     } 

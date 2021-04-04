@@ -32,7 +32,7 @@ class History extends React.Component {
             fetchTrack={this.props.fetchTrack}
             cuteColors={this.props.cuteColors}
             currentTrack={this.props.currentTrack}
-            comments={this.props.history[i].comments}/>
+            comments={this.props.history[i].numComments}/>
     })
     return(
       <div className="content-sidebar-right-container">
