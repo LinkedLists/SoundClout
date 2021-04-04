@@ -8,12 +8,13 @@ const HistoryReducer = (state = [], action) => {
   // let newState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
+      let actionCopy = Object.assign({}, action)
       if (action.track.comments) {
-        action.track.comments = Object.keys(action.track.comments).length
+        actionCopy.track.comments = Object.keys(action.track.comments).length
       } else {
-        action.track.comments = 0
+        actionCopy.track.comments = 0
       }
-      newState.push(action.track)
+      newState.push(actionCopy.track)
       return newState
     case RECEIVE_HISTORY:
       return action.history

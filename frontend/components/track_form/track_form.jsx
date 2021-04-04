@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class TrackForm extends React.Component {
   constructor(props) {
@@ -241,7 +241,10 @@ class TrackForm extends React.Component {
 
                 {
                   this.state.uploading ? 
-                    <button className="uploading-submit">Saving</button> :
+                    <button className="uploading-submit">
+                      <FontAwesomeIcon icon="spinner" spin id="uploading-spinner" />
+                      Saving
+                    </button> :
                     <button type="submit" className="upload-submit">{this.props.formType}</button>
                 }
               </div>
