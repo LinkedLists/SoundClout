@@ -137,7 +137,7 @@ topHits_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Wee
 topHits_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
 topHits_track9_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
 
-topHits_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++7+rings.mp3")
+topHits_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++7+rings+Lyrics.mp3")
 topHits_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++positions+Lyrics.mp3")
 topHits_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Camila+Cabello++Havana+Official+Audio+ft+Young+Thug.mp3")
 topHits_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Shawn+Mendes+Camila+Cabello++Se%C3%B1orita+Lyrics.mp3")
@@ -252,14 +252,14 @@ kpop_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/itz+me.png
 kpop_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/finale.jpg")
 kpop_track9_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/purpose.png")
 
-kpop_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK++%EB%9A%9C%EB%91%90%EB%9A%9C%EB%91%90+DDUDU+DDUDU+MV.mp3") 
-kpop_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK++How+You+Like+That+MV.mp3") 
-kpop_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK++Lovesick+Girls+MV.mp3") 
-kpop_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+%EC%9E%91%EC%9D%80+%EA%B2%83%EB%93%A4%EC%9D%84+%EC%9C%84%ED%95%9C+%EC%8B%9C+Boy+With+Luv+feat+Halsey+Official+MV.mp3") 
-kpop_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+Dynamite+Official+MV.mp3") 
-kpop_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+EVERGLOW+%EC%97%90%EB%B2%84%EA%B8%80%EB%A1%9C%EC%9A%B0++LA+DI+DA+MV.mp3") 
+kpop_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK++DDUDU+DDUDU+%EB%9A%9C%EB%91%90%EB%9A%9C%EB%91%90+LYRICS+Color+Coded+EngRomHan.mp3") 
+kpop_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+How+You+Like+That+Color+Coded+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
+kpop_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+Lovesick+Girls+Lyrics+Color+Coded+Lyrics.mp3") 
+kpop_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+ft+Halsey++Boy+With+Luv+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
+kpop_track5_audio = open("https://s3.console.aws.amazon.com/s3/object/fsp-seed?region=us-west-1&prefix=yt1s.com+-+BTS+Dynamite+lyrics+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+Dynamite+%EA%B0%80%EC%82%AC++Color+Coded+Lyrics.mp3") 
+kpop_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+LA+DI+DA.mp3") 
 kpop_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+ITZY+WANNABE+MV.mp3") 
-kpop_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Red+Velvet+%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3+Psycho+MV.mp3") 
+kpop_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Psycho.mp3") 
 kpop_track9_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+TAEYEON+%ED%83%9C%EC%97%B0+%EB%B6%88%ED%8B%B0+Spark+MV.mp3") 
 
 kpop_track1.audio_file.attach(io: kpop_track1_audio, filename: "kpop#{kpop_track1.id}.mp3")
@@ -362,7 +362,7 @@ dance_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+
 dance_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Kygo+Donna+Summer++Hot+Stuff+Lyrics.mp3")
 dance_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Kygo+Whitney+Houston++Higher+Love+Audio.mp3")
 dance_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Nick+Jonas+Robin+Schulz++Right+Now.mp3")
-dance_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Robin+Schulz++Sugar+feat+Francesco+Yates+OFFICIAL+MUSIC+VIDEO.mp3")
+dance_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Robin+Schulz++Sugar+feat+Francesco+Yates+Official+Lyric+Video.mp3")
 
 dance_track1.audio_file.attach(io: dance_track1_audio, filename: "dance#{dance_track1.id}.mp3")
 dance_track2.audio_file.attach(io: dance_track2_audio, filename: "dance#{dance_track2.id}.mp3")
@@ -435,58 +435,3 @@ vibe_track4.save!
 vibe_track5.save!
 vibe_track6.save!
 vibe_track7.save!
-
-# track1 = Track.new(title: "Saucy", uploader_id: demo.id, description: "hhahaha", genre: "Rock")
-# track2 = Track.new(title: "G.O.A.T", uploader_id: demo.id, description: "timi hendrix", genre: "Rock")
-# track4 = Track.new(title: "Senorita", uploader_id: demo.id, description: "check out my collab with shawn mendes!!", genre: "Pop")
-# track5 = Track.new(title: "Castles Made of Sand", uploader_id: demo.id, description: "check out this rare studio version!!", genre: "Rock")
-# track6 = Track.new(title: "The Wind Cries Mary", uploader_id: demo.id, description: "another rare find", genre: "Rock")
-# track7 = Track.new(title: "Positions", uploader_id: demo.id, description: "here is another bop", genre: "Pop")
-
-# attach image using open uri
-# https://fsp-seed.s3-us-west-1.amazonaws.com/test.jpg
-# https://fsp-seed.s3-us-west-1.amazonaws.com/cc.jpg
-# https://fsp-seed.s3-us-west-1.amazonaws.com/jimi.jpg
-
-# image1 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
-# image11 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
-# image2 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/cc.jpg')
-# image3 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/senorita.jpg')
-# image4 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/jimi.jpg')
-# image44 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/jimi.jpg')
-# image5 = open('https://fsp-seed.s3-us-west-1.amazonaws.com/positions.png')
-
-# audio1 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Saucy.mp3")
-# audio2 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++GOAT+Official+Music+Video.mp3")
-# audio3 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Camila+Cabello++Havana+Official+Audio+ft+Young+Thug.mp3")
-# audio4 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Shawn+Mendes+Camila+Cabello++Se%C3%B1orita+Lyrics.mp3")
-# audio5 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Castles+Made+of+Sand+1967.mp3")
-# audio6 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Jimi+Hendrix+The+Wind+Cries+Mary.mp3")
-# audio7 = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++positions+Lyrics.mp3")
-
-
-
-# track1.photo_file.attach(io: image1, filename: 'nlnd')
-# track2.photo_file.attach(io: image11, filename: 'nlnd')
-# track3.photo_file.attach(io: image2, filename: 'camila')
-# track4.photo_file.attach(io: image3, filename: 'cc and sm')
-# track5.photo_file.attach(io: image44, filename: 'axis')
-# track6.photo_file.attach(io: image4, filename: 'axis')
-# track7.photo_file.attach(io: image5, filename: 'ariana')
-
-# track1.audio_file.attach(io: audio1, filename: 'saucy_audio')
-# track2.audio_file.attach(io: audio2, filename: 'goat_audio')
-# track3.audio_file.attach(io: audio3, filename: 'havana_audio')
-# track4.audio_file.attach(io: audio4, filename: 'senorita')
-# track5.audio_file.attach(io: audio5, filename: 'castles_made_of_sand_audio')
-# track6.audio_file.attach(io: audio6, filename: 'the_wind_cries_mary_audio')
-# track7.audio_file.attach(io: audio7, filename: 'positions_audio')
-
-
-# track1.save!
-# track2.save!
-# track3.save!
-# track4.save!
-# track5.save!
-# track6.save!
-# track7.save!

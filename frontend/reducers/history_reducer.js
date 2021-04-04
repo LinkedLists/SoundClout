@@ -8,13 +8,14 @@ const HistoryReducer = (state = [], action) => {
   // let newState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
+      // wtf am i doing
       let actionCopy = Object.assign({}, action)
-      if (!action.track.numComments) {
-        actionCopy.track.numComments = 0
+      if (action.track.comments) {
+        actionCopy.track.numComments = Object.keys(action.track.comments).length
       } 
-      // else {
-      //   actionCopy.track.numComments = Object.keys(action.track.comments).length
-      // }
+      else {
+        actionCopy.track.numComments = 0
+      }
       newState.push(actionCopy.track)
       return newState
     case RECEIVE_HISTORY:
@@ -29,6 +30,8 @@ const HistoryReducer = (state = [], action) => {
         if (trackId === track.id.toString()) {
           track.numComments === 0 ? 
             track.numComments = 1 : track.numComments += 1
+          track.numComments < 0 ? 
+            track.numComments = 0 : null
         }
         return track
       })
@@ -39,7 +42,8 @@ const HistoryReducer = (state = [], action) => {
       trackId = action.trackCommentPair[0]
       newState = state.map( track => {
         if (trackId === track.id) {
-          track.numComments -= 1
+          track.numComments > 0 ? 
+            track.numComments -= 1 : null
         }
         return track
       })
