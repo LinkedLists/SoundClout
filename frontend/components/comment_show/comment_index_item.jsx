@@ -110,7 +110,7 @@ class CommentIndexItem extends React.Component {
       <li 
         className={this.colorOwner()} 
         id={`li-${this.props.comment.id}`}
-        onMouseEnter={() => this.handleHover(this.props.comment)} 
+        onMouseOver={() => this.handleHover(this.props.comment)} 
         onMouseLeave={() => this.handleLeave(this.props.comment)}>
         <img src={this.props.photoUrl} className="wtf" />
         <div className="comment-item-content">

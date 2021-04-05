@@ -1,8 +1,72 @@
 .homepage-container {
+  display: flex;
+  flex-direction: column;
+  width: 1250px;
+  top: 0;
+  margin: 0 auto;
+}
+
+.homepage-header {
   background-image: image_url('concert.jpg');
   // position: absolute;
   top: 0;
   margin: 0 auto;
   height: 450px;
   width: 1250px;
+}
+
+.homepage-mobile {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 70px;
+  width: 1250px;
+  height: 450px;
+  background: #f2f2f2;
+}
+
+.homepage-mobile-img-container {
+  position: relative;
+  width: 730px; 
+  height: 450px;
+}
+
+.homepage-mobile-img {
+  background-image: url(https://a-v2.sndcdn.com/assets/images/never_stop_listening@1x-9c5264ff.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.homepage-mobile-details {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  width: 325px;
+  margin-left: 45px;
+}
+
+.homepage-mobile-details-header {
+  line-height: 1.2;
+  font-size: 32px;
+  margin-bottom: 17px;
+}
+
+.homepage-mobile-details-header:after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-image: linear-gradient(90deg,#7d01a1,#f30 50%,#f50);
+  margin-top: 15px;
+}
+
+.homepage-mobile-details p {
+  font-size: 24px;
 }
