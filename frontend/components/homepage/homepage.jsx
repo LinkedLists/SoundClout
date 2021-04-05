@@ -6,6 +6,21 @@ import Modal from '../modal/modal'
 class Homepage extends React.Component {
   constructor(props){
     super(props)
+
+    this.signup = this.signup.bind(this)
+    this.login = this.login.bind(this)
+  }
+
+  signup(e) {
+    e.preventDefault();
+    let signupBtn = document.getElementsByClassName("signup-btn")[0]
+    signupBtn.click()
+  }
+
+  login(e) {
+    e.preventDefault();
+    let loginBtn = document.getElementsByClassName("login-btn")[0]
+    loginBtn.click()
   }
   
   render() {
@@ -54,17 +69,27 @@ class Homepage extends React.Component {
             <p>
               Save tracks, follow artists and build playlists. All for free.
             </p>
-            <button className="homepage-signup-footer-signup">
+            <button className="homepage-signup-footer-signup" onClick={this.signup}>
               Create Account
             </button>
             <div className="homepage-signup-footer-alt-auth">
               Already have an account?
-              <button className="homepage-signup-footer-alt-auth-btn">
+              <button className="homepage-signup-footer-alt-auth-btn" onClick={this.login}>
                 Sign In
               </button>
             </div>
           </div>
           
+        </div>
+
+        <div className="social-links-footer-container">
+          <div className="social-links-footer-wrapper">
+            <a href="google.com">AngelList</a>
+            &nbsp;⁃
+            <a href="google.com"> Github</a>
+            &nbsp;⁃
+            <a href="google.com"> Linkedin</a>
+          </div>
         </div>
 
       </div>
