@@ -43,7 +43,7 @@
   left: 0;
 }
 
-.homepage-mobile-details {
+.homepage-details {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -52,13 +52,13 @@
   margin-left: 45px;
 }
 
-.homepage-mobile-details-header {
+.homepage-details-header {
   line-height: 1.2;
   font-size: 32px;
   margin-bottom: 17px;
 }
 
-.homepage-mobile-details-header:after {
+.homepage-details-header:after {
   content: "";
   display: block;
   width: 70px;
@@ -67,6 +67,80 @@
   margin-top: 15px;
 }
 
-.homepage-mobile-details p {
+.homepage-details p {
   font-size: 24px;
+}
+
+.homepage-bottom-banner {
+  position: relative;
+  height: 350px;
+  background-color: #141414;
+  background-image: url(https://a-v2.sndcdn.com/assets/images/hp_creator_image-f3d92e09.jpg);
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  padding: 0 570px 0 70px;
+  display: flex;
+  align-items: center;
+}
+
+.homepage-signup-footer {
+  background: white;
+  text-align: center;
+  height: 375px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.homepage-signup-footer-details {
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  line-height: 1.4;
+}
+
+.homepage-signup-footer-header {
+  font-size: 36px;
+}
+
+.homepage-signup-footer-details p {
+  font-size: 24px;
+  margin: 7px 0 10px;
+}
+
+.homepage-signup-footer-signup {
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  margin: 10px 0;
+  font-size: 18px;
+  height: 46px;
+  padding: 13px 23px;
+  min-width: 200px;
+  background-color: #f50;
+  border: none;
+  outline: 0;
+  color: #fff;
+  line-height: 18px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.homepage-signup-footer-alt-auth {
+  margin: 5px 0 10px;
+  font-size: 12px;
+}
+
+.homepage-signup-footer-alt-auth-btn {
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  color: #333;
+  margin-left: 10px;
+  padding: 10px 15px;
+  height: 40px;
+  outline: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
 }

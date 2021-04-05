@@ -23,17 +23,52 @@ class Homepage extends React.Component {
 
             </div>
           </div>
-          <div className="homepage-mobile-details">
-            <h2 className="homepage-mobile-details-header">
+          <div className="homepage-details">
+            <h2 className="homepage-details-header">
               Never Stop Listening
             </h2>
             <p>
-              SoundClout is available on Web and soon on iOS, Android, Sonos, Chromecast, and Xbox One near you.
+              SoundClout is available on Web and soon on 
+              iOS, Android, Sonos, Chromecast, and Xbox One near you.
             </p>
           </div>
         </div>
 
+        <div className="homepage-bottom-banner">
+          <div className="homepage-details">
+              <h2 className="homepage-details-header">
+                Calling all creators
+              </h2>
+              <p>
+                Get on SoundClout to connect with fans, share your sounds, 
+                and grow your audience. What are you waiting for?              
+                </p>
+            </div>
+          </div>
+
+        <div className="homepage-signup-footer">
+          <div className="homepage-signup-footer-details">
+            <h2 className="homepage-signup-footer-header">
+              Thanks for listening. Now join in.
+            </h2>
+            <p>
+              Save tracks, follow artists and build playlists. All for free.
+            </p>
+            <button className="homepage-signup-footer-signup">
+              Create Account
+            </button>
+            <div className="homepage-signup-footer-alt-auth">
+              Already have an account?
+              <button className="homepage-signup-footer-alt-auth-btn">
+                Sign In
+              </button>
+            </div>
+          </div>
+          
+        </div>
+
       </div>
+      
     )
   }
 }
