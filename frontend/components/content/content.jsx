@@ -9,6 +9,7 @@ class Content extends React.Component {
     this.state = {
       loading: true
     }
+    this.loading = true
   }
 
   componentDidMount() {
@@ -20,8 +21,9 @@ class Content extends React.Component {
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
     setTimeout(() => {
-      this.setState( {loading: false} )
-    }, 2000)
+      // this.setState( {loading: false} )
+      this.loading = false
+    }, 400)
   }
 
   render() {
@@ -34,8 +36,8 @@ class Content extends React.Component {
     })
     
     
+    console.log(this.loading)
     return (
-
       <div className="content-container">
         <History />
         <div className="content-wrapper">
@@ -44,7 +46,8 @@ class Content extends React.Component {
             <div className="playlist-wrapper">
               <div className="playlist-header">Charts: New and hot</div>
               {
-                this.state.loading ?
+                // this.state.loading ?
+                this.loading ?
                   <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> :
                   <ul className="content-list-ul">
                     {trackItems}
