@@ -7,7 +7,11 @@ class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true
+      // if a user is on the main page then quickly leaves before the page fully loads
+      // there could be an issue where there is an attempt to update the state of
+      // an unmounted component.
+
+      // loading: true
     }
     this.loading = true
   }
@@ -21,9 +25,8 @@ class Content extends React.Component {
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
     setTimeout(() => {
-      // this.setState( {loading: false} )
       this.loading = false
-    }, 400)
+    }, 300)
   }
 
   render() {
@@ -34,9 +37,6 @@ class Content extends React.Component {
         <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
       )
     })
-    
-    
-    console.log(this.loading)
     return (
       <div className="content-container">
         <History />

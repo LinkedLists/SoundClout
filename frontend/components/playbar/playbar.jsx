@@ -46,7 +46,7 @@ class Playbar extends React.Component {
       }
       let history 
       if (window.localStorage.getItem("history")) {
-        console.log("playbar mount")
+        // console.log("playbar mount")
         try {
           history = JSON.parse(window.localStorage.getItem("history"))
           this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")));
@@ -97,7 +97,7 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
     let progressBar2 = document.getElementsByClassName('progress-bar2')[0];
-    console.log("in time")
+    // console.log("in time")
     this.timeIncrementerInstance = setInterval(() => {
       // console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
@@ -115,7 +115,7 @@ class Playbar extends React.Component {
   }
 
   setDuration() {
-    console.log("meta loaded")
+    // console.log("meta loaded")
     let audio = this.props.audio
     // bandaid fix. Some reason when page intially loads there is 
     // an error where the state does not exist yet
@@ -176,7 +176,7 @@ class Playbar extends React.Component {
 
     // NOTE: looping is continous play and does not end or pause a track
     audio.addEventListener("ended", () => {
-      console.log("track ended")
+      // console.log("track ended")
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
       
@@ -195,7 +195,7 @@ class Playbar extends React.Component {
     })
 
     audio.addEventListener("play", () => {
-      console.log("track is played")
+      // console.log("track is played")
       if (this.timeIncrementerInstance) {
         clearInterval(this.timeIncrementerInstance)
         this.timeIncrementer()
@@ -212,7 +212,7 @@ class Playbar extends React.Component {
     })
 
     audio.addEventListener("pause", () => {
-      console.log("track is paused")
+      // console.log("track is paused")
       clearInterval(this.timeIncrementerInstance)
       playbtn ? playbtn.classList.remove("playing") : null
 
@@ -242,7 +242,7 @@ class Playbar extends React.Component {
 
     this.props.audio.play()
     this.intervalUp = setInterval(() => {
-      console.log("up")
+      // console.log("up")
       if (this.props.audio.volume <= (this.state.volume - this.state.volume/60 )) {
         if (this.state.volume/60 === 0 ) {
           this.props.audio.volume = this.state.volume

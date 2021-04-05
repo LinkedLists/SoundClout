@@ -24,10 +24,15 @@ class TrackShow extends React.Component {
     this.setHistory = this.setHistory.bind(this)
     this.intervalUp;
     this.intervalDown;
+    this.loading = true;
   }
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
+    setTimeout(() => {
+      this.loading = false
+      // console.log("track show is loading? " + this.loading)
+    }, 300)
   }
 
   componentDidUpdate() {
@@ -96,7 +101,6 @@ class TrackShow extends React.Component {
       let history = JSON.parse(window.localStorage.getItem("history"))
       if (history.length !== this.props.trackHistory.length) {
         window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-        console.log(this.props.trackHistory)
       }
     }, 70)
   }
@@ -119,7 +123,7 @@ class TrackShow extends React.Component {
       }, 10)
     }
     else if (audio.paused) {
-      console.log(audio.paused)
+      // console.log(audio.paused)
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
       this.bringBackVolume();
@@ -244,18 +248,24 @@ class TrackShow extends React.Component {
                       </div>
                   }
                 </div>
+                
 
-                <div className="track-body-main-content">
-                  <div className="track-show-uploader-container">
-                    <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
-                    <div className="track-show-uploader-details">
-                      <div className="track-show-uploader-name">{this.props.track.username}</div>
+
+                {
+                  // this.loading ?
+                  // <FontAwesomeIcon icon="spinner" spin size="2x" className="homepage-spinner" /> :
+                  <div className="track-body-main-content">
+                    <div className="track-show-uploader-container">
+                      <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
+                      <div className="track-show-uploader-details">
+                        <div className="track-show-uploader-name">{this.props.track.username}</div>
+                      </div>
                     </div>
+                    <CommentShow 
+                      track={this.props.track}
+                      setHistory={this.setHistory} />
                   </div>
-                  <CommentShow 
-                    track={this.props.track}
-                    setHistory={this.setHistory} />
-                </div>
+                }
               </div>
             </div>
           </div>

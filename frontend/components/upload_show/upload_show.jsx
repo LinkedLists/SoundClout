@@ -48,7 +48,7 @@ class UploadShow extends React.Component {
 
   handleAudioFile(e) {
     let file = e.target.files[0];
-    console.log(file)
+    // console.log(file)
     this.setState({title: file.name});
     this.setState({audio_file: file});
     if (file) this.showForm();

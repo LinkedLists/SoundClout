@@ -6,7 +6,7 @@ export const createTrack = track => {
       data: track ,
       contentType: false,
       processData: false
-    }).then(console.log("track is being uploaded"))
+    })
   )
 }
 
@@ -45,7 +45,7 @@ export const updateTrack = (track) => {
       data: track,
       contentType: false,
       processData: false,
-    }).then(console.log("track is being updated"))
+    })
   )
 }
 
