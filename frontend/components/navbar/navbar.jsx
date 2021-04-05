@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -19,7 +20,7 @@ class NavBar extends React.Component {
     return (
       <div className="login-signup-container">
         <nav className="login-signup-nav">
-          <div className="site-logo">logo placeholder</div>
+          <div className="site-logo"></div>
           <div className="login-signup">
             {/* temp inline style for login */}
             <button className='login-btn' onClick={() => this.props.openModal('login')} style={{color: 'green'}}>Login</button>
@@ -43,7 +44,7 @@ class NavBar extends React.Component {
           <ul className="nav-links">
             {/* in soundcloud the logo is outside of nav-links ul */}
             {/* navbar is divided into ul sections */}
-            <li><Link to='/discover' className='nav-links-li'>logo here</Link></li>
+            <li id="logo-container"><Link to='/discover'><span id="logo-icon"></span></Link></li>
             <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Library</Link></li>

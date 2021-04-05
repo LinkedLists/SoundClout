@@ -30,6 +30,12 @@ class Homepage extends React.Component {
         <div className='homepage-header'>
           {/* {this.props.state.session.id ? null : <Modal />} */}
           <Modal />
+
+          <div id="homepage-logo-container">
+            <span id="homepage-logo"/>
+            <h2 id="homepage-logo-name">SOUNDCLOUT</h2>
+          </div>
+
         </div>
 
         <div className="homepage-mobile">

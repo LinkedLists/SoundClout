@@ -256,7 +256,7 @@ kpop_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-
 kpop_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+How+You+Like+That+Color+Coded+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
 kpop_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+Lovesick+Girls+Lyrics+Color+Coded+Lyrics.mp3") 
 kpop_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+ft+Halsey++Boy+With+Luv+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
-kpop_track5_audio = open("https://s3.console.aws.amazon.com/s3/object/fsp-seed?region=us-west-1&prefix=yt1s.com+-+BTS+Dynamite+lyrics+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+Dynamite+%EA%B0%80%EC%82%AC++Color+Coded+Lyrics.mp3") 
+kpop_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS++Dynamite+Lyrics.mp3") 
 kpop_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+LA+DI+DA.mp3") 
 kpop_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+ITZY+WANNABE+MV.mp3") 
 kpop_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Psycho.mp3") 
@@ -358,7 +358,7 @@ dance_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/sugar.jpg
 
 dance_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Break+My+Heart+Lyrics.mp3")
 dance_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Hallucinate+Official+Lyrics+Video.mp3")
-dance_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Levitating+Official+Lyrics+Video.mp3")
+dance_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Dua+Lipa++Levitating+Feat+DaBaby+Lyrics.mp3")
 dance_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Kygo+Donna+Summer++Hot+Stuff+Lyrics.mp3")
 dance_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Kygo+Whitney+Houston++Higher+Love+Audio.mp3")
 dance_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Nick+Jonas+Robin+Schulz++Right+Now.mp3")
