@@ -15,8 +15,15 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.match.params.userId)
+    // setTimeout(() => {
+      this.props.fetchUser(this.props.match.params.userId, console.log("fetched user " + this.props.match.params.userId))
+
+    // }, 20)
     // this.props.fetchTracks()
+  }
+
+  componentWillUnmount() {
+    console.log("unmounted user " + this.props.match.params.userId)
   }
 
   componentDidUpdate() {
