@@ -37,8 +37,9 @@
   padding: 2px 16px;
   color: #fff;
   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-  border-radius: 5px;
+  border-radius: 3px;
   // opacity: 0.7;
+  height: 30px;
   transition: 0.4s;
 }
 
@@ -80,10 +81,6 @@
   background-size: 67px 47px;
   background-repeat: no-repeat;
   display: block;
-
-  margin: 0;
-  text-indent: -999em;
-  z-index: 1000;
 }
 
 #homepage-logo-name {

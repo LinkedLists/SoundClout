@@ -113,233 +113,6 @@ lostFrequencies.profile_img.attach(io: profile24, filename: "#{lostFrequencies.i
 ryyzn.profile_img.attach(io: profile25, filename: "#{ryyzn.id} img")
 rammor.profile_img.attach(io: profile26, filename: "#{rammor.id} img")
 
-
-# user1.save!
-# track1 = Track.create!(title: "hello", uploader_id: demo.id, description: "hhahaha", genre: "duh")
-
-topHits_track1 = Track.new(title: "7 Rings", uploader_id: arianaGrande.id, description: "Breakfast at Tiffany's", genre: "Pop")
-topHits_track2 = Track.new(title: "Positions", uploader_id: arianaGrande.id, description: "Heaven sent you to me", genre: "Pop")
-topHits_track3 = Track.new(title: "Havana", uploader_id: camilaCabello.id, description: "Come to Havana with me!", genre: "Pop")
-topHits_track4 = Track.new(title: "Senorita", uploader_id: camilaCabello.id, description: "Check out my collab with Shawn Mendes!!", genre: "Pop")
-topHits_track5 = Track.new(title: "Without Me", uploader_id: halsey.id, description: "Found you when your heart was broken", genre: "Pop")
-topHits_track6 = Track.new(title: "Be Kind", uploader_id: halsey.id, description: "Be kind to the one that you love!", genre: "Pop")
-topHits_track7 = Track.new(title: "In Your Eyes", uploader_id: theWeeknd.id, description: "I just pretend that I'm in the dark", genre: "R&B")
-topHits_track8 = Track.new(title: "Blinding Lights", uploader_id: theWeeknd.id, description: "Lights are very bright!", genre: "R&B")
-topHits_track9 = Track.new(title: "Save Your Tears", uploader_id: theWeeknd.id, description: "I saw you dancing in a crowded room", genre: "R&B")
-
-topHits_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Thank_U%2C_Next_-_Digital_Version.jpg")
-topHits_track2_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/positions.png')
-topHits_track3_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/cc.jpg')
-topHits_track4_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/senorita.jpg')
-topHits_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Halsey_-_Manic.png")
-topHits_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/be+kind+img.jpg")
-topHits_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
-topHits_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
-topHits_track9_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
-
-topHits_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++7+rings+Lyrics.mp3")
-topHits_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++positions+Lyrics.mp3")
-topHits_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Camila+Cabello++Havana+Official+Audio+ft+Young+Thug.mp3")
-topHits_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Shawn+Mendes+Camila+Cabello++Se%C3%B1orita+Lyrics.mp3")
-topHits_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Halsey++Without+Me+Lyrics.mp3")
-topHits_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Marshmello+Halsey++Be+Kind+Halsey+Lyric+Video.mp3")
-topHits_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+In+Your+Eyes.mp3")
-topHits_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Blinding+Lights.mp3")
-topHits_track9_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+The+Weeknd++Save+Your+Tears+Audio.mp3")
-
-topHits_track1.audio_file.attach(io: topHits_track1_audio, filename: "topHits#{topHits_track1.id}.mp3")
-topHits_track2.audio_file.attach(io: topHits_track2_audio, filename: "topHits#{topHits_track2.id}.mp3")
-topHits_track3.audio_file.attach(io: topHits_track3_audio, filename: "topHits#{topHits_track3.id}.mp3")
-topHits_track4.audio_file.attach(io: topHits_track4_audio, filename: "topHits#{topHits_track4.id}.mp3")
-topHits_track5.audio_file.attach(io: topHits_track5_audio, filename: "topHits#{topHits_track5.id}.mp3")
-topHits_track6.audio_file.attach(io: topHits_track6_audio, filename: "topHits#{topHits_track6.id}.mp3")
-topHits_track7.audio_file.attach(io: topHits_track7_audio, filename: "topHits#{topHits_track7.id}.mp3")
-topHits_track8.audio_file.attach(io: topHits_track8_audio, filename: "topHits#{topHits_track8.id}.mp3")
-topHits_track9.audio_file.attach(io: topHits_track9_audio, filename: "topHits#{topHits_track9.id}.mp3")
-
-topHits_track1.photo_file.attach(io: topHits_track1_photo, filename: "topHits#{topHits_track1.id} img")
-topHits_track2.photo_file.attach(io: topHits_track2_photo, filename: "topHits#{topHits_track2.id} img")
-topHits_track3.photo_file.attach(io: topHits_track3_photo, filename: "topHits#{topHits_track3.id} img")
-topHits_track4.photo_file.attach(io: topHits_track4_photo, filename: "topHits#{topHits_track4.id} img")
-topHits_track5.photo_file.attach(io: topHits_track5_photo, filename: "topHits#{topHits_track5.id} img")
-topHits_track6.photo_file.attach(io: topHits_track6_photo, filename: "topHits#{topHits_track6.id} img")
-topHits_track7.photo_file.attach(io: topHits_track7_photo, filename: "topHits#{topHits_track7.id} img")
-topHits_track8.photo_file.attach(io: topHits_track8_photo, filename: "topHits#{topHits_track8.id} img")
-topHits_track9.photo_file.attach(io: topHits_track9_photo, filename: "topHits#{topHits_track9.id} img")
-
-topHits_track1.save!
-topHits_track2.save!
-topHits_track3.save!
-topHits_track4.save!
-topHits_track5.save!
-topHits_track6.save!
-topHits_track7.save!
-topHits_track8.save!
-topHits_track9.save!
-
-
-polyphia_track1 = Track.new(title: "Light", uploader_id: polyphia.id, description: "this is lit", genre: "Instrumental")
-polyphia_track2 = Track.new(title: "G.O.A.T", uploader_id: polyphia.id, description: "Meet Timi Hendrix", genre: "Instrumental")
-polyphia_track3 = Track.new(title: "Goose", uploader_id: polyphia.id, description: "It's Grey Goose, baby!", genre: "Instrumental")
-polyphia_track4 = Track.new(title: "James Franco", uploader_id: polyphia.id, description: "Is he related to Dave Franco?", genre: "Instrumental")
-polyphia_track5 = Track.new(title: "Saucy", uploader_id: polyphia.id, description: "This is nasty", genre: "Instrumental")
-polyphia_track6 = Track.new(title: "The Worst", uploader_id: polyphia.id, description: "wr6st", genre: "Instrumental")
-polyphia_track7 = Track.new(title: "Yas ft. Mario Camarena and Erick Hansel", uploader_id: polyphia.id, description: "Collab with Chon", genre: "Instrumental")
-polyphia_track8 = Track.new(title: "Blood Moon", uploader_id: timHenson.id, description: "Betcha can't play this", genre: "Instrumental")
-
-polyphia_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Polyphia-Renaissance-cover.jpg")
-polyphia_track2_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
-polyphia_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/most+hated.jpg")
-polyphia_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/muse.jpg")
-polyphia_track5_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
-polyphia_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/most+hated.jpg")
-polyphia_track7_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
-polyphia_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/bloodmoon.jpg")
-
-polyphia_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Light++Polyphia+Official+Audio.mp3")
-polyphia_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++GOAT+Official+Music+Video.mp3")
-polyphia_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Goose+Official+Music+Video.mp3")
-polyphia_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++James+Franco.mp3")
-polyphia_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Saucy.mp3")
-polyphia_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++The+Worst+Official+Audio.mp3")
-polyphia_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Yas+feat+Mario+Camarena+and+Erick+Hansel+Official+Music+Video.mp3")
-polyphia_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Blood+Moon.mp3")
-
-polyphia_track1.audio_file.attach(io: polyphia_track1_audio, filename: "polyphia#{polyphia_track1.id}.mp3")
-polyphia_track2.audio_file.attach(io: polyphia_track2_audio, filename: "polyphia#{polyphia_track2.id}.mp3")
-polyphia_track3.audio_file.attach(io: polyphia_track3_audio, filename: "polyphia#{polyphia_track3.id}.mp3")
-polyphia_track4.audio_file.attach(io: polyphia_track4_audio, filename: "polyphia#{polyphia_track4.id}.mp3")
-polyphia_track5.audio_file.attach(io: polyphia_track5_audio, filename: "polyphia#{polyphia_track5.id}.mp3")
-polyphia_track6.audio_file.attach(io: polyphia_track6_audio, filename: "polyphia#{polyphia_track6.id}.mp3")
-polyphia_track7.audio_file.attach(io: polyphia_track7_audio, filename: "polyphia#{polyphia_track7.id}.mp3")
-polyphia_track8.audio_file.attach(io: polyphia_track8_audio, filename: "polyphia#{polyphia_track8.id}.mp3")
-
-polyphia_track1.photo_file.attach(io: polyphia_track1_photo, filename: "polyphia#{polyphia_track1.id} img")
-polyphia_track2.photo_file.attach(io: polyphia_track2_photo, filename: "polyphia#{polyphia_track2.id} img")
-polyphia_track3.photo_file.attach(io: polyphia_track3_photo, filename: "polyphia#{polyphia_track3.id} img")
-polyphia_track4.photo_file.attach(io: polyphia_track4_photo, filename: "polyphia#{polyphia_track4.id} img")
-polyphia_track5.photo_file.attach(io: polyphia_track5_photo, filename: "polyphia#{polyphia_track5.id} img")
-polyphia_track6.photo_file.attach(io: polyphia_track6_photo, filename: "polyphia#{polyphia_track6.id} img")
-polyphia_track7.photo_file.attach(io: polyphia_track7_photo, filename: "polyphia#{polyphia_track7.id} img")
-polyphia_track8.photo_file.attach(io: polyphia_track8_photo, filename: "polyphia#{polyphia_track8.id} img")
-
-polyphia_track1.save!
-polyphia_track2.save!
-polyphia_track3.save!
-polyphia_track4.save!
-polyphia_track5.save!
-polyphia_track6.save!
-polyphia_track7.save!
-polyphia_track8.save!
-
-kpop_track1 = Track.new(title: "DDUDU DDUDU", uploader_id: blackPink.id, description: "~DDDUUDDDUUDDDUU~", genre: "Kpop")
-kpop_track2 = Track.new(title: "How You Like That", uploader_id: blackPink.id, description: "Blackpink in your area", genre: "Kpop")
-kpop_track3 = Track.new(title: "Lovesick Girls", uploader_id: blackPink.id, description: "We are the lovesick girls", genre: "Kpop")
-kpop_track4 = Track.new(title: "Boy With Luv ft. Halsey", uploader_id: bts.id, description: "New song with Halsey!", genre: "Kpop")
-kpop_track5 = Track.new(title: "Dynamite", uploader_id: bts.id, description: "Beat for the summer", genre: "Kpop")
-kpop_track6 = Track.new(title: "La Di Da", uploader_id: everglow.id, description: "We're about to break the charts with this", genre: "Kpop")
-kpop_track7 = Track.new(title: "Wannabe", uploader_id: itzy.id, description: "I just wanna be me", genre: "Kpop")
-kpop_track8 = Track.new(title: "Psycho", uploader_id: redVelvet.id, description: "Smooth", genre: "Kpop")
-kpop_track9 = Track.new(title: "Spark", uploader_id: taeyeon.id, description: "Purpose", genre: "Kpop")
-
-kpop_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/square+up.jpg")
-kpop_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/BLACKPINK-_The_Album.png")
-kpop_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/BLACKPINK-_The_Album.png")
-kpop_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/daytime.jpg")
-kpop_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/persona.jpg")
-kpop_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/everglow+album.jpg")
-kpop_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/itz+me.png")
-kpop_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/finale.jpg")
-kpop_track9_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/purpose.png")
-
-kpop_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK++DDUDU+DDUDU+%EB%9A%9C%EB%91%90%EB%9A%9C%EB%91%90+LYRICS+Color+Coded+EngRomHan.mp3") 
-kpop_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+How+You+Like+That+Color+Coded+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
-kpop_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+Lovesick+Girls+Lyrics+Color+Coded+Lyrics.mp3") 
-kpop_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+ft+Halsey++Boy+With+Luv+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
-kpop_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS++Dynamite+Lyrics.mp3") 
-kpop_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+LA+DI+DA.mp3") 
-kpop_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+ITZY+WANNABE+MV.mp3") 
-kpop_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Psycho.mp3") 
-kpop_track9_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+TAEYEON+%ED%83%9C%EC%97%B0+%EB%B6%88%ED%8B%B0+Spark+MV.mp3") 
-
-kpop_track1.audio_file.attach(io: kpop_track1_audio, filename: "kpop#{kpop_track1.id}.mp3")
-kpop_track2.audio_file.attach(io: kpop_track2_audio, filename: "kpop#{kpop_track2.id}.mp3")
-kpop_track3.audio_file.attach(io: kpop_track3_audio, filename: "kpop#{kpop_track3.id}.mp3")
-kpop_track4.audio_file.attach(io: kpop_track4_audio, filename: "kpop#{kpop_track4.id}.mp3")
-kpop_track5.audio_file.attach(io: kpop_track5_audio, filename: "kpop#{kpop_track5.id}.mp3")
-kpop_track6.audio_file.attach(io: kpop_track6_audio, filename: "kpop#{kpop_track6.id}.mp3")
-kpop_track7.audio_file.attach(io: kpop_track7_audio, filename: "kpop#{kpop_track7.id}.mp3")
-kpop_track8.audio_file.attach(io: kpop_track8_audio, filename: "kpop#{kpop_track8.id}.mp3")
-kpop_track9.audio_file.attach(io: kpop_track9_audio, filename: "kpop#{kpop_track9.id}.mp3")
-
-kpop_track1.photo_file.attach(io: kpop_track1_photo, filename: "kpop#{kpop_track1.id} img")
-kpop_track2.photo_file.attach(io: kpop_track2_photo, filename: "kpop#{kpop_track2.id} img")
-kpop_track3.photo_file.attach(io: kpop_track3_photo, filename: "kpop#{kpop_track3.id} img")
-kpop_track4.photo_file.attach(io: kpop_track4_photo, filename: "kpop#{kpop_track4.id} img")
-kpop_track5.photo_file.attach(io: kpop_track5_photo, filename: "kpop#{kpop_track5.id} img")
-kpop_track6.photo_file.attach(io: kpop_track6_photo, filename: "kpop#{kpop_track6.id} img")
-kpop_track7.photo_file.attach(io: kpop_track7_photo, filename: "kpop#{kpop_track7.id} img")
-kpop_track8.photo_file.attach(io: kpop_track8_photo, filename: "kpop#{kpop_track8.id} img")
-kpop_track9.photo_file.attach(io: kpop_track9_photo, filename: "kpop#{kpop_track9.id} img")
-
-kpop_track1.save!
-kpop_track2.save!
-kpop_track3.save!
-kpop_track4.save!
-kpop_track5.save!
-kpop_track6.save!
-kpop_track7.save!
-kpop_track8.save!
-kpop_track9.save!
-
-lofi_track1 = Track.new(title: "Trauerfall", uploader_id: tzelun.id, description: "<3",genre: "Lofi")
-lofi_track2 = Track.new(title: "Searching", uploader_id: tzelun.id, description: "I'm still searching", genre: "Lofi")
-lofi_track3 = Track.new(title: "Watch What I Do", uploader_id: tzelun.id, description: "Hope you're watching", genre: "Lofi")
-lofi_track4 = Track.new(title: "Loves Dissonance", uploader_id: lofty.id, description: "Love", genre: "Lofi")
-lofi_track5 = Track.new(title: "Motu One", uploader_id: tohaj.id, description: "Just dropping some vibes", genre: "Lofi")
-lofi_track6 = Track.new(title: "What Could've Been", uploader_id: stfspkn.id, description: "And what should never be", genre: "Lofi")
-lofi_track7 = Track.new(title: "Remind", uploader_id: bido.id, description: "Just remind me when you need be to drop another one", genre: "Lofi")
-
-lofi_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi1.jpg")
-lofi_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi2.jpg")
-lofi_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi3.jpg")
-lofi_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi+4.jpg")
-lofi_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi+5.jpg")
-lofi_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi6.jpeg")
-lofi_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi7.jpg")
-
-lofi_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+E+I+S+U++Trauerfall+w+Tzelun.mp3")
-lofi_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Searching+by+Tzelun.mp3")
-lofi_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Watch+What+I+Do+by+Tzelun.mp3")
-lofi_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Loves+Dissonance+Original+Mix+by+Lofty.mp3")
-lofi_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Motu+One+by+tohaj.mp3")
-lofi_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+sftspkn++what+couldve+been.mp3")
-lofi_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Remind+by+Bido.mp3")
-
-lofi_track1.audio_file.attach(io: lofi_track1_audio, filename: "lofi#{lofi_track1.id}.mp3")
-lofi_track2.audio_file.attach(io: lofi_track2_audio, filename: "lofi#{lofi_track2.id}.mp3")
-lofi_track3.audio_file.attach(io: lofi_track3_audio, filename: "lofi#{lofi_track3.id}.mp3")
-lofi_track4.audio_file.attach(io: lofi_track4_audio, filename: "lofi#{lofi_track4.id}.mp3")
-lofi_track5.audio_file.attach(io: lofi_track5_audio, filename: "lofi#{lofi_track5.id}.mp3")
-lofi_track6.audio_file.attach(io: lofi_track6_audio, filename: "lofi#{lofi_track6.id}.mp3")
-lofi_track7.audio_file.attach(io: lofi_track7_audio, filename: "lofi#{lofi_track7.id}.mp3")
-
-lofi_track1.photo_file.attach(io: lofi_track1_photo, filename: "lofi#{lofi_track1.id} img")
-lofi_track2.photo_file.attach(io: lofi_track2_photo, filename: "lofi#{lofi_track2.id} img")
-lofi_track3.photo_file.attach(io: lofi_track3_photo, filename: "lofi#{lofi_track3.id} img")
-lofi_track4.photo_file.attach(io: lofi_track4_photo, filename: "lofi#{lofi_track4.id} img")
-lofi_track5.photo_file.attach(io: lofi_track5_photo, filename: "lofi#{lofi_track5.id} img")
-lofi_track6.photo_file.attach(io: lofi_track6_photo, filename: "lofi#{lofi_track6.id} img")
-lofi_track7.photo_file.attach(io: lofi_track7_photo, filename: "lofi#{lofi_track7.id} img")
-
-lofi_track1.save!
-lofi_track2.save!
-lofi_track3.save!
-lofi_track4.save!
-lofi_track5.save!
-lofi_track6.save!
-lofi_track7.save!
-
 dance_track1 = Track.new(title: "Break My Heart", uploader_id: duaLipa.id, description: "Don't break my heart", genre: "House")
 dance_track2 = Track.new(title: "Hallucinate", uploader_id: duaLipa.id, description: "Are you hallucinating?", genre: "House")
 dance_track3 = Track.new(title: "Levitating", uploader_id: duaLipa.id, description: "Float like a butterfly", genre: "House")
@@ -435,3 +208,342 @@ vibe_track4.save!
 vibe_track5.save!
 vibe_track6.save!
 vibe_track7.save!
+
+lofi_track1 = Track.new(title: "Trauerfall", uploader_id: tzelun.id, description: "<3",genre: "Lofi")
+lofi_track2 = Track.new(title: "Searching", uploader_id: tzelun.id, description: "I'm still searching", genre: "Lofi")
+lofi_track3 = Track.new(title: "Watch What I Do", uploader_id: tzelun.id, description: "Hope you're watching", genre: "Lofi")
+lofi_track4 = Track.new(title: "Loves Dissonance", uploader_id: lofty.id, description: "Love", genre: "Lofi")
+lofi_track5 = Track.new(title: "Motu One", uploader_id: tohaj.id, description: "Just dropping some vibes", genre: "Lofi")
+lofi_track6 = Track.new(title: "What Could've Been", uploader_id: stfspkn.id, description: "And what should never be", genre: "Lofi")
+lofi_track7 = Track.new(title: "Remind", uploader_id: bido.id, description: "Just remind me when you need be to drop another one", genre: "Lofi")
+
+lofi_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi1.jpg")
+lofi_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi2.jpg")
+lofi_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi3.jpg")
+lofi_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi+4.jpg")
+lofi_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi+5.jpg")
+lofi_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi6.jpeg")
+lofi_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/lofi7.jpg")
+
+lofi_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+E+I+S+U++Trauerfall+w+Tzelun.mp3")
+lofi_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Searching+by+Tzelun.mp3")
+lofi_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Watch+What+I+Do+by+Tzelun.mp3")
+lofi_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Loves+Dissonance+Original+Mix+by+Lofty.mp3")
+lofi_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Motu+One+by+tohaj.mp3")
+lofi_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+sftspkn++what+couldve+been.mp3")
+lofi_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Remind+by+Bido.mp3")
+
+lofi_track1.audio_file.attach(io: lofi_track1_audio, filename: "lofi#{lofi_track1.id}.mp3")
+lofi_track2.audio_file.attach(io: lofi_track2_audio, filename: "lofi#{lofi_track2.id}.mp3")
+lofi_track3.audio_file.attach(io: lofi_track3_audio, filename: "lofi#{lofi_track3.id}.mp3")
+lofi_track4.audio_file.attach(io: lofi_track4_audio, filename: "lofi#{lofi_track4.id}.mp3")
+lofi_track5.audio_file.attach(io: lofi_track5_audio, filename: "lofi#{lofi_track5.id}.mp3")
+lofi_track6.audio_file.attach(io: lofi_track6_audio, filename: "lofi#{lofi_track6.id}.mp3")
+lofi_track7.audio_file.attach(io: lofi_track7_audio, filename: "lofi#{lofi_track7.id}.mp3")
+
+lofi_track1.photo_file.attach(io: lofi_track1_photo, filename: "lofi#{lofi_track1.id} img")
+lofi_track2.photo_file.attach(io: lofi_track2_photo, filename: "lofi#{lofi_track2.id} img")
+lofi_track3.photo_file.attach(io: lofi_track3_photo, filename: "lofi#{lofi_track3.id} img")
+lofi_track4.photo_file.attach(io: lofi_track4_photo, filename: "lofi#{lofi_track4.id} img")
+lofi_track5.photo_file.attach(io: lofi_track5_photo, filename: "lofi#{lofi_track5.id} img")
+lofi_track6.photo_file.attach(io: lofi_track6_photo, filename: "lofi#{lofi_track6.id} img")
+lofi_track7.photo_file.attach(io: lofi_track7_photo, filename: "lofi#{lofi_track7.id} img")
+
+lofi_track1.save!
+lofi_track2.save!
+lofi_track3.save!
+lofi_track4.save!
+lofi_track5.save!
+lofi_track6.save!
+lofi_track7.save!
+
+kpop_track1 = Track.new(title: "DDUDU DDUDU", uploader_id: blackPink.id, description: "~DDDUUDDDUUDDDUU~", genre: "Kpop")
+kpop_track2 = Track.new(title: "How You Like That", uploader_id: blackPink.id, description: "Blackpink in your area", genre: "Kpop")
+kpop_track3 = Track.new(title: "Lovesick Girls", uploader_id: blackPink.id, description: "We are the lovesick girls", genre: "Kpop")
+kpop_track4 = Track.new(title: "Boy With Luv ft. Halsey", uploader_id: bts.id, description: "New song with Halsey!", genre: "Kpop")
+kpop_track5 = Track.new(title: "Dynamite", uploader_id: bts.id, description: "Beat for the summer", genre: "Kpop")
+kpop_track6 = Track.new(title: "La Di Da", uploader_id: everglow.id, description: "We're about to break the charts with this", genre: "Kpop")
+kpop_track7 = Track.new(title: "Wannabe", uploader_id: itzy.id, description: "I just wanna be me", genre: "Kpop")
+kpop_track8 = Track.new(title: "Psycho", uploader_id: redVelvet.id, description: "Smooth", genre: "Kpop")
+kpop_track9 = Track.new(title: "Spark", uploader_id: taeyeon.id, description: "Purpose", genre: "Kpop")
+
+kpop_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/square+up.jpg")
+kpop_track2_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/BLACKPINK-_The_Album.png")
+kpop_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/BLACKPINK-_The_Album.png")
+kpop_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/daytime.jpg")
+kpop_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/persona.jpg")
+kpop_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/everglow+album.jpg")
+kpop_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/itz+me.png")
+kpop_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/finale.jpg")
+kpop_track9_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/purpose.png")
+
+kpop_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK++DDUDU+DDUDU+%EB%9A%9C%EB%91%90%EB%9A%9C%EB%91%90+LYRICS+Color+Coded+EngRomHan.mp3") 
+kpop_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+How+You+Like+That+Color+Coded+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
+kpop_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BLACKPINK+Lovesick+Girls+Lyrics+Color+Coded+Lyrics.mp3") 
+kpop_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS+%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8+ft+Halsey++Boy+With+Luv+Lyrics+EngRomHan%EA%B0%80%EC%82%AC.mp3") 
+kpop_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+BTS++Dynamite+Lyrics.mp3") 
+kpop_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+LA+DI+DA.mp3") 
+kpop_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+ITZY+WANNABE+MV.mp3") 
+kpop_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Psycho.mp3") 
+kpop_track9_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+TAEYEON+%ED%83%9C%EC%97%B0+%EB%B6%88%ED%8B%B0+Spark+MV.mp3") 
+
+kpop_track1.audio_file.attach(io: kpop_track1_audio, filename: "kpop#{kpop_track1.id}.mp3")
+kpop_track2.audio_file.attach(io: kpop_track2_audio, filename: "kpop#{kpop_track2.id}.mp3")
+kpop_track3.audio_file.attach(io: kpop_track3_audio, filename: "kpop#{kpop_track3.id}.mp3")
+kpop_track4.audio_file.attach(io: kpop_track4_audio, filename: "kpop#{kpop_track4.id}.mp3")
+kpop_track5.audio_file.attach(io: kpop_track5_audio, filename: "kpop#{kpop_track5.id}.mp3")
+kpop_track6.audio_file.attach(io: kpop_track6_audio, filename: "kpop#{kpop_track6.id}.mp3")
+kpop_track7.audio_file.attach(io: kpop_track7_audio, filename: "kpop#{kpop_track7.id}.mp3")
+kpop_track8.audio_file.attach(io: kpop_track8_audio, filename: "kpop#{kpop_track8.id}.mp3")
+kpop_track9.audio_file.attach(io: kpop_track9_audio, filename: "kpop#{kpop_track9.id}.mp3")
+
+kpop_track1.photo_file.attach(io: kpop_track1_photo, filename: "kpop#{kpop_track1.id} img")
+kpop_track2.photo_file.attach(io: kpop_track2_photo, filename: "kpop#{kpop_track2.id} img")
+kpop_track3.photo_file.attach(io: kpop_track3_photo, filename: "kpop#{kpop_track3.id} img")
+kpop_track4.photo_file.attach(io: kpop_track4_photo, filename: "kpop#{kpop_track4.id} img")
+kpop_track5.photo_file.attach(io: kpop_track5_photo, filename: "kpop#{kpop_track5.id} img")
+kpop_track6.photo_file.attach(io: kpop_track6_photo, filename: "kpop#{kpop_track6.id} img")
+kpop_track7.photo_file.attach(io: kpop_track7_photo, filename: "kpop#{kpop_track7.id} img")
+kpop_track8.photo_file.attach(io: kpop_track8_photo, filename: "kpop#{kpop_track8.id} img")
+kpop_track9.photo_file.attach(io: kpop_track9_photo, filename: "kpop#{kpop_track9.id} img")
+
+kpop_track1.save!
+kpop_track2.save!
+kpop_track3.save!
+kpop_track4.save!
+kpop_track5.save!
+kpop_track6.save!
+kpop_track7.save!
+kpop_track8.save!
+kpop_track9.save!
+
+polyphia_track1 = Track.new(title: "Light", uploader_id: polyphia.id, description: "this is lit", genre: "Instrumental")
+polyphia_track2 = Track.new(title: "G.O.A.T", uploader_id: polyphia.id, description: "Meet Timi Hendrix", genre: "Instrumental")
+polyphia_track3 = Track.new(title: "Goose", uploader_id: polyphia.id, description: "It's Grey Goose, baby!", genre: "Instrumental")
+polyphia_track4 = Track.new(title: "James Franco", uploader_id: polyphia.id, description: "Is he related to Dave Franco?", genre: "Instrumental")
+polyphia_track5 = Track.new(title: "Saucy", uploader_id: polyphia.id, description: "This is nasty", genre: "Instrumental")
+polyphia_track6 = Track.new(title: "The Worst", uploader_id: polyphia.id, description: "wr6st", genre: "Instrumental")
+polyphia_track7 = Track.new(title: "Yas ft. Mario Camarena and Erick Hansel", uploader_id: polyphia.id, description: "Collab with Chon", genre: "Instrumental")
+polyphia_track8 = Track.new(title: "Blood Moon", uploader_id: timHenson.id, description: "Betcha can't play this", genre: "Instrumental")
+
+polyphia_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Polyphia-Renaissance-cover.jpg")
+polyphia_track2_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
+polyphia_track3_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/most+hated.jpg")
+polyphia_track4_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/muse.jpg")
+polyphia_track5_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
+polyphia_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/most+hated.jpg")
+polyphia_track7_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/nlnd.jpg')
+polyphia_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/bloodmoon.jpg")
+
+polyphia_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Light++Polyphia+Official+Audio.mp3")
+polyphia_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++GOAT+Official+Music+Video.mp3")
+polyphia_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Goose+Official+Music+Video.mp3")
+polyphia_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++James+Franco.mp3")
+polyphia_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Saucy.mp3")
+polyphia_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++The+Worst+Official+Audio.mp3")
+polyphia_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Polyphia++Yas+feat+Mario+Camarena+and+Erick+Hansel+Official+Music+Video.mp3")
+polyphia_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Blood+Moon.mp3")
+
+polyphia_track1.audio_file.attach(io: polyphia_track1_audio, filename: "polyphia#{polyphia_track1.id}.mp3")
+polyphia_track2.audio_file.attach(io: polyphia_track2_audio, filename: "polyphia#{polyphia_track2.id}.mp3")
+polyphia_track3.audio_file.attach(io: polyphia_track3_audio, filename: "polyphia#{polyphia_track3.id}.mp3")
+polyphia_track4.audio_file.attach(io: polyphia_track4_audio, filename: "polyphia#{polyphia_track4.id}.mp3")
+polyphia_track5.audio_file.attach(io: polyphia_track5_audio, filename: "polyphia#{polyphia_track5.id}.mp3")
+polyphia_track6.audio_file.attach(io: polyphia_track6_audio, filename: "polyphia#{polyphia_track6.id}.mp3")
+polyphia_track7.audio_file.attach(io: polyphia_track7_audio, filename: "polyphia#{polyphia_track7.id}.mp3")
+polyphia_track8.audio_file.attach(io: polyphia_track8_audio, filename: "polyphia#{polyphia_track8.id}.mp3")
+
+polyphia_track1.photo_file.attach(io: polyphia_track1_photo, filename: "polyphia#{polyphia_track1.id} img")
+polyphia_track2.photo_file.attach(io: polyphia_track2_photo, filename: "polyphia#{polyphia_track2.id} img")
+polyphia_track3.photo_file.attach(io: polyphia_track3_photo, filename: "polyphia#{polyphia_track3.id} img")
+polyphia_track4.photo_file.attach(io: polyphia_track4_photo, filename: "polyphia#{polyphia_track4.id} img")
+polyphia_track5.photo_file.attach(io: polyphia_track5_photo, filename: "polyphia#{polyphia_track5.id} img")
+polyphia_track6.photo_file.attach(io: polyphia_track6_photo, filename: "polyphia#{polyphia_track6.id} img")
+polyphia_track7.photo_file.attach(io: polyphia_track7_photo, filename: "polyphia#{polyphia_track7.id} img")
+polyphia_track8.photo_file.attach(io: polyphia_track8_photo, filename: "polyphia#{polyphia_track8.id} img")
+
+polyphia_track1.save!
+polyphia_track2.save!
+polyphia_track3.save!
+polyphia_track4.save!
+polyphia_track5.save!
+polyphia_track6.save!
+polyphia_track7.save!
+polyphia_track8.save!
+
+# user1.save!
+# track1 = Track.create!(title: "hello", uploader_id: demo.id, description: "hhahaha", genre: "duh")
+
+topHits_track9 = Track.new(title: "Save Your Tears", uploader_id: theWeeknd.id, description: "I saw you dancing in a crowded room", genre: "R&B")
+topHits_track8 = Track.new(title: "Blinding Lights", uploader_id: theWeeknd.id, description: "Lights are very bright!", genre: "R&B")
+topHits_track7 = Track.new(title: "In Your Eyes", uploader_id: theWeeknd.id, description: "I just pretend that I'm in the dark", genre: "R&B")
+topHits_track6 = Track.new(title: "Be Kind", uploader_id: halsey.id, description: "Be kind to the one that you love!", genre: "Pop")
+topHits_track5 = Track.new(title: "Without Me", uploader_id: halsey.id, description: "Found you when your heart was broken", genre: "Pop")
+topHits_track4 = Track.new(title: "Senorita", uploader_id: camilaCabello.id, description: "Check out my collab with Shawn Mendes!!", genre: "Pop")
+topHits_track3 = Track.new(title: "Havana", uploader_id: camilaCabello.id, description: "Come to Havana with me!", genre: "Pop")
+topHits_track2 = Track.new(title: "Positions", uploader_id: arianaGrande.id, description: "Heaven sent you to me", genre: "Pop")
+topHits_track1 = Track.new(title: "7 Rings", uploader_id: arianaGrande.id, description: "Breakfast at Tiffany's", genre: "Pop")
+
+topHits_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Thank_U%2C_Next_-_Digital_Version.jpg")
+topHits_track2_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/positions.png')
+topHits_track3_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/cc.jpg')
+topHits_track4_photo = open('https://fsp-seed.s3-us-west-1.amazonaws.com/senorita.jpg')
+topHits_track5_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Halsey_-_Manic.png")
+topHits_track6_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/be+kind+img.jpg")
+topHits_track7_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
+topHits_track8_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
+topHits_track9_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png")
+
+topHits_track1_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++7+rings+Lyrics.mp3")
+topHits_track2_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Ariana+Grande++positions+Lyrics.mp3")
+topHits_track3_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Camila+Cabello++Havana+Official+Audio+ft+Young+Thug.mp3")
+topHits_track4_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Shawn+Mendes+Camila+Cabello++Se%C3%B1orita+Lyrics.mp3")
+topHits_track5_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Halsey++Without+Me+Lyrics.mp3")
+topHits_track6_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Marshmello+Halsey++Be+Kind+Halsey+Lyric+Video.mp3")
+topHits_track7_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+In+Your+Eyes.mp3")
+topHits_track8_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Blinding+Lights.mp3")
+topHits_track9_audio = open("https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+The+Weeknd++Save+Your+Tears+Audio.mp3")
+
+topHits_track1.audio_file.attach(io: topHits_track1_audio, filename: "topHits#{topHits_track1.id}.mp3")
+topHits_track2.audio_file.attach(io: topHits_track2_audio, filename: "topHits#{topHits_track2.id}.mp3")
+topHits_track3.audio_file.attach(io: topHits_track3_audio, filename: "topHits#{topHits_track3.id}.mp3")
+topHits_track4.audio_file.attach(io: topHits_track4_audio, filename: "topHits#{topHits_track4.id}.mp3")
+topHits_track5.audio_file.attach(io: topHits_track5_audio, filename: "topHits#{topHits_track5.id}.mp3")
+topHits_track6.audio_file.attach(io: topHits_track6_audio, filename: "topHits#{topHits_track6.id}.mp3")
+topHits_track7.audio_file.attach(io: topHits_track7_audio, filename: "topHits#{topHits_track7.id}.mp3")
+topHits_track8.audio_file.attach(io: topHits_track8_audio, filename: "topHits#{topHits_track8.id}.mp3")
+topHits_track9.audio_file.attach(io: topHits_track9_audio, filename: "topHits#{topHits_track9.id}.mp3")
+
+topHits_track1.photo_file.attach(io: topHits_track1_photo, filename: "topHits#{topHits_track1.id} img")
+topHits_track2.photo_file.attach(io: topHits_track2_photo, filename: "topHits#{topHits_track2.id} img")
+topHits_track3.photo_file.attach(io: topHits_track3_photo, filename: "topHits#{topHits_track3.id} img")
+topHits_track4.photo_file.attach(io: topHits_track4_photo, filename: "topHits#{topHits_track4.id} img")
+topHits_track5.photo_file.attach(io: topHits_track5_photo, filename: "topHits#{topHits_track5.id} img")
+topHits_track6.photo_file.attach(io: topHits_track6_photo, filename: "topHits#{topHits_track6.id} img")
+topHits_track7.photo_file.attach(io: topHits_track7_photo, filename: "topHits#{topHits_track7.id} img")
+topHits_track8.photo_file.attach(io: topHits_track8_photo, filename: "topHits#{topHits_track8.id} img")
+topHits_track9.photo_file.attach(io: topHits_track9_photo, filename: "topHits#{topHits_track9.id} img")
+
+topHits_track9.save!
+topHits_track8.save!
+topHits_track7.save!
+topHits_track6.save!
+topHits_track5.save!
+topHits_track4.save!
+topHits_track3.save!
+topHits_track2.save!
+topHits_track1.save!
+
+
+# top hits comments
+
+comment1 = Comment.create!(body: "wow this is a hit", track_id: topHits_track1.id, uploader_id: alleFarben.id)
+comment2 = Comment.create!(body: "too much talent omg", track_id: topHits_track1.id, uploader_id: everglow.id)
+comment3 = Comment.create!(body: "we need to collab", track_id: topHits_track1.id, uploader_id: duaLipa.id)
+comment4 = Comment.create!(body: "wow 😍", track_id: topHits_track1.id, uploader_id: theWeeknd.id)
+comment5 = Comment.create!(body: "DOPE!!!!", track_id: topHits_track1.id, uploader_id: rammor.id)
+
+comment6 = Comment.create!(body: "who would dislike this song?", track_id: topHits_track2.id, uploader_id: duaLipa.id)
+comment7 = Comment.create!(body: "still listening 2021!!!", track_id: topHits_track2.id, uploader_id: tzelun.id)
+comment8 = Comment.create!(body: "I freakin luv this song", track_id: topHits_track2.id, uploader_id: klingande.id)
+comment9 = Comment.create!(body: "one of the best of all time", track_id: topHits_track2.id, uploader_id: blackPink.id)
+comment10 = Comment.create!(body: "can't wait to see you live", track_id: topHits_track2.id, uploader_id: theWeeknd.id)
+
+comment11 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: topHits_track3.id, uploader_id: robinSchulz.id)
+comment12 = Comment.create!(body: "wow", track_id: topHits_track3.id, uploader_id: bts.id)
+comment13 = Comment.create!(body: "😍😍😍", track_id: topHits_track3.id, uploader_id: alleFarben.id)
+comment14 = Comment.create!(body: "🧡🧡🧡🧡🧡", track_id: topHits_track3.id, uploader_id: bido.id)
+comment15 = Comment.create!(body: "putting this on repeat", track_id: topHits_track3.id, uploader_id: polyphia.id)
+
+comment16 = Comment.create!(body: "DOPE!!!!", track_id: topHits_track4.id, uploader_id: arianaGrande.id)
+comment17 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: topHits_track4.id, uploader_id: taeyeon.id)
+comment18 = Comment.create!(body: "one of the best of all time", track_id: topHits_track4.id, uploader_id: kygo.id)
+comment19 = Comment.create!(body: "can't wait to see you live", track_id: topHits_track4.id, uploader_id: demo.id)
+comment20 = Comment.create!(body: "too much talent omg", track_id: topHits_track4.id, uploader_id: halsey.id)
+
+comment21 = Comment.create!(body: "much talent", track_id: topHits_track5.id, uploader_id: ryyzn.id)
+comment22 = Comment.create!(body: "please do a USA tour soon!", track_id: topHits_track5.id, uploader_id: stfspkn.id)
+comment23 = Comment.create!(body: "nothings gonna kill my vibe with this on", track_id: topHits_track5.id, uploader_id: redVelvet.id)
+comment24 = Comment.create!(body: "the best medicine", track_id: topHits_track5.id, uploader_id: timHenson.id)
+comment25 = Comment.create!(body: "was just playing Minecraft and now im here", track_id: topHits_track5.id, uploader_id: theWeeknd.id)
+
+comment26 = Comment.create!(body: "hit me up for a collab", track_id: topHits_track6.id, uploader_id: lostFrequencies.id)
+comment27 = Comment.create!(body: "listening to this in the car", track_id: topHits_track6.id, uploader_id: klingande.id)
+comment28 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: topHits_track6.id, uploader_id: bido.id)
+comment29 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: topHits_track6.id, uploader_id: taeyeon.id)
+comment30 = Comment.create!(body: "I freakin luv this song", track_id: topHits_track6.id, uploader_id: itzy.id)
+
+comment31 = Comment.create!(body: "wow, the entire quarantine situation just got a whole lot better", track_id: topHits_track7.id, uploader_id: stfspkn.id)
+comment32 = Comment.create!(body: "this dropped my stress-level by a multiple of 10", track_id: topHits_track7.id, uploader_id: tohaj.id)
+comment33 = Comment.create!(body: "feels like I’m floating in the clouds", track_id: topHits_track7.id, uploader_id: kygo.id)
+comment34 = Comment.create!(body: "thanks for releasing this", track_id: topHits_track7.id, uploader_id: rammor.id)
+comment35 = Comment.create!(body: "did not disappoint", track_id: topHits_track7.id, uploader_id: arianaGrande.id)
+
+comment36 = Comment.create!(body: "too much talent omg", track_id: topHits_track8.id, uploader_id: lostFrequencies.id)
+comment37 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: topHits_track8.id, uploader_id: lofty.id)
+comment38 = Comment.create!(body: "the best medicine", track_id: topHits_track8.id, uploader_id: halsey.id)
+comment39 = Comment.create!(body: "hit me up for a collab", track_id: topHits_track8.id, uploader_id: polyphia.id)
+comment40 = Comment.create!(body: "putting this on repeat now", track_id: topHits_track8.id, uploader_id: kygo.id)
+
+comment41 = Comment.create!(body: "this dude is super talented", track_id: topHits_track9.id, uploader_id: blackPink.id)
+comment42 = Comment.create!(body: "no matter how much I listen to this it never gets old", track_id: topHits_track9.id, uploader_id: alleFarben.id)
+comment43 = Comment.create!(body: "heaven to my soul", track_id: topHits_track9.id, uploader_id: ryyzn.id)
+comment44 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: topHits_track9.id, uploader_id: robinSchulz.id)
+comment45 = Comment.create!(body: "wow 😍", track_id: topHits_track9.id, uploader_id: camilaCabello.id)
+
+# polyphia comments
+
+comment46 = Comment.create!(body: "giga chad", track_id: polyphia_track1.id, uploader_id: everglow.id)
+comment47 = Comment.create!(body: "much talent wowowow", track_id: polyphia_track1.id, uploader_id: lofty.id)
+comment48 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: polyphia_track1.id, uploader_id: kygo.id)
+comment49 = Comment.create!(body: "putting this on repeat now", track_id: polyphia_track1.id, uploader_id: bts.id)
+comment50 = Comment.create!(body: "was just playing Minecraft and now im here", track_id: polyphia_track1.id, uploader_id: camilaCabello.id)
+
+comment51 = Comment.create!(body: "love the guitar work", track_id: polyphia_track2.id, uploader_id: tzelun.id)
+comment52 = Comment.create!(body: "mix is incredible", track_id: polyphia_track2.id, uploader_id: halsey.id)
+comment53 = Comment.create!(body: "hit me up for a collab", track_id: polyphia_track2.id, uploader_id: theWeeknd.id)
+comment54 = Comment.create!(body: "please do a USA tour soon!", track_id: polyphia_track2.id, uploader_id: klingande.id)
+comment55 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track2.id, uploader_id: alleFarben.id)
+
+
+comment56 = Comment.create!(body: "how is that tone POSSIBLE?", track_id: polyphia_track3.id, uploader_id: arianaGrande.id)
+comment57 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: polyphia_track3.id, uploader_id: duaLipa.id)
+comment58 = Comment.create!(body: "wow 😍", track_id: polyphia_track3.id, uploader_id: ryyzn.id)
+comment59 = Comment.create!(body: "did not disappoint", track_id: polyphia_track3.id, uploader_id: lostFrequencies.id)
+comment60 = Comment.create!(body: "no matter how much I listen to this it never gets old", track_id: polyphia_track3.id, uploader_id: robinSchulz.id)
+
+comment61 = Comment.create!(body: "love the guitars", track_id: polyphia_track4.id, uploader_id: stfspkn.id)
+comment62 = Comment.create!(body: "best track in the album", track_id: polyphia_track4.id, uploader_id: camilaCabello.id)
+comment63 = Comment.create!(body: "putting this on repeat", track_id: polyphia_track4.id, uploader_id: bido.id)
+comment64 = Comment.create!(body: "wow, the entire quarantine situation just got a whole lot better", track_id: polyphia_track4.id, uploader_id: ryyzn.id)
+comment65 = Comment.create!(body: "gotta catch you guys on the next tour wow", track_id: polyphia_track4.id, uploader_id: rammor.id)
+
+comment66 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: polyphia_track5.id, uploader_id: tohaj.id)
+comment67 = Comment.create!(body: "masterpiece", track_id: polyphia_track5.id, uploader_id: arianaGrande.id)
+comment68 = Comment.create!(body: "deserves to be number 1 hot billboard", track_id: polyphia_track5.id, uploader_id: kygo.id)
+comment69 = Comment.create!(body: "why does this go so hardddddd", track_id: polyphia_track5.id, uploader_id: redVelvet.id)
+comment70 = Comment.create!(body: "I'm addicted to this song, I don't know why", track_id: polyphia_track5.id, uploader_id: blackPink.id)
+
+comment71 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: polyphia_track6.id, uploader_id: lostFrequencies.id)
+comment72 = Comment.create!(body: "I freakin luv this song", track_id: polyphia_track6.id, uploader_id: lofty.id)
+comment73 = Comment.create!(body: "much talent wowowow", track_id: polyphia_track6.id, uploader_id: halsey.id)
+comment74 = Comment.create!(body: "the best medicine", track_id: polyphia_track6.id, uploader_id: alleFarben.id)
+comment75 = Comment.create!(body: "who would dislike this song?", track_id: polyphia_track6.id, uploader_id: duaLipa.id)
+
+comment76 = Comment.create!(body: "wow this is a hit", track_id: polyphia_track7.id, uploader_id: tzelun.id)
+comment78 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track7.id, uploader_id: rammor.id)
+comment79 = Comment.create!(body: "putting this on repeat", track_id: polyphia_track7.id, uploader_id: everglow.id)
+comment80 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track7.id, uploader_id: theWeeknd.id)
+comment81 = Comment.create!(body: "🧡🧡🧡🧡🧡", track_id: polyphia_track7.id, uploader_id: tohaj.id)
+
+comment82 = Comment.create!(body: "DOPE!!!!", track_id: polyphia_track8.id, uploader_id: bts.id)
+comment83 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: polyphia_track8.id, uploader_id: taeyeon.id)
+comment84 = Comment.create!(body: "I freakin luv this song", track_id: polyphia_track8.id, uploader_id: tohaj.id)
+comment85 = Comment.create!(body: "thanks for releasing this", track_id: polyphia_track8.id, uploader_id: camilaCabello.id)
+comment86 = Comment.create!(body: "this dropped my stress-level by a multiple of 10", track_id: polyphia_track8.id, uploader_id: kygo.id)
+
+# comment = Comment.create!(body: "", track_id: .id, uploader_id: .id)
+
+
+
+
