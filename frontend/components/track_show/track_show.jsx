@@ -201,7 +201,8 @@ class TrackShow extends React.Component {
               <a 
                 onClick={this.sendTrack} 
                 className={
-                  !audio.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
+                  // !audio.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
+                  !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
                   "track-show-list-item-playbtn playing" :
                   "track-show-list-item-playbtn"
                 }

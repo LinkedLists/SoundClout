@@ -54,7 +54,14 @@ class UserShow extends React.Component {
       this.props.user ? 
       <div className="content-container">
         <div className="user-show-header-container">
-          <img src={this.props.user.profileUrl} className="user-show-uploader-img"/>
+          {
+            this.props.user ? 
+            <img src={this.props.user.profileUrl} className="user-show-uploader-img"/> :
+            setTimeout(() => {
+              console.log("user showpage img was not fetched")
+              return <img src={this.props.user.profileUrl} className="user-show-uploader-img"/>
+            }, 20)
+          }
           <div className="user-show-header-details">
             <h3 className="user-show-header-username">
               {this.props.user.username}

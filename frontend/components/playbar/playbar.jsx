@@ -196,6 +196,7 @@ class Playbar extends React.Component {
 
     audio.addEventListener("play", () => {
       // console.log("track is played")
+      // playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
       if (this.timeIncrementerInstance) {
         clearInterval(this.timeIncrementerInstance)
         this.timeIncrementer()
@@ -208,11 +209,13 @@ class Playbar extends React.Component {
       setTimeout(() => {
         playbtn ? playbtn.classList.add("playing") : null
         audio.paused ? audio.play() : null
-      }, 10)
+      }, 20)
     })
 
     audio.addEventListener("pause", () => {
       // console.log("track is paused")
+      // playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+
       clearInterval(this.timeIncrementerInstance)
       playbtn ? playbtn.classList.remove("playing") : null
 
@@ -220,7 +223,7 @@ class Playbar extends React.Component {
       setTimeout(() => {
         clearInterval(this.timeIncrementerInstance)
         playbtn ? playbtn.classList.remove("playing") : null
-      }, 10)
+      }, 20)
     })
   }
 
