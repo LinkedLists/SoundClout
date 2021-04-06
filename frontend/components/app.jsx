@@ -5,6 +5,7 @@ import Modal from './modal/modal';
 import NotFound from './404/not_found'
 import ContentContainer from './content/content_container'
 import TrackShowContainer from './track_show/track_show_container'
+import UserShowContainer from './user_show/user_show_container'
 import Homepage from './homepage/homepage'
 import PlaybarContainer from './playbar/playbar_container'
 import UploadShowContainer from './upload_show/upload_show_container'
@@ -26,6 +27,7 @@ const App = () => (
     <Switch>
       <ProtectedRoute exact path='/discover' component={ContentContainer} />
       <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
+      <ProtectedRoute exact path='/users/:userId' component={UserShowContainer} />
       <ProtectedRoute exact path='/upload' component={UploadShowContainer} />
       {/* Note!!!
       did not create a homepage component so NotFound component is just an empty component from

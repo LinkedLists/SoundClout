@@ -12,6 +12,7 @@
 class User < ApplicationRecord
   validates :username, :session_token, :password_digest, :profile_img, presence: true
   validates :username, uniqueness: true
+  validates :username, length: {maximum: 20}
   validates :password, length: {minimum: 6}, allow_nil: true
   after_initialize :ensure_session_token
   attr_reader :password
