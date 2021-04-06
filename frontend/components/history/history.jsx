@@ -5,6 +5,7 @@ import { receiveNewTrack, playTrack, pauseTrack } from '../../actions/playbar_ac
 import { clearHistory } from '../../actions/history_actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import HistoryIndexItem from './history_index_item'
+import { fetchUser } from '../../actions/user_actions'
 
 class History extends React.Component {
   constructor(props) {
@@ -32,7 +33,10 @@ class History extends React.Component {
             fetchTrack={this.props.fetchTrack}
             cuteColors={this.props.cuteColors}
             currentTrack={this.props.currentTrack}
-            comments={this.props.history[i].numComments}/>
+            comments={this.props.history[i].numComments}
+            fetchUser={this.props.fetchUser}
+            currentUserShowPage={this.props.user}
+            />
     })
     return(
       <div className="content-sidebar-right-container">
@@ -58,7 +62,7 @@ class History extends React.Component {
 const mapStateToProps = (state) => {
   return {
     comments: state.entities.comments,
-    history: state.ui.history
+    history: state.ui.history,
   }
 };
 
@@ -67,7 +71,8 @@ const mapDispatchToProps = dispatch => {
     sendTrack: (track) => dispatch(receiveNewTrack(track)),
     playTrack: () => dispatch(playTrack()),
     pauseTrack: () => dispatch(pauseTrack()),
-    clearHistory: () => dispatch(clearHistory())
+    clearHistory: () => dispatch(clearHistory()),
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
   }
 };
 

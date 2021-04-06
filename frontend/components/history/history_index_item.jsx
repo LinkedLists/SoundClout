@@ -7,22 +7,20 @@ class HistoryIndexItem extends React.Component {
     super(props);
 
     this.state = {
-      // numComments: 0
     }
     this.flag = false
     this.handleRoute = this.handleRoute.bind(this)
-    // this.numComments = 0
+    this.handleRoute2 = this.handleRoute2.bind(this)
+    this.cuteColors = this.cuteColors.bind(this)
   }
 
   componentDidMount() {
   }
 
   componentDidUpdate() {
-    // console.log("history index updated")
   }
 
   componentWillUnmount() {
-    // console.log("unmount")
     // this.setState( {numComments: this.numComments} )
   }
 
@@ -32,13 +30,12 @@ class HistoryIndexItem extends React.Component {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  cuteColors() {
+  cuteColors(background) {
     // Cannot use cuteColors() from props as it carries a redundant flag from the parent state
     // Should not be using setState as it can cause a state update on an umounted component
     // which will render an error. Instead use instance variable as a flag
-    if (!this.flag) {
-      this.flag = true
-      const background = document.getElementsByClassName("track-show-header-container")[0];
+    // if (!this.flag) {
+      // this.flag = true
       if (background) {
         const r1 = this.getRandomInt(160, 200)
         const g1 = this.getRandomInt(160, 200)
@@ -53,7 +50,7 @@ class HistoryIndexItem extends React.Component {
             rgb(${r1}, ${g1}, ${b1}), 
             rgb(${r2}, ${g2}, ${b2}), 
             rgb(${r3}, ${g3}, ${b3}))`
-      }
+      // }
     }
   }
   
@@ -61,44 +58,74 @@ class HistoryIndexItem extends React.Component {
     // Make sure you only fetch a track if you are inside the track show page
     // and make sure you dont change the backdrop color if you are trying to
     // go to the same history track as the show track
+    const background = document.getElementsByClassName("track-show-header-container")[0];
     if (this.props.fetchTrack && this.props.currentTrack.id !== this.props.track.id) {
       this.props.fetchTrack(this.props.track.id)
-        .then(() => this.cuteColors()) 
+        .then(() => this.cuteColors(background)) 
+    }
+  }
+
+  handleRoute2() {
+    const background = document.getElementsByClassName("user-show-header-container")[0];
+    if (this.props.fetchUser && this.props.track.uploader_id !== this.props.currentUserShowPage) {
+      this.props.fetchUser(this.props.track.uploader_id)
+      this.cuteColors(background)
     }
   }
 
   render() {
-    // // we are in the track show page
-    // if (this.props.track && this.props.currentTrack) {
-    //   // history and track are matched
-    //   if (this.props.track.id === this.props.currentTrack.id) {
-    //     // a track might not have comments yet
-    //     if (this.props.currentTrack.comments) {
-    //       // this.numComments = Object.keys(this.props.currentTrack.comments).length
-    //       this.numComments = this.props.currentTrack.numComments
-    //     }
-    //   }
-    // } 
-    // else if (this.props.comments) {
-    //   this.numComments = this.props.comments
-    // }
     return (
-      <li className="history-track-item" onClick={this.handleRoute}>
-        {/* <Link className="history-track-item-link" to={`/tracks/${this.props.track.id}`}> */}
+      <li className="history-track-item">
         <div className="history-track-item-link">
-          <Link to={`/tracks/${this.props.track.id}`} className="history-track-icon-link">
-            <img src={this.props.track.photoUrl} className="history-track-icon"/>
-          </Link>
-          <div className="history-track-details">
-            <span>
-              <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link"> 
-                {this.props.track.username} 
+          <div className="history-track-icon-container">
+            {
+              // Are you on a track show page?
+              // If not then have the image be a regular link
+              this.props.currentTrack ? 
+              // If you are on the track show page and you select a different
+              // track from history then act as a link; otherwise, remove the
+              // link to itself
+              this.props.currentTrack.id !== this.props.track.id ? 
+                  <Link to={`/tracks/${this.props.track.id}`} className="history-track-icon-link">
+                    <img src={this.props.track.photoUrl} className="history-track-icon" onClick={this.handleRoute}/>
+                  </Link> : 
+                  <img src={this.props.track.photoUrl} className="history-track-icon"/>
+                    :
+              // You are not on the track show page so behave as a regular link
+              <Link to={`/tracks/${this.props.track.id}`} className="history-track-icon-link">
+                <img src={this.props.track.photoUrl} className="history-track-icon" onClick={this.handleRoute}/>
               </Link>
+            }
+          </div>
+
+          <div className="history-track-details">
+            {/* Why do I need to do an onClick to make user traversal work? */}
+            <span>
+              <div className="history-detail-wrapper noselect" onClick={this.handleRoute2}>
+                { 
+                  this.props.track.uploader_id !== this.props.currentUserShowPage ? 
+                    <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link"> 
+                      {this.props.track.username} 
+                    </Link> : 
+                    this.props.track.username
+                }
+              </div>
             </span>
             <span>
-              <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
-                {this.props.track.title}
-              </Link>
+              <div className="history-detail-wrapper noselect" onClick={this.handleRoute}>
+                {
+                  this.props.currentTrack  ?
+                   this.props.currentTrack.id !== this.props.track.id ? 
+                        <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
+                          {this.props.track.title}
+                        </Link> :
+                        this.props.track.title
+                          : 
+                    <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
+                      {this.props.track.title}
+                    </Link>
+                }
+              </div>
             </span> 
             <div>
               <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>

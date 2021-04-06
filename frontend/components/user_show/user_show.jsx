@@ -15,15 +15,10 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    // setTimeout(() => {
-      this.props.fetchUser(this.props.match.params.userId, console.log("fetched user " + this.props.match.params.userId))
-
-    // }, 20)
-    // this.props.fetchTracks()
+    this.props.fetchUser(this.props.match.params.userId)
   }
 
   componentWillUnmount() {
-    console.log("unmounted user " + this.props.match.params.userId)
   }
 
   componentDidUpdate() {
@@ -38,8 +33,9 @@ class UserShow extends React.Component {
   }
 
   cuteColors(background) {
-    if (!this.state.colored) {
-      this.setState( {colored: true} )
+    // console.log(this.state.colored)
+    // if (!this.state.colored) {
+      // this.setState( {colored: true} )
       const r1 = this.getRandomInt(160, 200)
       const g1 = this.getRandomInt(160, 200)
       const b1 = this.getRandomInt(170, 250)
@@ -53,7 +49,7 @@ class UserShow extends React.Component {
           rgb(${r1}, ${g1}, ${b1}), 
           rgb(${r2}, ${g2}, ${b2}), 
           rgb(${r3}, ${g3}, ${b3}))`
-    }
+    // }
   }
 
   render() {
@@ -88,7 +84,7 @@ class UserShow extends React.Component {
 
         <div className="user-show-content-container">
           <div className="track-show-body-container">
-            <History />
+            <History user={this.props.user.id} />
             <div className="track-show-body-wrapper">
               <div className="track-show-body-left-wrapper">
                 <div className="track-show-body-left-content">

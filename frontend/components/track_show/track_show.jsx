@@ -11,7 +11,7 @@ class TrackShow extends React.Component {
     super(props);
     this.state = {
       showForm: false,
-      colored: false,
+      // colored: false,
       // volume: this.props.audio ? this.props.audio.volume : 0.6
     }
     this.deleted = false;
@@ -29,10 +29,9 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
-    setTimeout(() => {
-      this.loading = false
-      // console.log("track show is loading? " + this.loading)
-    }, 300)
+    // setTimeout(() => {
+    //   this.loading = false
+    // }, 300)
   }
 
   componentDidUpdate() {
@@ -70,8 +69,8 @@ class TrackShow extends React.Component {
   }
 
   cuteColors(background) {
-    if (!this.state.colored) {
-      this.setState( {colored: true} )
+    // if (!this.state.colored) {
+      // this.setState( {colored: true} )
       const r1 = this.getRandomInt(160, 200)
       const g1 = this.getRandomInt(160, 200)
       const b1 = this.getRandomInt(170, 250)
@@ -85,7 +84,7 @@ class TrackShow extends React.Component {
           rgb(${r1}, ${g1}, ${b1}), 
           rgb(${r2}, ${g2}, ${b2}), 
           rgb(${r3}, ${g3}, ${b3}))`
-    }
+    // }
   }
 
   setHistory() {
@@ -242,9 +241,6 @@ class TrackShow extends React.Component {
                       </div>
                   }
                 </div>
-                
-
-
                 {
                   // this.loading ?
                   // <FontAwesomeIcon icon="spinner" spin size="2x" className="homepage-spinner" /> :

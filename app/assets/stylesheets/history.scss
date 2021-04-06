@@ -68,11 +68,16 @@
   text-decoration: none;
 }
 
-.history-track-icon-link {
+.history-track-icon-container {
   height: 50px;
   width: 50px;
   margin-right: 10px;
+  cursor: pointer;
 }
+
+.history-track-icon-link {
+  display: flex
+} 
 
 .history-track-icon {
   height: 50px;
@@ -96,4 +101,9 @@
   padding: 3px 0px;
   box-sizing: border-box;
   margin-bottom: -2px;
+}
+
+.history-detail-wrapper {
+  cursor: pointer;
+  display: inline;
 }
