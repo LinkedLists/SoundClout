@@ -6,7 +6,7 @@ import history from './history_reducer'
 const uiReducer = combineReducers({
   modal,
   playbar,
-  history
+  history,
 })
 
 export default uiReducer

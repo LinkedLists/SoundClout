@@ -32,11 +32,13 @@ class TrackShow extends React.Component {
     // setTimeout(() => {
     //   this.loading = false
     // }, 300)
+    const background = document.getElementsByClassName("track-show-header-container")[0];
+    if (background) this.cuteColors(background)
   }
 
   componentDidUpdate() {
     const background = document.getElementsByClassName("track-show-header-container")[0];
-    if (background) this.cuteColors(background)
+    if (background && background.style.background === "") this.cuteColors(background)
   }
 
   componentWillUnmount() {
@@ -69,22 +71,19 @@ class TrackShow extends React.Component {
   }
 
   cuteColors(background) {
-    // if (!this.state.colored) {
-      // this.setState( {colored: true} )
-      const r1 = this.getRandomInt(160, 200)
-      const g1 = this.getRandomInt(160, 200)
-      const b1 = this.getRandomInt(170, 250)
-      const r2 = r1 + this.getRandomInt(5, 30)
-      const g2 = g1 + this.getRandomInt(5, 30)
-      const b2 = b1 - this.getRandomInt(5, 30)
-      const r3 = r2 + this.getRandomInt(5, 30)
-      const g3 = g2 + this.getRandomInt(5, 30)
-      const b3 = b2 - this.getRandomInt(5, 30)
-      background.style.background = `linear-gradient(to left, 
-          rgb(${r1}, ${g1}, ${b1}), 
-          rgb(${r2}, ${g2}, ${b2}), 
-          rgb(${r3}, ${g3}, ${b3}))`
-    // }
+    const r1 = this.getRandomInt(160, 200)
+    const g1 = this.getRandomInt(160, 200)
+    const b1 = this.getRandomInt(170, 250)
+    const r2 = r1 + this.getRandomInt(5, 30)
+    const g2 = g1 + this.getRandomInt(5, 30)
+    const b2 = b1 - this.getRandomInt(5, 30)
+    const r3 = r2 + this.getRandomInt(5, 30)
+    const g3 = g2 + this.getRandomInt(5, 30)
+    const b3 = b2 - this.getRandomInt(5, 30)
+    background.style.background = `linear-gradient(to left, 
+        rgb(${r1}, ${g1}, ${b1}), 
+        rgb(${r2}, ${g2}, ${b2}), 
+        rgb(${r3}, ${g3}, ${b3}))`
   }
 
   setHistory() {
