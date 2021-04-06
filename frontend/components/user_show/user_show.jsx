@@ -15,7 +15,6 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    console.log("im here")
     this.props.fetchUser(this.props.match.params.userId)
     // this.props.fetchTracks()
   }
@@ -52,11 +51,31 @@ class UserShow extends React.Component {
 
   render() {
     return (
-      <div>
+      this.props.user ? 
+      <div className="content-container">
         <div className="user-show-header-container">
-          <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
+          <img src={this.props.user.profileUrl} className="user-show-uploader-img"/>
+          <div className="user-show-header-details">
+            <h3 className="user-show-header-username">
+              {this.props.user.username}
+            </h3>
+          </div>
         </div>
-      </div>
+
+        <div className="user-show-content-container">
+          <div className="track-show-body-container">
+            <History />
+            <div className="track-show-body-wrapper">
+              <div className="track-show-body-left-wrapper">
+                <div className="track-show-body-left-content">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>: null
+
     )
   }
 }
