@@ -13,12 +13,13 @@ class Content extends React.Component {
 
       // loading: true
     }
+    this.setHistory = this.setHistory.bind(this)
+
     this.loading = true
   }
 
   componentDidMount() {
-    this.props.fetchTracks()
-
+    this.props.fetchTracks().then(() => this.setHistory())
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {
       if (!this.props.currentTrack.id)
@@ -28,6 +29,16 @@ class Content extends React.Component {
     setTimeout(() => {
       this.loading = false
     }, 300)
+  }
+
+  setHistory() {
+    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+    setTimeout(() => {
+      let history = JSON.parse(window.localStorage.getItem("history"))
+      if (history.length !== this.props.trackHistory.length) {
+        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+      }
+    }, 70)
   }
 
   render() {

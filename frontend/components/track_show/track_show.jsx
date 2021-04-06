@@ -52,11 +52,9 @@ class TrackShow extends React.Component {
     }
     this.props.deleteTrack(this.props.track.id);
     this.props.removeComments();
-    this.setHistory()
     setTimeout(
       () => {
-        this.setHistory()
-        this.props.history.push("/")
+        // this.setHistory()
       }, 100
     )
   }
