@@ -24,13 +24,14 @@ class Content extends React.Component {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
+
     setTimeout(() => {
       this.loading = false
     }, 300)
   }
 
   render() {
-    const trackItems = this.props.tracks.reverse().map( track => {
+    const trackItems = this.props.tracks.slice().reverse().map( track => {
       return (
         // for now just return an image, later uploader id will be needed
         // so that a user can edit and delete their own tracks

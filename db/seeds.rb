@@ -317,13 +317,13 @@ kpop_track7.save!
 kpop_track8.save!
 kpop_track9.save!
 
-polyphia_track1 = Track.new(title: "Light", uploader_id: polyphia.id, description: "this is lit", genre: "Instrumental")
 polyphia_track2 = Track.new(title: "G.O.A.T", uploader_id: polyphia.id, description: "Meet Timi Hendrix", genre: "Instrumental")
-polyphia_track3 = Track.new(title: "Goose", uploader_id: polyphia.id, description: "It's Grey Goose, baby!", genre: "Instrumental")
-polyphia_track4 = Track.new(title: "James Franco", uploader_id: polyphia.id, description: "Is he related to Dave Franco?", genre: "Instrumental")
 polyphia_track5 = Track.new(title: "Saucy", uploader_id: polyphia.id, description: "This is nasty", genre: "Instrumental")
-polyphia_track6 = Track.new(title: "The Worst", uploader_id: polyphia.id, description: "wr6st", genre: "Instrumental")
 polyphia_track7 = Track.new(title: "Yas ft. Mario Camarena and Erick Hansel", uploader_id: polyphia.id, description: "Collab with Chon", genre: "Instrumental")
+polyphia_track3 = Track.new(title: "Goose", uploader_id: polyphia.id, description: "It's Grey Goose, baby!", genre: "Instrumental")
+polyphia_track6 = Track.new(title: "The Worst", uploader_id: polyphia.id, description: "wr6st", genre: "Instrumental")
+polyphia_track1 = Track.new(title: "Light", uploader_id: polyphia.id, description: "this is lit", genre: "Instrumental")
+polyphia_track4 = Track.new(title: "James Franco", uploader_id: polyphia.id, description: "Is he related to Dave Franco?", genre: "Instrumental")
 polyphia_track8 = Track.new(title: "Blood Moon", uploader_id: timHenson.id, description: "Betcha can't play this", genre: "Instrumental")
 
 polyphia_track1_photo = open("https://fsp-seed.s3-us-west-1.amazonaws.com/Polyphia-Renaissance-cover.jpg")
@@ -362,13 +362,13 @@ polyphia_track6.photo_file.attach(io: polyphia_track6_photo, filename: "polyphia
 polyphia_track7.photo_file.attach(io: polyphia_track7_photo, filename: "polyphia#{polyphia_track7.id} img")
 polyphia_track8.photo_file.attach(io: polyphia_track8_photo, filename: "polyphia#{polyphia_track8.id} img")
 
-polyphia_track1.save!
 polyphia_track2.save!
-polyphia_track3.save!
-polyphia_track4.save!
 polyphia_track5.save!
-polyphia_track6.save!
 polyphia_track7.save!
+polyphia_track3.save!
+polyphia_track6.save!
+polyphia_track1.save!
+polyphia_track4.save!
 polyphia_track8.save!
 
 # user1.save!
@@ -531,18 +531,207 @@ comment74 = Comment.create!(body: "the best medicine", track_id: polyphia_track6
 comment75 = Comment.create!(body: "who would dislike this song?", track_id: polyphia_track6.id, uploader_id: duaLipa.id)
 
 comment76 = Comment.create!(body: "wow this is a hit", track_id: polyphia_track7.id, uploader_id: tzelun.id)
-comment78 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track7.id, uploader_id: rammor.id)
-comment79 = Comment.create!(body: "putting this on repeat", track_id: polyphia_track7.id, uploader_id: everglow.id)
-comment80 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track7.id, uploader_id: theWeeknd.id)
-comment81 = Comment.create!(body: "🧡🧡🧡🧡🧡", track_id: polyphia_track7.id, uploader_id: tohaj.id)
+comment77 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track7.id, uploader_id: rammor.id)
+comment78 = Comment.create!(body: "putting this on repeat", track_id: polyphia_track7.id, uploader_id: everglow.id)
+comment79 = Comment.create!(body: "one of the best of all time", track_id: polyphia_track7.id, uploader_id: theWeeknd.id)
+comment80 = Comment.create!(body: "🧡🧡🧡🧡🧡", track_id: polyphia_track7.id, uploader_id: tohaj.id)
 
-comment82 = Comment.create!(body: "DOPE!!!!", track_id: polyphia_track8.id, uploader_id: bts.id)
-comment83 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: polyphia_track8.id, uploader_id: taeyeon.id)
-comment84 = Comment.create!(body: "I freakin luv this song", track_id: polyphia_track8.id, uploader_id: tohaj.id)
-comment85 = Comment.create!(body: "thanks for releasing this", track_id: polyphia_track8.id, uploader_id: camilaCabello.id)
-comment86 = Comment.create!(body: "this dropped my stress-level by a multiple of 10", track_id: polyphia_track8.id, uploader_id: kygo.id)
+comment81 = Comment.create!(body: "DOPE!!!!", track_id: polyphia_track8.id, uploader_id: bts.id)
+comment82 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: polyphia_track8.id, uploader_id: taeyeon.id)
+comment83 = Comment.create!(body: "I freakin luv this song", track_id: polyphia_track8.id, uploader_id: tohaj.id)
+comment84 = Comment.create!(body: "thanks for releasing this", track_id: polyphia_track8.id, uploader_id: camilaCabello.id)
+comment85 = Comment.create!(body: "this dropped my stress-level by a multiple of 10", track_id: polyphia_track8.id, uploader_id: kygo.id)
 
-# comment = Comment.create!(body: "", track_id: .id, uploader_id: .id)
+# kpop comments
+
+comment86 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: kpop_track1.id, uploader_id: alleFarben.id)
+comment87 = Comment.create!(body: "DOPE!!!!", track_id: kpop_track1.id, uploader_id: timHenson.id)
+comment88 = Comment.create!(body: "this is so hype", track_id: kpop_track1.id, uploader_id: halsey.id)
+comment89 = Comment.create!(body: "cannot wait to see this live", track_id: kpop_track1.id, uploader_id: duaLipa.id)
+comment90 = Comment.create!(body: "who would dislike this song?", track_id: kpop_track1.id, uploader_id: bido.id)
+
+comment91 = Comment.create!(body: "the talent is insane", track_id: kpop_track2.id, uploader_id: kygo.id)
+comment92 = Comment.create!(body: "🧡🧡🧡🧡🧡", track_id: kpop_track2.id, uploader_id: alleFarben.id)
+comment93 = Comment.create!(body: "the best medicine", track_id: kpop_track2.id, uploader_id: camilaCabello.id)
+comment94 = Comment.create!(body: "still listening 2021!!!", track_id: kpop_track2.id, uploader_id: stfspkn.id)
+comment95 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: kpop_track2.id, uploader_id: robinSchulz.id)
+
+comment96 = Comment.create!(body: "hit me up for a collab", track_id: kpop_track3.id, uploader_id: theWeeknd.id)
+comment97 = Comment.create!(body: "listening to this in the car", track_id: kpop_track3.id, uploader_id: timHenson.id)
+comment98 = Comment.create!(body: "I freakin luv this song", track_id: kpop_track3.id, uploader_id: lostFrequencies.id)
+comment99 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: kpop_track3.id, uploader_id: lofty.id)
+comment100 = Comment.create!(body: "one of the best of all time", track_id: kpop_track3.id, uploader_id: ryyzn.id)
+
+comment101 = Comment.create!(body: "please do a USA tour soon!", track_id: kpop_track4.id, uploader_id: robinSchulz.id)
+comment102 = Comment.create!(body: "nothings gonna kill my vibe with this on", track_id: kpop_track4.id, uploader_id: halsey.id)
+comment103 = Comment.create!(body: "😍😍😍", track_id: kpop_track4.id, uploader_id: polyphia.id)
+comment104 = Comment.create!(body: "one of the best of all time", track_id: kpop_track4.id, uploader_id: arianaGrande.id)
+comment105 = Comment.create!(body: "DOPE!!!!", track_id: kpop_track4.id, uploader_id: bido.id)
+
+comment106 = Comment.create!(body: "masterpiece", track_id: kpop_track5.id, uploader_id: tzelun.id)
+comment107 = Comment.create!(body: "this is such a banger", track_id: kpop_track5.id, uploader_id: kygo.id)
+comment108 = Comment.create!(body: "vibes all over!", track_id: kpop_track5.id, uploader_id: klingande.id)
+comment109 = Comment.create!(body: "this song deserves an oscar!!", track_id: kpop_track5.id, uploader_id: rammor.id)
+comment110 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: kpop_track5.id, uploader_id: blackPink.id)
+
+comment111 = Comment.create!(body: "🧡🧡🧡🧡🧡", track_id: kpop_track6.id, uploader_id: rammor.id)
+comment112 = Comment.create!(body: "putting this on repeat", track_id: kpop_track6.id, uploader_id: kygo.id)
+comment113 = Comment.create!(body: "wow", track_id: kpop_track6.id, uploader_id: timHenson.id)
+comment114 = Comment.create!(body: "this is such a banger", track_id: kpop_track6.id, uploader_id: theWeeknd.id)
+comment115 = Comment.create!(body: "hit me up for a collab", track_id: kpop_track6.id, uploader_id: halsey.id)
+
+comment116 = Comment.create!(body: "this is gonna become a classic", track_id: kpop_track7.id, uploader_id: blackPink.id)
+comment117 = Comment.create!(body: "too much talent omg", track_id: kpop_track7.id, uploader_id: ryyzn.id)
+comment118 = Comment.create!(body: "was just playing Minecraft and now im here", track_id: kpop_track7.id, uploader_id: lostFrequencies.id)
+comment119 = Comment.create!(body: "the best medicine", track_id: kpop_track7.id, uploader_id: stfspkn.id)
+comment120 = Comment.create!(body: "nothings gonna kill my vibe with this on", track_id: kpop_track7.id, uploader_id: arianaGrande.id)
+
+comment121 = Comment.create!(body: "listening to this in the car", track_id: kpop_track8.id, uploader_id: bido.id)
+comment122 = Comment.create!(body: "this is hyppee!!!", track_id: kpop_track8.id, uploader_id: alleFarben.id)
+comment123 = Comment.create!(body: "much talent wowowow", track_id: kpop_track8.id, uploader_id: kygo.id)
+comment124 = Comment.create!(body: "still listening 2021!!!", track_id: kpop_track8.id, uploader_id: camilaCabello.id)
+comment125 = Comment.create!(body: "did not disappoint", track_id: kpop_track8.id, uploader_id: theWeeknd.id)
+
+comment126 = Comment.create!(body: "masterpiece", track_id: kpop_track9.id, uploader_id: lofty.id)
+comment127 = Comment.create!(body: "best track in the album", track_id: kpop_track9.id, uploader_id: lostFrequencies.id)
+comment128 = Comment.create!(body: "wow, the entire quarantine situation just got a whole lot better", track_id: kpop_track9.id, uploader_id: timHenson.id)
+comment129 = Comment.create!(body: "I'm addicted to this song, I don't know why", track_id: kpop_track9.id, uploader_id: polyphia.id)
+comment130 = Comment.create!(body: "why does this go so hardddddd", track_id: kpop_track9.id, uploader_id: robinSchulz.id)
+
+# lofi comments
+
+comment131 = Comment.create!(body: "VIBES!!!", track_id: lofi_track1.id, uploader_id: rammor.id)
+comment132 = Comment.create!(body: "this helps me with sleep/study thanks!!!", track_id: lofi_track1.id, uploader_id: ryyzn.id)
+comment133 = Comment.create!(body: "soooo chill", track_id: lofi_track1.id, uploader_id: kygo.id)
+comment134 = Comment.create!(body: "nice work on the vibes", track_id: lofi_track1.id, uploader_id: robinSchulz.id)
+comment135 = Comment.create!(body: "the perpetual vibe", track_id: lofi_track1.id, uploader_id: duaLipa.id)
+
+comment136 = Comment.create!(body: "this hits my soul", track_id: lofi_track2.id, uploader_id: bts.id)
+comment137 = Comment.create!(body: "my new homework music", track_id: lofi_track2.id, uploader_id: timHenson.id)
+comment138 = Comment.create!(body: "I'm so chill right now", track_id: lofi_track2.id, uploader_id: kygo.id)
+comment139 = Comment.create!(body: "DOPE!!!", track_id: lofi_track2.id, uploader_id: theWeeknd.id)
+comment140 = Comment.create!(body: "glad I discovered this!", track_id: lofi_track2.id, uploader_id: blackPink.id)
+
+comment141 = Comment.create!(body: "smooth and relaxing", track_id: lofi_track3.id, uploader_id: theWeeknd.id)
+comment142 = Comment.create!(body: "not taking this off repeat", track_id: lofi_track3.id, uploader_id: lostFrequencies.id)
+comment143 = Comment.create!(body: "this helps me with sleep/study thanks!!", track_id: lofi_track3.id, uploader_id: alleFarben.id)
+comment144 = Comment.create!(body: "I'm so chill right now", track_id: lofi_track3.id, uploader_id: taeyeon.id)
+comment145 = Comment.create!(body: "nice work on the vibes", track_id: lofi_track3.id, uploader_id: everglow.id)
+
+comment146 = Comment.create!(body: "nothings gonna kill my vibe with this on", track_id: lofi_track4.id, uploader_id: itzy.id)
+comment147 = Comment.create!(body: "hit me up for a collab", track_id: lofi_track4.id, uploader_id: duaLipa.id)
+comment148 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: lofi_track4.id, uploader_id: camilaCabello.id)
+comment149 = Comment.create!(body: "this hits my soul", track_id: lofi_track4.id, uploader_id: halsey.id)
+comment150 = Comment.create!(body: "my new homework music", track_id: lofi_track4.id, uploader_id: robinSchulz.id)
+
+comment151 = Comment.create!(body: "vibes all over!", track_id: lofi_track5.id, uploader_id: itzy.id)
+comment152 = Comment.create!(body: "this song deserves an oscar!!", track_id: lofi_track5.id, uploader_id: arianaGrande.id)
+comment153 = Comment.create!(body: "the best medicine", track_id: lofi_track5.id, uploader_id: tzelun.id)
+comment154 = Comment.create!(body: "what a peacefull sound", track_id: lofi_track5.id, uploader_id: klingande.id)
+comment155 = Comment.create!(body: "DAMN... this is goooood", track_id: lofi_track5.id, uploader_id: timHenson.id)
+
+
+comment156 = Comment.create!(body: "finally some good chill study music", track_id: lofi_track6.id, uploader_id: tohaj.id)
+comment157 = Comment.create!(body: "really helping me to relax and study", track_id: lofi_track6.id, uploader_id: duaLipa.id)
+comment158 = Comment.create!(body: "I've never felt more at ease ", track_id: lofi_track6.id, uploader_id: robinSchulz.id)
+comment159 = Comment.create!(body: "nothings gonna kill my vibe with this on", track_id: lofi_track6.id, uploader_id: polyphia.id)
+comment160 = Comment.create!(body: "SOOOO smooth wow", track_id: lofi_track6.id, uploader_id: camilaCabello.id)
+
+comment161 = Comment.create!(body: "I listen to this everytime I study", track_id: lofi_track7.id, uploader_id: bts.id)
+comment162 = Comment.create!(body: "this is the most beautiful thing I have ever listened to in my life", track_id: lofi_track7.id, uploader_id: ryyzn.id)
+comment163 = Comment.create!(body: "this hits my soul", track_id: lofi_track7.id, uploader_id: rammor.id)
+comment164 = Comment.create!(body: "I'm so chill right now", track_id: lofi_track7.id, uploader_id: blackPink.id)
+comment165 = Comment.create!(body: "smooth and relaxing", track_id: lofi_track7.id, uploader_id: halsey.id)
+
+# vibe comments
+
+comment166 = Comment.create!(body: "wow, the entire quarantine situation just got a whole lot better", track_id: vibe_track1.id, uploader_id: redVelvet.id)
+comment167 = Comment.create!(body: "this dropped my stress-level by a multiple of 10", track_id: vibe_track1.id, uploader_id: timHenson.id)
+comment168 = Comment.create!(body: "feels like I’m floating in the clouds", track_id: vibe_track1.id, uploader_id: duaLipa.id)
+comment169 = Comment.create!(body: "gotta sample this! TOO good!!", track_id: vibe_track1.id, uploader_id: stfspkn.id)
+comment170 = Comment.create!(body: "😍😍😍", track_id: vibe_track1.id, uploader_id: bdio.id)
+
+comment171 = Comment.create!(body: "🔥🔥🔥HOT🔥🔥🔥", track_id: vibe_track2.id, uploader_id: .id)
+comment172 = Comment.create!(body: "I'm addicted to this song, I don't know why", track_id: vibe_track2.id, uploader_id: .id)
+comment173 = Comment.create!(body: "deserves to be number 1 hot billboard", track_id: vibe_track2.id, uploader_id: .id)
+comment174 = Comment.create!(body: "who would dislike this song?", track_id: vibe_track2.id, uploader_id: .id)
+comment175 = Comment.create!(body: "this hits haaarrrddd", track_id: vibe_track2.id, uploader_id: .id)
+
+comment176 = Comment.create!(body: "", track_id: vibe_track3.id, uploader_id: .id)
+comment177 = Comment.create!(body: "", track_id: vibe_track3.id, uploader_id: .id)
+comment178 = Comment.create!(body: "", track_id: vibe_track3.id, uploader_id: .id)
+comment179 = Comment.create!(body: "", track_id: vibe_track3.id, uploader_id: .id)
+comment180 = Comment.create!(body: "", track_id: vibe_track3.id, uploader_id: .id)
+
+comment181 = Comment.create!(body: "", track_id: vibe_track4.id, uploader_id: .id)
+comment182 = Comment.create!(body: "", track_id: vibe_track4.id, uploader_id: .id)
+comment183 = Comment.create!(body: "", track_id: vibe_track4.id, uploader_id: .id)
+comment184 = Comment.create!(body: "", track_id: vibe_track4.id, uploader_id: .id)
+comment185 = Comment.create!(body: "", track_id: vibe_track4.id, uploader_id: .id)
+
+comment186 = Comment.create!(body: "", track_id: vibe_track5.id, uploader_id: .id)
+comment187 = Comment.create!(body: "", track_id: vibe_track5.id, uploader_id: .id)
+comment188 = Comment.create!(body: "", track_id: vibe_track5.id, uploader_id: .id)
+comment189 = Comment.create!(body: "", track_id: vibe_track5.id, uploader_id: .id)
+comment190 = Comment.create!(body: "", track_id: vibe_track5.id, uploader_id: .id)
+
+comment191 = Comment.create!(body: "", track_id: vibe_track6.id, uploader_id: .id)
+comment192 = Comment.create!(body: "", track_id: vibe_track6.id, uploader_id: .id)
+comment193 = Comment.create!(body: "", track_id: vibe_track6.id, uploader_id: .id)
+comment194 = Comment.create!(body: "", track_id: vibe_track6.id, uploader_id: .id)
+comment195 = Comment.create!(body: "", track_id: vibe_track6.id, uploader_id: .id)
+
+comment196 = Comment.create!(body: "", track_id: vibe_track7.id, uploader_id: .id)
+comment197 = Comment.create!(body: "", track_id: vibe_track7.id, uploader_id: .id)
+comment198 = Comment.create!(body: "", track_id: vibe_track7.id, uploader_id: .id)
+comment199 = Comment.create!(body: "", track_id: vibe_track7.id, uploader_id: .id)
+comment200 = Comment.create!(body: "", track_id: vibe_track7.id, uploader_id: .id)
+
+# dance comments
+
+comment201 = Comment.create!(body: "", track_id: dance_track1.id, uploader_id: .id)
+comment202 = Comment.create!(body: "", track_id: dance_track1.id, uploader_id: .id)
+comment203 = Comment.create!(body: "", track_id: dance_track1.id, uploader_id: .id)
+comment204 = Comment.create!(body: "", track_id: dance_track1.id, uploader_id: .id)
+comment205 = Comment.create!(body: "", track_id: dance_track1.id, uploader_id: .id)
+
+comment206 = Comment.create!(body: "", track_id: dance_track2.id, uploader_id: .id)
+comment207 = Comment.create!(body: "", track_id: dance_track2.id, uploader_id: .id)
+comment208 = Comment.create!(body: "", track_id: dance_track2.id, uploader_id: .id)
+comment209 = Comment.create!(body: "", track_id: dance_track2.id, uploader_id: .id)
+comment210 = Comment.create!(body: "", track_id: dance_track2.id, uploader_id: .id)
+
+comment211 = Comment.create!(body: "", track_id: dance_track3.id, uploader_id: .id)
+comment212 = Comment.create!(body: "", track_id: dance_track3.id, uploader_id: .id)
+comment213 = Comment.create!(body: "", track_id: dance_track3.id, uploader_id: .id)
+comment214 = Comment.create!(body: "", track_id: dance_track3.id, uploader_id: .id)
+comment215 = Comment.create!(body: "", track_id: dance_track3.id, uploader_id: .id)
+
+comment216 = Comment.create!(body: "", track_id: dance_track4.id, uploader_id: .id)
+comment217 = Comment.create!(body: "", track_id: dance_track4.id, uploader_id: .id)
+comment218 = Comment.create!(body: "", track_id: dance_track4.id, uploader_id: .id)
+comment219 = Comment.create!(body: "", track_id: dance_track4.id, uploader_id: .id)
+comment220 = Comment.create!(body: "", track_id: dance_track4.id, uploader_id: .id)
+
+comment221 = Comment.create!(body: "", track_id: dance_track5.id, uploader_id: .id)
+comment222 = Comment.create!(body: "", track_id: dance_track5.id, uploader_id: .id)
+comment223 = Comment.create!(body: "", track_id: dance_track5.id, uploader_id: .id)
+comment224 = Comment.create!(body: "", track_id: dance_track5.id, uploader_id: .id)
+comment225 = Comment.create!(body: "", track_id: dance_track5.id, uploader_id: .id)
+
+comment226 = Comment.create!(body: "", track_id: dance_track6.id, uploader_id: .id)
+comment227 = Comment.create!(body: "", track_id: dance_track6.id, uploader_id: .id)
+comment228 = Comment.create!(body: "", track_id: dance_track6.id, uploader_id: .id)
+comment229 = Comment.create!(body: "", track_id: dance_track6.id, uploader_id: .id)
+comment230 = Comment.create!(body: "", track_id: dance_track6.id, uploader_id: .id)
+
+comment231 = Comment.create!(body: "", track_id: dance_track7.id, uploader_id: .id)
+comment232 = Comment.create!(body: "", track_id: dance_track7.id, uploader_id: .id)
+comment233 = Comment.create!(body: "", track_id: dance_track7.id, uploader_id: .id)
+comment234 = Comment.create!(body: "", track_id: dance_track7.id, uploader_id: .id)
+comment235 = Comment.create!(body: "", track_id: dance_track7.id, uploader_id: .id)
+
+
 
 
 

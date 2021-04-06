@@ -50,7 +50,7 @@ class Homepage extends React.Component {
             </h2>
             <p>
               SoundClout is available on Web and soon on 
-              iOS, Android, Sonos, Chromecast, and Xbox One near you.
+              iOS, Android, Sonos, Chromecast, and an Xbox One near you.
             </p>
           </div>
         </div>
@@ -73,7 +73,7 @@ class Homepage extends React.Component {
               Thanks for listening. Now join in.
             </h2>
             <p>
-              Save tracks, follow artists and build playlists. All for free.
+              Save tracks, listen to artists, and build a fanbase. All for free.
             </p>
             <button className="homepage-signup-footer-signup" onClick={this.signup}>
               Create Account
