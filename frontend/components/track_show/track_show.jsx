@@ -254,7 +254,7 @@ class TrackShow extends React.Component {
                   // <FontAwesomeIcon icon="spinner" spin size="2x" className="homepage-spinner" /> :
                   <div className="track-body-main-content">
                     <div className="track-show-uploader-container">
-                      <Link to={`/user/${this.props.track.uploader_id}`}>
+                      <Link to={`/users/${this.props.track.uploader_id}`}>
                       <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
                       </Link>
                       <div className="track-show-uploader-details">

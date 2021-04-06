@@ -14,6 +14,17 @@ class UserShow extends React.Component {
     this.cuteColors = this.cuteColors.bind(this)
   }
 
+  componentDidMount() {
+    console.log("im here")
+    this.props.fetchUser(this.props.match.params.userId)
+    // this.props.fetchTracks()
+  }
+
+  componentDidUpdate() {
+    const background = document.getElementsByClassName("user-show-header-container")[0];
+    if (background) this.cuteColors(background)
+  }
+
   getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -41,8 +52,11 @@ class UserShow extends React.Component {
 
   render() {
     return (
-      <>
-      </>
+      <div>
+        <div className="user-show-header-container">
+          <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
+        </div>
+      </div>
     )
   }
 }
