@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { Link } from 'react-router-dom';
 
 class CommentIndexItem extends React.Component {
   constructor(props) {
@@ -112,13 +112,18 @@ class CommentIndexItem extends React.Component {
         id={`li-${this.props.comment.id}`}
         onMouseOver={() => this.handleHover(this.props.comment)} 
         onMouseLeave={() => this.handleLeave(this.props.comment)}>
-        <img src={this.props.photoUrl} className="wtf" />
+        <Link to={`/users/${this.props.comment.uploader_id}`} className="comment-item-profile-img-container">
+          <img src={this.props.photoUrl} className="comment-item-profile-img" />
+        </Link>
+
         <div className="comment-item-content">
           <div className="comment-item-username">
-            {
-              this.props.comment.uploader_id === this.props.currentUserId ?
-                "You" : this.props.comment.username
-            }
+            <Link to={`/users/${this.props.comment.uploader_id}`} className="comment-item-username-link">
+              {
+                this.props.comment.uploader_id === this.props.currentUserId ?
+                  "You" : this.props.comment.username
+              }
+            </Link>
           </div>
           <div className="comment-item-body">
             {this.props.comment.body}

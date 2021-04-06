@@ -56,8 +56,9 @@ class NavBar extends React.Component {
           <div className="right-nav">
             <ul className="nav-links">
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
-              <li><Link to='/discover' className='nav-links-li'>{this.props.user.username}</Link></li>
-              {/* <li><Link to='/discover' className='nav-links-li'>{this.props.user.username}</Link></li> */}
+              <li>
+                <Link to={`/users/${this.props.sessionId}`} className='nav-links-li'>{this.props.user.username}</Link>
+              </li>
               <li>
                 <Link to='/' className='nav-links-li' id="logout" onClick={this.handleLogout}>Logout</Link>
               </li>

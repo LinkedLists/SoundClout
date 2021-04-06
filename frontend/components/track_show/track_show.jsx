@@ -255,7 +255,14 @@ class TrackShow extends React.Component {
                   <div className="track-body-main-content">
                     <div className="track-show-uploader-container">
                       <Link to={`/users/${this.props.track.uploader_id}`}>
-                      <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
+                        {
+                          this.props.track ? 
+                            <img src={this.props.track.profileUrl} className="track-show-uploader-img"/> :
+                            setTimeout(() => {
+                              console.log("profile image could not be fetched atm")
+                              return <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
+                            }, 20)
+                        }
                       </Link>
                       <div className="track-show-uploader-details">
                         <div className="track-show-uploader-name">{this.props.track.username}</div>

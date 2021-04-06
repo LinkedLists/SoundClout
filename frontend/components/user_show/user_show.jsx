@@ -61,6 +61,16 @@ class UserShow extends React.Component {
             </h3>
           </div>
         </div>
+        <div className="user-show-content-banner">
+          <ul className="user-show-content-banner-ul">
+            <li>All</li>
+            <li>Popular tracks</li>
+            <li>Tracks</li>
+            <li>Albums</li>
+            <li>Playlists</li>
+            <li>Reposts</li>
+          </ul>
+        </div>
 
         <div className="user-show-content-container">
           <div className="track-show-body-container">
@@ -68,7 +78,10 @@ class UserShow extends React.Component {
             <div className="track-show-body-wrapper">
               <div className="track-show-body-left-wrapper">
                 <div className="track-show-body-left-content">
-                  </div>
+                  <h2 className="user-show-content-header">
+                    Recent
+                  </h2>
+                </div>
               </div>
             </div>
           </div>
