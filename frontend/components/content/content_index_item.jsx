@@ -11,16 +11,32 @@ class ContentIndexItem extends React.Component {
       <li className="content-list-item">
         {/* for now the entire item is nested in to the track show */}
         {/* eventually allow for a link to see the user would be a good idea */}
-        <Link className="content-list-item-link" to={`/tracks/${this.props.track.id}`}>
-          <img className="content-list-item-img" src={this.props.track.photoUrl}/>
+        {/* <Link className="content-list-item-link" to={`/tracks/${this.props.track.id}`}> */}
+        <div className="content-list-item-wrapper">
+
+          <Link to={`/tracks/${this.props.track.id}`} className="content-list-item-img-link">
+            <div className="content-list-item-img-wrapper">
+              <img className="content-list-item-img" src={this.props.track.photoUrl}/>
+            </div>
+          </Link>
+
           <div className="content-list-item-description">
-            <div className="content-list-item-title">{this.props.track.title}</div>
-            <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link">
-              <div className="content-list-item-uploader">By: {this.props.track.username}</div>
-            </Link>
+            <div className="content-list-item-title">
+              <Link to={`/tracks/${this.props.track.id}`} className="content-list-item-title-link">
+                {this.props.track.title}
+              </Link>
+            </div>
+            <div className="content-list-item-uploader">
+              <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link">
+                By: {this.props.track.username}
+              </Link>
+            </div>
+
+
             <div className="content-list-item-genre">Genre: {this.props.track.genre}</div>
           </div>
-        </Link>
+        </div>
+        {/* </Link> */}
       </li>
     )
   }

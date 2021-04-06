@@ -52,11 +52,6 @@ class TrackShow extends React.Component {
     }
     this.props.deleteTrack(this.props.track.id);
     this.props.removeComments();
-    setTimeout(
-      () => {
-        // this.setHistory()
-      }, 100
-    )
   }
 
   showForm(e) {

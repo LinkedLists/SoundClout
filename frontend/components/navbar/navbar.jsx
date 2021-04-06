@@ -51,7 +51,7 @@ class NavBar extends React.Component {
           </ul>
           <form className="searchbar-form">
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts (soon)"></input>
-            <button type="submit" className="search-btn"/>
+            <button type="submit" onClick={e => e.preventDefault()} className="search-btn"/>
           </form>
           <div className="right-nav">
             <ul className="nav-links">

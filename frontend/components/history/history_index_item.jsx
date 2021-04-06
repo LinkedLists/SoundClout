@@ -84,13 +84,22 @@ class HistoryIndexItem extends React.Component {
     // }
     return (
       <li className="history-track-item" onClick={this.handleRoute}>
-        <Link className="history-track-item-link" to={`/tracks/${this.props.track.id}`}>
-          <img src={this.props.track.photoUrl} className="history-track-icon"/>
+        {/* <Link className="history-track-item-link" to={`/tracks/${this.props.track.id}`}> */}
+        <div className="history-track-item-link">
+          <Link to={`/tracks/${this.props.track.id}`} className="history-track-icon-link">
+            <img src={this.props.track.photoUrl} className="history-track-icon"/>
+          </Link>
           <div className="history-track-details">
-            <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link"> 
-              <span>{this.props.track.username}</span> 
-            </Link>
-            <span>{this.props.track.title}</span> 
+            <span>
+              <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link"> 
+                {this.props.track.username} 
+              </Link>
+            </span>
+            <span>
+              <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
+                {this.props.track.title}
+              </Link>
+            </span> 
             <div>
               <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
               <span style={{fontSize: 11}}>
@@ -98,7 +107,7 @@ class HistoryIndexItem extends React.Component {
               </span>
             </div>  
           </div>
-        </Link>
+        </div>
       </li>
     )
   }
