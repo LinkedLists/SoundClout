@@ -18,7 +18,7 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
-    this.props.fetchTracks();
+    // this.props.fetchTracks();
   }
 
   componentWillUnmount() {
@@ -59,12 +59,14 @@ class UserShow extends React.Component {
     let tracks = Object.values(this.props.tracks)
     let ownedTracks
     if (this.props.user) ownedTracks = tracks.map((track, i) => {
-      if (track.uploader_id === this.props.user.id) {
-        return <li key={i} className="track-uploader-item">
-          <h4>{track.title}</h4>
-          <img src={track.photoUrl} className="track-uploader-item-img"/>
+      // if (track.uploader_id === this.props.user.id) {
+        return (
+          <li key={i} className="track-uploader-item">
+            <h4>{track.title}</h4>
+            <img src={track.photoUrl} className="track-uploader-item-img"/>
           </li>
-      }
+        )
+      // }
     })
 
     return (

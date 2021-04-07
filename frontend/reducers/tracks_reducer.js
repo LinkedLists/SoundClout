@@ -1,5 +1,6 @@
 import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from "../actions/track_actions";
 import { RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_COMMENTS } from '../actions/comment_actions'
+import { RECEIVE_USER } from '../actions/user_actions';
 
 const TracksReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -29,6 +30,8 @@ const TracksReducer = (oldState = {}, action) => {
       delete newState[key].comments[action.trackCommentPair[1]]
       return newState
 
+    case RECEIVE_USER:
+      return action.user.tracks
     default:
       return oldState
   }

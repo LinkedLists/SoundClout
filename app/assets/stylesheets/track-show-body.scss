@@ -188,6 +188,11 @@
 }
 
 .comment-item-username-link {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 240px;
   color: #999;
   text-decoration: none;
   transition: 0.2s;
