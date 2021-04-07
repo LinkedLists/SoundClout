@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import EditTrackContainer from '../track_form/edit_track_container'
 import History from '../history/history'
+import UploadTrackContainer from '../track_form/upload_track_container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UserShow extends React.Component {
@@ -16,6 +18,7 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
+    this.props.fetchTracks();
   }
 
   componentWillUnmount() {
@@ -53,6 +56,17 @@ class UserShow extends React.Component {
   }
 
   render() {
+    let tracks = Object.values(this.props.tracks)
+    let ownedTracks
+    if (this.props.user) ownedTracks = tracks.map((track, i) => {
+      if (track.uploader_id === this.props.user.id) {
+        return <li key={i} className="track-uploader-item">
+          <h4>{track.title}</h4>
+          <img src={track.photoUrl} className="track-uploader-item-img"/>
+          </li>
+      }
+    })
+
     return (
       this.props.user ? 
       <div className="content-container">
@@ -88,9 +102,24 @@ class UserShow extends React.Component {
             <div className="track-show-body-wrapper">
               <div className="track-show-body-left-wrapper">
                 <div className="track-show-body-left-content">
+                  {/* header */}
                   <h2 className="user-show-content-header">
                     Recent
                   </h2>
+                  {/* track list */}
+                  <div>
+                    <ul>
+                      {ownedTracks}
+                    </ul>
+                  </div>
+
+                  {/* footer here */}
+                  <div className="user-show-content-footer">
+                    <div className="upload-more">
+                      More uploads means more listeners.
+                    </div>
+                    <Link to='/upload' className="upload-redirect-link">Upload more</Link>
+                  </div>
                 </div>
               </div>
             </div>

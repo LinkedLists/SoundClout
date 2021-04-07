@@ -7,6 +7,7 @@ import { fetchUser } from '../../actions/user_actions'
 const mapStateToProps = (state, ownProps) => {
   return {
     track: Object.values(state.entities.tracks)[0],
+    tracks: state.entities.tracks,
     user: state.entities.users[ownProps.match.params.userId],
     currentTrack: state.ui.playbar.currentTrack,
     playbar: state.ui.playbar,
