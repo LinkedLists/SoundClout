@@ -139,6 +139,12 @@ class UserShow extends React.Component {
 
                   {/* footer here */}
                   <div className="user-show-content-footer">
+
+                    <div className="user-show-footer-logo-container">
+                      <div className="user-show-footer-logo"></div>
+
+                    </div>
+
                     <div className="upload-more">
                       More uploads means more listeners.
                     </div>
