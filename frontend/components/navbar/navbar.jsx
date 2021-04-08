@@ -61,6 +61,8 @@ class NavBar extends React.Component {
 
   handleRoute() {
     this.props.fetchUser(this.props.sessionId)
+    const background = document.getElementsByClassName("user-show-header-container")[0];
+    this.cuteColors(background)
   }
 
   handleLogout() {

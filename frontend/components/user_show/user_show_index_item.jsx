@@ -11,7 +11,6 @@ class UserShowIndexItem extends React.Component {
     this.state = {
       showForm: false,
       // colored: false,
-      // volume: this.props.audio ? this.props.audio.volume : 0.6
     }
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showForm = this.showForm.bind(this)
@@ -19,7 +18,6 @@ class UserShowIndexItem extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("item updated")
   }
 
   deleteTrack(e) {
@@ -30,7 +28,6 @@ class UserShowIndexItem extends React.Component {
     }
     this.props.deleteTrack(this.props.track.id);
     this.props.removeComments();
-    this.props.history.push(`/`)
   }
 
   showForm(e) {

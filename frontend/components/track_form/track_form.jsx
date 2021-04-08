@@ -151,7 +151,7 @@ class TrackForm extends React.Component {
       if (this.props.formType === "Save Changes") {
         track.append("track[id]", this.props.track.id)
         track.append("track[title]", this.state.title)
-        track.append("track[description]", this.state.description)
+        track.append("track[description]", this.state.description ? this.state.description : '')
         track.append("track[genre]", this.state.genre)
       }
       else if (this.props.formType === "Upload") {

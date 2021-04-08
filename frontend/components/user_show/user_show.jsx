@@ -27,8 +27,13 @@ class UserShow extends React.Component {
   componentDidUpdate() {
     const background = document.getElementsByClassName("user-show-header-container")[0];
     if (background) this.cuteColors(background)
+    setTimeout(() => {
+      if (background && background.style.background === "" ) {
+        this.colored = false
+        this.cuteColors(background) 
+      }
+    }, 50)
     this.checkCurrentUser()
-    console.log("show page updated")
   }
 
   checkCurrentUser() {
@@ -47,6 +52,7 @@ class UserShow extends React.Component {
   }
 
   cuteColors(background) {
+    // console.log(this.colored)
     // A user's show page can get updated
     if (!this.colored) {
       this.colored = true;
@@ -73,14 +79,15 @@ class UserShow extends React.Component {
       return (
         <UserShowIndexItem 
           key={i}
-          // track={track} 
-          track = {Object.values(this.props.tracks)[i]}
+          track={track} 
+          // track = {Object.values(this.props.tracks)[i]}
           user={this.props.user}
           currentTrack={this.props.currentTrack}
           deleteTrack={this.props.deleteTrack}
           removeComments={this.props.removeComments}
           sessionId={this.props.sessionId}
-          currentUser={this.props.currentUser}/>
+          currentUser={this.props.currentUser}
+          clearPlaybarState={this.props.clearPlaybarState}/>
       )
     })
 

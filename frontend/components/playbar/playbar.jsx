@@ -51,6 +51,7 @@ class Playbar extends React.Component {
           history = JSON.parse(window.localStorage.getItem("history"))
           this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")));
         } catch {
+          console.log("in history catch")
           window.localStorage.setItem("history", [])
         }
         if (history) {

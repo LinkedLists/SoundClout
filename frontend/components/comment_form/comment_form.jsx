@@ -18,6 +18,9 @@ class CommentForm extends React.Component {
     this.setHistory = this.setHistory.bind(this)
   }
 
+  componentDidMount() {
+  }
+
   // componentDidMount() {
   // componentDidUpdate() {
   //   let profileContainer = document.getElementsByClassName("comment-form-profile-img")[0];
