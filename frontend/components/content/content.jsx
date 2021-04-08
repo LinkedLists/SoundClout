@@ -14,21 +14,28 @@ class Content extends React.Component {
       // loading: true
     }
     this.setHistory = this.setHistory.bind(this)
-
+    this.enableCurrentUser = this.enableCurrentUser.bind(this)
     this.loading = true
   }
 
   componentDidMount() {
+    setTimeout(() => {
+      this.loading = false
+    }, 350)
     this.props.fetchTracks().then(() => this.setHistory())
+    this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
+  }
 
-    setTimeout(() => {
-      this.loading = false
-    }, 300)
+  enableCurrentUser() {
+    let userLink = document.getElementById("nav-currentUser");
+    if (userLink) {
+      userLink.classList.remove("disable")
+    }
   }
 
   setHistory() {

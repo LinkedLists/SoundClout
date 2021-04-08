@@ -232,6 +232,10 @@
   padding: 15px 10px;
 }
 
+.disable:active {
+  pointer-events: none;
+}
+
 #logout {
   margin-right: 15px;
 }

@@ -14,6 +14,7 @@ class UserShow extends React.Component {
     }
 
     this.cuteColors = this.cuteColors.bind(this)
+    this.checkCurrentUser = this.checkCurrentUser.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +28,16 @@ class UserShow extends React.Component {
   componentDidUpdate() {
     const background = document.getElementsByClassName("user-show-header-container")[0];
     if (background) this.cuteColors(background)
+    this.checkCurrentUser()
+  }
+
+  checkCurrentUser() {
+    let userLink = document.getElementById("nav-currentUser");
+    if (this.props.user && this.props.user.id === this.props.sessionId) {
+      userLink.classList.add("disable")
+    } else {
+      userLink.classList.remove("disable")
+    }
   }
 
   getRandomInt(min, max) {

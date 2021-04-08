@@ -17,6 +17,9 @@ class NavBar extends React.Component {
     // this.props.state
   }
 
+  componentDidUpdate() {
+  }
+
   sessionContainer() {
     return (
       <div className="login-signup-container">
@@ -57,12 +60,7 @@ class NavBar extends React.Component {
   }
 
   handleRoute() {
-    let showPageId = document.getElementById("hidden-id");
-    if (showPageId && showPageId.value !== this.props.sessionId.toString()) {
-      const background = document.getElementsByClassName("user-show-header-container")[0];
-      this.props.fetchUser(this.props.sessionId)
-      this.cuteColors(background)
-    }
+    this.props.fetchUser(this.props.sessionId)
   }
 
   handleLogout() {
@@ -72,13 +70,10 @@ class NavBar extends React.Component {
   }
 
   navContainer() {
-    let showPageId = document.getElementById("hidden-id");
     return(
       <div className="navbar-container">
         <div className="navbar-wrapper">
           <ul className="nav-links">
-            {/* in soundcloud the logo is outside of nav-links ul */}
-            {/* navbar is divided into ul sections */}
             <li id="logo-container"><Link to='/discover'><span id="logo-icon"></span></Link></li>
             <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
@@ -91,21 +86,19 @@ class NavBar extends React.Component {
           <div className="right-nav">
             <ul className="nav-links">
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
-              <li onClick={this.handleRoute}>
-                {
-                  showPageId ?
-                   showPageId.value !== this.props.sessionId.toString() ?
-                    <Link to={`/users/${this.props.sessionId}`} className='nav-links-li'>{this.props.user.username}</Link>
-                      :
-                    <p className='nav-links-li'>
-                      {this.props.user.username}
-                    </p>
-                    :
-                  <Link to={`/users/${this.props.sessionId}`} className='nav-links-li'>{this.props.user.username}</Link>
-                }
-              </li>
+
               <li>
-                <Link to='/' className='nav-links-li' id="logout" onClick={this.handleLogout}>Logout</Link>
+                  <Link 
+                    to={`/users/${this.props.sessionId}`} 
+                    className='nav-links-li noselect' 
+                    id="nav-currentUser" 
+                    onClick={this.handleRoute}>
+                    {this.props.user.username}
+                  </Link>
+              </li>
+              
+              <li>
+                <Link to='/' className='nav-links-li noselect' id="logout" onClick={this.handleLogout}>Logout</Link>
               </li>
               <li><a href="google.com" className="link-wrapper">
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/angellist2.png" 
