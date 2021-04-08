@@ -8,7 +8,8 @@ class NavBar extends React.Component {
 
     this.sessionContainer = this.sessionContainer.bind(this);
     this.navContainer = this.navContainer.bind(this);
-    this.handleLogout = this.handleLogout.bind(this)
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleRoute = this.handleRoute.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,39 @@ class NavBar extends React.Component {
     )
   }
 
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  cuteColors(background) {
+    if (background) {
+      const r1 = this.getRandomInt(160, 200)
+      const g1 = this.getRandomInt(160, 200)
+      const b1 = this.getRandomInt(170, 250)
+      const r2 = r1 + this.getRandomInt(5, 30)
+      const g2 = g1 + this.getRandomInt(5, 30)
+      const b2 = b1 - this.getRandomInt(5, 30)
+      const r3 = r2 + this.getRandomInt(5, 30)
+      const g3 = g2 + this.getRandomInt(5, 30)
+      const b3 = b2 - this.getRandomInt(5, 30)
+      background.style.background = `linear-gradient(to left, 
+          rgb(${r1}, ${g1}, ${b1}), 
+          rgb(${r2}, ${g2}, ${b2}), 
+          rgb(${r3}, ${g3}, ${b3}))`
+    }
+  }
+
+  handleRoute() {
+    let showPageId = document.getElementById("hidden-id");
+    if (showPageId && showPageId.value !== this.props.sessionId.toString()) {
+      const background = document.getElementsByClassName("user-show-header-container")[0];
+      this.props.fetchUser(this.props.sessionId)
+      this.cuteColors(background)
+    }
+  }
+
   handleLogout() {
     this.props.logout();
     this.props.pauseTrack();
@@ -38,6 +72,7 @@ class NavBar extends React.Component {
   }
 
   navContainer() {
+    let showPageId = document.getElementById("hidden-id");
     return(
       <div className="navbar-container">
         <div className="navbar-wrapper">
@@ -56,8 +91,18 @@ class NavBar extends React.Component {
           <div className="right-nav">
             <ul className="nav-links">
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
-              <li>
-                <Link to={`/users/${this.props.sessionId}`} className='nav-links-li'>{this.props.user.username}</Link>
+              <li onClick={this.handleRoute}>
+                {
+                  showPageId ?
+                   showPageId.value !== this.props.sessionId.toString() ?
+                    <Link to={`/users/${this.props.sessionId}`} className='nav-links-li'>{this.props.user.username}</Link>
+                      :
+                    <p className='nav-links-li'>
+                      {this.props.user.username}
+                    </p>
+                    :
+                  <Link to={`/users/${this.props.sessionId}`} className='nav-links-li'>{this.props.user.username}</Link>
+                }
               </li>
               <li>
                 <Link to='/' className='nav-links-li' id="logout" onClick={this.handleLogout}>Logout</Link>

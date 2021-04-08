@@ -128,6 +128,10 @@ class UserShow extends React.Component {
           </div>
         </div>
 
+        {/* hidden input that has the current user page id so that other components
+        can grab this info */}
+        <input style={{display: 'none'}} value={this.props.user.id} id="hidden-id" onChange={() => {}}/> 
+
       </div>: null
 
     )
