@@ -51,6 +51,67 @@ class TrackShow extends React.Component {
     }
   }
 
+  getDateMeta(time) {
+    if (this.props.track.created_at) {
+    const now = new Date();
+    let years = now.getUTCFullYear() - time.slice(0, 4);
+    let months = now.getUTCMonth() + 1 - time.slice(5, 7);
+    let days = now.getUTCDate() - time.slice(8, 10);
+    let hours = now.getUTCHours() - time.slice(11, 13);
+    let minutes = now.getUTCMinutes() - time.slice(14, 16);
+    let seconds = now.getUTCSeconds() - time.slice(17, 19);
+
+    if (months > 0 && months % 12 < 1) {
+      if (months === 1) {
+        return <span className="track-show-timestamp">1 month ago</span>
+      } else {
+        return <span className="track-show-timestamp">{`${months} months ago`}</span>
+      }
+    }
+    else if (years > 0) {
+      if (years === 1) {
+        return <span className="track-show-timestamp">1 year ago</span>
+      } else {
+        return <span className="track-show-timestamp">{`${years} years ago`}</span>
+      }
+    }
+    else if (days > 0) {
+      if (days === 1) {
+        return <span className="track-show-timestamp">1 day ago</span>
+      } else {
+        return <span className="track-show-timestamp">{`${days} days ago`}</span>
+      }
+    }
+    else if (hours > 0) {
+      if (hours === 1) {
+        return <span className="track-show-timestamp">1 hour ago</span>
+      } else {
+        return <span className="track-show-timestamp">{`${hours} hours ago`}</span>
+      }
+    }
+    else if (minutes > 0) {
+      if (minutes === 1) {
+        return <span className="track-show-timestamp">1 minute ago</span>
+      } else {
+        return <span className="track-show-timestamp">{`${minutes} minutes ago`}</span>
+      }
+    }
+    else if (seconds > 0) {
+      if (seconds === 1) {
+        return <span className="track-show-timestamp">1 second ago</span>
+      } else {
+        return <span className="track-show-timestamp">{`${seconds} seconds ago`}</span>
+      }
+    } else {
+      return <span className="track-show-timestamp">Right now</span>
+    }
+  }
+    
+    else {
+      return <span className="item-timestamp">Right now</span>
+    }
+  }
+
   deleteTrack(e) {
     e.preventDefault();
     if (this.props.track.id === this.props.currentTrack.id) {
@@ -212,10 +273,20 @@ class TrackShow extends React.Component {
                 }
                 />
               <div className="track-show-list-item-info">
-                <div className="track-show-list-item-uploader">{this.props.track.username}</div>
+                <div className="track-show-list-item-uploader">
+                  <Link to={`/users/${this.props.track.uploader_id}`} className="track-show-list-item-uploader-link">
+                    {this.props.track.username}
+                  </Link>
+                </div>
                 <div className="track-show-list-item-title">{this.props.track.title}</div>
               </div>
             </div>
+              <span className="track-show-info-container">
+                {this.getDateMeta(this.props.track.created_at)}
+                <div className="track-show-genre noselect">
+                  # {this.props.track.genre}
+                </div>
+              </span>
             {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
         </div>

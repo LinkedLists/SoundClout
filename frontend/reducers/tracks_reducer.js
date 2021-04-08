@@ -33,7 +33,7 @@ const TracksReducer = (oldState = {}, action) => {
       return newState
 
     case RECEIVE_USER:
-      return action.user.tracks
+      return Object.assign({}, oldState, action.user.tracks)
     default:
       return oldState
   }

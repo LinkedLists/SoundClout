@@ -100,12 +100,23 @@
 
 .track-show-list-item-uploader {
   display: inline;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.track-show-list-item-uploader:hover {
+}
+
+.track-show-list-item-uploader-link {
   background-color: rgba(0,0,0,.8);
-  color: #f2f2f2;
-  font-size: 16px;
-  line-height: 1.2;
   padding: 2px 7px 3px;
-  margin-bottom: 7px;
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.track-show-list-item-uploader-link:hover {
+  color: #f2f2f2;
 }
 
 .track-show-list-item-title {
@@ -114,4 +125,44 @@
   line-height: 37px;
   padding: 4px 7px;
   background-color: rgba(0,0,0,.8);
+}
+
+.track-show-info-container {
+  position: absolute;
+  top: 29px;
+  width: 150px;
+  right: 390px;
+  text-align: right;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.track-show-timestamp {
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: nowrap;
+  margin-bottom: 16px;
+}
+
+.track-show-genre {
+  position: relative;
+  display: inline-block;
+  background: #999;
+  border: 1px solid #999;
+  border-radius: 20px;
+  border-left-width: 0;
+  height: 24px;
+  padding: 0 8px;
+  line-height: 24px;
+  color: #fff;
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.track-show-genre:hover {
+  background: #666;
 }
