@@ -21,6 +21,17 @@ class CommentForm extends React.Component {
   componentDidMount() {
   }
 
+  componentDidUpdate() {
+    // fail safe when track id does not properly update when
+    // navigating through user show pages
+    if (this.state.track_id !== this.props.track.id) {
+      this.setState({track_id: this.props.track.id})
+    }
+  }
+
+  componentWillUnmount() {
+  }
+
   // componentDidMount() {
   // componentDidUpdate() {
   //   let profileContainer = document.getElementsByClassName("comment-form-profile-img")[0];

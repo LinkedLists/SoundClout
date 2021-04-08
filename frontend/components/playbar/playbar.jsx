@@ -193,6 +193,13 @@ class Playbar extends React.Component {
           this.clearState()
         } : null
       }, 10)
+
+      // state needs to be completely refactored to allow for playlist capabilities
+      // let next = $.ajax({
+      //   url: `api/tracks/${this.props.currentTrack.id + 1}`,
+      //   method: 'GET',
+      // }).then(this.props.sendTrack(next))
+
     })
 
     audio.addEventListener("play", () => {

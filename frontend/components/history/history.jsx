@@ -6,6 +6,7 @@ import { clearHistory } from '../../actions/history_actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import HistoryIndexItem from './history_index_item'
 import { fetchUser } from '../../actions/user_actions'
+import { clearUserState } from '../../actions/user_actions'
 
 class History extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class History extends React.Component {
             comments={this.props.history[i].numComments}
             fetchUser={this.props.fetchUser}
             currentUserShowPage={this.props.user}
+            clearUserState={this.props.clearUserState}
             />
     })
     return(
@@ -75,6 +77,7 @@ const mapDispatchToProps = dispatch => {
     pauseTrack: () => dispatch(pauseTrack()),
     clearHistory: () => dispatch(clearHistory()),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
+    clearUserState: () => dispatch(clearUserState())
   }
 };
 

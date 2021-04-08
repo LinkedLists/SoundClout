@@ -20,14 +20,15 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.userId)
     // this.props.fetchTracks();
   }
-
+  
   componentWillUnmount() {
   }
-
+  
   componentDidUpdate() {
     window.scrollTo(0, 0)
     const background = document.getElementsByClassName("user-show-header-container")[0];
     if (background) this.cuteColors(background)
+    // fail safe incase the background did not update
     setTimeout(() => {
       if (background && background.style.background === "" ) {
         this.colored = false
@@ -74,23 +75,27 @@ class UserShow extends React.Component {
   }
 
   render() {
-    let tracks = Object.values(this.props.tracks)
+    // let tracks = Object.values(this.props.tracks)
     let ownedTracks
-    if (this.props.user) ownedTracks = tracks.map((track, i) => {
-      return (
-        <UserShowIndexItem 
-          key={i}
-          track={track} 
-          // track = {Object.values(this.props.tracks)[i]}
-          user={this.props.user}
-          currentTrack={this.props.currentTrack}
-          deleteTrack={this.props.deleteTrack}
-          removeComments={this.props.removeComments}
-          sessionId={this.props.sessionId}
-          currentUser={this.props.currentUser}
-          clearPlaybarState={this.props.clearPlaybarState}/>
-      )
-    })
+    if (this.props.user) {
+      if ("tracks" in this.props.user) {
+        ownedTracks = Object.values(this.props.user.tracks).map((track, i) => {
+          return (
+            <UserShowIndexItem 
+              key={i}
+              track={track} 
+              // track = {Object.values(this.props.tracks)[i]}
+              user={this.props.user}
+              currentTrack={this.props.currentTrack}
+              deleteTrack={this.props.deleteTrack}
+              removeComments={this.props.removeComments}
+              sessionId={this.props.sessionId}
+              currentUser={this.props.currentUser}
+              clearPlaybarState={this.props.clearPlaybarState}/>
+          )
+        })
+      }
+    }
 
     return (
       this.props.user ? 

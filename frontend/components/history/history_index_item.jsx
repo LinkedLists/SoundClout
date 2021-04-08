@@ -18,7 +18,6 @@ class HistoryIndexItem extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("an update")
   }
 
   componentWillUnmount() {
@@ -70,6 +69,7 @@ class HistoryIndexItem extends React.Component {
   handleRoute2() {
     if (this.props.track.uploader_id !== this.props.currentUserShowPage) {
       const background = document.getElementsByClassName("user-show-header-container")[0];
+      // this.props.clearUserState();
       this.props.fetchUser(this.props.track.uploader_id)
       this.cuteColors(background)
     }

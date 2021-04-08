@@ -11,7 +11,7 @@ import { fetchTracks } from '../../actions/track_actions'
 const mapStateToProps = (state) => {
   return {
     user: state.entities.users[state.session.id],
-    sessionId: state.session.id
+    sessionId: state.session.id,
   }
 }
 

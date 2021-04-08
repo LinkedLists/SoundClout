@@ -1,7 +1,7 @@
 import React from 'react';
 import EditTrackContainer from '../track_form/edit_track_container'
-import UploadTrackContainer from '../track_form/upload_track_container'
 import { Link } from 'react-router-dom'
+// import CommentFormContainer from './comment_form_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class UserShowIndexItem extends React.Component {
@@ -18,6 +18,9 @@ class UserShowIndexItem extends React.Component {
   }
 
   componentDidUpdate() {
+  }
+
+  componentDidMount() {
   }
 
   deleteTrack(e) {
