@@ -108,7 +108,9 @@ class HistoryIndexItem extends React.Component {
                     <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link"> 
                       {this.props.track.username} 
                     </Link> : 
-                    this.props.track.username
+                    <p className="comment-item-username-link">
+                      {this.props.track.username}
+                    </p>
                 }
               </div>
             </span>
@@ -120,7 +122,9 @@ class HistoryIndexItem extends React.Component {
                         <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
                           {this.props.track.title}
                         </Link> :
-                        this.props.track.title
+                        <p className="comment-item-username-link">
+                          {this.props.track.title}
+                        </p>
                           : 
                     <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
                       {this.props.track.title}
