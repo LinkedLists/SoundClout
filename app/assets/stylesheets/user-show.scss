@@ -95,7 +95,27 @@
   border: 1px solid #e5e5e5;
 }
 
+.user-list-item-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.user-list-item-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-list-item-detail-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-list-item-detail span{
+  width: 100%;
+}
 
 .upload-more {
   padding: 15px 0;

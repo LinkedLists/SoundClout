@@ -14,8 +14,20 @@ class UserShowIndexItem extends React.Component {
     return (
       <li className="user-list-item">
         <img src={this.props.track.photoUrl} className="track-uploader-item-img"/>
-        <h4>{this.props.track.title}</h4>
-        <CommentFormContainer track={this.props.track} />
+        <div className="user-list-item-content-container">
+          <div className="user-list-item-detail">
+            <div className="user-list-item-detail-info">
+              <span>
+                {this.props.user.username}  
+              </span>
+              <span>
+                {this.props.track.title}
+              </span>            
+            </div>
+            <div>created at here</div>
+          </div>
+          <CommentFormContainer track={this.props.track} />
+        </div>
       </li>
     )
   }
