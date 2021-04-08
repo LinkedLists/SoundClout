@@ -22,6 +22,7 @@ class TrackShow extends React.Component {
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
     this.setHistory = this.setHistory.bind(this)
+    this.enableCurrentUser = this.enableCurrentUser.bind(this)
     this.intervalUp;
     this.intervalDown;
     this.loading = true;
@@ -29,7 +30,7 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
-
+    this.enableCurrentUser();
     const background = document.getElementsByClassName("track-show-header-container")[0];
     if (background) this.cuteColors(background)
   }
@@ -41,6 +42,13 @@ class TrackShow extends React.Component {
 
   componentWillUnmount() {
     this.props.removeComments();
+  }
+
+  enableCurrentUser() {
+    let userLink = document.getElementById("nav-currentUser");
+    if (userLink) {
+      userLink.classList.remove("disable")
+    }
   }
 
   deleteTrack(e) {

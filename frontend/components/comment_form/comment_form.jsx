@@ -15,6 +15,7 @@ class CommentForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleValidations = this.handleValidations.bind(this);
+    this.setHistory = this.setHistory.bind(this)
   }
 
   // componentDidMount() {
@@ -29,8 +30,18 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment(this.state)
+    this.props.createComment(this.state).then(() => this.setHistory())
     this.setState( {body: ''} )
+  }
+
+  setHistory() {
+    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+    setTimeout(() => {
+      let history = JSON.parse(window.localStorage.getItem("history"))
+      if (history.length !== this.props.trackHistory.length) {
+        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+      }
+    }, 70)
   }
 
   handleChange(field) {

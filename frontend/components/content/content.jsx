@@ -19,9 +19,6 @@ class Content extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.loading = false
-    }, 350)
     this.props.fetchTracks().then(() => this.setHistory())
     this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
@@ -29,6 +26,9 @@ class Content extends React.Component {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
+    setTimeout(() => {
+      this.loading = false
+    }, 350)
   }
 
   enableCurrentUser() {

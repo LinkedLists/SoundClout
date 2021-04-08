@@ -1,8 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import EditTrackContainer from '../track_form/edit_track_container'
 import History from '../history/history'
-import UploadTrackContainer from '../track_form/upload_track_container'
+import UserShowIndexItem from './user_show_index_item'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UserShow extends React.Component {
@@ -15,6 +14,7 @@ class UserShow extends React.Component {
 
     this.cuteColors = this.cuteColors.bind(this)
     this.checkCurrentUser = this.checkCurrentUser.bind(this)
+    this.colored
   }
 
   componentDidMount() {
@@ -47,9 +47,9 @@ class UserShow extends React.Component {
   }
 
   cuteColors(background) {
-    // console.log(this.state.colored)
-    // if (!this.state.colored) {
-      // this.setState( {colored: true} )
+    // A user's show page can get updated
+    if (!this.colored) {
+      this.colored = true;
       const r1 = this.getRandomInt(160, 200)
       const g1 = this.getRandomInt(160, 200)
       const b1 = this.getRandomInt(170, 250)
@@ -63,21 +63,18 @@ class UserShow extends React.Component {
           rgb(${r1}, ${g1}, ${b1}), 
           rgb(${r2}, ${g2}, ${b2}), 
           rgb(${r3}, ${g3}, ${b3}))`
-    // }
+    }
   }
 
   render() {
     let tracks = Object.values(this.props.tracks)
     let ownedTracks
     if (this.props.user) ownedTracks = tracks.map((track, i) => {
-      // if (track.uploader_id === this.props.user.id) {
-        return (
-          <li key={i} className="track-uploader-item">
-            <h4>{track.title}</h4>
-            <img src={track.photoUrl} className="track-uploader-item-img"/>
-          </li>
-        )
-      // }
+      return (
+        <UserShowIndexItem 
+          key={i}
+          track={track} />
+      )
     })
 
     return (
