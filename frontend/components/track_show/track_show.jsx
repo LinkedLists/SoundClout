@@ -14,7 +14,6 @@ class TrackShow extends React.Component {
       // colored: false,
       // volume: this.props.audio ? this.props.audio.volume : 0.6
     }
-    this.deleted = false;
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showForm = this.showForm.bind(this)
@@ -191,7 +190,6 @@ class TrackShow extends React.Component {
 
   render() {
     if (this.props.track === undefined) return null;
-    if (this.props.deleted === false) return <Redirect to="/discover" />
     let audio = this.props.audio
     return (
       <div className="content-container">
@@ -234,7 +232,6 @@ class TrackShow extends React.Component {
                         <button onClick={this.deleteTrack} className="track-show-edit-btn">
                           <FontAwesomeIcon icon="trash" id="trash"/>
                           Delete Track
-                          {this.deleted ? <Redirect to='/'/> : null}
                         </button>
                         <button onClick={this.showForm} className="track-show-edit-btn">
                           <FontAwesomeIcon icon="pen" id="pen"/>

@@ -25,52 +25,52 @@ class CommentIndexItem extends React.Component {
 
     if (months > 0 && months % 12 < 1) {
       if (months === 1) {
-        return <span className="comment-item-timestamp">1 month ago</span>
+        return <span className="item-timestamp">1 month ago</span>
       } else {
-        return <span className="comment-item-timestamp">{`${months} months ago`}</span>
+        return <span className="item-timestamp">{`${months} months ago`}</span>
       }
     }
     else if (years > 0) {
       if (years === 1) {
-        return <span className="comment-item-timestamp">1 year ago</span>
+        return <span className="item-timestamp">1 year ago</span>
       } else {
-        return <span className="comment-item-timestamp">{`${years} years ago`}</span>
+        return <span className="item-timestamp">{`${years} years ago`}</span>
       }
     }
     else if (days > 0) {
       if (days === 1) {
-        return <span className="comment-item-timestamp">1 day ago</span>
+        return <span className="item-timestamp">1 day ago</span>
       } else {
-        return <span className="comment-item-timestamp">{`${days} days ago`}</span>
+        return <span className="item-timestamp">{`${days} days ago`}</span>
       }
     }
     else if (hours > 0) {
       if (hours === 1) {
-        return <span className="comment-item-timestamp">1 hour ago</span>
+        return <span className="item-timestamp">1 hour ago</span>
       } else {
-        return <span className="comment-item-timestamp">{`${hours} hours ago`}</span>
+        return <span className="item-timestamp">{`${hours} hours ago`}</span>
       }
     }
     else if (minutes > 0) {
       if (minutes === 1) {
-        return <span className="comment-item-timestamp">1 minute ago</span>
+        return <span className="item-timestamp">1 minute ago</span>
       } else {
-        return <span className="comment-item-timestamp">{`${minutes} minutes ago`}</span>
+        return <span className="item-timestamp">{`${minutes} minutes ago`}</span>
       }
     }
     else if (seconds > 0) {
       if (seconds === 1) {
-        return <span className="comment-item-timestamp">1 second ago</span>
+        return <span className="item-timestamp">1 second ago</span>
       } else {
-        return <span className="comment-item-timestamp">{`${seconds} seconds ago`}</span>
+        return <span className="item-timestamp">{`${seconds} seconds ago`}</span>
       }
     } else {
-      return <span className="comment-item-timestamp">Right now</span>
+      return <span className="item-timestamp">Right now</span>
     }
   }
     
     else {
-      return <span className="comment-item-timestamp">Right now</span>
+      return <span className="item-timestamp">Right now</span>
     }
   }
 

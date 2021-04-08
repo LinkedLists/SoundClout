@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import History from '../history/history'
 import UserShowIndexItem from './user_show_index_item'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -74,7 +73,12 @@ class UserShow extends React.Component {
         <UserShowIndexItem 
           key={i}
           track={track} 
-          user={this.props.user}/>
+          user={this.props.user}
+          currentTrack={this.props.currentTrack}
+          deleteTrack={this.props.deleteTrack}
+          removeComments={this.props.removeComments}
+          sessionId={this.props.sessionId}
+          currentUser={this.props.currentUser}/>
       )
     })
 
