@@ -35,6 +35,7 @@ class TrackShow extends React.Component {
   }
 
   componentDidUpdate() {
+    window.scrollTo(0, 0)
     const background = document.getElementsByClassName("track-show-header-container")[0];
     if (background && background.style.background === "") this.cuteColors(background)
   }

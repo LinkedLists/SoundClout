@@ -28,7 +28,7 @@ class TrackForm extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.switchModalState = this.switchModalState.bind(this);
-
+    this.setHistory = this.setHistory.bind(this);
   }
   
   componentDidMount() {
@@ -95,6 +95,7 @@ class TrackForm extends React.Component {
       }, 600)
     } else {
       setTimeout(() => {
+        this.setHistory()
         this.props.closeForm()
       }, 600)
     }
@@ -153,6 +154,11 @@ class TrackForm extends React.Component {
         track.append("track[title]", this.state.title)
         track.append("track[description]", this.state.description ? this.state.description : '')
         track.append("track[genre]", this.state.genre)
+
+        let titlesToUpdate = document.getElementsByClassName(this.props.track.id)
+        for (let i = 0; i < titlesToUpdate.length; i++) {
+          titlesToUpdate[i].innerHTML = this.state.title
+        }
       }
       else if (this.props.formType === "Upload") {
         track.append("track[title]", this.state.title)
@@ -160,6 +166,7 @@ class TrackForm extends React.Component {
         track.append("track[description]", this.state.description)
         track.append("track[genre]", this.state.genre)
         track.append("track[audio_file]", this.state.audio_file)
+
       }
   
       if (this.state.photo_file) {
@@ -176,6 +183,16 @@ class TrackForm extends React.Component {
         this.props.trackAction(track, this.handleCloseForm(e))
       }
     }
+  }
+
+  setHistory() {
+    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+    setTimeout(() => {
+      let history = JSON.parse(window.localStorage.getItem("history"))
+      if (history.length !== this.props.trackHistory.length) {
+        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+      }
+    }, 70)
   }
   
   render() {

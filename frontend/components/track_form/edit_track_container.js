@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
   return {
     uploader: state.session.id,
     errors: state.errors.trackErrors,
-    formType: "Save Changes"
+    formType: "Save Changes",
+    trackHistory: state.ui.history
   }
 }
 

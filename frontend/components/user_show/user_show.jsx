@@ -25,6 +25,7 @@ class UserShow extends React.Component {
   }
 
   componentDidUpdate() {
+    window.scrollTo(0, 0)
     const background = document.getElementsByClassName("user-show-header-container")[0];
     if (background) this.cuteColors(background)
     setTimeout(() => {
