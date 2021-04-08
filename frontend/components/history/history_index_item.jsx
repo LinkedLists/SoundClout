@@ -18,6 +18,7 @@ class HistoryIndexItem extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log("an update")
   }
 
   componentWillUnmount() {

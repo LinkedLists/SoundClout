@@ -5,6 +5,7 @@ export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const REMOVE_TRACK = "REMOVE_TRACK";
 export const RECEIVE_TRACK_ERRORS = "RECEIVE_TRACK_ERRORS";
 export const CLEAR_TRACK_ERRORS = "CLEAR_TRACK_ERRORS";
+export const UPDATE_TRACK = "UPDATE_TRACK";
 
 const receiveAllTracks = (tracks) => {
   return({
@@ -24,6 +25,13 @@ const removeTrack = (trackId) => {
   return({
     type: REMOVE_TRACK,
     trackId
+  })
+}
+
+const editTrack = (track) => {
+  return({
+    type: UPDATE_TRACK,
+    track
   })
 }
 
@@ -56,7 +64,7 @@ export const createTrack = (track) => (dispatch) => (
 
 export const updateTrack = (track) => (dispatch) => (
   TrackApiUtil.updateTrack(track).then(
-    track => dispatch(receiveTrack(track)),
+    track => dispatch(editTrack(track)),
     error => dispatch(receiveTrackErrors(error.responseJSON))
   )
 )

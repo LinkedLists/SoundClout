@@ -35,17 +35,28 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-
     // const user = new FormData();
     // user.append("user[username]", this.state.username)
     // user.append("user[password]", this.state.password)
     // if (this.state.profile_img) user.append("user[profile_img]", this.state.profile_img)
-
     e.preventDefault();
-    this.demoAttempt ? 
-      this.props.login(this.state).then(this.props.closeModal) : 
-      this.props.action(this.state).then(this.props.closeModal)
-      // this.props.action(user).then(this.props.closeModal())
+    let modalBackground = document.getElementsByClassName("modal-background-close")[0]
+    let modalChild = document.getElementsByClassName("modal-child-close")[0]
+    this.handleModalClose(modalBackground, modalChild)
+    setTimeout(() => {
+      modalChild.style.display = "none"
+      modalBackground.style.display = "none"
+      this.demoAttempt ? 
+        this.props.login(this.state).then(this.props.closeModal) : 
+        this.props.action(this.state).then(this.props.closeModal)
+    }, 570)
+  }
+
+  handleModalClose(modalBackground, modalChild) {
+    modalBackground.classList.remove("modal-background-close")
+    modalBackground.classList.add("modal-background-open")
+    modalChild.classList.remove("modal-child-close")
+    modalChild.classList.add("modal-child-open")
   }
 
   handleChange(field) {
@@ -82,56 +93,46 @@ class SessionForm extends React.Component {
         errors[error.split(" ")[0]] = error
     })
     return (
-      //<div className="modal-child" onClick={e => e.stopPropagation()}>
-
-        //If-else does not work inside .jsx. .jsx is syntactic sugar for function calls
-        //and object construction. A work around is to use a ternary operation.
-
-
-        <form className="modal-form" onSubmit={this.handleSubmit} >
-          <button type='button' 
-            className="demo-user-login-button" 
-            onClick={this.handleEnter} 
-            onKeyPress={this.handleEnter}>Try as a demo user!</button>
-          <br />
-          <div className="auth-separator">
-            or
-          </div>
-          <br />
-
-          <div>
-            {/* an x closing button is redundant */}
-            <div onClick={this.props.closeModal} className="close-x">X</div>
-            <input type='text' 
-              className={Object.keys(errors).length ? "input-error" : "no-error"} 
-              onChange={this.handleChange('username')} 
-              placeholder="Your username" 
-              value={this.state.username} />
-            {errors['Username'] ? <div className="credential-errors-ul">{errors['Username']}</div> : null}
-          </div>
-
-          <div>
-            <input type='password' 
-              className={Object.keys(errors).length ? "input-error" : "no-error"} 
-              onChange={this.handleChange('password')} 
-              placeholder="Your password" 
-              value={this.state.password} />
-            {errors['Password'] ? <div className="credential-errors-ul">{errors['Password']}</div> : null}
-            {errors['Invalid'] ? <div className="credential-errors-ul">{errors['Invalid']}</div> : null}
-          </div>
-          {/* users can create a profile w/picture if needed later */}
-          {/* <input type="file"  onChange={this.handlePhotoFile}/> */}
-
-          <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
-          <span className="session-form-footer">
-            {
-              this.props.formType === "Login" ? 
-                <p>Don't already have an account? {this.props.otherForm} instead</p>:
-                <p>Already have an account? {this.props.otherForm} instead</p>
-            }
-          </span>
-        </form>
-      //</div>
+      <form className="modal-form" onSubmit={this.handleSubmit} >
+        <button type='button' 
+          className="demo-user-login-button" 
+          onClick={this.handleEnter} 
+          onKeyPress={this.handleEnter}>Try as a demo user!</button>
+        <br />
+        <div className="auth-separator">
+          or
+        </div>
+        <br />
+        <div>
+          {/* an x closing button is redundant */}
+          <div onClick={this.props.closeModal} className="close-x">X</div>
+          <input type='text' 
+            className={Object.keys(errors).length ? "input-error" : "no-error"} 
+            onChange={this.handleChange('username')} 
+            placeholder="Your username" 
+            value={this.state.username} />
+          {errors['Username'] ? <div className="credential-errors-ul">{errors['Username']}</div> : null}
+        </div>
+        <div>
+          <input type='password' 
+            className={Object.keys(errors).length ? "input-error" : "no-error"} 
+            onChange={this.handleChange('password')} 
+            placeholder="Your password" 
+            value={this.state.password} />
+          {errors['Password'] ? <div className="credential-errors-ul">{errors['Password']}</div> : null}
+          {errors['Invalid'] ? <div className="credential-errors-ul">{errors['Invalid']}</div> : null}
+        </div>
+        {/* users can create a profile w/picture if needed later */}
+        {/* <input type="file"  onChange={this.handlePhotoFile}/> */}
+        <button className="modal-form-submit-button" type='submit'>{this.props.formType}</button>
+        <span className="session-form-footer">
+          {
+            this.props.formType === "Login" ? 
+              <p>Don't already have an account? {this.props.otherForm} instead</p>:
+              <p>Already have an account? {this.props.otherForm} instead</p>
+          }
+        </span>
+      </form>
     )
   }
 }

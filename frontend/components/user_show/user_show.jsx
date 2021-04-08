@@ -28,6 +28,7 @@ class UserShow extends React.Component {
     const background = document.getElementsByClassName("user-show-header-container")[0];
     if (background) this.cuteColors(background)
     this.checkCurrentUser()
+    console.log("show page updated")
   }
 
   checkCurrentUser() {
@@ -72,7 +73,8 @@ class UserShow extends React.Component {
       return (
         <UserShowIndexItem 
           key={i}
-          track={track} 
+          // track={track} 
+          track = {Object.values(this.props.tracks)[i]}
           user={this.props.user}
           currentTrack={this.props.currentTrack}
           deleteTrack={this.props.deleteTrack}

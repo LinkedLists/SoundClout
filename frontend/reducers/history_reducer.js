@@ -1,7 +1,7 @@
 import { RECEIVE_NEW_TRACK } from '../actions/playbar_actions'
 import { RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_COMMENTS } from '../actions/comment_actions'
 import { RECEIVE_HISTORY, CLEAR_HISTORY } from '../actions/history_actions'
-import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from "../actions/track_actions";
+import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK, UPDATE_TRACK } from "../actions/track_actions";
 
 const HistoryReducer = (state = [], action) => {
   let newState = state.slice()
@@ -59,6 +59,14 @@ const HistoryReducer = (state = [], action) => {
         newState.splice(indexArr.pop(), 1)
       }
       return newState
+    case UPDATE_TRACK:
+      newState = state.map( track => {
+        if (action.track.id === track.id) {
+          track = Object.assign(track, action.track)
+        }
+        return track
+      })
+
     default:
       return state
   }

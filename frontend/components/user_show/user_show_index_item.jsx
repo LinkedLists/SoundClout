@@ -18,6 +18,10 @@ class UserShowIndexItem extends React.Component {
     this.closeForm = this.closeForm.bind(this)
   }
 
+  componentDidUpdate() {
+    console.log("item updated")
+  }
+
   deleteTrack(e) {
     e.preventDefault();
     if (this.props.track.id === this.props.currentTrack.id) {
