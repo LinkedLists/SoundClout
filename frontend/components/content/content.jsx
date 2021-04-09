@@ -10,7 +10,6 @@ class Content extends React.Component {
       // if a user is on the main page then quickly leaves before the page fully loads
       // there could be an issue where there is an attempt to update the state of
       // an unmounted component.
-
       // loading: true
     }
     this.setHistory = this.setHistory.bind(this)
@@ -67,8 +66,6 @@ class Content extends React.Component {
   render() {
     const trackItems = this.props.tracks.slice().reverse().map( track => {
       return (
-        // for now just return an image, later uploader id will be needed
-        // so that a user can edit and delete their own tracks
         <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
       )
     })
@@ -81,7 +78,6 @@ class Content extends React.Component {
             <div className="playlist-wrapper">
               <div className="playlist-header">Charts: New and hot</div>
               {
-                // this.state.loading ?
                 this.loading ?
                   <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> :
                   <ul className="content-list-ul">
@@ -90,7 +86,6 @@ class Content extends React.Component {
               }
             </div>
           </div>
-          {/* <History /> */}
         </div>
       </div>
     )

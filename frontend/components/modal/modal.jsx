@@ -33,10 +33,6 @@ class Modal extends React.Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.handleCloseModal()
-  // }
-
   handleCloseModal() {
     this.switchModalState()
     setTimeout(() => {
@@ -79,7 +75,6 @@ class Modal extends React.Component {
       this.component = null;
       return null
     }
-    // if (this.props.currentUserId) this.handleCloseModal()
     this.selectComponent();
     return(
       <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown}>

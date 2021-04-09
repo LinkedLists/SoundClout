@@ -81,7 +81,6 @@ class SessionForm extends React.Component {
   }
 
   // This prevents auto login of the demo user on the enter key
-  // Note that the getElementsByClassName method returns an array-like object
   handleEnter(e) {
     if (e.key == "Enter") {
       e.preventDefault();
@@ -108,7 +107,6 @@ class SessionForm extends React.Component {
         </div>
         <br />
         <div>
-          {/* an x closing button is redundant */}
           <div onClick={this.props.closeModal} className="close-x">X</div>
           <input type='text' 
             className={Object.keys(errors).length ? "input-error" : "no-error"} 

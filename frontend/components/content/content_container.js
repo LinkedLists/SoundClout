@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import Content from './content'
 import { fetchTracks } from '../../actions/track_actions'
@@ -16,7 +15,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // lets just grab all tracks for now
     fetchTracks: () => dispatch(fetchTracks()),
     refreshTrack: (track) => dispatch(refreshTrack(track)),
     // receiveNewTrack: (track) => dispatch(receiveNewTrack(track)),

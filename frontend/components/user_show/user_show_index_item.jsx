@@ -10,17 +10,10 @@ class UserShowIndexItem extends React.Component {
 
     this.state = {
       showForm: false,
-      // colored: false,
     }
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showForm = this.showForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
-  }
-
-  componentDidUpdate() {
-  }
-
-  componentDidMount() {
   }
 
   deleteTrack(e) {

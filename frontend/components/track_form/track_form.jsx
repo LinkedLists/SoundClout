@@ -66,7 +66,6 @@ class TrackForm extends React.Component {
     if (e.target.className === "modal-background-close" ||
       e.target.className === "cancel-submit" ||
       e.target.className === "edit-form-container-close") {
-        // this.handleCloseForm(e);
         this.switchModalState()
         setTimeout(() => {
           this.props.closeForm()
@@ -101,19 +100,6 @@ class TrackForm extends React.Component {
       }, 600)
     }
   }
-
-  // you do not want to be setting the state when the component
-  // is trying to unmount
-  // resetState() {
-  //   this.setState({
-  //     title: this.props.track.title,
-  //     description: this.props.track.description,
-  //     genre: this.props.track.genre,
-  //     photo_file: this.props.track.photo_file,
-  //     photo_preview: this.props.track.photo_preview,
-  //     errors: {},
-  //   })
-  // }
 
   handleValidations() {
     let title = this.state.title.length

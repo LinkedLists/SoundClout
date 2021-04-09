@@ -8,24 +8,8 @@ class CommentShow extends React.Component {
 
   }
 
-  // for the future - add opacity transition only when creating a new comment
   componentDidUpdate() {
     this.props.setHistory()
-    // let recentComment = document.getElementsByClassName("comment-items")
-
-    // for (let comment of recentComment) {
-    //   if (this.props.currentUserId) {
-    //     comment.style.background = "#f2f2f2"
-    //   } 
-    // }
-    // recentComment.forEach( comment => {
-    //   if (this.props.currentUserId) {
-    //     comment.style.background = "#f2f2f2"
-    //   } 
-    // })
-    // console.log(Object.values(this.props.track.comments).length)
-    // recentComment = recentComment[recentComment.length - 1]
-    // recentComment.classList.add("new")
   }
 
   render() {

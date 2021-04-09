@@ -5,7 +5,6 @@ import { openModal } from '../../actions/modal_actions';
 import { login, logout } from '../../actions/session_actions'
 import { pauseTrack, clearPlaybarState } from '../../actions/playbar_actions'
 import { fetchUser } from '../../actions/user_actions'
-// importing this to test it out in order to resolve issues with the playbar
 import { fetchTracks } from '../../actions/track_actions'
 
 const mapStateToProps = (state) => {
@@ -23,8 +22,6 @@ const mapDispatchToProps = (dispatch) => {
     pauseTrack: () => dispatch(pauseTrack()),
     clearPlaybarState: () => dispatch(clearPlaybarState()),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
-    // possibly for the splash page
-    // fetchTracks: () => dispatch(fetchTracks())
   }
 }
 

@@ -52,10 +52,6 @@ class Playbar extends React.Component {
     clearInterval(this.timeIncrementerInstance)
   }
 
-  componentDidUpdate() {
-    // console.log("i")
-  }
-
   handleChange(e) {
     let audio = this.props.audio
     this.setState( {percentPlayed: e.target.value} )
@@ -85,9 +81,7 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     let progressBar = document.getElementsByClassName('progress-bar')[0];
     let progressBar2 = document.getElementsByClassName('progress-bar2')[0];
-    // console.log("in time")
     this.timeIncrementerInstance = setInterval(() => {
-      // console.log("f")
       let percentPlayed = 100 * (audio.currentTime / audio.duration)
       progressBar.style.width = `${percentPlayed}%`;
       if (progressBar2) {
@@ -103,10 +97,7 @@ class Playbar extends React.Component {
   }
 
   setDuration() {
-    // console.log("meta loaded")
     let audio = this.props.audio
-    // bandaid fix. Some reason when page intially loads there is 
-    // an error where the state does not exist yet
     if (audio) {
       audio ? audio.volume = this.state.volume : null
       if (!this.timeIncrementerInstance && !audio.paused) {
@@ -119,8 +110,6 @@ class Playbar extends React.Component {
       })
   
       // EVENT LISTENERS ARE ALL UNIQUE!!!
-      // I need to make sure that event listeners will
-      // only ever be called once
       if (!this.state.mounted) {
         this.addBarListener()
         this.setState( {mounted: true} )
@@ -164,10 +153,8 @@ class Playbar extends React.Component {
 
     // NOTE: looping is continous play and does not end or pause a track
     audio.addEventListener("ended", () => {
-      // console.log("track ended")
       clearInterval(this.timeIncrementerInstance)
       this.props.pauseTrack()
-      
       playbtn ? playbtn.classList.remove("playing") : null
       this.clearState()
 
@@ -189,8 +176,6 @@ class Playbar extends React.Component {
     })
 
     audio.addEventListener("play", () => {
-      // console.log("track is played")
-      // playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
       if (this.timeIncrementerInstance) {
         clearInterval(this.timeIncrementerInstance)
         this.timeIncrementer()
@@ -207,9 +192,6 @@ class Playbar extends React.Component {
     })
 
     audio.addEventListener("pause", () => {
-      // console.log("track is paused")
-      // playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-
       clearInterval(this.timeIncrementerInstance)
       playbtn ? playbtn.classList.remove("playing") : null
 
@@ -239,7 +221,6 @@ class Playbar extends React.Component {
 
     this.props.audio.play()
     this.intervalUp = setInterval(() => {
-      // console.log("up")
       if (this.props.audio.volume <= (this.state.volume - this.state.volume/60 )) {
         if (this.state.volume/60 === 0 ) {
           this.props.audio.volume = this.state.volume
@@ -256,7 +237,6 @@ class Playbar extends React.Component {
   bringDownVolume(playbtn) {
     playbtn ? playbtn.classList.remove("playing") : null
     this.intervalDown = setInterval(() => {
-      // console.log("down")
       if (this.props.audio.volume >= this.state.volume/60 ) {
         if (this.state.volume/60 === 0 ) {
           this.props.audio.pause()
@@ -278,12 +258,10 @@ class Playbar extends React.Component {
       this.bringDownVolume(playbtn);
       clearInterval(this.intervalUp)
       clearInterval(this.timeIncrementerInstance)
-
       audio.removeAttribute("autoPlay")
       this.props.pauseTrack();
     } else {
       this.bringBackVolume(playbtn)
-
       clearInterval(this.intervalDown)
       this.props.playTrack();
       audio.setAttribute("autoPlay", true)
@@ -427,7 +405,6 @@ class Playbar extends React.Component {
                     className="slider-background" 
                     min={0} max={1} step="0.01" 
                     onChange={this.handleVolume} 
-                    // value={ audio ? this.state.volume : 0.6}
                     defaultValue={0.6}
                     />
                 </div>

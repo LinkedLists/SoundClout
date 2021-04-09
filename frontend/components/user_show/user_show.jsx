@@ -18,7 +18,6 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
-    // this.props.fetchTracks();
   }
   
   componentWillUnmount() {
@@ -54,8 +53,6 @@ class UserShow extends React.Component {
   }
 
   cuteColors(background) {
-    // console.log(this.colored)
-    // A user's show page can get updated
     if (!this.colored) {
       this.colored = true;
       const r1 = this.getRandomInt(160, 200)
@@ -75,7 +72,6 @@ class UserShow extends React.Component {
   }
 
   render() {
-    // let tracks = Object.values(this.props.tracks)
     let ownedTracks
     if (this.props.user) {
       if ("tracks" in this.props.user) {
@@ -84,7 +80,6 @@ class UserShow extends React.Component {
             <UserShowIndexItem 
               key={i}
               track={track} 
-              // track = {Object.values(this.props.tracks)[i]}
               user={this.props.user}
               currentTrack={this.props.currentTrack}
               deleteTrack={this.props.deleteTrack}
@@ -105,7 +100,6 @@ class UserShow extends React.Component {
             this.props.user ? 
             <img src={this.props.user.profileUrl} className="user-show-uploader-img"/> :
             setTimeout(() => {
-              console.log("user showpage img was not fetched")
               return <img src={this.props.user.profileUrl} className="user-show-uploader-img"/>
             }, 20)
           }

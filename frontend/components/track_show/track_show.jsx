@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import EditTrackContainer from '../track_form/edit_track_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import CommentShow from '../comment_show/comment_show_container';
@@ -11,8 +11,6 @@ class TrackShow extends React.Component {
     super(props);
     this.state = {
       showForm: false,
-      // colored: false,
-      // volume: this.props.audio ? this.props.audio.volume : 0.6
     }
     this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
@@ -182,7 +180,6 @@ class TrackShow extends React.Component {
       }, 10)
     }
     else if (audio.paused) {
-      // console.log(audio.paused)
       this.props.playTrack()
       audio.setAttribute("autoPlay", true)
       this.bringBackVolume();
@@ -255,7 +252,6 @@ class TrackShow extends React.Component {
     let audio = this.props.audio
     return (
       <div className="content-container">
-        {/* <EditTrackContainer track={this.props.track} closeForm={this.closeForm} /> */}
         {
           this.state.showForm ? <EditTrackContainer track={this.props.track} closeForm={this.closeForm} /> : null
         }
@@ -266,7 +262,6 @@ class TrackShow extends React.Component {
               <a 
                 onClick={this.sendTrack} 
                 className={
-                  // !audio.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
                   !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
                   "track-show-list-item-playbtn playing" :
                   "track-show-list-item-playbtn"
@@ -287,7 +282,6 @@ class TrackShow extends React.Component {
                   # {this.props.track.genre}
                 </div>
               </span>
-            {/* <div className="track-show-description">Description: {this.props.track.description}</div> */}
           </div>
         </div>
         <div className="track-show-body-container">
@@ -326,7 +320,6 @@ class TrackShow extends React.Component {
                           this.props.track ? 
                             <img src={this.props.track.profileUrl} className="track-show-uploader-img"/> :
                             setTimeout(() => {
-                              console.log("profile image could not be fetched atm")
                               return <img src={this.props.track.profileUrl} className="track-show-uploader-img"/>
                             }, 20)
                         }

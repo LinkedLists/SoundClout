@@ -137,7 +137,6 @@ class CommentIndexItem extends React.Component {
               <FontAwesomeIcon 
                 icon="trash" 
                 size="lg"
-                // color="#999" 
                 className="trash"
                 id={this.props.comment.id} 
                 onClick={this.handleDelete}

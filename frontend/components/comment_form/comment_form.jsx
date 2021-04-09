@@ -18,9 +18,6 @@ class CommentForm extends React.Component {
     this.setHistory = this.setHistory.bind(this)
   }
 
-  componentDidMount() {
-  }
-
   componentDidUpdate() {
     // fail safe when track id does not properly update when
     // navigating through user show pages
@@ -28,19 +25,6 @@ class CommentForm extends React.Component {
       this.setState({track_id: this.props.track.id})
     }
   }
-
-  componentWillUnmount() {
-  }
-
-  // componentDidMount() {
-  // componentDidUpdate() {
-  //   let profileContainer = document.getElementsByClassName("comment-form-profile-img")[0];
-  //   // profileContainer.style.backgroundImage = `url(${this.props.currentUser.user.profileUrl})`
-  //   profileContainer.style.backgroundImage = 
-  //     this.props.currentUser.profileUrl ? 
-  //       `url${this.props.currentUser.profileUrl}` :
-  //       `url(https://fsp-seed.s3-us-west-1.amazonaws.com/rick.jpg)`
-  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -95,7 +79,6 @@ class CommentForm extends React.Component {
     return (
       <div className="comment-form-container">
         <div className="comment-form-wrapper">
-          {/* <span className="comment-form-profile-img" /> */}
           <img src={profileUrl} className="comment-form-profile-img" />
           <form onSubmit={this.handleSubmit}>
             <div className="comment-form-input-wrapper">

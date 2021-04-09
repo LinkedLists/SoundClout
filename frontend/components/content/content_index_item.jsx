@@ -9,9 +9,6 @@ class ContentIndexItem extends React.Component {
   render() {
     return (
       <li className="content-list-item">
-        {/* for now the entire item is nested in to the track show */}
-        {/* eventually allow for a link to see the user would be a good idea */}
-        {/* <Link className="content-list-item-link" to={`/tracks/${this.props.track.id}`}> */}
         <div className="content-list-item-wrapper">
 
           <Link to={`/tracks/${this.props.track.id}`} className="content-list-item-img-link">

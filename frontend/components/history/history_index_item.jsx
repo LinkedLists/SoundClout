@@ -34,8 +34,6 @@ class HistoryIndexItem extends React.Component {
     // Cannot use cuteColors() from props as it carries a redundant flag from the parent state
     // Should not be using setState as it can cause a state update on an umounted component
     // which will render an error. Instead use instance variable as a flag
-    // if (!this.flag) {
-      // this.flag = true
     if (background) {
       const r1 = this.getRandomInt(160, 200)
       const g1 = this.getRandomInt(160, 200)
@@ -61,7 +59,6 @@ class HistoryIndexItem extends React.Component {
     const background = document.getElementsByClassName("track-show-header-container")[0];
     if (this.props.fetchTrack && this.props.currentTrack.id !== this.props.track.id) {
       this.props.fetchTrack(this.props.track.id)
-        // .then(() => this.cuteColors(background)) 
       this.cuteColors(background)
     }
   }
@@ -69,7 +66,6 @@ class HistoryIndexItem extends React.Component {
   handleRoute2() {
     if (this.props.track.uploader_id !== this.props.currentUserShowPage) {
       const background = document.getElementsByClassName("user-show-header-container")[0];
-      // this.props.clearUserState();
       this.props.fetchUser(this.props.track.uploader_id)
       this.cuteColors(background)
     }

@@ -5,8 +5,6 @@ import { receiveHistory } from '../../actions/history_actions'
 // import { fetchTrack } from '../../actions/track_actions'
 
 
-// will this slice of state change when you navigate through a show page? --YES
-// playbar will be in the ui so perhaps you can grab info about the track being played
 const mapStateToProps = (state) => {
   return {
     audio: document.getElementById('audio'),
@@ -15,7 +13,6 @@ const mapStateToProps = (state) => {
     currentSessionId: state.session.id,
     currentUser: state.session,
     track: state.entities.tracks
-    // currentUser: state.entities.users[state.session.id],
   }
 }
 
