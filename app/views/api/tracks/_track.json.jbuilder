@@ -1,5 +1,6 @@
 json.extract! track, :id, :title, :uploader_id, :genre, :description, :created_at
 json.username track.uploader.username
+json.numComments track.comments.length
 
 if track.photo_file.attached?
   json.photoUrl url_for(track.photo_file)

@@ -9,23 +9,29 @@ const TracksReducer = (oldState = {}, action) => {
     case RECEIVE_ALL_TRACKS:
       return Object.assign({}, oldState, action.tracks)
     case RECEIVE_TRACK:
-      return {[action.track.id]: action.track}
+      newState[action.track.id] = action.track
+      return newState
     case UPDATE_TRACK:
-      return {[action.track.id]: action.track}
+      newState[action.track.id] = action.track
+      return newState
+      // return {[action.track.id]: action.track}
     case REMOVE_TRACK:
       delete newState[action.trackId]
       return newState
 
     case RECEIVE_COMMENT:
-      // SUPER UGLY!!!!
-      let key = Object.keys(newState)[0]
-      const values = Object.values(newState)[0]
-      if (!values.comments) {
-        values.comments = {}
-      }
-      const newValues = values.comments[action.comment.comment.id] = action.comment.comment
-      newState[key].comments[newValues.id] = newValues
+      // // SUPER UGLY!!!!
+      // let key = Object.keys(newState)[0]
+      // const values = Object.values(newState)[0]
+      // if (!values.comments) {
+      //   values.comments = {}
+      // }
+      // const newValues = values.comments[action.comment.comment.id] = action.comment.comment
+      // newState[key].comments[newValues.id] = newValues
+      // return newState
+      newState[action.comment.comment.track_id].numComments += 1
       return newState
+
 
     case REMOVE_COMMENT:
       key = Object.keys(newState)[0]
