@@ -10,10 +10,10 @@ export const createTrack = track => {
   )
 }
 
-export const deleteTrack = (trackId) => {
+export const deleteTrack = (track) => {
   return(
     $.ajax({
-      url: `api/tracks/${trackId}`,
+      url: `api/tracks/${track.id}`,
       method: 'DELETE'
     })
   )

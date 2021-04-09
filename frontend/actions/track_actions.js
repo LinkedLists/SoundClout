@@ -21,12 +21,19 @@ const receiveTrack = (track) => {
   })
 }
 
-const removeTrack = (trackId) => {
+const removeTrack = (track) => {
   return({
     type: REMOVE_TRACK,
-    trackId
+    track
   })
 }
+
+// const removeTrack = (trackId) => {
+//   return({
+//     type: REMOVE_TRACK,
+//     trackId
+//   })
+// }
 
 const editTrack = (track) => {
   return({
@@ -72,8 +79,8 @@ export const updateTrack = (track) => (dispatch) => (
   )
 )
 
-export const deleteTrack = (trackId) => (dispatch) => (
-  TrackApiUtil.deleteTrack(trackId).then( () => dispatch(removeTrack(trackId)))
+export const deleteTrack = (track) => (dispatch) => (
+  TrackApiUtil.deleteTrack(track).then( () => dispatch(removeTrack(track)))
 )
   
 // export const updateTrack = (track) => (dispatch) => (

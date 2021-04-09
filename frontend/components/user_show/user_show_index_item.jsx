@@ -20,9 +20,11 @@ class UserShowIndexItem extends React.Component {
     e.preventDefault();
     if (this.props.track.id === this.props.currentTrack.id) {
       this.props.clearPlaybarState()
+      let audio = document.getElementById("audio")
+      audio.pause()
       window.localStorage.setItem("currentTrack", JSON.stringify({}))
     }
-    this.props.deleteTrack(this.props.track.id);
+    this.props.deleteTrack(this.props.track);
     this.props.removeComments();
   }
 
