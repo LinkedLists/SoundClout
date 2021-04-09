@@ -265,6 +265,12 @@ class Playbar extends React.Component {
     }
   }
 
+  getRandInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
   // volume swells to gradually change volume on pause/play
   // so that user does not experience abrupt volume changes
   bringBackVolume(playbtn) {

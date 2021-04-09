@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import PlayButton from '../playbutton/playbutton_container'
 
 class ContentIndexItem extends React.Component {
   constructor(props) {
@@ -11,11 +12,12 @@ class ContentIndexItem extends React.Component {
       <li className="content-list-item">
         <div className="content-list-item-wrapper">
 
-          <Link to={`/tracks/${this.props.track.id}`} className="content-list-item-img-link">
+          <div className="content-list-item-img-link">
             <div className="content-list-item-img-wrapper">
+              <PlayButton track={this.props.track}/>
               <img className="content-list-item-img" src={this.props.track.photoUrl}/>
             </div>
-          </Link>
+          </div>
 
           <div className="content-list-item-description">
             <div className="content-list-item-title">
