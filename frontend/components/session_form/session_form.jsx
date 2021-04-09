@@ -7,12 +7,14 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       password: '',
+      errors: {}
       // profile_img: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this)
     this.demoAttempt = false;
     // this.handlePhotoFile = this.handlePhotoFile.bind(this);
   }
@@ -34,38 +36,40 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
 
+  // The following is a list of renderable errors:
+  // "Invalid credentials. Please try again!"
+  // "Username has already been taken"
+  // "Password is too short (minimum is 6 characters)"
+
   handleSubmit(e) {
     // const user = new FormData();
     // user.append("user[username]", this.state.username)
     // user.append("user[password]", this.state.password)
     // if (this.state.profile_img) user.append("user[profile_img]", this.state.profile_img)
     e.preventDefault();
+    this.demoAttempt ? 
+      this.handleModalClose() : 
+      this.props.action(this.state)
+  }
+  
+  handleModalClose() {
     let modalBackground = document.getElementsByClassName("modal-background-close")[0]
     let modalChild = document.getElementsByClassName("modal-child-close")[0]
-    this.handleModalClose(modalBackground, modalChild)
-    setTimeout(() => {
-      modalChild.style.display = "none"
-      modalBackground.style.display = "none"
-      this.demoAttempt ? 
-        this.props.login(this.state).then(this.props.closeModal) : 
-        this.props.action(this.state).then(this.props.closeModal)
-    }, 570)
-  }
-
-  handleModalClose(modalBackground, modalChild) {
     modalBackground.classList.remove("modal-background-close")
     modalBackground.classList.add("modal-background-open")
     modalChild.classList.remove("modal-child-close")
     modalChild.classList.add("modal-child-open")
+    setTimeout(() => {
+      modalChild.style.display = "none"
+      modalBackground.style.display = "none"
+      this.props.login(this.state)
+      this.props.closeModal()
+    }, 590)
   }
 
   handleChange(field) {
     return e => this.setState( {[field]: e.target.value} )
   }
-  // The following is a list of renderable errors:
-  // "Invalid credentials. Please try again!"
-  // "Username has already been taken"
-  // "Password is too short (minimum is 6 characters)"
 
   demoLogin() {
     const demoAccount = {
