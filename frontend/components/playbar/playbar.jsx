@@ -44,19 +44,6 @@ class Playbar extends React.Component {
       if (track && Object.keys(track).length > 0 && !this.props.currentTrack.id) {
         this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
-      let history 
-      if (window.localStorage.getItem("history")) {
-        // console.log("playbar mount")
-        try {
-          history = JSON.parse(window.localStorage.getItem("history"))
-          this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")));
-        } catch {
-          console.log("in history catch")
-          window.localStorage.setItem("history", [])
-        }
-        if (history) {
-        }
-      }
     }
   }
 
@@ -199,7 +186,6 @@ class Playbar extends React.Component {
       //   url: `api/tracks/${this.props.currentTrack.id + 1}`,
       //   method: 'GET',
       // }).then(this.props.sendTrack(next))
-
     })
 
     audio.addEventListener("play", () => {

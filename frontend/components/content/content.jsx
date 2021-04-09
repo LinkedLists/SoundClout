@@ -40,13 +40,28 @@ class Content extends React.Component {
   }
 
   setHistory() {
-    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-    setTimeout(() => {
-      let history = JSON.parse(window.localStorage.getItem("history"))
-      if (history.length !== this.props.trackHistory.length) {
-        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+    if (this.props.trackHistory.length !== 0) {
+      window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+      setTimeout(() => {
+        let history = JSON.parse(window.localStorage.getItem("history"))
+        if (history.length !== this.props.trackHistory.length) {
+          window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+        }
+      }, 70)
+    } else {
+      let history 
+      if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
+        history = JSON.parse(window.localStorage.getItem("history"))
+        this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
+        // fail safe
+        setTimeout(() => {
+          if (window.localStorage.getItem("history").length !== 0) {
+            history = JSON.parse(window.localStorage.getItem("history"))
+            this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
+          }
+        }, 40)
       }
-    }, 70)
+    }
   }
 
   render() {

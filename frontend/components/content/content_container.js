@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Content from './content'
 import { fetchTracks } from '../../actions/track_actions'
 import { playTrack, pauseTrack, receiveNewTrack, refreshTrack, clearPlaybarState } from '../../actions/playbar_actions'
+import { receiveHistory } from '../../actions/history_actions'
+
 
 const mapStateToProps = (state) => {
   return {
@@ -18,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchTracks: () => dispatch(fetchTracks()),
     refreshTrack: (track) => dispatch(refreshTrack(track)),
     // receiveNewTrack: (track) => dispatch(receiveNewTrack(track)),
+    receiveHistory: (history) => dispatch(receiveHistory(history)),
   }
 }
 
