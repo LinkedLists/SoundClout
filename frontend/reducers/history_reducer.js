@@ -11,34 +11,34 @@ const HistoryReducer = (state = [], action) => {
       // wtf am i doing
       // let actionCopy = Object.assign({}, action)
       // actionCopy.track.numComments = action.track.numComments
-      newState.push(action.track)
+      newState.push(action.track.id)
       return newState
     case RECEIVE_HISTORY:
       return action.history
     case CLEAR_HISTORY:
       return []
-    case RECEIVE_COMMENT:
-      // SUPER UGLY!!!!
-      let trackId = action.comment.comment.track_id
-      newState = state.map( track => {
-        // some reason action.comment.comment.track_id is a string
-        if (trackId === track.id.toString()) {
-          track.numComments = action.comment.comment.numComments
-        }
-        return track
-      })
-      return newState 
+    // case RECEIVE_COMMENT:
+    //   // SUPER UGLY!!!!
+    //   let trackId = action.comment.comment.track_id
+    //   newState = state.map( track => {
+    //     // some reason action.comment.comment.track_id is a string
+    //     if (trackId === track.id.toString()) {
+    //       track.numComments = action.comment.comment.numComments
+    //     }
+    //     return track
+    //   })
+    //   return newState 
 
-    case REMOVE_COMMENT:
-      // this is really bad
-      trackId = action.trackCommentPair[0].id
-      newState = state.map( track => {
-        if (trackId === track.id) {
-          track.numComments = action.trackCommentPair[2]
-        }
-        return track
-      })
-      return newState 
+    // case REMOVE_COMMENT:
+    //   // this is really bad
+    //   trackId = action.trackCommentPair[0].id
+    //   newState = state.map( track => {
+    //     if (trackId === track.id) {
+    //       track.numComments = action.trackCommentPair[2]
+    //     }
+    //     return track
+    //   })
+    //   return newState 
     case REMOVE_TRACK:
       let indexArr = [];
       for(let i = 0; i < newState.length; i++) {
@@ -50,13 +50,13 @@ const HistoryReducer = (state = [], action) => {
         newState.splice(indexArr.pop(), 1)
       }
       return newState
-    case UPDATE_TRACK:
-      newState = state.map( track => {
-        if (action.track.id === track.id) {
-          track = Object.assign(track, action.track)
-        }
-        return track
-      })
+    // case UPDATE_TRACK:
+    //   newState = state.map( track => {
+    //     if (action.track.id === track.id) {
+    //       track = Object.assign(track, action.track)
+    //     }
+    //     return track
+    //   })
 
     default:
       return state

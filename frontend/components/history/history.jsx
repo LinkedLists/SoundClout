@@ -29,8 +29,8 @@ class History extends React.Component {
     let history = this.props.history.slice(-7)
     let tracks
 
-    tracks = history.map((track, i) => {
-      // let track = this.props.tracks[trackId]
+    tracks = history.map((trackId, i) => {
+      let track = this.props.tracks[trackId]
       return <HistoryIndexItem 
           key={i} 
           track={track} 

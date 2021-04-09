@@ -49,6 +49,9 @@ export const clearTrackErrors = () => ({
 
 export const fetchTracks = () => (dispatch) => (
   TrackApiUtil.fetchTracks().then((tracks) => dispatch(receiveAllTracks(tracks)))
+    .then(res => {
+      window.localStorage.setItem('tracks', JSON.stringify(res.tracks))
+  })
 )
 
 export const fetchTrack = (trackId) => (dispatch) => (

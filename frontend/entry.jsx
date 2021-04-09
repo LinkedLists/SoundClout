@@ -8,10 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // const store = configureStore();
   let store
 
+  let tracks
+  if (window.localStorage.getItem("tracks")) {
+    tracks = JSON.parse(window.localStorage.getItem("tracks"))
+  }
   let preloadedState = undefined;
   if (window.currentUser) {
     preloadedState = {
-      entities: { users: {[window.currentUser.id]: window.currentUser} },
+      entities: { 
+        users: {[window.currentUser.id]: window.currentUser}, 
+        tracks: tracks
+      },
       session: { id: window.currentUser.id }
     }
     store = configureStore(preloadedState);
