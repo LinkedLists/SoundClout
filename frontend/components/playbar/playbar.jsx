@@ -11,7 +11,8 @@ class Playbar extends React.Component {
       duration: 0,
       percentPlayed: 0,
       volume: 0.6,
-      mounted: false
+      mounted: false,
+      shuffle: false
     }
 
     this.handlePlay = this.handlePlay.bind(this);
@@ -28,6 +29,9 @@ class Playbar extends React.Component {
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
     this.getNextTrackAuto = this.getNextTrackAuto.bind(this)
+    this.getNextTrackManual = this.getNextTrackManual.bind(this)
+    this.getPrevTrackManual = this.getPrevTrackManual.bind(this)
+    this.setShuffle = this.setShuffle.bind(this)
     this.prevVolume;
 
     // Set instance variable that will get assigned to a setInterval ID
@@ -166,6 +170,7 @@ class Playbar extends React.Component {
     // NOTE: looping is continous play and does not end or pause a track
     audio.addEventListener("ended", () => {
       console.log("audio has ended")
+      // loop does not trigger on end event so this is redundant 
       if (!this.props.audio.loop) {
         let numTracks = Object.keys(this.props.track).length
         if (this.props.currentTrack.id + 1 in this.props.track) {
@@ -237,9 +242,26 @@ class Playbar extends React.Component {
   getNextTrackManual() {
     let numTracks = Object.keys(this.props.track).length
     if (this.props.currentTrack.id + 1 in this.props.track) {
-      this.props.sendTrack(this.props.track[this.props.currentTrack.id + 1])
+      let nextTrack = this.props.track[this.props.currentTrack.id + 1]
+      this.props.sendTrack(nextTrack)
+      window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
+    }
+  }
+
+  getPrevTrackManual() {
+    let numTracks = Object.keys(this.props.track).length
+    if (this.props.currentTrack.id - 1 in this.props.track) {
+      let prevTrack = this.props.track[this.props.currentTrack.id - 1]
+      this.props.sendTrack(prevTrack)
+      window.localStorage.setItem('currentTrack', JSON.stringify(prevTrack))
+    }
+  }
+
+  setShuffle() {
+    if (this.state.shuffle) {
+      this.setState( {shuffle: false} )
     } else {
-      // idk what to do if ur at the end
+      this.setState( {shuffle: true} )
     }
   }
 
@@ -428,7 +450,7 @@ class Playbar extends React.Component {
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
-              <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
+              <button onClick={this.getPrevTrackManual}> <FontAwesomeIcon icon="step-backward"/> </button>
               <button 
                 onClick={this.handlePlay}>
                   {
@@ -437,7 +459,7 @@ class Playbar extends React.Component {
                     <FontAwesomeIcon icon="play"/> : 
                     <FontAwesomeIcon icon="pause"/>}
               </button>
-              <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-forward" color="red"/> </button>
+              <button onClick={this.getNextTrackManual}> <FontAwesomeIcon icon="step-forward" /> </button>
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button>
               <button 
                 onClick={this.handleRepeat}>
