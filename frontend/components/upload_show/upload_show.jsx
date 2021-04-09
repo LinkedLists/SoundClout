@@ -26,6 +26,11 @@ class UploadShow extends React.Component {
     this.closeForm = this.closeForm.bind(this)
   }
 
+  componentDidMount() {
+    let userLink = document.getElementById("nav-currentUser");
+    if (userLink) userLink.classList.remove("disable")
+  }
+
   componentWillUnmount() {
     this.props.clearTrackErrors();
   }

@@ -20,9 +20,6 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.userId)
   }
   
-  componentWillUnmount() {
-  }
-  
   componentDidUpdate() {
     // window.scrollTo(0, 0)
     const background = document.getElementsByClassName("user-show-header-container")[0];
