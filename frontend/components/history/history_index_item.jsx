@@ -73,6 +73,7 @@ class HistoryIndexItem extends React.Component {
 
   render() {
     return (
+      this.props.track ? 
       <li className="history-track-item">
         <div className="history-track-item-link">
           <div className="history-track-icon-container">
@@ -139,7 +140,7 @@ class HistoryIndexItem extends React.Component {
             </div>  
           </div>
         </div>
-      </li>
+      </li> : null
     )
   }
 }

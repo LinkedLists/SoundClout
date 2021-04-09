@@ -40,16 +40,8 @@ const HistoryReducer = (state = [], action) => {
     //   })
     //   return newState 
     case REMOVE_TRACK:
-      let indexArr = [];
-      for(let i = 0; i < newState.length; i++) {
-        if (newState[i].id === action.trackId) {
-          indexArr.push(i);
-        }
-      }
-      while(indexArr.length) {
-        newState.splice(indexArr.pop(), 1)
-      }
-      return newState
+      let newArr = newState.filter(trackId => trackId !== action.trackId)
+      return newArr
     // case UPDATE_TRACK:
     //   newState = state.map( track => {
     //     if (action.track.id === track.id) {

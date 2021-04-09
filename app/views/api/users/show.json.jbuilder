@@ -10,6 +10,8 @@ json.tracks do
   @user.tracks.each do |track|
     json.set! track.id do
       json.extract! track, :id, :title, :genre, :created_at
+      json.username track.uploader.username
+      json.numComments track.comments.length
       if track.photo_file.attached?
         json.photoUrl url_for(track.photo_file)
       else
