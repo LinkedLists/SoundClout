@@ -101,7 +101,7 @@ class CommentIndexItem extends React.Component {
   }
 
   handleDelete() {
-    this.props.deleteComment([this.props.currentTrackId, this.props.comment.id])
+    this.props.deleteComment([this.props.currentTrack, this.props.comment.id, this.props.numComments - 1])
   }
 
   render() {

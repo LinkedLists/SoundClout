@@ -14,6 +14,7 @@ class CommentShow extends React.Component {
 
   render() {
     let comments = Object.values(this.props.comments)
+    let numComments = comments.length
     let bodies
     bodies = comments.map( comment => {
       return <CommentIndexItem 
@@ -24,6 +25,8 @@ class CommentShow extends React.Component {
           currentUserId={this.props.currentUserId}
           currentUsername={this.props.currentUsername}
           currentTrackId={this.props.track.id}
+          currentTrack={this.props.track}
+          numComments={numComments}
           />
     })
     return (

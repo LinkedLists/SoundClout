@@ -24,7 +24,7 @@ class UserShow extends React.Component {
   }
   
   componentDidUpdate() {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     const background = document.getElementsByClassName("user-show-header-container")[0];
     if (background) this.cuteColors(background)
     // fail safe incase the background did not update
