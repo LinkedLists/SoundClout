@@ -60,6 +60,9 @@ class TrackForm extends React.Component {
     if (e.key == "Escape") {
       this.handleCloseForm(e)
     }
+    else if (e.key == "Enter") {
+      e.preventDefault();
+    }
   }
 
   handleMouseDown(e) {
@@ -194,8 +197,10 @@ class TrackForm extends React.Component {
               <div className="upload-photo-wrapper">
                 {preview}
                 <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
-                <button 
+                <button
+                  type="button"
                   className="upload-btn" 
+                  // onKeyPress={this.preventKeyPress}
                   onClick={
                     e => {e.preventDefault(); this.grabInputElement("upload-photo")}
                     }>for a photo file lol</button>

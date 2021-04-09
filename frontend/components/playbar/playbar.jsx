@@ -27,7 +27,7 @@ class Playbar extends React.Component {
     this.handleVolume = this.handleVolume.bind(this)
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
-
+    this.getNextTrack = this.getNextTrack.bind(this)
     this.prevVolume;
 
     // Set instance variable that will get assigned to a setInterval ID
@@ -185,6 +185,7 @@ class Playbar extends React.Component {
       //   url: `api/tracks/${this.props.currentTrack.id + 1}`,
       //   method: 'GET',
       // }).then(this.props.sendTrack(next))
+      this.getNextTrack()
     })
 
     audio.addEventListener("play", () => {
@@ -213,6 +214,17 @@ class Playbar extends React.Component {
         playbtn ? playbtn.classList.remove("playing") : null
       }, 20)
     })
+  }
+
+  getNextTrack() {
+    if (!this.props.audio.loop) {
+      let numTracks = Object.keys(this.props.track).length
+      if (this.props.currentTrack.id + 1 in this.props.track) {
+        this.props.sendTrack(this.props.track[this.props.currentTrack.id + 1])
+      } else {
+        // idk what to do if ur at the end
+      }
+    }
   }
 
   // volume swells to gradually change volume on pause/play

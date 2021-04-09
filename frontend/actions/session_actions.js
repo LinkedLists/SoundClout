@@ -24,9 +24,9 @@ export const clearErrors = () => ({
 })
 
 export const login = (user) => (dispatch) => (
-  SessionApiUtil.login(user).then( 
-    user => dispatch(receiveCurrentUser(user)), 
-    error => dispatch(receiveErrors(error.responseJSON)) 
+  SessionApiUtil.login(user).then(
+    user => dispatch(receiveCurrentUser(user)),
+    error => dispatch(receiveErrors(error.responseJSON))
   )
 )
 
