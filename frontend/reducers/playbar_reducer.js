@@ -18,7 +18,7 @@ const PlaybarReducer = (state = defaultState, action) => {
       newState["paused"] = true
       return newState
     case RECEIVE_NEW_TRACK:
-      return Object.assign({}, defaultState, {currentTrack: action.track});
+      return Object.assign({}, state, {currentTrack: action.track});
     case REFRESH_TRACK:
       return Object.assign({}, defaultState, {currentTrack: action.track});
     case CLEAR_PLAYBAR_STATE:

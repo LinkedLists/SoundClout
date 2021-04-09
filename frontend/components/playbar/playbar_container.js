@@ -26,8 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     refreshTrack: (track) => dispatch(refreshTrack(track)),
     clearPlaybarState: () => dispatch(clearPlaybarState()),
     receiveHistory: (history) => dispatch(receiveHistory(history)),
-    sendTrack: (track) => dispatch(receiveNewTrack(track)),
-
+    sendTrack: (track) => dispatch(receiveNewTrack(track))
   }
 }
 

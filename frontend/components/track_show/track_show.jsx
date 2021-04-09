@@ -169,7 +169,7 @@ class TrackShow extends React.Component {
     if (this.props.track.id !== this.props.currentTrack.id) {
       this.props.sendTrack(this.props.track, () => audio.play())
       this.props.playTrack()
-      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
+      // window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
       this.setHistory()

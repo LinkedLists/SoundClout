@@ -27,7 +27,7 @@ class Playbar extends React.Component {
     this.handleVolume = this.handleVolume.bind(this)
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
-    this.getNextTrack = this.getNextTrack.bind(this)
+    this.getNextTrackAuto = this.getNextTrackAuto.bind(this)
     this.prevVolume;
 
     // Set instance variable that will get assigned to a setInterval ID
@@ -165,58 +165,65 @@ class Playbar extends React.Component {
 
     // NOTE: looping is continous play and does not end or pause a track
     audio.addEventListener("ended", () => {
-      clearInterval(this.timeIncrementerInstance)
-      this.props.pauseTrack()
-      playbtn ? playbtn.classList.remove("playing") : null
-      this.clearState()
-
-      // failsafe
-      setTimeout(() => {
-        audio.ended ? () => {
+      console.log("audio has ended")
+      if (!this.props.audio.loop) {
+        let numTracks = Object.keys(this.props.track).length
+        if (this.props.currentTrack.id + 1 in this.props.track) {
+          let nextTrack = this.props.track[this.props.currentTrack.id + 1]
+          this.props.sendTrack(nextTrack)
+          window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
+        } else {
+          // idk what else to do if ur at the end
           clearInterval(this.timeIncrementerInstance)
           this.props.pauseTrack()
           playbtn ? playbtn.classList.remove("playing") : null
           this.clearState()
-        } : null
-      }, 10)
-
-      // state needs to be completely refactored to allow for playlist capabilities
-      // let next = $.ajax({
-      //   url: `api/tracks/${this.props.currentTrack.id + 1}`,
-      //   method: 'GET',
-      // }).then(this.props.sendTrack(next))
-      this.getNextTrack()
+          
+          // failsafe
+          setTimeout(() => {
+            audio.ended ? () => {
+              clearInterval(this.timeIncrementerInstance)
+              this.props.pauseTrack()
+              playbtn ? playbtn.classList.remove("playing") : null
+              this.clearState()
+            } : null
+          }, 10)
+        }
+      }
+      // this.getNextTrackAuto()
     })
 
     audio.addEventListener("play", () => {
-      if (this.timeIncrementerInstance) {
-        clearInterval(this.timeIncrementerInstance)
-        this.timeIncrementer()
-      } else {
-        this.timeIncrementer()
-      }
-      playbtn ? playbtn.classList.add("playing") : null
+      console.log("audio is playing")
+      // if (this.timeIncrementerInstance) {
+      //   clearInterval(this.timeIncrementerInstance)
+      //   this.timeIncrementer()
+      // } else {
+      //   this.timeIncrementer()
+      // }
+      // playbtn ? playbtn.classList.add("playing") : null
       
-      // failsafe
-      setTimeout(() => {
-        playbtn ? playbtn.classList.add("playing") : null
-        audio.paused ? audio.play() : null
-      }, 20)
+      // // failsafe
+      // setTimeout(() => {
+      //   playbtn ? playbtn.classList.add("playing") : null
+      //   audio.paused ? audio.play() : null
+      // }, 20)
     })
 
     audio.addEventListener("pause", () => {
-      clearInterval(this.timeIncrementerInstance)
-      playbtn ? playbtn.classList.remove("playing") : null
+      console.log("audio is paused")
+      // clearInterval(this.timeIncrementerInstance)
+      // playbtn ? playbtn.classList.remove("playing") : null
 
-      // failsafe
-      setTimeout(() => {
-        clearInterval(this.timeIncrementerInstance)
-        playbtn ? playbtn.classList.remove("playing") : null
-      }, 20)
+      // // failsafe
+      // setTimeout(() => {
+      //   clearInterval(this.timeIncrementerInstance)
+      //   playbtn ? playbtn.classList.remove("playing") : null
+      // }, 20)
     })
   }
 
-  getNextTrack() {
+  getNextTrackAuto() {
     if (!this.props.audio.loop) {
       let numTracks = Object.keys(this.props.track).length
       if (this.props.currentTrack.id + 1 in this.props.track) {
@@ -224,6 +231,15 @@ class Playbar extends React.Component {
       } else {
         // idk what to do if ur at the end
       }
+    }
+  }
+
+  getNextTrackManual() {
+    let numTracks = Object.keys(this.props.track).length
+    if (this.props.currentTrack.id + 1 in this.props.track) {
+      this.props.sendTrack(this.props.track[this.props.currentTrack.id + 1])
+    } else {
+      // idk what to do if ur at the end
     }
   }
 
@@ -256,6 +272,23 @@ class Playbar extends React.Component {
         clearInterval(this.intervalUp)
       }
     }, 3)
+
+
+    // from event listener
+    if (this.timeIncrementerInstance) {
+      clearInterval(this.timeIncrementerInstance)
+      this.timeIncrementer()
+    } else {
+      this.timeIncrementer()
+    }
+    playbtn ? playbtn.classList.add("playing") : null
+    
+    // failsafe
+    setTimeout(() => {
+      playbtn ? playbtn.classList.add("playing") : null
+      audio.paused ? audio.play() : null
+    }, 20)
+
   }
 
   bringDownVolume(playbtn) {
@@ -272,6 +305,17 @@ class Playbar extends React.Component {
         clearInterval(this.intervalDown)
       }
     }, 3)
+
+    // from event listener
+    clearInterval(this.timeIncrementerInstance)
+      playbtn ? playbtn.classList.remove("playing") : null
+
+      // failsafe
+      setTimeout(() => {
+        clearInterval(this.timeIncrementerInstance)
+        playbtn ? playbtn.classList.remove("playing") : null
+      }, 20)
+
   }
 
 
@@ -387,7 +431,9 @@ class Playbar extends React.Component {
               <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="step-backward" color="red"/> </button>
               <button 
                 onClick={this.handlePlay}>
-                  {this.props.paused || audio.ended ? 
+                  {
+                  // this.props.paused || audio.ended ? 
+                  this.props.paused ? 
                     <FontAwesomeIcon icon="play"/> : 
                     <FontAwesomeIcon icon="pause"/>}
               </button>
