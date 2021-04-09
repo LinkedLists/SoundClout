@@ -9,7 +9,8 @@ class CommentForm extends React.Component {
       track_id: this.props.track.id,
       uploader_id: this.props.currentUserId,
       body: '',
-      errors: {}
+      errors: {},
+      track: this.props.track
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -28,6 +29,7 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // this.props.track.numComments += 1
     this.props.createComment(this.state).then(() => this.setHistory())
     this.setState( {body: ''} )
   }

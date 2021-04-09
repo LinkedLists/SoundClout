@@ -11,6 +11,8 @@ json.comment do
   else
     json.profileUrl 'https://fsp-seed.s3-us-west-1.amazonaws.com/rick.jpg'
   end
+
+  json.numComments @comment.track.comments.length
 end
 
 # json.uploader do 

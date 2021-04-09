@@ -29,13 +29,15 @@ const TracksReducer = (oldState = {}, action) => {
       // const newValues = values.comments[action.comment.comment.id] = action.comment.comment
       // newState[key].comments[newValues.id] = newValues
       // return newState
-      newState[action.comment.comment.track_id].numComments += 1
+      debugger
+      newState[action.comment.comment.track_id].numComments = action.comment.comment.numComments
       return newState
 
 
     case REMOVE_COMMENT:
-      key = Object.keys(newState)[0]
-      delete newState[key].comments[action.trackCommentPair[1]]
+      // key = Object.keys(newState)[0]
+      // delete newState[key].comments[action.trackCommentPair[1]]
+      // newState[action.trackCommentPair[0]].numComments -= 1
       return newState
 
     case RECEIVE_USER:
