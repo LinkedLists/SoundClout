@@ -30,17 +30,18 @@ class History extends React.Component {
     let tracks
 
     tracks = history.map((track, i) => {
-        return <HistoryIndexItem 
-            key={i} 
-            track={track} 
-            fetchTrack={this.props.fetchTrack}
-            cuteColors={this.props.cuteColors}
-            currentTrack={this.props.currentTrack}
-            comments={this.props.history[i].numComments}
-            fetchUser={this.props.fetchUser}
-            currentUserShowPage={this.props.user}
-            clearUserState={this.props.clearUserState}
-            />
+      // let track = this.props.tracks[trackId]
+      return <HistoryIndexItem 
+          key={i} 
+          track={track} 
+          fetchTrack={this.props.fetchTrack}
+          cuteColors={this.props.cuteColors}
+          currentTrack={this.props.currentTrack}
+          comments={this.props.history[i].numComments}
+          fetchUser={this.props.fetchUser}
+          currentUserShowPage={this.props.user}
+          clearUserState={this.props.clearUserState}
+          />
     })
     return(
       <div className="content-sidebar-right-container">
@@ -67,6 +68,7 @@ const mapStateToProps = (state) => {
   return {
     comments: state.entities.comments,
     history: state.ui.history,
+    tracks: state.entities.tracks
   }
 };
 
