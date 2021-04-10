@@ -74,12 +74,24 @@
 
 .description-wrapper {
   // position: absolute;
+  font-size: 12px;
+}
+
+.current-track-username {
+  color: #999;
+  // font-size: 12px;
+}
+
+.current-track-username:hover {
+  color: #000;
 }
 
 // bandaid fix
 .current-track-title {
   margin-top: 10px;
   width: 300px;
+  color: rgb(49, 49, 49);
+  // font-size: 12px;
   display: block;
   overflow: hidden;
   white-space: nowrap;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 class Playbar extends React.Component {
   constructor(props) {
     super(props);
@@ -527,16 +528,19 @@ class Playbar extends React.Component {
               <div className="current-track">
                 { 
                   Object.keys(this.props.currentTrack).length > 0 ? 
-                  <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> : <></>
+                  <Link to={`/users/${this.props.currentTrack.uploader_id}`}>
+                    <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> 
+                  </Link> : 
+                  <></>
                 }
                 <div className="current-track-description">
                   <div className="description-wrapper" > 
-                    <div>
+                    <Link to={`/users/${this.props.currentTrack.uploader_id}`} className="current-track-username">
                       {this.props.currentTrack.username}
-                    </div>
-                    <div className="current-track-title">
+                    </Link>
+                    <Link to={`/tracks/${this.props.currentTrack.id}`} className="current-track-title">
                       {this.props.currentTrack.title}
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
