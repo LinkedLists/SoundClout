@@ -50,18 +50,18 @@ class Playbar extends React.Component {
         this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
     }
-    let history 
-    if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
-      history = JSON.parse(window.localStorage.getItem("history"))
-      this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
-      // fail safe
-      setTimeout(() => {
-        if (window.localStorage.getItem("history").length !== 0) {
-          history = JSON.parse(window.localStorage.getItem("history"))
-          this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
-        }
-      }, 40)
-    }
+    // let history 
+    // if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
+    //   history = JSON.parse(window.localStorage.getItem("history"))
+    //   this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
+    //   // fail safe
+    //   setTimeout(() => {
+    //     if (window.localStorage.getItem("history").length !== 0) {
+    //       history = JSON.parse(window.localStorage.getItem("history"))
+    //       this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
+    //     }
+    //   }, 40)
+    // }
   }
 
   componentWillUnmount() {

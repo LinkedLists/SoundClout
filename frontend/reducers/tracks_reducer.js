@@ -16,7 +16,7 @@ const TracksReducer = (oldState = {}, action) => {
       return newState
       // return {[action.track.id]: action.track}
     case REMOVE_TRACK:
-      delete newState[action.trackId]
+      delete newState[action.track.id]
       return newState
 
     case RECEIVE_COMMENT:

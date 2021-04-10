@@ -81,7 +81,17 @@ export const updateTrack = (track) => (dispatch) => (
 
 export const deleteTrack = (track) => (dispatch) => (
   TrackApiUtil.deleteTrack(track).then( () => dispatch(removeTrack(track)))
+    .then(res => {handleLocalStorage(res.track)})
 )
+
+const handleLocalStorage = (track) => {
+  let tracks
+  if (window.localStorage.getItem("tracks")) {
+    tracks = JSON.parse(window.localStorage.getItem("tracks"))
+    delete tracks[track.id]
+    window.localStorage.setItem('tracks', JSON.stringify(tracks))
+  }
+}
   
 // export const updateTrack = (track) => (dispatch) => (
 //   TrackApiUtil.updateTrack(track).then((track) => dispatch(receiveTrack(track)))

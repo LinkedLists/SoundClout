@@ -16,8 +16,9 @@ const userReducer = (oldState = {}, action) => {
     case CLEAR_USER_STATE:
       return {}
     case REMOVE_TRACK:
-      debugger
-      delete newState[action.track.uploader_id].tracks[action.track.id]
+      if ("tracks" in newState[action.track.uploader_id]) {
+        delete newState[action.track.uploader_id].tracks[action.track.id]
+      }
       return newState
     case UPDATE_TRACK:
       newState[action.track.uploader_id].tracks[action.track.id] = action.track

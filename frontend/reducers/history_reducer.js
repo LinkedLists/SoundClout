@@ -13,7 +13,7 @@ const HistoryReducer = (state = [], action) => {
     case CLEAR_HISTORY:
       return []
     case REMOVE_TRACK:
-      let newArr = newState.filter(trackId => trackId !== action.trackId)
+      let newArr = newState.filter(trackId => trackId !== action.track.id)
       return newArr
 
     default:
