@@ -240,10 +240,10 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px 10px;
-  min-width: 50px;
+  min-width: 125px;
 }
 
 .nav-currentUser-img {
@@ -255,7 +255,10 @@
 }
 
 .nav-currentUser-name {
+  display: block;
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #logout {
