@@ -480,7 +480,7 @@ class Playbar extends React.Component {
                     <FontAwesomeIcon icon="pause"/>}
               </button>
               <button onClick={this.getNextTrackManual}> <FontAwesomeIcon icon="step-forward" /> </button>
-              <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button>
+              {/* <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button> */}
               <button 
                 onClick={this.handleRepeat}>
                   {this.state.repeat ? 

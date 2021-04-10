@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 // import CommentFormContainer from './comment_form_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PlayButton from '../playbutton/playbutton_container'
 class UserShowIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -110,15 +111,21 @@ class UserShowIndexItem extends React.Component {
           </Link>      
           <div className="user-list-item-content-container">
             <div className="user-list-item-detail">
+                <div className="user-list-item-btn-container">
+                  <PlayButton track={this.props.track} />
+                </div>
               <div className="user-list-item-detail-info">
-                <span className="user-list-item-username">
-                  {this.props.user.username}  
-                </span>
-                <span>
-                <Link to={`/tracks/${this.props.track.id}`} className="user-list-item-title">
-                  {this.props.track.title}
-                </Link>  
-                </span>            
+
+                {/* <div> */}
+                  <span className="user-list-item-username">
+                    {this.props.user.username}  
+                  </span>
+                  <span>
+                  <Link to={`/tracks/${this.props.track.id}`} className="user-list-item-title">
+                    {this.props.track.title}
+                  </Link>  
+                  </span>            
+                {/* </div> */}
               </div>
               <div>{this.getDateMeta(this.props.track.created_at)}</div>
             </div>
