@@ -236,6 +236,27 @@
   pointer-events: none;
 }
 
+#nav-currentUser {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.nav-currentUser-img {
+  float: left;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.nav-currentUser-name {
+  white-space: nowrap;
+}
+
 #logout {
   margin-right: 15px;
 }

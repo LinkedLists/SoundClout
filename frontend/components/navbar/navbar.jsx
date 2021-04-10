@@ -83,13 +83,17 @@ class NavBar extends React.Component {
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
 
               <li>
-                  <Link 
-                    to={`/users/${this.props.sessionId}`} 
-                    className='nav-links-li noselect' 
-                    id="nav-currentUser" 
-                    onClick={this.handleRoute}>
-                    {this.props.user.username}
-                  </Link>
+                <Link 
+                  to={`/users/${this.props.sessionId}`} 
+                  className='nav-links-li noselect' 
+                  id="nav-currentUser" 
+                  onClick={this.handleRoute}>
+                  <img src={ this.props.user.profileUrl ? 
+                    this.props.user.profileUrl : 
+                    'https://fsp-seed.s3-us-west-1.amazonaws.com/rick.jpg'} 
+                    className="nav-currentUser-img"/>
+                  <span className="nav-currentUser-name">{this.props.user.username}</span>
+                </Link>
               </li>
               
               <li>
