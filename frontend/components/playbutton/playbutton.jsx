@@ -110,7 +110,7 @@ class PlayButton extends React.Component {
   render() {
     return (
       <div>
-        <a 
+        <div 
           onClick={this.sendTrack} 
           className={
             !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
@@ -118,7 +118,6 @@ class PlayButton extends React.Component {
             "variable-playbtn"
           }
         />
-
       </div>
     )
   }

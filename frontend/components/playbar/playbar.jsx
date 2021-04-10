@@ -32,6 +32,7 @@ class Playbar extends React.Component {
     this.getNextTrackManual = this.getNextTrackManual.bind(this)
     this.getPrevTrackManual = this.getPrevTrackManual.bind(this)
     this.setShuffle = this.setShuffle.bind(this)
+    this.setHistory = this.setHistory.bind(this)
     this.prevVolume;
 
     // Set instance variable that will get assigned to a setInterval ID
@@ -177,6 +178,7 @@ class Playbar extends React.Component {
           let nextTrack = this.props.track[this.props.currentTrack.id + 1]
           this.props.sendTrack(nextTrack)
           window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
+          this.setHistory()
         } else {
           // idk what else to do if ur at the end
           clearInterval(this.timeIncrementerInstance)
@@ -228,6 +230,16 @@ class Playbar extends React.Component {
     })
   }
 
+  setHistory() {
+    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+    setTimeout(() => {
+      let history = JSON.parse(window.localStorage.getItem("history"))
+      if (history.length !== this.props.trackHistory.length) {
+        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
+      }
+    }, 70)
+  }
+
   getNextTrackAuto() {
     if (!this.props.audio.loop) {
       let numTracks = Object.keys(this.props.track).length
@@ -245,6 +257,7 @@ class Playbar extends React.Component {
       let nextTrack = this.props.track[this.props.currentTrack.id + 1]
       this.props.sendTrack(nextTrack)
       window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
+      this.setHistory()
     }
   }
 
@@ -254,6 +267,7 @@ class Playbar extends React.Component {
       let prevTrack = this.props.track[this.props.currentTrack.id - 1]
       this.props.sendTrack(prevTrack)
       window.localStorage.setItem('currentTrack', JSON.stringify(prevTrack))
+      this.setHistory()
     }
   }
 
