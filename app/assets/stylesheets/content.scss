@@ -79,6 +79,7 @@
 }
 
 .content-list-item-playbtn-container {
+  display: none;
   position: absolute;
   z-index: 1;
   left: 0;
@@ -92,12 +93,35 @@
 
 .content-list-item-img-wrapper {
   position: relative;
+  cursor: pointer;
 }
 
 .content-list-item-img {
   height: 172px;
   width: 172px;
 }
+
+.content-list-item-img-footer {
+  // display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient( 0deg ,rgba(0,0,0,.4),transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.content-list-item-img-wrapper:hover {
+  .content-list-item-playbtn-container {
+    display: block
+  }
+  .content-list-item-img-footer {
+    opacity: 1;
+  }
+}
+
 
 .content-list-item-description div{
   display: block;
