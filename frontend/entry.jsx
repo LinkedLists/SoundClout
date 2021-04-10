@@ -16,12 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
     history = JSON.parse(window.localStorage.getItem("history"))
   }
-  
+  let currentUser
+  if (window.localStorage.getItem('currentUser')) {
+    currentUser = JSON.parse(window.localStorage.getItem("currentUser"))
+  }
   let preloadedState = undefined;
   if (window.currentUser) {
     preloadedState = {
       entities: { 
-        users: {[window.currentUser.id]: window.currentUser}, 
+        users: {[window.currentUser.id]: currentUser}, 
         tracks: tracks
       },
       session: { id: window.currentUser.id },

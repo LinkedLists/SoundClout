@@ -27,16 +27,23 @@ export const login = (user) => (dispatch) => (
   SessionApiUtil.login(user).then(
     user => dispatch(receiveCurrentUser(user)),
     error => dispatch(receiveErrors(error.responseJSON))
-  )
+  ).then(res => {
+    window.localStorage.setItem('currentUser', JSON.stringify(res.user))
+  })
 )
 
 export const logout = () => (dispatch) => (
   SessionApiUtil.logout().then( () => dispatch(logoutCurrentUser()) )
+    .then(res => {
+      window.localStorage.setItem('currentUser', JSON.stringify({}))
+    })
 )
 
 export const signup = (user) => (dispatch) => (
   SessionApiUtil.signup(user).then(
     user => dispatch(receiveCurrentUser(user)),
     error => dispatch(receiveErrors(error.responseJSON)) 
-  )
+  ).then(res => {
+    window.localStorage.setItem('currentUser', JSON.stringify(res.user))
+  })
 )
