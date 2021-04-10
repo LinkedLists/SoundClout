@@ -78,6 +78,18 @@
   width: 172px;
 }
 
+.content-list-item-playbtn-container {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  width: 60px;
+  margin: auto;
+}
+
 .content-list-item-img-wrapper {
   position: relative;
 }

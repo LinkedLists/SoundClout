@@ -5,6 +5,7 @@ import CommentFormContainer from '../comment_form/comment_form_container'
 import CommentShow from '../comment_show/comment_show_container';
 import History from '../history/history'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PlayButton from '../playbutton/playbutton_container'
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -12,16 +13,16 @@ class TrackShow extends React.Component {
     this.state = {
       showForm: false,
     }
-    this.sendTrack = this.sendTrack.bind(this)
+    // this.sendTrack = this.sendTrack.bind(this)
     this.deleteTrack = this.deleteTrack.bind(this)
     this.showForm = this.showForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
-    this.bringBackVolume = this.bringBackVolume.bind(this)
-    this.bringDownVolume = this.bringDownVolume.bind(this)
+    // this.bringBackVolume = this.bringBackVolume.bind(this)
+    // this.bringDownVolume = this.bringDownVolume.bind(this)
     this.setHistory = this.setHistory.bind(this)
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
-    this.intervalUp;
-    this.intervalDown;
+    // this.intervalUp;
+    // this.intervalDown;
     this.loading = true;
   }
 
@@ -162,90 +163,90 @@ class TrackShow extends React.Component {
     }, 70)
   }
 
-  sendTrack() {
-    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-    let audio = this.props.audio
+  // sendTrack() {
+  //   let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+  //   let audio = this.props.audio
 
-    if (this.props.track.id !== this.props.currentTrack.id) {
-      this.props.sendTrack(this.props.track, () => audio.play())
-      this.props.playTrack()
-      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
-      playbtn.classList.add("playing");
-      audio.setAttribute("autoPlay", true)
-      this.setHistory()
+  //   if (this.props.track.id !== this.props.currentTrack.id) {
+  //     this.props.sendTrack(this.props.track, () => audio.play())
+  //     this.props.playTrack()
+  //     window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
+  //     playbtn.classList.add("playing");
+  //     audio.setAttribute("autoPlay", true)
+  //     this.setHistory()
 
-      // failsafe
-      setTimeout(() => {
-        audio.paused? audio.play() : null
-      }, 10)
-    }
-    else if (audio.paused) {
-      this.props.playTrack()
-      audio.setAttribute("autoPlay", true)
-      this.bringBackVolume();
-      clearInterval(this.intervalDown)
-      playbtn.classList.add("playing");
+  //     // failsafe
+  //     setTimeout(() => {
+  //       audio.paused? audio.play() : null
+  //     }, 10)
+  //   }
+  //   else if (audio.paused) {
+  //     this.props.playTrack()
+  //     audio.setAttribute("autoPlay", true)
+  //     this.bringBackVolume();
+  //     clearInterval(this.intervalDown)
+  //     playbtn.classList.add("playing");
 
-      // failsafe
-      setTimeout(() => {
-        playbtn.classList.add("playing");
-        audio.paused ? audio.play() : null
-      }, 10)
-    } 
-    else if (!audio.paused) {
-      this.props.pauseTrack()
-      this.bringDownVolume()
-      clearInterval(this.intervalUp)
-      audio.removeAttribute("autoPlay")
-      playbtn.classList.remove("playing");
+  //     // failsafe
+  //     setTimeout(() => {
+  //       playbtn.classList.add("playing");
+  //       audio.paused ? audio.play() : null
+  //     }, 10)
+  //   } 
+  //   else if (!audio.paused) {
+  //     this.props.pauseTrack()
+  //     this.bringDownVolume()
+  //     clearInterval(this.intervalUp)
+  //     audio.removeAttribute("autoPlay")
+  //     playbtn.classList.remove("playing");
 
-      // failsafe
-      setTimeout(() => {
-        playbtn.classList.remove("playing");
-        !audio.paused ? audio.pause() : null
-      }, 10)
-    }
-  }
+  //     // failsafe
+  //     setTimeout(() => {
+  //       playbtn.classList.remove("playing");
+  //       !audio.paused ? audio.pause() : null
+  //     }, 10)
+  //   }
+  // }
 
-  // volume swells to gradually change volume on pause/play
-  // so that user does not experience abrupt volume changes
-  bringBackVolume() {
-    const volume = document.getElementsByClassName("slider-background")[0].value
-    if (volume) {
-      this.props.audio.volume === 0 ? null : this.props.audio.volume = 0.01;
-      this.props.audio.play()
-      this.intervalUp = setInterval(() => {
-        if (this.props.audio.volume <= (volume - volume/60 )) {
-          if (volume/60 === 0 ) {
-            this.props.audio.volume = volume
-            clearInterval(this.intervalUp)
-          }
-          this.props.audio.volume += volume/60 
-        } else {
-          this.props.audio.volume = volume
-          clearInterval(this.intervalUp)
-        }
-      }, 3)
-    }
-  }
+  // // volume swells to gradually change volume on pause/play
+  // // so that user does not experience abrupt volume changes
+  // bringBackVolume() {
+  //   const volume = document.getElementsByClassName("slider-background")[0].value
+  //   if (volume) {
+  //     this.props.audio.volume === 0 ? null : this.props.audio.volume = 0.01;
+  //     this.props.audio.play()
+  //     this.intervalUp = setInterval(() => {
+  //       if (this.props.audio.volume <= (volume - volume/60 )) {
+  //         if (volume/60 === 0 ) {
+  //           this.props.audio.volume = volume
+  //           clearInterval(this.intervalUp)
+  //         }
+  //         this.props.audio.volume += volume/60 
+  //       } else {
+  //         this.props.audio.volume = volume
+  //         clearInterval(this.intervalUp)
+  //       }
+  //     }, 3)
+  //   }
+  // }
 
-  bringDownVolume() {
-    const volume = document.getElementsByClassName("slider-background")[0].value
-    if (volume) {
-      this.intervalDown = setInterval(() => {
-        if (this.props.audio.volume >= volume/60 ) {
-          if (volume/60 === 0 ) {
-            this.props.audio.pause()
-            clearInterval(this.intervalDown)
-          }
-          this.props.audio.volume -= volume/60 
-        } else {
-          this.props.audio.pause()
-          clearInterval(this.intervalDown)
-        }
-      }, 3)
-    }
-  }
+  // bringDownVolume() {
+  //   const volume = document.getElementsByClassName("slider-background")[0].value
+  //   if (volume) {
+  //     this.intervalDown = setInterval(() => {
+  //       if (this.props.audio.volume >= volume/60 ) {
+  //         if (volume/60 === 0 ) {
+  //           this.props.audio.pause()
+  //           clearInterval(this.intervalDown)
+  //         }
+  //         this.props.audio.volume -= volume/60 
+  //       } else {
+  //         this.props.audio.pause()
+  //         clearInterval(this.intervalDown)
+  //       }
+  //     }, 3)
+  //   }
+  // }
 
   render() {
     if (this.props.track === undefined) return null;
@@ -259,14 +260,17 @@ class TrackShow extends React.Component {
           <img className="track-show-list-item-img" src={this.props.track.photoUrl}/>
           <div className="track-show-list-item-description">
             <div className="track-show-play-content">
-              <a 
-                onClick={this.sendTrack} 
-                className={
-                  !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
-                  "track-show-list-item-playbtn playing" :
-                  "track-show-list-item-playbtn"
-                }
-                />
+              <div className="track-show-playbtn-container">
+                <PlayButton track={this.props.track} />
+                {/* <a 
+                  onClick={this.sendTrack} 
+                  className={
+                    !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
+                    "track-show-list-item-playbtn playing" :
+                    "track-show-list-item-playbtn"
+                  }
+                  /> */}
+              </div>
               <div className="track-show-list-item-info">
                 <div className="track-show-list-item-uploader">
                   <Link to={`/users/${this.props.track.uploader_id}`} className="track-show-list-item-uploader-link">

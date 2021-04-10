@@ -23,14 +23,14 @@ class PlayButton extends React.Component {
   }
 
   sendTrack() {
-    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+    // let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
     let audio = this.props.audio
 
     if (this.props.track.id !== this.props.currentTrack.id) {
       this.props.sendTrack(this.props.track, () => audio.play())
       this.props.playTrack()
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
-      playbtn.classList.add("playing");
+      // playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
       this.setHistory()
 
@@ -44,11 +44,11 @@ class PlayButton extends React.Component {
       audio.setAttribute("autoPlay", true)
       this.bringBackVolume();
       clearInterval(this.intervalDown)
-      playbtn.classList.add("playing");
+      // playbtn.classList.add("playing");
 
       // failsafe
       setTimeout(() => {
-        playbtn.classList.add("playing");
+        // playbtn.classList.add("playing");
         audio.paused ? audio.play() : null
       }, 10)
     } 
@@ -57,11 +57,11 @@ class PlayButton extends React.Component {
       this.bringDownVolume()
       clearInterval(this.intervalUp)
       audio.removeAttribute("autoPlay")
-      playbtn.classList.remove("playing");
+      // playbtn.classList.remove("playing");
 
       // failsafe
       setTimeout(() => {
-        playbtn.classList.remove("playing");
+        // playbtn.classList.remove("playing");
         !audio.paused ? audio.pause() : null
       }, 10)
     }

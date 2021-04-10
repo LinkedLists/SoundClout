@@ -14,7 +14,9 @@ class ContentIndexItem extends React.Component {
 
           <div className="content-list-item-img-link">
             <div className="content-list-item-img-wrapper">
-              <PlayButton track={this.props.track}/>
+              <div className="content-list-item-playbtn-container">
+                <PlayButton track={this.props.track}/>
+              </div>
               <img className="content-list-item-img" src={this.props.track.photoUrl}/>
             </div>
           </div>
