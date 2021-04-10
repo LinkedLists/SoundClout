@@ -17,6 +17,33 @@ class UserShowIndexItem extends React.Component {
     this.closeForm = this.closeForm.bind(this)
   }
 
+  componentDidMount() {
+    let background = document.getElementsByClassName("user-list-item-container")[this.props.itemKey]
+    if (background) this.cuteColors(background)
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  cuteColors(background) {
+    const r1 = this.getRandomInt(230, 250)
+    const g1 = this.getRandomInt(240, 250)
+    const b1 = this.getRandomInt(230, 250)
+    const r2 = r1 + this.getRandomInt(3, 6)
+    const g2 = g1 + this.getRandomInt(3, 6)
+    const b2 = b1 - this.getRandomInt(3, 6)
+    const r3 = r2 + this.getRandomInt(3, 6)
+    const g3 = g2 + this.getRandomInt(3, 6)
+    const b3 = b2 - this.getRandomInt(3, 6)
+    background.style.background = `linear-gradient(to left, 
+        rgb(${r1}, ${g1}, ${b1}), 
+        rgb(${r2}, ${g2}, ${b2}), 
+        rgb(${r3}, ${g3}, ${b3}))`
+  }
+
   deleteTrack(e) {
     e.preventDefault();
     if (this.props.track.id === this.props.currentTrack.id) {
@@ -99,9 +126,11 @@ class UserShowIndexItem extends React.Component {
     }
   }
 
+
+
   render() {
     return (
-      <li className="user-list-item">
+      <li className={`user-list-item ${this.props.itemKey}`}>
         {
           this.state.showForm ? <EditTrackContainer track={this.props.track} closeForm={this.closeForm} /> : null
         }
@@ -127,7 +156,9 @@ class UserShowIndexItem extends React.Component {
                   </span>            
                 {/* </div> */}
               </div>
-              <div>{this.getDateMeta(this.props.track.created_at)}</div>
+              <div className="user-list-item-timestamp-wrapper">
+                {this.getDateMeta(this.props.track.created_at)}
+                </div>
             </div>
             <CommentFormContainer track={this.props.track} />
           </div>

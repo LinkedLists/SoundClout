@@ -76,6 +76,7 @@ class UserShow extends React.Component {
           return (
             <UserShowIndexItem 
               key={i}
+              itemKey={i}
               track={track} 
               user={this.props.user}
               currentTrack={this.props.currentTrack}

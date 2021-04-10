@@ -96,6 +96,7 @@
 
 .track-uploader-item-img-container {
   margin-right: 15px;
+  display: flex;
 }
 
 .track-uploader-item-img {
@@ -156,6 +157,10 @@
 
 .user-list-item-detail-info span{
   width: 100%;
+}
+
+.user-list-item-timestamp-wrapper {
+  margin-right: 10px;
 }
 
 .user-show-content-footer {
