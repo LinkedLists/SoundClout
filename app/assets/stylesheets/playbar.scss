@@ -43,6 +43,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .current-track-info-container {
@@ -73,7 +74,6 @@
 }
 
 .description-wrapper {
-  // position: absolute;
   font-size: 12px;
 }
 
@@ -325,3 +325,20 @@
 //   -webkit-appearance: slider-vertical;
 //   position: absolute;
 // }
+
+
+#playlist-icon {
+  margin-right: 12px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.playlist {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  height: 0.5em !important;
+  width: 0.9em !important;
+  background: #f2f2f2;
+  z-index: 10;
+}
