@@ -14,6 +14,7 @@ class Content extends React.Component {
     }
     this.setHistory = this.setHistory.bind(this)
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
+    this.getTrackItems = this.getTrackItems.bind(this)
     this.loading = true
   }
 
@@ -67,12 +68,23 @@ class Content extends React.Component {
     }
   }
 
-  render() {
+  getTrackItems(genre) {
     const trackItems = this.props.tracks.slice().reverse().map( track => {
-      return (
+      
+      if (track.genre === genre) return (
         <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
       )
     })
+
+    return trackItems
+  }
+
+  render() {
+    // const trackItems = this.props.tracks.slice().reverse().map( track => {
+    //   return (
+    //     <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
+    //   )
+    // })
     return (
       <div className="content-container">
         <History />
@@ -86,13 +98,28 @@ class Content extends React.Component {
                   <div>
                     <div className="content-playlist-header">Charts: New and hot</div>
                       <ul className="content-list-ul">
-                        {trackItems}
+                        {this.getTrackItems("Top 100")}
                       </ul>
                     <div className="content-playlist-header">Polyphia: Hottest guitar essentials</div>
+                      <ul className="content-list-ul">
+                        {this.getTrackItems("Instrumental")}
+                      </ul>
                     <div className="content-playlist-header">Kpop: Latest and hottest kpop</div>
+                      <ul className="content-list-ul">
+                        {this.getTrackItems("Kpop")}
+                      </ul>
                     <div className="content-playlist-header">Lofi: Music for relaxation and focus</div>
+                      <ul className="content-list-ul">
+                        {this.getTrackItems("Lofi")}
+                      </ul>
                     <div className="content-playlist-header">Vibes: Fresh pressed vibes</div>
+                      <ul className="content-list-ul">
+                        {this.getTrackItems("House")}
+                      </ul>
                     <div className="content-playlist-header">Dance: Stay at home dance party</div>
+                      <ul className="content-list-ul">
+                        {this.getTrackItems("Dance")}
+                      </ul>
                   </div>
             }
             </div>

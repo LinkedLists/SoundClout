@@ -30,7 +30,6 @@ class Playlist extends React.Component {
   }
 
   handleMouseDown(e) {
-    console.log(e.target.className)
     if (e.target.className === "playlist-header noselect" ||
       e.target.className === "playlist-close-x") {
         this.handleClose()
