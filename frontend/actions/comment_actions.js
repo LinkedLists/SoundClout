@@ -47,7 +47,17 @@ export const createComment = (comment) => (dispatch) => (
 
 export const deleteComment = (trackCommentPair) => (dispatch) => (
   CommentApiUtil.deleteComment(trackCommentPair[1]).then( () => dispatch(removeComment(trackCommentPair)))
+    .then(res => {handleLocalStorage(res.trackCommentPair[0])})
 )
+
+const handleLocalStorage = (track) => {
+  let tracks
+  if (window.localStorage.getItem("tracks")) {
+    tracks = JSON.parse(window.localStorage.getItem("tracks"))
+    tracks[track.id] = track
+    window.localStorage.setItem('tracks', JSON.stringify(tracks))
+  }
+}
 
 // export const deleteComment = (commentId) => (dispatch) => (
 //   CommentApiUtil.deleteComment(commentId).then( () => dispatch(removeComment(commentId)))

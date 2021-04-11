@@ -202,32 +202,11 @@ class Playbar extends React.Component {
     })
 
     audio.addEventListener("play", () => {
-      console.log("audio is playing")
-      // if (this.timeIncrementerInstance) {
-      //   clearInterval(this.timeIncrementerInstance)
-      //   this.timeIncrementer()
-      // } else {
-      //   this.timeIncrementer()
-      // }
-      // playbtn ? playbtn.classList.add("playing") : null
-      
-      // // failsafe
-      // setTimeout(() => {
-      //   playbtn ? playbtn.classList.add("playing") : null
-      //   audio.paused ? audio.play() : null
-      // }, 20)
+      this.props.playTrack()
     })
 
     audio.addEventListener("pause", () => {
-      console.log("audio is paused")
-      // clearInterval(this.timeIncrementerInstance)
-      // playbtn ? playbtn.classList.remove("playing") : null
-
-      // // failsafe
-      // setTimeout(() => {
-      //   clearInterval(this.timeIncrementerInstance)
-      //   playbtn ? playbtn.classList.remove("playing") : null
-      // }, 20)
+      this.props.pauseTrack()
     })
   }
 

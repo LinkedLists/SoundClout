@@ -35,13 +35,13 @@ class CommentForm extends React.Component {
   }
 
   setHistory() {
-    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-    setTimeout(() => {
-      let history = JSON.parse(window.localStorage.getItem("history"))
-      if (history.length !== this.props.trackHistory.length) {
-        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-      }
-    }, 70)
+    window.localStorage.setItem("tracks", JSON.stringify(this.props.tracks))
+    // setTimeout(() => {
+    //   let tracks = JSON.parse(window.localStorage.getItem("tracks"))
+    //   if (history.length !== this.props.tracks.length) {
+    //     window.localStorage.setItem("tracks", JSON.stringify(this.props.tracks))
+    //   }
+    // }, 70)
   }
 
   handleChange(field) {

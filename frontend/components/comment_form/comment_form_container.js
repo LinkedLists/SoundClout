@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     // currentUser: state.entities.users[state.session.id],
     currentUser: state.session,
     currentUserId: state.session.id,
+    tracks: state.entities.tracks,
     track: ownProps.track,
     trackHistory: state.ui.history,
   }
