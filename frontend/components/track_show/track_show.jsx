@@ -112,7 +112,9 @@ class TrackShow extends React.Component {
       this.props.clearPlaybarState()
       window.localStorage.setItem("currentTrack", JSON.stringify({}))
     }
-    this.props.deleteTrack(this.props.track).then(() => this.setHistory());
+    this.props.deleteTrack(this.props.track)  
+    // you get redirected and set the history anyways
+      // .then(() => this.setHistory());
     this.props.removeComments();
     this.props.history.push(`/`)
   }

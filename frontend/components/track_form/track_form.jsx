@@ -98,7 +98,8 @@ class TrackForm extends React.Component {
     } else {
       setTimeout(() => {
         // setHistory here so that when a track is updated it is reflected in localstorage
-        this.setHistory()
+        // UPDATE: this is no longer needed as history is an array of track ids
+        // this.setHistory()
         this.props.closeForm()
       }, 600)
     }

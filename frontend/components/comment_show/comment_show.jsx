@@ -9,7 +9,7 @@ class CommentShow extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.setHistory()
+    // this.props.setHistory()
   }
 
   render() {

@@ -91,6 +91,14 @@ const handleLocalStorage = (track) => {
     delete tracks[track.id]
     window.localStorage.setItem('tracks', JSON.stringify(tracks))
   }
+  if (window.localStorage.getItem("history")) {
+    let oldHistory = JSON.parse(window.localStorage.getItem("history"))
+    let newHistory
+    if (oldHistory !== 0) {
+      newHistory = oldHistory.filter(trackId => trackId !== track.id)
+      window.localStorage.setItem("history", JSON.stringify(newHistory))
+    }
+  }
 }
   
 // export const updateTrack = (track) => (dispatch) => (

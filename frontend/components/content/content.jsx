@@ -38,6 +38,9 @@ class Content extends React.Component {
     }
   }
 
+  // Setting history here because a user can delete a track and would 
+  // get redirected to the index page, so history needs to be set or else
+  // a ghost track would appear on history in refresh
   setHistory() {
     if (this.props.trackHistory.length !== 0) {
       window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
