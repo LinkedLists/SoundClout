@@ -35,6 +35,9 @@
 }
 
 @keyframes background-out {
+  0%{
+    background: hsla(0,0%,94.9%,.8);
+  }
   40%{
     background: hsla(0,0%,94.9%,.8);
   }

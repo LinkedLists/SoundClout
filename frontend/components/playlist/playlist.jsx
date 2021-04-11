@@ -11,15 +11,25 @@ class Playlist extends React.Component {
 
     this.handleOpen = this.handleOpen.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
-
+    this.handleClose = this.handleClose.bind(this)
   }
 
   handleKeyPress(e) {
     if (e.key == "Escape") {
-      this.setState({open: "close"})
+      this.handleClose()
     }
   }
-  
+
+  handleClose() {
+    let playlist = document.getElementsByClassName("playlist-container-open")[0]
+    if (playlist) {
+      this.setState({open: "close"})
+      setTimeout(() => {
+        playlist.style.display = "none"
+      }, 200)
+    }
+  }  
+
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
   }
@@ -29,10 +39,14 @@ class Playlist extends React.Component {
   }
 
   handleOpen() {
-    if (this.state.open === "open") {
-      this.setState({open: "close"})
-    } else if(this.state.open === "close"){
-      this.setState({open: "open"})
+    let playlist = document.getElementsByClassName(`playlist-container-${this.state.open}`)[0]
+    if (playlist) {
+      if (this.state.open === "open") {
+        this.handleClose()
+      } else if(this.state.open === "close"){
+        playlist.style.display = "block"
+        this.setState({open: "open"})
+      }
     }
   }
 

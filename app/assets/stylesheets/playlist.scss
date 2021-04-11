@@ -1,37 +1,53 @@
 .playlist-container-close {
   position: absolute;
-  bottom: 54px;
+  bottom: -30px;
+  display: none;
   right: 8px;
   width: 480px;
   height: 660px;
-  background: white;
+  background: lightgray;
+  // opacity: 0;
+  z-index: -1;
   animation: background-out2;
-  animation-duration: 0.6s;
+  animation-duration: 0.3s;
 }
 
 .playlist-container-open {
   position: absolute;
+  display: block;
   bottom: 54px;
   right: 8px;
   width: 480px;
   height: 660px;
-  background: white;
+  background: lightgray;
   animation: background-in2;
-  animation-duration: 0.6s;
+  animation-duration: 0.4s;
 }
 
 @keyframes background-in2 {
   0%{
     opacity: 0;
+    bottom: -100px;
+  }
+  20%{
+    opacity: 0;
+    bottom: 0px;
+  }
+
+  80% {
+    opacity: 1;
+    bottom: 57px;
   }
 }
 
 @keyframes background-out2 {
-  40%{
-    background: hsla(0,0%,94.9%,.8);
-  }
+  // 70% {
+  //   opacity: 0;
+  //   bottom: -1000px;
+  // }
   100%{
-    display: none;
-    background: hsla(0,0%,94.9%,0);
+    // display: none;
+    opacity: 0;
+    bottom: -1000px;
   }
 }
