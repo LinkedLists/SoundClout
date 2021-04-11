@@ -525,13 +525,7 @@ class Playbar extends React.Component {
                 </div>
               </div>
             </div>
-            
             <Playlist />
-
-            {/* <span id="playlist-icon">
-              <i className="fas fa-bars fa-lg"></i>
-              <i className="fas fa-play playlist"></i>
-            </span> */}
           </div>
       </div>
     )

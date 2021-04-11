@@ -77,17 +77,24 @@ class Content extends React.Component {
       <div className="content-container">
         <History />
         <div className="content-wrapper">
-
           <div className="content-playlist-main-wrapper">
-            <div className="playlist-wrapper">
-              <div className="playlist-header">Charts: New and hot</div>
-              {
-                this.loading ?
-                  <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> :
-                  <ul className="content-list-ul">
-                    {trackItems}
-                  </ul>
-              }
+            <div className="content-playlist-wrapper">
+            {
+              this.loading ?
+                <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> 
+                  :
+                  <div>
+                    <div className="content-playlist-header">Charts: New and hot</div>
+                      <ul className="content-list-ul">
+                        {trackItems}
+                      </ul>
+                    <div className="content-playlist-header">Polyphia: Hottest guitar essentials</div>
+                    <div className="content-playlist-header">Kpop: Latest and hottest kpop</div>
+                    <div className="content-playlist-header">Lofi: Music for relaxation and focus</div>
+                    <div className="content-playlist-header">Vibes: Fresh pressed vibes</div>
+                    <div className="content-playlist-header">Dance: Stay at home dance party</div>
+                  </div>
+            }
             </div>
           </div>
         </div>

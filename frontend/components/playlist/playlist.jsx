@@ -12,11 +12,28 @@ class Playlist extends React.Component {
     this.handleOpen = this.handleOpen.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleClose = this.handleClose.bind(this)
+    this.handleMouseDown = this.handleMouseDown.bind(this)
   }
+  
+    componentDidMount() {
+      document.addEventListener('keydown', this.handleKeyPress);
+    }
+  
+    componentWillUnmount() {
+      document.removeEventListener('keydown', this.handleKeyPress);
+    }
 
   handleKeyPress(e) {
     if (e.key == "Escape") {
       this.handleClose()
+    }
+  }
+
+  handleMouseDown(e) {
+    console.log(e.target.className)
+    if (e.target.className === "playlist-header noselect" ||
+      e.target.className === "playlist-close-x") {
+        this.handleClose()
     }
   }
 
@@ -29,14 +46,6 @@ class Playlist extends React.Component {
       }, 200)
     }
   }  
-
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress);
-  }
 
   handleOpen() {
     let playlist = document.getElementsByClassName(`playlist-container-${this.state.open}`)[0]
@@ -54,14 +63,19 @@ class Playlist extends React.Component {
     return (
       <div>
         <div className={`playlist-container-${this.state.open}`}>
-
+          <div className="playlist-header noselect" onClick={this.handleMouseDown}>
+            <h3>Next up</h3>
+            <button className="playlist-clear-btn">Clear</button>
+            <button type="button" className="playlist-close-x noselect" onClick={this.handleClose}>X</button>
+          </div>
         </div>
         <span id="playlist-icon" onClick={this.handleOpen}>
           {/* <i className={`fas fa-bars fa-lg icon-${this.state.open}`} ></i> */}
           {/* <i className="fas fa-play playlist " ></i> */}
-          <FontAwesomeIcon icon="bars" size="lg" className={`icon-${this.state.open}`} />
+          <FontAwesomeIcon icon="bars" size="lg" className={`icon-${this.state.open} w`} />
           <FontAwesomeIcon icon="play" className={`playlist icon-${this.state.open}`}/>
-          </span>
+        </span>
+        {/* <div className={`playlist-background-${this.state.open}`}></div> */}
       </div>
     )
   }
