@@ -95,33 +95,68 @@ class Content extends React.Component {
               this.loading ?
                 <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> 
                   :
-                  <div>
-                    <div className="content-playlist-header">Charts: New and hot</div>
+                  <ul>
+                    <li className="content-playlist-li">
+                      <div className="content-playlist-header-wrapper">
+                        <h3 className="content-playlist-header">Charts: New and hot</h3>
+                        <h6 className="content-playlist-header-description">The most played tracks on SoundCloud this week</h6>
+                      </div>
                       <ul className="content-list-ul">
                         {this.getTrackItems("Top 100")}
                       </ul>
-                    <div className="content-playlist-header">Polyphia: Hottest guitar essentials</div>
+                    </li>
+                      
+                    <li className="content-playlist-li">
+                      <div className="content-playlist-header-wrapper">
+                        <h3 className="content-playlist-header">Polyphia</h3>
+                        <h6 className="content-playlist-header-description">Hottest guitar essentials</h6>
+                      </div>
                       <ul className="content-list-ul">
                         {this.getTrackItems("Instrumental")}
                       </ul>
-                    <div className="content-playlist-header">Kpop: Latest and hottest kpop</div>
+                    </li>
+
+                    <li className="content-playlist-li">
+                      <div className="content-playlist-header-wrapper">
+                        <h3 className="content-playlist-header">Kpop</h3>
+                        <h6 className="content-playlist-header-description">Latest and hottest kpop</h6>
+                      </div>
                       <ul className="content-list-ul">
                         {this.getTrackItems("Kpop")}
                       </ul>
-                    <div className="content-playlist-header">Lofi: Music for relaxation and focus</div>
+                    </li>
+
+                    <li className="content-playlist-li">
+                      <div className="content-playlist-header-wrapper">
+                        <h3 className="content-playlist-header">Lofi</h3>
+                        <h6 className="content-playlist-header-description">Music for relaxation and focus</h6>
+                      </div>
                       <ul className="content-list-ul">
                         {this.getTrackItems("Lofi")}
                       </ul>
-                    <div className="content-playlist-header">Vibes: Fresh pressed vibes</div>
+                    </li>
+
+                    <li className="content-playlist-li">
+                      <div className="content-playlist-header-wrapper">
+                        <h3 className="content-playlist-header">Vibes</h3>
+                        <h6 className="content-playlist-header-description">Fresh pressed vibes</h6>
+                      </div>
                       <ul className="content-list-ul">
                         {this.getTrackItems("House")}
                       </ul>
-                    <div className="content-playlist-header">Dance: Stay at home dance party</div>
+                    </li>
+
+                    <li className="content-playlist-li">
+                      <div className="content-playlist-header-wrapper">
+                        <h3 className="content-playlist-header">Dance</h3>
+                        <h6 className="content-playlist-header-description">Stay at home dance party</h6>
+                      </div>
                       <ul className="content-list-ul">
                         {this.getTrackItems("Dance")}
                       </ul>
-                  </div>
-            }
+                    </li>
+                  </ul>
+              }
             </div>
           </div>
         </div>
