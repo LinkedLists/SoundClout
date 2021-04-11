@@ -19,7 +19,8 @@ class Content extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    this.props.fetchTracks().then(() => this.setHistory())
+    this.props.fetchTracks()
+        //.then(() => this.setHistory())
     this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {

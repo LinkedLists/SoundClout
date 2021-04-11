@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import Playlist from '../playlist/playlist_container'
 class Playbar extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,7 @@ class Playbar extends React.Component {
       percentPlayed: 0,
       volume: 0.6,
       mounted: false,
-      shuffle: false
+      shuffle: false,
     }
 
     this.handlePlay = this.handlePlay.bind(this);
@@ -524,11 +525,13 @@ class Playbar extends React.Component {
                 </div>
               </div>
             </div>
+            
+            <Playlist />
 
-            <span id="playlist-icon">
+            {/* <span id="playlist-icon">
               <i className="fas fa-bars fa-lg"></i>
               <i className="fas fa-play playlist"></i>
-            </span>
+            </span> */}
           </div>
       </div>
     )

@@ -1,0 +1,37 @@
+.playlist-container-close {
+  position: absolute;
+  bottom: 54px;
+  right: 8px;
+  width: 480px;
+  height: 660px;
+  background: white;
+  animation: background-out2;
+  animation-duration: 0.6s;
+}
+
+.playlist-container-open {
+  position: absolute;
+  bottom: 54px;
+  right: 8px;
+  width: 480px;
+  height: 660px;
+  background: white;
+  animation: background-in2;
+  animation-duration: 0.6s;
+}
+
+@keyframes background-in2 {
+  0%{
+    opacity: 0;
+  }
+}
+
+@keyframes background-out2 {
+  40%{
+    background: hsla(0,0%,94.9%,.8);
+  }
+  100%{
+    display: none;
+    background: hsla(0,0%,94.9%,0);
+  }
+}
