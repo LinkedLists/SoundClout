@@ -57,8 +57,10 @@ class Playlist extends React.Component {
 
         </div>
         <span id="playlist-icon" onClick={this.handleOpen}>
-          <i className="fas fa-bars fa-lg"></i>
-          <i className="fas fa-play playlist"></i>
+          {/* <i className={`fas fa-bars fa-lg icon-${this.state.open}`} ></i> */}
+          {/* <i className="fas fa-play playlist " ></i> */}
+          <FontAwesomeIcon icon="bars" size="lg" className={`icon-${this.state.open}`} />
+          <FontAwesomeIcon icon="play" className={`playlist icon-${this.state.open}`}/>
           </span>
       </div>
     )

@@ -515,10 +515,10 @@ class Playbar extends React.Component {
                 }
                 <div className="current-track-description">
                   <div className="description-wrapper" > 
-                    <Link to={`/users/${this.props.currentTrack.uploader_id}`} className="current-track-username">
+                    <Link to={`/users/${this.props.currentTrack.uploader_id}`} className="current-track-username noselect">
                       {this.props.currentTrack.username}
                     </Link>
-                    <Link to={`/tracks/${this.props.currentTrack.id}`} className="current-track-title">
+                    <Link to={`/tracks/${this.props.currentTrack.id}`} className="current-track-title noselect">
                       {this.props.currentTrack.title}
                     </Link>
                   </div>
