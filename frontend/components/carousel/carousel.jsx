@@ -15,7 +15,7 @@ class Carousel extends React.Component {
     this.prevSlide = this.prevSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.getTrackItems = this.getTrackItems.bind(this)
-    this.dontSpam = false;
+    this.spamBlock = false;
   }
 
   componentDidMount() {
@@ -42,16 +42,16 @@ class Carousel extends React.Component {
   }
 
   prevSlide() {
-    if (!this.dontSpam) {
+    if (!this.spamBlock) {
       if (this.state.index !== 0) {
         this.setState( {index: this.state.index -= 1} )
       } else {
         let carouselWrapper = document.getElementById(this.props.genre)
         carouselWrapper.classList.add("peekaboo")
-        this.dontSpam = true
+        this.spamBlock = true
         setTimeout(() => {
           carouselWrapper.classList.remove("peekaboo")
-          this.dontSpam = false
+          this.spamBlock = false
         }, 300)
       }
     }

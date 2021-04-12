@@ -24,7 +24,7 @@
   z-index: 1;
   height: 240px;
   left: -8px;
-  width: 32px;
+  width: 46px;
 }
 
 .carousel-next-btn-wrapper {
@@ -35,7 +35,7 @@
   z-index: 1;
   height: 240px;
   right: -8px;
-  width: 32px;
+  width: 46px;
 }
 
 .carousel-next-btn-shadow, .carousel-prev-btn-shadow  {
@@ -46,7 +46,7 @@
 }
 
 .carousel-prev-btn-shadow:hover {
-  background: linear-gradient( to right , rgba(37, 37, 37, 0.1), transparent);
+  background: linear-gradient( to right , rgba(37, 37, 37, 0.2), transparent);
 
   .carousel-prev-btn {
     color: #f50;
@@ -56,7 +56,7 @@
 }
 
 .carousel-next-btn-shadow:hover {
-  background: linear-gradient( to left , rgba(37, 37, 37, 0.1), transparent);
+  background: linear-gradient( to left , rgba(37, 37, 37, 0.2), transparent);
   .carousel-next-btn {
     color: #f50;
     border: 1px solid #f50;
@@ -96,6 +96,10 @@
   background-color: #fff;
   border-radius: 3px;
   outline: 0;
+}
+
+.carousel-next-btn {
+  right: 0px;
 }
 
 .carousel-next-btn:after {

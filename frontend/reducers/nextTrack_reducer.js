@@ -1,4 +1,4 @@
-import { RECEIVE_NEW_TRACK, RECEIVE_PREV_TRACK, RECEIVE_NEXT_TRACK, BURP_NEXT_TRACK } from '../actions/playbar_actions'
+import { RECEIVE_NEW_TRACK, RECEIVE_PREV_TRACK, RECEIVE_NEXT_TRACK, BURP_NEXT_TRACK, SAVE_NEXT_TRACK } from '../actions/playbar_actions'
 import { RECEIVE_HISTORY, CLEAR_HISTORY } from '../actions/history_actions'
 import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK, UPDATE_TRACK } from "../actions/track_actions";
 
@@ -9,6 +9,9 @@ const prevTracksReducer = (state = [], action) => {
     //   newState.push(action.track.id)
     //   return newState
     case RECEIVE_PREV_TRACK:
+      newState.push(action.track.id)
+      return newState
+    case SAVE_NEXT_TRACK:
       newState.push(action.track.id)
       return newState
     case RECEIVE_NEXT_TRACK:

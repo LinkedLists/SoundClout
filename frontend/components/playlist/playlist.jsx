@@ -13,6 +13,7 @@ class Playlist extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleClose = this.handleClose.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
+    this.getTrackList = this.getTrackList.bind(this)
   }
   
     componentDidMount() {
@@ -58,6 +59,10 @@ class Playlist extends React.Component {
     }
   }
 
+  getTrackList() {
+
+  }
+
   render() {
     return (
       <div>
@@ -75,6 +80,9 @@ class Playlist extends React.Component {
           <FontAwesomeIcon icon="play" className={`playlist icon-${this.state.open}`}/>
         </span>
         {/* <div className={`playlist-background-${this.state.open}`}></div> */}
+        <ul>
+          
+        </ul>
       </div>
     )
   }

@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
     tracks: Object.values(state.entities.tracks),
     currentTrack: state.ui.playbar.currentTrack,
     trackHistory: state.ui.history,
+    nextTrack: state.ui.nextTrack
   }
 }
 
