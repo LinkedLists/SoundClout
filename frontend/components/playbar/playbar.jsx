@@ -23,6 +23,11 @@ class Playbar extends React.Component {
     this.setDuration = this.setDuration.bind(this);
     this.timeIncrementer = this.timeIncrementer.bind(this);
     this.prettifyTime = this.prettifyTime.bind(this);
+
+    this.addPlaybarClickListener = this.addPlaybarClickListener.bind(this)
+    this.addAudioEndListener = this.addAudioEndListener.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
+
     this.timeIncrementerInstance
     this.handleChange = this.handleChange.bind(this);
     this.clearState = this.clearState.bind(this)
@@ -52,18 +57,6 @@ class Playbar extends React.Component {
         this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
     }
-    // let history 
-    // if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
-    //   history = JSON.parse(window.localStorage.getItem("history"))
-    //   this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
-    //   // fail safe
-    //   setTimeout(() => {
-    //     if (window.localStorage.getItem("history").length !== 0) {
-    //       history = JSON.parse(window.localStorage.getItem("history"))
-    //       this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
-    //     }
-    //   }, 40)
-    // }
   }
 
   componentWillUnmount() {
@@ -136,16 +129,30 @@ class Playbar extends React.Component {
     }
   }
   
-  addBarListener() {
-    let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-    let playbar = document.getElementsByClassName("progress-timeline-wrapper")[0]
-    let progressBar = document.getElementsByClassName("progress-bar")[0]
-    let width = playbar.getBoundingClientRect().width
-    let audio = this.props.audio
+ addBarListener() {
+   let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
+   let playbar = document.getElementsByClassName("progress-timeline-wrapper")[0]
+   let progressBar = document.getElementsByClassName("progress-bar")[0]
+   let audio = this.props.audio
+
+   this.addPlaybarClickListener(progressBar, playbar)
+   this.addAudioEndListener(playbtn)
+
+   audio.addEventListener("play", () => {
+     this.props.playTrack()
+   })
+
+   audio.addEventListener("pause", () => {
+     this.props.pauseTrack()
+   })
+ }
+
+  addPlaybarClickListener(progressBar, playbar) {
     let currentTime
     let percentPlayed
+    let width = playbar.getBoundingClientRect().width
     let x
-
+    let audio = this.props.audio
     // Although there is an input type range that handles play timeline,
     // this is still necessary because it makes the pseudo hover effect possible.
     // There is no solution that I know of that allows for thumb only hover via css
@@ -153,7 +160,7 @@ class Playbar extends React.Component {
       // slider ball has a radius of 4
       x = e.offsetX + 4;
       percentPlayed = (x / width)
-      currentTime = this.props.audio.duration * percentPlayed
+      currentTime = audio.duration * percentPlayed
       progressBar.style.width = `${percentPlayed * 100}%`
       this.setState({
         currentTime: this.prettifyTime(currentTime),
@@ -161,7 +168,32 @@ class Playbar extends React.Component {
       })
       audio.currentTime = currentTime
     })
+  }
+  
+  addAudioEndListener(playbtn) {
+  let audio = this.props.audio
+   // NOTE: looping is continous play and does not end or pause a track
+   audio.addEventListener("ended", () => {
+     if (!this.getNextTrackAuto()) {
+       clearInterval(this.timeIncrementerInstance)
+       this.props.pauseTrack()
+       playbtn ? playbtn.classList.remove("playing") : null
+       this.clearState()
 
+       // failsafe
+       setTimeout(() => {
+         audio.ended ? () => {
+           clearInterval(this.timeIncrementerInstance)
+           this.props.pauseTrack()
+           playbtn ? playbtn.classList.remove("playing") : null
+           this.clearState()
+         } : null
+       }, 10)
+     }
+    })
+  }
+  
+  handleLogout() {
     if (this.props.currentSessionId) {
       document.getElementById("logout").addEventListener("click", () => {
         clearInterval(this.timeIncrementerInstance)
@@ -169,46 +201,6 @@ class Playbar extends React.Component {
         this.clearState()
       })
     }
-
-    // NOTE: looping is continous play and does not end or pause a track
-    audio.addEventListener("ended", () => {
-      console.log("audio has ended")
-      // loop does not trigger on end event so this is redundant 
-      if (!this.props.audio.loop) {
-        let numTracks = Object.keys(this.props.track).length
-        if (this.props.currentTrack.id + 1 in this.props.track) {
-          let nextTrack = this.props.track[this.props.currentTrack.id + 1]
-          this.props.sendTrack(nextTrack)
-          window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
-          this.setHistory()
-        } else {
-          // idk what else to do if ur at the end
-          clearInterval(this.timeIncrementerInstance)
-          this.props.pauseTrack()
-          playbtn ? playbtn.classList.remove("playing") : null
-          this.clearState()
-          
-          // failsafe
-          setTimeout(() => {
-            audio.ended ? () => {
-              clearInterval(this.timeIncrementerInstance)
-              this.props.pauseTrack()
-              playbtn ? playbtn.classList.remove("playing") : null
-              this.clearState()
-            } : null
-          }, 10)
-        }
-      }
-      // this.getNextTrackAuto()
-    })
-
-    audio.addEventListener("play", () => {
-      this.props.playTrack()
-    })
-
-    audio.addEventListener("pause", () => {
-      this.props.pauseTrack()
-    })
   }
 
   setHistory() {
@@ -225,11 +217,16 @@ class Playbar extends React.Component {
     if (!this.props.audio.loop) {
       let numTracks = Object.keys(this.props.track).length
       if (this.props.currentTrack.id + 1 in this.props.track) {
-        this.props.sendTrack(this.props.track[this.props.currentTrack.id + 1])
+        let nextTrack = this.props.track[this.props.currentTrack.id + 1]
+        this.props.sendTrack(nextTrack)
+        window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
+        this.setHistory()
       } else {
         // idk what to do if ur at the end
+        return false
       }
     }
+    return true
   }
 
   getNextTrackManual() {
