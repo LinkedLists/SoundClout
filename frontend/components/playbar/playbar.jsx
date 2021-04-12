@@ -241,7 +241,11 @@ class Playbar extends React.Component {
 
   getNextTrackManual() {
     // let numTracks = Object.keys(this.props.track).length
-    if (this.state.shuffle) {
+    if (this.props.nextTrack.length > 0) {
+      let nextTrackKey = this.props.nextTrack[this.props.nextTrack.length - 1]
+      this.props.sendNextTrack(this.props.track[nextTrackKey])
+    }
+    else if (this.state.shuffle) {
       let trackKeys = Object.keys(this.props.track)
       let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
       this.props.sendTrack(this.props.track[randKey])
@@ -256,14 +260,14 @@ class Playbar extends React.Component {
 
   getPrevTrackManual() {
     // let numTracks = Object.keys(this.props.track).length
-    let prevTrack 
+    let prevTrackKey 
     if (this.props.prevTracks.length > 0) {
       let length = this.props.prevTracks.length
-      prevTrack = this.props.prevTracks[length - 1]
-      this.props.sendPrevTrack(this.props.track[prevTrack], 
+      prevTrackKey = this.props.prevTracks[length - 1]
+      this.props.sendPrevTrack(this.props.track[prevTrackKey], 
         window.localStorage.setItem("prevTracks", JSON.stringify(this.props.prevTracks))
       )
-      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track[prevTrack]))
+      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track[prevTrackKey]))
     }
     // else if (this.props.currentTrack.id - 1 in this.props.track) {
     //   prevTrack = this.props.track[this.props.currentTrack.id - 1]

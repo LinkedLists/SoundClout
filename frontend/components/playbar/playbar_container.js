@@ -5,7 +5,7 @@ import { playTrack,
   receivePrevTrack, receiveNextTrack, 
   burpPrevTrack, refreshTrack, 
   clearPlaybarState } from '../../actions/playbar_actions'
-  
+
 import { receiveHistory } from '../../actions/history_actions'
 // import { fetchTrack } from '../../actions/track_actions'
 
@@ -19,7 +19,8 @@ const mapStateToProps = (state) => {
     currentUser: state.session,
     track: state.entities.tracks,
     trackHistory: state.ui.history,
-    prevTracks: state.ui.prevTracks
+    prevTracks: state.ui.prevTracks,
+    nextTrack: state.ui.nextTrack
   }
 }
 
