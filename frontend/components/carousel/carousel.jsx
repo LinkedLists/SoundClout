@@ -6,15 +6,15 @@ class Carousel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentSlide: 0,
+      index: 0,
       genre: this.props.genre,
-      tracks: ''
+      tracks: '',
+      maxIndex: 0
     }
 
     this.prevSlide = this.prevSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.getTrackItems = this.getTrackItems.bind(this)
-    this.tracks
   }
 
   componentDidMount() {
@@ -27,23 +27,28 @@ class Carousel extends React.Component {
     this.props.tracks.slice().map( track => {
       if (track.genre === genre) {
         trackItems.push(
-        <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
-      )}
-    })
-    this.setState( {tracks: trackItems} )
+          <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
+        )}
+      })
+
+    let maxIndex = Math.floor(trackItems.length / 8) + 1
+    this.setState( {
+      tracks: trackItems,
+      maxIndex: maxIndex
+    } )
     // this.tracks = trackItems
     return trackItems
   }
 
   prevSlide() {
-    if (this.state.currentSlide !== 0) {
-      this.setState( {currentSlide: this.state.currentSlide -= 1} )
+    if (this.state.index !== 0) {
+      this.setState( {index: this.state.index -= 1} )
     }
   }
 
   nextSlide() {
-    if (this.state.currentSlide !== this.state.tracks.length - 1) {
-      this.setState( {currentSlide: this.state.currentSlide += 1} )
+    if (this.state.index !== this.state.maxIndex) {
+      this.setState( {index: this.state.index += 1} )
     }
   }
 
@@ -54,18 +59,18 @@ class Carousel extends React.Component {
           <h3 className="content-playlist-header">Carousel component</h3>
           <h6 className="content-playlist-header-description">cookies</h6>
         </div>
-        <button onClick={this.prevSlide}>prev</button>
         <div className="carousel-wrapper">
+        <button onClick={this.prevSlide}>prev</button>
           <ul className="content-list-ul carousel"
           // each item has a size of 15%
             style={
-              {transform: `translateX(-${15 * this.state.currentSlide}%)`}
+              {transform: `translateX(-${this.state.index * 380 / this.state.tracks.length}%)`}
             }
           >
             {this.state.tracks}
           </ul>
-        </div>
         <button onClick={this.nextSlide}>next</button>
+        </div>
       </> 
     )
   }
