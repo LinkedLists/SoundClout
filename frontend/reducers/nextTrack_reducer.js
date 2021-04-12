@@ -8,9 +8,9 @@ const prevTracksReducer = (state = [], action) => {
     case RECEIVE_NEW_TRACK:
       newState.push(action.track.id)
       return newState
-    // case RECEIVE_PREV_TRACK:
-    //   newState.push(action.track.id)
-    //   return newState
+    case RECEIVE_PREV_TRACK:
+      newState.push(action.track.id)
+      return newState
     // case RECEIVE_HISTORY:
     //   return action.history
     // case CLEAR_HISTORY:

@@ -194,7 +194,8 @@ class TrackForm extends React.Component {
       <div className={`modal-background-${this.state.open}`} onMouseDown={this.handleMouseDown} >
         <div className={`edit-form-container-${this.state.open}`}>
           <form className="upload-form" onSubmit={this.handleSubmit}>
-            <div className="img-field-wrapper">
+            <h2 className="track-form-header">Basic Info</h2>
+            <div className="track-form-wrapper">
               <div className="upload-photo-wrapper">
                 {preview}
                 <input type="file" id="upload-photo" onChange={this.handlePhotoFile}/>
@@ -208,7 +209,7 @@ class TrackForm extends React.Component {
               </div>
               <div className="upload-field-wrapper">
                   <div className="field">
-                    <label className="field-label">Title</label>
+                    <label className="field-label">Title <span id="asterisk2">*</span></label>
                     <input type="text" 
                       className={Object.keys(this.state.errors).length ? "form-input input-error" : "form-input"}
                       onChange={this.handleChange("title")}
@@ -247,6 +248,8 @@ class TrackForm extends React.Component {
             </div>
 
               <div className="button-footer">
+                <div className="track-form-footer-required">
+                  <span id="asterisk2">*</span>Required fields</div>
                 <button className="cancel-submit" onClick={this.handleMouseDown}>Cancel</button>
 
                 {

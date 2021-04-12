@@ -214,7 +214,7 @@ class TrackShow extends React.Component {
                       </div> 
                         :
                       <div className="track-show-no-btns">
-                        <span id="asterisk">*</span> You can update or delete a track if you are the uploader
+                        <span id="asterisk1">*</span> You can update or delete a track if you are the uploader
                       </div>
                   }
                 </div>

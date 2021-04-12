@@ -259,9 +259,6 @@ class Playbar extends React.Component {
     let prevTrack 
     if (this.props.prevTracks.length > 0) {
       let length = this.props.prevTracks.length
-      // if (this.props.prevTracks[length - 1] === this.props.currentTrack.id && length > 1) {
-      //   this.props.sendPrevTrack(this.props.currentTrack)
-      // }
       prevTrack = this.props.prevTracks[length - 1]
       this.props.sendPrevTrack(this.props.track[prevTrack])
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track[prevTrack]))

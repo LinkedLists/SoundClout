@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let prevTracks
   if (history[history.length - 1] === currentTrack.id) {
     prevTracks = history.slice(0 , history.length - 1)
+  } else {
+    prevTracks = history
   }
   let preloadedState = undefined;
   if (window.currentUser) {
