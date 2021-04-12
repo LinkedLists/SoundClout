@@ -330,29 +330,24 @@ class Playbar extends React.Component {
   // volume swells to gradually change volume on pause/play
   // so that user does not experience abrupt volume changes
   bringBackVolume(playbtn) {
-    // Only change the track show play button if its the same as current track.
-    // playbtn ternary maybe redundant but Heroku is very slow to load DOM
-    if (this.props.track.id === this.props.currentTrack.id) {
-      playbtn ? playbtn.classList.add("playing") : null
-    }
-
+    let {audio} = this.props
     // This ternary is NECESSARY for the volume/mute icon.
     // If volume was set to mute or 0 by user then do not allow the audio
     // volume to deviate from 0; otherwise, the mute icon will have
     // a sudden jitter. 
-    this.props.audio.volume === 0 ? 
-      null : this.props.audio.volume = 0.01
+    audio.volume === 0 ? 
+      null : audio.volume = 0.01
 
-    this.props.audio.play()
+    audio.play()
     this.intervalUp = setInterval(() => {
-      if (this.props.audio.volume <= (this.state.volume - this.state.volume/60 )) {
+      if (audio.volume <= (this.state.volume - this.state.volume/60 )) {
         if (this.state.volume/60 === 0 ) {
-          this.props.audio.volume = this.state.volume
+          audio.volume = this.state.volume
           clearInterval(this.intervalUp)
         }
-        this.props.audio.volume += this.state.volume/60 
+        audio.volume += this.state.volume/60 
       } else {
-        this.props.audio.volume = this.state.volume
+        audio.volume = this.state.volume
         clearInterval(this.intervalUp)
       }
     }, 3)
@@ -376,16 +371,17 @@ class Playbar extends React.Component {
   }
 
   bringDownVolume(playbtn) {
+    let {audio} = this.props
     playbtn ? playbtn.classList.remove("playing") : null
     this.intervalDown = setInterval(() => {
-      if (this.props.audio.volume >= this.state.volume/60 ) {
+      if (audio.volume >= this.state.volume/60 ) {
         if (this.state.volume/60 === 0 ) {
-          this.props.audio.pause()
+          audio.pause()
           clearInterval(this.intervalDown)
         }
-        this.props.audio.volume -= this.state.volume/60 
+        audio.volume -= this.state.volume/60 
       } else {
-        this.props.audio.pause()
+        audio.pause()
         clearInterval(this.intervalDown)
       }
     }, 3)
@@ -428,17 +424,18 @@ class Playbar extends React.Component {
   }
 
   handleMute(e) {
+    let {audio} = this.props
     let volume = document.getElementsByClassName("slider-background")[0]
     if (e.target.className === "thumb" ||
     e.target.className === "volume-control-wrapper") {
-      if (this.props.audio.volume !== 0) {
-        this.prevVolume = this.props.audio.volume
-        this.props.audio.volume = 0
+      if (audio.volume !== 0) {
+        this.prevVolume = audio.volume
+        audio.volume = 0
         volume.value = 0
       } 
-      else if (this.props.audio.volume === 0) {
+      else if (audio.volume === 0) {
         volume.value = this.prevVolume
-        this.props.audio.volume = this.state.volume
+        audio.volume = this.state.volume
       }
       else {
         volume.value = 0
@@ -488,7 +485,7 @@ class Playbar extends React.Component {
     }
 
     let volumeIcon;
-    if (volume) {
+    if (volume && audio) {
       if (volume.value === 0 || audio.volume === 0) {
         volumeIcon = <FontAwesomeIcon icon="volume-mute" className="scale-icon"/>
       }
