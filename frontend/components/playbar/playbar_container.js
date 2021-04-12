@@ -3,8 +3,8 @@ import Playbar from './playbar'
 import { playTrack, 
   pauseTrack, receiveNewTrack, 
   receivePrevTrack, receiveNextTrack, 
-  burpPrevTrack, refreshTrack, 
-  clearPlaybarState } from '../../actions/playbar_actions'
+  burpPrevTrack, burpNextTrack,
+  refreshTrack, clearPlaybarState } from '../../actions/playbar_actions'
 
 import { receiveHistory } from '../../actions/history_actions'
 // import { fetchTrack } from '../../actions/track_actions'
@@ -37,7 +37,8 @@ const mapDispatchToProps = (dispatch) => {
     sendTrack: (track) => dispatch(receiveNewTrack(track)),
     sendPrevTrack: (track) => dispatch(receivePrevTrack(track)),
     sendNextTrack: (track) => dispatch(receiveNextTrack(track)),
-    burpPrevTrack: () => dispatch(burpPrevTrack())
+    burpPrevTrack: () => dispatch(burpPrevTrack()),
+    burpNextTrack: () => dispatch(burpNextTrack()),
   }
 }
 

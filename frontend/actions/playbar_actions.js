@@ -7,6 +7,7 @@ export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
 export const RECEIVE_PREV_TRACK = "RECEIVE_PREV_TRACK";
 export const RECEIVE_NEXT_TRACK = "RECEIVE_NEXT_TRACK";
 export const BURP_PREV_TRACK = "BURP_PREV_TRACK"
+export const BURP_NEXT_TRACK = "BURP_NEXT_TRACK"
 export const REFRESH_TRACK = "REFRESH_TRACK";
 export const CLEAR_PLAYBAR_STATE = "CLEAR_PLAYBAR_STATE";
 
@@ -43,6 +44,12 @@ export const receivePrevTrack = (track) => {
 export const burpPrevTrack = () => {
   return({
     type: BURP_PREV_TRACK,
+  })
+}
+
+export const burpNextTrack = () => {
+  return({
+    type: BURP_NEXT_TRACK,
   })
 }
 

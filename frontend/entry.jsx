@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
       prevTracks = history
     }
   }
+  let nextTrack
+  if (window.localStorage.getItem('nextTrack')) {
+    nextTrack = JSON.parse(window.localStorage.getItem("nextTrack"))
+  }
   let preloadedState = undefined;
   if (window.currentUser) {
     preloadedState = {
@@ -44,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ui: {
         history: history,
         prevTracks: prevTracks,
+        nextTrack
       }
     }
     store = configureStore(preloadedState);
@@ -51,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 })
