@@ -1,3 +1,9 @@
+.carousel-container {
+  position: relative;
+  width: 820px;
+  height: 274px;
+}
+
 .carousel-wrapper {
   position: relative;
   width: 820px;
@@ -8,4 +14,81 @@
 .carousel {
   position: absolute;
   transition: 0.7s;
+}
+
+.carousel-prev-btn-wrapper {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  z-index: 1;
+  height: 100%;
+  left: -8px;
+  width: 32px;
+}
+
+.carousel-next-btn-wrapper {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  z-index: 1;
+  height: 100%;
+  right: -8px;
+  width: 32px;
+  // font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.carousel-next-btn, .carousel-prev-btn {
+  position: absolute;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  top: 0;
+  bottom: 78px;
+  margin: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 3px;
+  outline: 0;
+}
+
+.carousel-next-btn:after {
+  border-right: 1px solid #333;
+  border-top: 1px solid #333;
+  transform: rotate(45deg) translate(-1px,1px);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  content: '';
+  margin: auto;
+  height: 6px;
+  width: 6px;
+}
+
+.carousel-prev-btn:after {
+  border-right: 1px solid #333;
+  border-top: 1px solid #333;
+  transform: rotate(-135deg) translate(-1px,1px);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  content: '';
+  margin: auto;
+  height: 6px;
+  width: 6px;
+}
+
+.carousel-next-btn:hover, .carousel-prev-btn:hover {
+  color: #f50;
+  border: 1px solid #f50;
+}
+
+.carousel-next-btn:hover:after, .carousel-prev-btn:hover:after {
+  border-right: 1px solid #f50;
+  border-top: 1px solid #f50;
 }

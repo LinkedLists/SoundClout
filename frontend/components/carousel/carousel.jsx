@@ -59,17 +59,23 @@ class Carousel extends React.Component {
           <h3 className="content-playlist-header">Carousel component</h3>
           <h6 className="content-playlist-header-description">cookies</h6>
         </div>
-        <div className="carousel-wrapper">
-        <button onClick={this.prevSlide}>prev</button>
-          <ul className="content-list-ul carousel"
-          // each item has a size of 15%
-            style={
-              {transform: `translateX(-${this.state.index * 380 / this.state.tracks.length}%)`}
-            }
-          >
-            {this.state.tracks}
-          </ul>
-        <button onClick={this.nextSlide}>next</button>
+        <div className="carousel-container">
+            <div className="carousel-prev-btn-wrapper" onClick={this.prevSlide}>
+              <button className="carousel-prev-btn" />
+            </div>
+          <div className="carousel-wrapper">
+            <ul className="content-list-ul carousel"
+            // each item has a size of 15%
+              style={
+                {transform: `translateX(-${this.state.index * 380 / this.state.tracks.length}%)`}
+              }
+            >
+              {this.state.tracks}
+            </ul>
+          </div>
+            <div className="carousel-next-btn-wrapper" onClick={this.nextSlide}>
+              <button className="carousel-next-btn"/>
+            </div>
         </div>
       </> 
     )
