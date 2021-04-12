@@ -258,8 +258,13 @@ class Playbar extends React.Component {
     // let numTracks = Object.keys(this.props.track).length
     let prevTrack 
     if (this.props.prevTracks.length > 0) {
-      prevTrack = this.props.prevTracks[this.props.prevTracks.length - 1]
+      let length = this.props.prevTracks.length
+      // if (this.props.prevTracks[length - 1] === this.props.currentTrack.id && length > 1) {
+      //   this.props.sendPrevTrack(this.props.currentTrack)
+      // }
+      prevTrack = this.props.prevTracks[length - 1]
       this.props.sendPrevTrack(this.props.track[prevTrack])
+      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track[prevTrack]))
     }
     // else if (this.props.currentTrack.id - 1 in this.props.track) {
     //   prevTrack = this.props.track[this.props.currentTrack.id - 1]
@@ -525,7 +530,7 @@ class Playbar extends React.Component {
               <div className="current-track">
                 { 
                   Object.keys(this.props.currentTrack).length > 0 ? 
-                  <Link to={`/users/${this.props.currentTrack.uploader_id}`}>
+                  <Link to={`/tracks/${this.props.currentTrack.id}`}>
                     <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> 
                   </Link> : 
                   <></>

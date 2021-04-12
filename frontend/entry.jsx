@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.localStorage.getItem('currentUser')) {
     currentUser = JSON.parse(window.localStorage.getItem("currentUser"))
   }
+  let currentTrack
+  if (window.localStorage.getItem('currentTrack')) {
+    currentTrack = JSON.parse(window.localStorage.getItem("currentTrack"))
+  }
+  let prevTracks
+  if (history[history.length - 1] === currentTrack.id) {
+    prevTracks = history.slice(0 , history.length - 1)
+  }
   let preloadedState = undefined;
   if (window.currentUser) {
     preloadedState = {
@@ -30,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       session: { id: window.currentUser.id },
       ui: {
         history: history,
-        prevTracks: history,
+        prevTracks: prevTracks,
       }
     }
     store = configureStore(preloadedState);

@@ -3,12 +3,15 @@ import modal from './modal_reducer';
 import playbar from './playbar_reducer'
 import history from './history_reducer'
 import prevTracks from './prevTracks_reducer'
+import nextTrack from './nextTrack_reducer'
+
 
 const uiReducer = combineReducers({
   modal,
   playbar,
   history,
-  prevTracks
+  prevTracks,
+  nextTrack
 })
 
 export default uiReducer
