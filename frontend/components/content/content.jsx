@@ -74,7 +74,7 @@ class Content extends React.Component {
     this.props.tracks.slice().map( track => {
       if (track.genre === genre) {
         trackItems.push(
-        <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
+        <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
       )}
     })
     return trackItems

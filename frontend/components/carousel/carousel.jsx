@@ -27,7 +27,7 @@ class Carousel extends React.Component {
     this.props.tracks.slice().map( track => {
       if (track.genre === genre) {
         trackItems.push(
-        <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
+        <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
       )}
     })
     this.setState( {tracks: trackItems} )
@@ -49,19 +49,24 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      // this.tracks && this.tracks.length > 0 ? 
       <>
         <div className="content-playlist-header-wrapper">
           <h3 className="content-playlist-header">Carousel component</h3>
           <h6 className="content-playlist-header-description">cookies</h6>
         </div>
-        <button>prev</button>
-        <ul className="content-list-ul">
-          {this.state.tracks[this.state.currentSlide]}
-        </ul>
+        <button onClick={this.prevSlide}>prev</button>
+        <div className="carousel-wrapper">
+          <ul className="content-list-ul carousel"
+          // each item has a size of 15%
+            style={
+              {transform: `translateX(-${15 * this.state.currentSlide}%)`}
+            }
+          >
+            {this.state.tracks}
+          </ul>
+        </div>
         <button onClick={this.nextSlide}>next</button>
       </> 
-      // : <></>
     )
   }
 }
