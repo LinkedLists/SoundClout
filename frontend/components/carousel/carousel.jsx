@@ -30,15 +30,21 @@ class Carousel extends React.Component {
         <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
       )}
     })
+    this.setState( {tracks: trackItems} )
+    // this.tracks = trackItems
     return trackItems
   }
 
   prevSlide() {
-    this.setState( {currentSlide: currentSlide -= 1} )
+    if (this.state.currentSlide !== 0) {
+      this.setState( {currentSlide: this.state.currentSlide -= 1} )
+    }
   }
 
   nextSlide() {
-    this.setState( {currentSlide: currentSlide += 1} )
+    if (this.state.currentSlide !== this.state.tracks.length - 1) {
+      this.setState( {currentSlide: this.state.currentSlide += 1} )
+    }
   }
 
   render() {
@@ -50,9 +56,8 @@ class Carousel extends React.Component {
           <h6 className="content-playlist-header-description">cookies</h6>
         </div>
         <button>prev</button>
-          {/* {this.tracks[this.state.currentSlide]} */}
         <ul className="content-list-ul">
-          {this.getTrackItems(this.props.genre)}
+          {this.state.tracks[this.state.currentSlide]}
         </ul>
         <button onClick={this.nextSlide}>next</button>
       </> 
