@@ -11,6 +11,7 @@ export const BURP_NEXT_TRACK = "BURP_NEXT_TRACK"
 export const REFRESH_TRACK = "REFRESH_TRACK";
 export const CLEAR_PLAYBAR_STATE = "CLEAR_PLAYBAR_STATE";
 export const SAVE_NEXT_TRACK = 'SAVE_NEXT_TRACK'
+export const SAVE_PREV_TRACK = 'SAVE_PREV_TRACK'
 
 // a play would need to receive a current track to know what its currently playing
 // as well as a receive track action to update the current track perhaps
@@ -64,6 +65,13 @@ export const receiveNextTrack = (track) => {
 export const saveNextTrack = track => {
   return({
     type: SAVE_NEXT_TRACK,
+    track
+  })
+}
+
+export const savePrevTrack = track => {
+  return({
+    type: SAVE_PREV_TRACK,
     track
   })
 }
