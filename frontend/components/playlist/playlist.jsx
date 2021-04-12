@@ -14,6 +14,7 @@ class Playlist extends React.Component {
     this.handleClose = this.handleClose.bind(this)
     this.handleMouseDown = this.handleMouseDown.bind(this)
     this.getTrackList = this.getTrackList.bind(this)
+    this.spamBlocker = false
   }
   
     componentDidMount() {
@@ -31,9 +32,11 @@ class Playlist extends React.Component {
   }
 
   handleMouseDown(e) {
-    if (e.target.className === "playlist-header noselect" ||
-      e.target.className === "playlist-close-x") {
-        this.handleClose()
+    if (!this.spamBlocker) {
+      if (e.target.className === "playlist-header noselect" ||
+        e.target.className === "playlist-close-x") {
+          this.handleClose()
+      }
     }
   }
 
@@ -41,8 +44,10 @@ class Playlist extends React.Component {
     let playlist = document.getElementsByClassName("playlist-container-open")[0]
     if (playlist) {
       this.setState({open: "close"})
+      this.spamBlocker = true
       setTimeout(() => {
         playlist.style.display = "none"
+        this.spamBlocker = false
       }, 200)
     }
   }  
@@ -81,7 +86,7 @@ class Playlist extends React.Component {
         </span>
         {/* <div className={`playlist-background-${this.state.open}`}></div> */}
         <ul>
-          
+
         </ul>
       </div>
     )
