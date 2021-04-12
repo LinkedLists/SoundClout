@@ -70,13 +70,13 @@ class Content extends React.Component {
   }
 
   getTrackItems(genre) {
-    const trackItems = this.props.tracks.slice().map( track => {
-      
-      if (track.genre === genre) return (
+    let trackItems = []
+    this.props.tracks.slice().map( track => {
+      if (track.genre === genre) {
+        trackItems.push(
         <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
-      )
+      )}
     })
-
     return trackItems
   }
 
@@ -97,6 +97,12 @@ class Content extends React.Component {
                 <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> 
                   :
                   <ul>
+
+                    <li className="content-playlist-li">
+                      <Carousel genre={"Dance"} />
+                    </li>
+
+
                     <li className="content-playlist-li">
                       <div className="content-playlist-header-wrapper">
                         <h3 className="content-playlist-header">Charts: New and hot</h3>
@@ -156,6 +162,8 @@ class Content extends React.Component {
                         {this.getTrackItems("Dance")}
                       </ul>
                     </li>
+
+
                   </ul>
               }
             </div>

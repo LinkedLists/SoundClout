@@ -5,11 +5,12 @@ import { playTrack, pauseTrack, receiveNewTrack, refreshTrack, clearPlaybarState
 import { receiveHistory } from '../../actions/history_actions'
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     tracks: Object.values(state.entities.tracks),
     currentTrack: state.ui.playbar.currentTrack,
     trackHistory: state.ui.history,
+    genre: ownProps.genre
   }
 }
 
