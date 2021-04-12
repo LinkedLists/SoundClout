@@ -16,8 +16,8 @@ const prevTracksReducer = (state = [], action) => {
       return newState
     // case RECEIVE_HISTORY:
     //   return action.history
-    // case CLEAR_HISTORY:
-    //   return []
+    case CLEAR_HISTORY:
+      return []
     case REMOVE_TRACK:
       let newArr = newState.filter(trackId => trackId !== action.track.id)
       return newArr

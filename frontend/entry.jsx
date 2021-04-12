@@ -25,10 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     currentTrack = JSON.parse(window.localStorage.getItem("currentTrack"))
   }
   let prevTracks
-  if (history[history.length - 1] === currentTrack.id) {
-    prevTracks = history.slice(0 , history.length - 1)
-  } else {
-    prevTracks = history
+  if (window.localStorage.getItem('prevTracks')) {
+    prevTracks = JSON.parse(window.localStorage.getItem("prevTracks"))
+    if (prevTracks[prevTracks.length - 1] === currentTrack.id) {
+      prevTracks.pop()
+    } else {
+      prevTracks = history
+    }
   }
   let preloadedState = undefined;
   if (window.currentUser) {
