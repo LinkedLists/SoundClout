@@ -31,7 +31,7 @@ class Carousel extends React.Component {
         )}
       })
 
-    let maxIndex = Math.floor(trackItems.length / 8) + 1
+    let maxIndex = Math.floor(trackItems.length / 9) + 1
     this.setState( {
       tracks: trackItems,
       maxIndex: maxIndex
@@ -49,19 +49,23 @@ class Carousel extends React.Component {
   nextSlide() {
     if (this.state.index !== this.state.maxIndex) {
       this.setState( {index: this.state.index += 1} )
+    } else {
+      this.setState( {index: 0} )
     }
   }
 
   render() {
     return (
       <>
-        <div className="content-playlist-header-wrapper">
+        {/* <div className="content-playlist-header-wrapper">
           <h3 className="content-playlist-header">Carousel component</h3>
           <h6 className="content-playlist-header-description">cookies</h6>
-        </div>
+        </div> */}
         <div className="carousel-container">
             <div className="carousel-prev-btn-wrapper" onClick={this.prevSlide}>
-              <button className="carousel-prev-btn" />
+              <div className="carousel-prev-btn-shadow">
+                <button className="carousel-prev-btn" />
+              </div>
             </div>
           <div className="carousel-wrapper">
             <ul className="content-list-ul carousel"
@@ -74,7 +78,9 @@ class Carousel extends React.Component {
             </ul>
           </div>
             <div className="carousel-next-btn-wrapper" onClick={this.nextSlide}>
-              <button className="carousel-next-btn"/>
+              <div className="carousel-next-btn-shadow">
+                <button className="carousel-next-btn"/>
+              </div>
             </div>
         </div>
       </> 

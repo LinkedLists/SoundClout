@@ -15,7 +15,7 @@ class Content extends React.Component {
     }
     this.setHistory = this.setHistory.bind(this)
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
-    this.getTrackItems = this.getTrackItems.bind(this)
+    // this.getTrackItems = this.getTrackItems.bind(this)
     this.loading = true
   }
 
@@ -69,23 +69,18 @@ class Content extends React.Component {
     }
   }
 
-  getTrackItems(genre) {
-    let trackItems = []
-    this.props.tracks.slice().map( track => {
-      if (track.genre === genre) {
-        trackItems.push(
-        <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
-      )}
-    })
-    return trackItems
-  }
+  // getTrackItems(genre) {
+  //   let trackItems = []
+  //   this.props.tracks.slice().map( track => {
+  //     if (track.genre === genre) {
+  //       trackItems.push(
+  //       <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
+  //     )}
+  //   })
+  //   return trackItems
+  // }
 
   render() {
-    // const trackItems = this.props.tracks.slice().reverse().map( track => {
-    //   return (
-    //     <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
-    //   )
-    // })
     return (
       <div className="content-container">
         <History />
@@ -97,20 +92,12 @@ class Content extends React.Component {
                 <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> 
                   :
                   <ul>
-
-                    <li className="content-playlist-li">
-                      <Carousel genre={"Dance"} />
-                    </li>
-
-
                     <li className="content-playlist-li">
                       <div className="content-playlist-header-wrapper">
                         <h3 className="content-playlist-header">Charts: New and hot</h3>
                         <h6 className="content-playlist-header-description">The most played tracks on SoundCloud this week</h6>
                       </div>
-                      <ul className="content-list-ul">
-                        {this.getTrackItems("Top 100")}
-                      </ul>
+                      <Carousel genre={"Top 100"} />
                     </li>
                       
                     <li className="content-playlist-li">
@@ -118,9 +105,7 @@ class Content extends React.Component {
                         <h3 className="content-playlist-header">Polyphia</h3>
                         <h6 className="content-playlist-header-description">Hottest guitar essentials</h6>
                       </div>
-                      <ul className="content-list-ul">
-                        {this.getTrackItems("Instrumental")}
-                      </ul>
+                      <Carousel genre={"Instrumental"} />
                     </li>
 
                     <li className="content-playlist-li">
@@ -128,9 +113,7 @@ class Content extends React.Component {
                         <h3 className="content-playlist-header">Kpop</h3>
                         <h6 className="content-playlist-header-description">Latest and hottest kpop</h6>
                       </div>
-                      <ul className="content-list-ul">
-                        {this.getTrackItems("Kpop")}
-                      </ul>
+                      <Carousel genre={"Kpop"} />
                     </li>
 
                     <li className="content-playlist-li">
@@ -138,9 +121,7 @@ class Content extends React.Component {
                         <h3 className="content-playlist-header">Lofi</h3>
                         <h6 className="content-playlist-header-description">Music for relaxation and focus</h6>
                       </div>
-                      <ul className="content-list-ul">
-                        {this.getTrackItems("Lofi")}
-                      </ul>
+                      <Carousel genre={"Lofi"} />
                     </li>
 
                     <li className="content-playlist-li">
@@ -148,9 +129,7 @@ class Content extends React.Component {
                         <h3 className="content-playlist-header">Vibes</h3>
                         <h6 className="content-playlist-header-description">Fresh pressed vibes</h6>
                       </div>
-                      <ul className="content-list-ul">
-                        {this.getTrackItems("House")}
-                      </ul>
+                      <Carousel genre={"House"} />
                     </li>
 
                     <li className="content-playlist-li">
@@ -158,12 +137,8 @@ class Content extends React.Component {
                         <h3 className="content-playlist-header">Dance</h3>
                         <h6 className="content-playlist-header-description">Stay at home dance party</h6>
                       </div>
-                      <ul className="content-list-ul">
-                        {this.getTrackItems("Dance")}
-                      </ul>
+                      <Carousel genre={"Dance"} />
                     </li>
-
-
                   </ul>
               }
             </div>
