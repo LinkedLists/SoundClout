@@ -227,31 +227,21 @@ class Playbar extends React.Component {
 
   getNextTrackAuto() {
     if (!this.props.audio.loop) {
-      let next
-      let prev
       let { nextTrack, track, currentTrack } = this.props
       if (nextTrack.length > 0) {
         let length = nextTrack.length
         let nextTrackKey = nextTrack[nextTrack.length - 1]
         if (this.props.prevTracks.length === 0 ) {
-          // prev = [currentTrack.id]
           this.props.savePrevTrack(currentTrack)
         }
         if (nextTrackKey === currentTrack.id && length > 1) {
           nextTrackKey = nextTrack[nextTrack.length - 2]
           this.props.burpNextTrack(track[nextTrackKey + 1])
           this.props.sendNextTrack(track[nextTrackKey])
-          // prev = this.props.prevTracks.slice()
-          // prev.pop()
-          // prev.push(nextTrackKey)
         } else {
           this.props.sendNextTrack(track[nextTrackKey])
-          // prev = this.props.prevTracks.slice()
-          // prev.push(nextTrackKey)
         }
-        // next = nextTrack.slice(0, length - 1)
         window.localStorage.setItem("currentTrack", JSON.stringify(track[nextTrackKey]))
-        // this.setPlaylist(next, prev)
       }
       else if (this.state.shuffle) {
         let trackKeys = Object.keys(track)
@@ -273,31 +263,18 @@ class Playbar extends React.Component {
   }
 
   getNextTrackManual() {
-    let prev
-    let next
     let { nextTrack, track, currentTrack } = this.props
     if (nextTrack.length > 0) {
       let length = nextTrack.length
       let nextTrackKey = nextTrack[nextTrack.length - 1]
-      if (this.props.prevTracks.length === 0 ) {
-        // prev = [currentTrack.id]
-        // this.props.savePrevTrack(currentTrack)
-      }
       if (nextTrackKey === currentTrack.id && length > 1) {
         nextTrackKey = nextTrack[nextTrack.length - 2]
         this.props.burpNextTrack(track[nextTrackKey + 1])
         this.props.sendNextTrack(track[nextTrackKey])
-        // prev = this.props.prevTracks.slice()
-        // prev.pop()
-        // prev.push(nextTrackKey)
       } else {
         this.props.sendNextTrack(track[nextTrackKey])
-        // prev = this.props.prevTracks.slice()
-        // prev.push(nextTrackKey)
       }
-      // next = nextTrack.slice(0, length - 1)
       window.localStorage.setItem("currentTrack", JSON.stringify(track[nextTrackKey]))
-      // this.setPlaylist(next, prev)
     }
 
     else if (this.state.shuffle) {
@@ -316,32 +293,16 @@ class Playbar extends React.Component {
 
   getPrevTrackManual() {
     let prevTrackKey 
-    let next
-    let prev
     let { prevTracks, track, currentTrack } = this.props
     if (prevTracks.length > 0) {
       let length = prevTracks.length
       prevTrackKey = prevTracks[length - 1]
-      // why do i need this?
-      if (this.props.nextTrack.length === 0 ) {
-        // next = [currentTrack.id]
-        // this.props.saveNextTrack(currentTrack)
-      }
       if (prevTrackKey === currentTrack.id && length > 1) {
         prevTrackKey = prevTracks[length - 2]
         this.props.burpPrevTrack(track[prevTrackKey + 1])  
         this.props.sendPrevTrack(track[prevTrackKey])
-        // next = this.props.nextTrack.slice()
-        // next.pop()
-        // next.push(prevTrackKey)
-      } else {
-        // this.props.sendPrevTrack(track[prevTrackKey])
-        // next = this.props.nextTrack.slice()
-        // next.push(prevTrackKey)
       }
-      // prev = prevTracks.slice(0, length - 1)
       window.localStorage.setItem("currentTrack", JSON.stringify(track[prevTrackKey]))
-      // this.setPlaylist(next, prev)
     }
   }
 
