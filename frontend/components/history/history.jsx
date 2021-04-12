@@ -20,6 +20,8 @@ class History extends React.Component {
     e.preventDefault()
     this.props.clearHistory();
     window.localStorage.setItem("history", JSON.stringify([]))
+    window.localStorage.setItem("nextTrack", JSON.stringify([]))
+    window.localStorage.setItem("prevTracks", JSON.stringify([]))
   }
 
   render() {

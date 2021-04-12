@@ -7,15 +7,18 @@ const prevTracksReducer = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
       newState.push(action.track.id)
+      window.localStorage.setItem("prevTracks", JSON.stringify(newState))
       return newState
     case SAVE_PREV_TRACK:
       newState.push(action.track.id)
       return newState
     case RECEIVE_PREV_TRACK:
       newState.pop()
+      window.localStorage.setItem("prevTracks", JSON.stringify(newState))
       return newState
     case RECEIVE_NEXT_TRACK:
       newState.push(action.track.id)
+      window.localStorage.setItem("prevTracks", JSON.stringify(newState))
       return newState
     case BURP_PREV_TRACK:
       newState.pop()
