@@ -24,10 +24,15 @@
   border-right: 1px solid #eaeaea;
 }
 
+
 .content-playlist-li {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 34px;
   padding-bottom: 34px;
+}
+
+.content-playlist-li:last-child {
+  margin-bottom: 0px;
 }
 
 .content-playlist-wrapper {

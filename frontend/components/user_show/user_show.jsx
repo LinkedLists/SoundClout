@@ -92,7 +92,7 @@ class UserShow extends React.Component {
 
     return (
       this.props.user ? 
-      <div className="content-container">
+      <div className="content-container user-show-container">
         <div className="user-show-header-container">
           {
             this.props.user ? 

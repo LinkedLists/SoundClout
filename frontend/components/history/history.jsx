@@ -59,6 +59,17 @@ class History extends React.Component {
             {tracks}
           </ul>
         </div>
+
+        <div className="history-social-links-footer-container">
+          <div className="history-social-links-footer-wrapper">
+            <a href="google.com">AngelList</a>
+            &nbsp;⁃
+            <a href="google.com"> Github</a>
+            &nbsp;⁃
+            <a href="google.com"> Linkedin</a>
+          </div>
+        </div>
+        
       </div>
     )
   }

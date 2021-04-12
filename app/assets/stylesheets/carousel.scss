@@ -52,6 +52,7 @@
     color: #f50;
     border: 1px solid #f50;
   }
+
 }
 
 .carousel-next-btn-shadow:hover {
@@ -60,7 +61,24 @@
     color: #f50;
     border: 1px solid #f50;
   }
+  // .carousel{
+  //   animation: peekNext;
+  //   animation-duration: 0.3s;
+  // }
 }
+
+
+// @keyframes peekNext {
+//   0%{
+//     transform: translateX(0%)
+//   }
+//   50% {
+//     transform: translateX(-2%)
+//   }
+//   100%{
+//     transform: translateX(0%)
+//   }
+// }
 
 .carousel-next-btn, .carousel-prev-btn {
   position: absolute;

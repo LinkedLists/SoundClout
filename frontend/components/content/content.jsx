@@ -13,16 +13,13 @@ class Content extends React.Component {
       // an unmounted component.
       // loading: true
     }
-    this.setHistory = this.setHistory.bind(this)
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
-    // this.getTrackItems = this.getTrackItems.bind(this)
     this.loading = true
   }
 
   componentDidMount() {
     window.scrollTo(0, 0)
     this.props.fetchTracks()
-        //.then(() => this.setHistory())
     this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {
@@ -41,45 +38,6 @@ class Content extends React.Component {
     }
   }
 
-  // Setting history here because a user can delete a track and would 
-  // get redirected to the index page, so history needs to be set or else
-  // a ghost track would appear on history in refresh
-  setHistory() {
-    if (this.props.trackHistory.length !== 0) {
-      window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-      setTimeout(() => {
-        let history = JSON.parse(window.localStorage.getItem("history"))
-        if (history.length !== this.props.trackHistory.length) {
-          window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-        }
-      }, 70)
-    } else {
-      let history 
-      if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
-        history = JSON.parse(window.localStorage.getItem("history"))
-        this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
-        // fail safe
-        setTimeout(() => {
-          if (window.localStorage.getItem("history").length !== 0) {
-            history = JSON.parse(window.localStorage.getItem("history"))
-            this.props.receiveHistory(JSON.parse(window.localStorage.getItem("history")))
-          }
-        }, 40)
-      }
-    }
-  }
-
-  // getTrackItems(genre) {
-  //   let trackItems = []
-  //   this.props.tracks.slice().map( track => {
-  //     if (track.genre === genre) {
-  //       trackItems.push(
-  //       <ContentIndexItem key={trackItems.length} photoUrl={track.photoUrl} track={track}/>
-  //     )}
-  //   })
-  //   return trackItems
-  // }
-
   render() {
     return (
       <div className="content-container">
@@ -91,7 +49,7 @@ class Content extends React.Component {
               this.loading ?
                 <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> 
                   :
-                  <ul>
+                  <ul className="content-playlist-ul">
                     <li className="content-playlist-li">
                       <div className="content-playlist-header-wrapper">
                         <h3 className="content-playlist-header">Charts: New and hot</h3>
@@ -142,6 +100,17 @@ class Content extends React.Component {
                   </ul>
               }
             </div>
+
+            <div className="history-social-links-footer-container">
+              <div className="history-social-links-footer-wrapper">
+                <a href="google.com">AngelList</a>
+                &nbsp;⁃
+                <a href="google.com"> Github</a>
+                &nbsp;⁃
+                <a href="google.com"> Linkedin</a>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

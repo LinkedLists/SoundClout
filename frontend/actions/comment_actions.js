@@ -59,8 +59,5 @@ const handleLocalStorage = (track) => {
   }
 }
 
-// export const deleteComment = (commentId) => (dispatch) => (
-//   CommentApiUtil.deleteComment(commentId).then( () => dispatch(removeComment(commentId)))
-// )
 
 

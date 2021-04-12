@@ -160,7 +160,7 @@
 
 .social-links-footer-container {
   background: white;
-  color: #ccc;
+  color: #9b9b9b;
   padding: 0px 30px;
   padding-bottom: 75px;
   line-height: 20px;
@@ -172,11 +172,12 @@
 }
 
 .social-links-footer-wrapper a {
-  color: #ccc;
+  font-family: arial;
+  color: #9b9b9b;
   cursor: pointer;
   text-decoration: none;
 }
 
 .social-links-footer-wrapper a:hover {
-  color: #999;
+  color: #333;
 }

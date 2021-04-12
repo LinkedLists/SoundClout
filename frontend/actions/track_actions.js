@@ -100,7 +100,3 @@ const handleLocalStorage = (track) => {
     }
   }
 }
-  
-// export const updateTrack = (track) => (dispatch) => (
-//   TrackApiUtil.updateTrack(track).then((track) => dispatch(receiveTrack(track)))
-// )
