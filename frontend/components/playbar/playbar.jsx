@@ -227,13 +227,30 @@ class Playbar extends React.Component {
 
   getNextTrackAuto() {
     if (!this.props.audio.loop) {
-      if (this.state.shuffle) {
-        let trackKeys = Object.keys(this.props.track)
-        let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
-        this.props.sendTrack(this.props.track[randKey])
+      let { nextTrack, track } = this.props
+      if (nextTrack.length > 0) {
+        let length = nextTrack.length
+        let nextTrackKey = nextTrack[nextTrack.length - 1]
+        if (this.props.prevTracks.length === 0 ) {
+          this.props.savePrevTrack(this.props.currentTrack)
+        }
+        if (nextTrackKey === this.props.currentTrack.id && length > 1) {
+          nextTrackKey = nextTrack[nextTrack.length - 2]
+          this.props.burpNextTrack()
+          this.props.sendNextTrack(track[nextTrackKey], this.setPlaylist())
+        } else {
+          this.props.sendNextTrack(track[nextTrackKey], this.setPlaylist())
+        }
+        window.localStorage.setItem("currentTrack", JSON.stringify(track[nextTrackKey]))
       }
-      else if (this.props.currentTrack.id + 1 in this.props.track) {
-        let nextTrack = this.props.track[this.props.currentTrack.id + 1]
+      else if (this.state.shuffle) {
+        let trackKeys = Object.keys(track)
+        let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+        this.props.sendTrack(track[randKey])
+        window.localStorage.setItem("currentTrack", JSON.stringify(track[randKey]))
+      }
+      else if (this.props.currentTrack.id + 1 in track) {
+        let nextTrack = track[this.props.currentTrack.id + 1]
         this.props.sendTrack(nextTrack)
         window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
         this.setHistory()
