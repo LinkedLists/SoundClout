@@ -27,17 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let prevTracks
   if (window.localStorage.getItem('prevTracks')) {
     prevTracks = JSON.parse(window.localStorage.getItem("prevTracks"))
-    // if (prevTracks[prevTracks.length - 1] === currentTrack.id) {
-    //   prevTracks.pop()
-    // } else {
-    //   prevTracks = history
-    // }
   }
   let nextTrack
-  if (history.length === 0) {
-    nextTrack = []
-  } 
-  else if (window.localStorage.getItem('nextTrack')) {
+  if (window.localStorage.getItem('nextTrack')) {
     nextTrack = JSON.parse(window.localStorage.getItem("nextTrack"))
   }
   let preloadedState = undefined;
