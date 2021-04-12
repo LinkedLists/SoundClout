@@ -67,18 +67,22 @@
   // }
 }
 
+.peekaboo {
+  animation: peekPrev;
+  animation-duration: 0.3s;
+}
 
-// @keyframes peekNext {
-//   0%{
-//     transform: translateX(0%)
-//   }
-//   50% {
-//     transform: translateX(-2%)
-//   }
-//   100%{
-//     transform: translateX(0%)
-//   }
-// }
+@keyframes peekPrev {
+  0%{
+    transform: translateX(0%)
+  }
+  50% {
+    transform: translateX(2%)
+  }
+  100%{
+    transform: translateX(0%)
+  }
+}
 
 .carousel-next-btn, .carousel-prev-btn {
   position: absolute;

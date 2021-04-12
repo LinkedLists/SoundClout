@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let nextTrack
   if (window.localStorage.getItem('nextTrack')) {
     nextTrack = JSON.parse(window.localStorage.getItem("nextTrack"))
+    if (history.length === 0) {
+      nextTrack = []
+    } 
   }
   let preloadedState = undefined;
   if (window.currentUser) {

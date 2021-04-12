@@ -15,6 +15,7 @@ class Carousel extends React.Component {
     this.prevSlide = this.prevSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.getTrackItems = this.getTrackItems.bind(this)
+    this.dontSpam = false;
   }
 
   componentDidMount() {
@@ -41,8 +42,18 @@ class Carousel extends React.Component {
   }
 
   prevSlide() {
-    if (this.state.index !== 0) {
-      this.setState( {index: this.state.index -= 1} )
+    if (!this.dontSpam) {
+      if (this.state.index !== 0) {
+        this.setState( {index: this.state.index -= 1} )
+      } else {
+        let carouselWrapper = document.getElementById(this.props.genre)
+        carouselWrapper.classList.add("peekaboo")
+        this.dontSpam = true
+        setTimeout(() => {
+          carouselWrapper.classList.remove("peekaboo")
+          this.dontSpam = false
+        }, 300)
+      }
     }
   }
 
@@ -63,7 +74,9 @@ class Carousel extends React.Component {
             </div>
           </div>
         <div className="carousel-wrapper">
-          <ul className="content-list-ul carousel"
+          <ul 
+            className="content-list-ul carousel"
+            id={`${this.props.genre}`}
             style={
               {transform: `translateX(-${this.state.index * 380 / this.state.tracks.length}%)`}
             }
