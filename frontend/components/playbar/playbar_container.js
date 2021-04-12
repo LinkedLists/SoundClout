@@ -40,8 +40,8 @@ const mapDispatchToProps = (dispatch) => {
     sendNextTrack: (track) => dispatch(receiveNextTrack(track)),
     saveNextTrack: (track) => dispatch(saveNextTrack(track)),
     savePrevTrack: (track) => dispatch(savePrevTrack(track)),
-    burpPrevTrack: () => dispatch(burpPrevTrack()),
-    burpNextTrack: () => dispatch(burpNextTrack()),
+    burpPrevTrack: (track) => dispatch(burpPrevTrack(track)),
+    burpNextTrack: (track) => dispatch(burpNextTrack(track)),
 
   }
 }

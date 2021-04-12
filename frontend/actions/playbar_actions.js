@@ -43,15 +43,17 @@ export const receivePrevTrack = (track) => {
   })
 }
 
-export const burpPrevTrack = () => {
+export const burpPrevTrack = (track) => {
   return({
     type: BURP_PREV_TRACK,
+    track
   })
 }
 
-export const burpNextTrack = () => {
+export const burpNextTrack = (track) => {
   return({
     type: BURP_NEXT_TRACK,
+    track
   })
 }
 
