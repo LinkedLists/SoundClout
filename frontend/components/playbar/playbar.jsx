@@ -261,13 +261,21 @@ class Playbar extends React.Component {
   getPrevTrackManual() {
     // let numTracks = Object.keys(this.props.track).length
     let prevTrackKey 
-    if (this.props.prevTracks.length > 0) {
-      let length = this.props.prevTracks.length
-      prevTrackKey = this.props.prevTracks[length - 1]
-      this.props.sendPrevTrack(this.props.track[prevTrackKey], 
-        window.localStorage.setItem("prevTracks", JSON.stringify(this.props.prevTracks))
-      )
-      window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track[prevTrackKey]))
+    let { prevTracks, track } = this.props
+    if (prevTracks.length > 0) {
+      let length = prevTracks.length
+      prevTrackKey = prevTracks[length - 1]
+      if (prevTrackKey === this.props.currentTrack.id && length > 1) {
+        this.props.burpPrevTrack(prevTrackKey = prevTracks[prevTracks[length - 1]])
+        this.props.sendPrevTrack(track[prevTracks[length - 2]], 
+          window.localStorage.setItem("prevTracks", JSON.stringify(prevTracks))
+        )
+      } else {
+        this.props.sendPrevTrack(track[prevTrackKey], 
+          window.localStorage.setItem("prevTracks", JSON.stringify(prevTracks))
+        )
+      }
+      window.localStorage.setItem("currentTrack", JSON.stringify(track[prevTrackKey]))
     }
     // else if (this.props.currentTrack.id - 1 in this.props.track) {
     //   prevTrack = this.props.track[this.props.currentTrack.id - 1]
