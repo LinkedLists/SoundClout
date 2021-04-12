@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentIndexItem from './content_index_item'
+import Carousel from '../carousel/carousel_container'
 import History from '../history/history'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -69,7 +70,7 @@ class Content extends React.Component {
   }
 
   getTrackItems(genre) {
-    const trackItems = this.props.tracks.slice().reverse().map( track => {
+    const trackItems = this.props.tracks.slice().map( track => {
       
       if (track.genre === genre) return (
         <ContentIndexItem key={track.id} photoUrl={track.photoUrl} track={track}/>
