@@ -213,10 +213,20 @@ class Playbar extends React.Component {
     }, 70)
   }
 
+  getRandTrack(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
   getNextTrackAuto() {
     if (!this.props.audio.loop) {
-      let numTracks = Object.keys(this.props.track).length
-      if (this.props.currentTrack.id + 1 in this.props.track) {
+      if (this.state.shuffle) {
+        let trackKeys = Object.keys(this.props.track)
+        let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+        this.props.sendTrack(this.props.track[randKey])
+      }
+      else if (this.props.currentTrack.id + 1 in this.props.track) {
         let nextTrack = this.props.track[this.props.currentTrack.id + 1]
         this.props.sendTrack(nextTrack)
         window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
@@ -230,8 +240,13 @@ class Playbar extends React.Component {
   }
 
   getNextTrackManual() {
-    let numTracks = Object.keys(this.props.track).length
-    if (this.props.currentTrack.id + 1 in this.props.track) {
+    // let numTracks = Object.keys(this.props.track).length
+    if (this.state.shuffle) {
+      let trackKeys = Object.keys(this.props.track)
+      let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+      this.props.sendTrack(this.props.track[randKey])
+    }
+    else if (this.props.currentTrack.id + 1 in this.props.track) {
       let nextTrack = this.props.track[this.props.currentTrack.id + 1]
       this.props.sendTrack(nextTrack)
       window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
@@ -240,7 +255,7 @@ class Playbar extends React.Component {
   }
 
   getPrevTrackManual() {
-    let numTracks = Object.keys(this.props.track).length
+    // let numTracks = Object.keys(this.props.track).length
     if (this.props.currentTrack.id - 1 in this.props.track) {
       let prevTrack = this.props.track[this.props.currentTrack.id - 1]
       this.props.sendTrack(prevTrack)
@@ -255,12 +270,6 @@ class Playbar extends React.Component {
     } else {
       this.setState( {shuffle: true} )
     }
-  }
-
-  getRandInt(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
   // volume swells to gradually change volume on pause/play
@@ -458,7 +467,13 @@ class Playbar extends React.Component {
                     <FontAwesomeIcon icon="pause"/>}
               </button>
               <button onClick={this.getNextTrackManual}> <FontAwesomeIcon icon="step-forward" /> </button>
-              {/* <button onClick={e => e.preventDefault()}> <FontAwesomeIcon icon="random" color="red"/> </button> */}
+              <button onClick={this.setShuffle}> 
+              {
+                this.state.shuffle ? 
+                  <FontAwesomeIcon icon="random" color="red" id="shuffle-icon"/> :
+                  <FontAwesomeIcon icon="random" id="shuffle-icon"/>
+              }
+              </button>
               <button 
                 onClick={this.handleRepeat}>
                   {this.state.repeat ? 

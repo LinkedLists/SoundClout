@@ -8,10 +8,6 @@ class CommentShow extends React.Component {
 
   }
 
-  componentDidUpdate() {
-    // this.props.setHistory()
-  }
-
   render() {
     let comments = Object.values(this.props.comments)
     let numComments = comments.length

@@ -16,9 +16,6 @@ class History extends React.Component {
     this.handleClearHistory = this.handleClearHistory.bind(this)
   }
 
-  componentDidUpdate() {
-  }
-
   handleClearHistory(e) {
     e.preventDefault()
     this.props.clearHistory();

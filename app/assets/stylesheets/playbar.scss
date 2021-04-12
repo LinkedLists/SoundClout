@@ -48,7 +48,7 @@
 
 .current-track-info-container {
   // height: 100%;
-  width: 360px;
+  // width: 360px;
   padding: 0 8px;
 }
 
@@ -71,6 +71,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
+  width: 220px;
 }
 
 .description-wrapper {
@@ -89,7 +90,7 @@
 // bandaid fix
 .current-track-title {
   margin-top: 10px;
-  width: 300px;
+  // width: 300px;
   color: rgb(49, 49, 49);
   // font-size: 12px;
   display: block;
@@ -203,6 +204,7 @@
   position: relative;
   z-index: 10;
   height: 100%;
+  margin: 0px -15px;
 }
 
 #volume-btn {
@@ -325,3 +327,7 @@
 //   -webkit-appearance: slider-vertical;
 //   position: absolute;
 // }
+
+#shuffle-icon {
+  transform: scale(1.2);
+}

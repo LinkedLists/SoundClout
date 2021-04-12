@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       session: { id: window.currentUser.id },
       ui: {
-        history: history
+        history: history,
+        prevTracks: history
       }
     }
     store = configureStore(preloadedState);

@@ -11,9 +11,6 @@ class NavBar extends React.Component {
     this.handleRoute = this.handleRoute.bind(this);
   }
 
-  componentDidUpdate() {
-  }
-
   sessionContainer() {
     return (
       <div className="login-signup-container">

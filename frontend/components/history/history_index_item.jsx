@@ -15,16 +15,6 @@ class HistoryIndexItem extends React.Component {
     this.cuteColors = this.cuteColors.bind(this)
   }
 
-  componentDidMount() {
-  }
-
-  componentDidUpdate() {
-  }
-
-  componentWillUnmount() {
-    // this.setState( {numComments: this.numComments} )
-  }
-
   getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
