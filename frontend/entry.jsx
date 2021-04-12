@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let prevTracks
   if (window.localStorage.getItem('prevTracks')) {
     prevTracks = JSON.parse(window.localStorage.getItem("prevTracks"))
-    if (prevTracks[prevTracks.length - 1] === currentTrack.id) {
-      prevTracks.pop()
-    } else {
-      prevTracks = history
-    }
+    // if (prevTracks[prevTracks.length - 1] === currentTrack.id) {
+    //   prevTracks.pop()
+    // } else {
+    //   prevTracks = history
+    // }
   }
   let nextTrack
   if (history.length === 0) {
