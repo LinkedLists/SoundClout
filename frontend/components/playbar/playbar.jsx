@@ -256,12 +256,17 @@ class Playbar extends React.Component {
 
   getPrevTrackManual() {
     // let numTracks = Object.keys(this.props.track).length
-    if (this.props.currentTrack.id - 1 in this.props.track) {
-      let prevTrack = this.props.track[this.props.currentTrack.id - 1]
-      this.props.sendTrack(prevTrack)
-      window.localStorage.setItem('currentTrack', JSON.stringify(prevTrack))
-      this.setHistory()
+    let prevTrack 
+    if (this.props.prevTracks.length > 0) {
+      prevTrack = this.props.prevTracks[this.props.prevTracks.length - 1]
+      this.props.sendPrevTrack(this.props.track[prevTrack])
     }
+    // else if (this.props.currentTrack.id - 1 in this.props.track) {
+    //   prevTrack = this.props.track[this.props.currentTrack.id - 1]
+    //   this.props.sendPrevTrack(prevTrack)
+    //   window.localStorage.setItem('currentTrack', JSON.stringify(prevTrack))
+    //   this.setHistory()
+    // }
   }
 
   setShuffle() {
@@ -435,13 +440,13 @@ class Playbar extends React.Component {
     let volumeIcon;
     if (volume) {
       if (volume.value === 0 || audio.volume === 0) {
-        volumeIcon = <FontAwesomeIcon icon="volume-mute" />
+        volumeIcon = <FontAwesomeIcon icon="volume-mute" className="scale-icon"/>
       }
       else if(volume.value < 0.35){
-        volumeIcon = <FontAwesomeIcon icon="volume-down" />
+        volumeIcon = <FontAwesomeIcon icon="volume-down" className="scale-icon" />
       }
       else{
-        volumeIcon = <FontAwesomeIcon icon="volume-up" />
+        volumeIcon = <FontAwesomeIcon icon="volume-up" className="scale-icon" />
       }
     }
 
@@ -470,8 +475,8 @@ class Playbar extends React.Component {
               <button onClick={this.setShuffle}> 
               {
                 this.state.shuffle ? 
-                  <FontAwesomeIcon icon="random" color="red" id="shuffle-icon"/> :
-                  <FontAwesomeIcon icon="random" id="shuffle-icon"/>
+                  <FontAwesomeIcon icon="random" color="red" className="scale-icon"/> :
+                  <FontAwesomeIcon icon="random" className="scale-icon"/>
               }
               </button>
               <button 
@@ -537,7 +542,7 @@ class Playbar extends React.Component {
                 </div>
               </div>
             </div>
-            <Playlist />
+            <Playlist shuffle={this.state.shuffle}/>
           </div>
       </div>
     )

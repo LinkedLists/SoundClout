@@ -4,6 +4,8 @@
 export const PLAY_ACTION = "PLAY_ACTION";
 export const PAUSE_ACTION = "PAUSE_ACTION";
 export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
+export const RECEIVE_PREV_TRACK = "RECEIVE_PREV_TRACK";
+export const RECEIVE_NEXT_TRACK = "RECEIVE_NEXT_TRACK";
 export const REFRESH_TRACK = "REFRESH_TRACK";
 export const CLEAR_PLAYBAR_STATE = "CLEAR_PLAYBAR_STATE";
 
@@ -26,6 +28,20 @@ export const pauseTrack = () => {
 export const receiveNewTrack = (track) => {
   return({
     type: RECEIVE_NEW_TRACK,
+    track
+  })
+}
+
+export const receivePrevTrack = (track) => {
+  return({
+    type: RECEIVE_PREV_TRACK,
+    track
+  })
+}
+
+export const receiveNextTrack = (track) => {
+  return({
+    type: RECEIVE_NEXT_TRACK,
     track
   })
 }

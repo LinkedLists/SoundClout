@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Playbar from './playbar'
-import { playTrack, pauseTrack, receiveNewTrack, refreshTrack, clearPlaybarState } from '../../actions/playbar_actions'
+import { playTrack, pauseTrack, receiveNewTrack, receivePrevTrack, refreshTrack, clearPlaybarState } from '../../actions/playbar_actions'
 import { receiveHistory } from '../../actions/history_actions'
 // import { fetchTrack } from '../../actions/track_actions'
 
@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
     currentSessionId: state.session.id,
     currentUser: state.session,
     track: state.entities.tracks,
-    trackHistory: state.ui.history
+    trackHistory: state.ui.history,
+    prevTracks: state.ui.prevTracks
   }
 }
 
@@ -27,7 +28,8 @@ const mapDispatchToProps = (dispatch) => {
     refreshTrack: (track) => dispatch(refreshTrack(track)),
     clearPlaybarState: () => dispatch(clearPlaybarState()),
     receiveHistory: (history) => dispatch(receiveHistory(history)),
-    sendTrack: (track) => dispatch(receiveNewTrack(track))
+    sendTrack: (track) => dispatch(receiveNewTrack(track)),
+    sendPrevTrack: (track) => dispatch(receivePrevTrack(track)),
   }
 }
 
