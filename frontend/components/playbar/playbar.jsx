@@ -18,31 +18,33 @@ class Playbar extends React.Component {
     }
 
     this.handlePlay = this.handlePlay.bind(this);
-    this.handleMute = this.handleMute.bind(this);
     this.handleRepeat = this.handleRepeat.bind(this);
     this.setDuration = this.setDuration.bind(this);
     this.timeIncrementer = this.timeIncrementer.bind(this);
     this.prettifyTime = this.prettifyTime.bind(this);
+    
+    this.handleMute = this.handleMute.bind(this);
+    this.handleVolume = this.handleVolume.bind(this)
+    this.bringBackVolume = this.bringBackVolume.bind(this)
+    this.bringDownVolume = this.bringDownVolume.bind(this)
+    this.prevVolume;
 
+    // Event listeners
+    this.addBarListener = this.addBarListener.bind(this)
     this.addPlaybarClickListener = this.addPlaybarClickListener.bind(this)
     this.addAudioEndListener = this.addAudioEndListener.bind(this)
     this.handleEnd = this.handleEnd.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
-
     this.timeIncrementerInstance
+    
     this.handleChange = this.handleChange.bind(this);
     this.clearState = this.clearState.bind(this)
-    this.addBarListener = this.addBarListener.bind(this)
-    this.handleVolume = this.handleVolume.bind(this)
-    this.bringBackVolume = this.bringBackVolume.bind(this)
-    this.bringDownVolume = this.bringDownVolume.bind(this)
     this.getNextTrackAuto = this.getNextTrackAuto.bind(this)
     this.getNextTrackManual = this.getNextTrackManual.bind(this)
     this.getPrevTrackManual = this.getPrevTrackManual.bind(this)
     this.setShuffle = this.setShuffle.bind(this)
     this.setHistory = this.setHistory.bind(this)
     this.setPlaylist = this.setPlaylist.bind(this)
-    this.prevVolume;
 
     // Set instance variable that will get assigned to a setInterval ID
     // during volume swelling. Prevent a play/pause async error
@@ -185,12 +187,12 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     // NOTE: looping is continous play and does not end or pause a track
     audio.addEventListener("ended", () => {
-      this.handleChange(playbtn)
+      this.handleEnd(playbtn)
 
       // failsafe
       setTimeout(() => {
         audio.ended ? () => {
-         this.handleChange(playbtn)
+         this.handleEnd(playbtn)
         } : null
       }, 30)
     })

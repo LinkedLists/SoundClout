@@ -66,71 +66,71 @@ class PlaylistIndexItem extends React.Component {
   render() {
     return (
       this.props.track ? 
-      <li className="history-track-item">
-        <div className="history-track-item-link">
-          <div className="history-track-icon-container">
+      <li className="playlist-track-item">
+        <div className="playlist-track-item-link">
+          <div className="playlist-track-icon-container">
             {
               // Are you on a track show page?
               // If not then have the image be a regular link
               this.props.currentTrack ? 
               // If you are on the track show page and you select a different
-              // track from history then act as a link; otherwise, remove the
+              // track from playlist then act as a link; otherwise, remove the
               // link to itself
               this.props.currentTrack.id !== this.props.track.id ? 
-                  <Link to={`/tracks/${this.props.track.id}`} className="history-track-icon-link">
-                    <img src={this.props.track.photoUrl} className="history-track-icon" onClick={this.handleRoute}/>
+                  <Link to={`/tracks/${this.props.track.id}`} className="playlist-track-icon-link">
+                    <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
                   </Link> : 
-                  <img src={this.props.track.photoUrl} className="history-track-icon"/>
+                  <img src={this.props.track.photoUrl} className="playlist-track-icon"/>
                     :
               // You are not on the track show page so behave as a regular link
-              <Link to={`/tracks/${this.props.track.id}`} className="history-track-icon-link">
-                <img src={this.props.track.photoUrl} className="history-track-icon" onClick={this.handleRoute}/>
+              <Link to={`/tracks/${this.props.track.id}`} className="playlist-track-icon-link">
+                <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
               </Link>
             }
           </div>
 
-          <div className="history-track-details">
+          <div className="playlist-track-details">
             {/* Why do I need to do an onClick to make user traversal work? */}
             <span>
-              <div className="history-detail-wrapper noselect" onClick={this.handleRoute2}>
+              <div className="playlist-detail-wrapper noselect" onClick={this.handleRoute2}>
                 { 
                   this.props.track.uploader_id !== this.props.currentUserShowPage ? 
-                    <Link to={`/users/${this.props.track.uploader_id}`} className="comment-item-username-link"> 
+                    <Link to={`/users/${this.props.track.uploader_id}`} className="history-item-link"> 
                       {this.props.track.username} 
                     </Link> : 
-                    <p className="comment-item-username-link">
+                    <p className="history-item-link">
                       {this.props.track.username}
                     </p>
                 }
               </div>
             </span>
             <span>
-              <div className="history-detail-wrapper noselect" onClick={this.handleRoute}>
+              <div className="playlist-detail-wrapper noselect" onClick={this.handleRoute}>
                 {
                   this.props.currentTrack  ?
                    this.props.currentTrack.id !== this.props.track.id ? 
-                        <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
+                        <Link to={`/tracks/${this.props.track.id}`} className="history-item-link"> 
                           {this.props.track.title}
                         </Link> :
-                        <p className="comment-item-username-link">
+                        <p className="history-item-link">
                           {this.props.track.title}
                         </p>
                           : 
-                    <Link to={`/tracks/${this.props.track.id}`} className="comment-item-username-link"> 
-                      <p className={`comment-item-username-link ${this.props.track.id}`}>
+                    <Link to={`/tracks/${this.props.track.id}`} className="history-item-link"> 
+                      <p className={`history-item-link ${this.props.track.id}`}>
                         {this.props.track.title}
                       </p>
                     </Link>
                 }
               </div>
             </span> 
+          </div>
             <div>
               <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
               <span style={{fontSize: 11}}>
                 {this.props.track.numComments}
               </span>
             </div>  
-          </div>
         </div>
       </li> : null
     )

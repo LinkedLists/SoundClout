@@ -84,6 +84,16 @@
   font-size: 11px;
 }
 
+.content-item-username-link {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #999;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
 .content-list-item-genre {
   font-size: 11px;
   color: #999;
