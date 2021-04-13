@@ -191,7 +191,7 @@ class TrackForm extends React.Component {
                   // onKeyPress={this.preventKeyPress}
                   onClick={
                     e => {e.preventDefault(); this.grabInputElement("upload-photo")}
-                    }>for a photo file lol</button>
+                    }>upload a photo</button>
               </div>
               <div className="upload-field-wrapper">
                   <div className="field">

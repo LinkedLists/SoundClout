@@ -204,6 +204,8 @@
   // height: 596px;
   max-height: 99%;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .playlist-shuffle-background-true {
@@ -272,7 +274,7 @@
   font-size: 12px;
 }
 
-.playlist-track-item:last-child {
+.playlist-track-item:first-child {
   background: #f8f8f8;
   .playlist-item-link {
     color: #333;

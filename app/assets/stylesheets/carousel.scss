@@ -84,6 +84,23 @@
   }
 }
 
+.peekNext {
+  animation: peekNext;
+  animation-duration: 0.3s;
+}
+
+@keyframes peekNext {
+  0%{
+    left: 0px
+  }
+  50% {
+    left: -43px
+  }
+  100%{
+    left: 0px
+  }
+}
+
 .carousel-next-btn, .carousel-prev-btn {
   position: absolute;
   cursor: pointer;

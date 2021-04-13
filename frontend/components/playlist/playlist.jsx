@@ -98,7 +98,7 @@ class Playlist extends React.Component {
       })
     }
 
-    return playlistItems.reverse().concat(historyItems)
+    return playlistItems.reverse().concat(historyItems).reverse()
   }
 
   render() {
@@ -121,7 +121,6 @@ class Playlist extends React.Component {
 
             <div className="playlist-ul-wrapper">
               <ul className="playlist-ul">
-                {this.getTrackList()}
                 <PlaylistIndexItem 
                   key={this.props.currentTrack.id + 10000} 
                   track={this.props.currentTrack}
@@ -130,6 +129,7 @@ class Playlist extends React.Component {
                   clearNextTrack={this.props.clearNextTrack}
                   sourceMessage={"Currently listening to"}
                   />
+                {this.getTrackList()}
               </ul>
             </div>
           </div>

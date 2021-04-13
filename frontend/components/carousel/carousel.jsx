@@ -58,10 +58,19 @@ class Carousel extends React.Component {
   }
 
   nextSlide() {
-    if (this.state.index !== this.state.maxIndex) {
-      this.setState( {index: this.state.index += 1} )
-    } else {
-      this.setState( {index: 0} )
+    if (!this.spamBlock) {
+      if (this.state.index !== this.state.maxIndex) {
+        this.setState( {index: this.state.index += 1} )
+      } else {
+        // this.setState( {index: 0} )
+        let carouselWrapper = document.getElementById(this.props.genre)
+        carouselWrapper.classList.add("peekNext")
+        this.spamBlock = true
+        setTimeout(() => {
+          carouselWrapper.classList.remove("peekNext")
+          this.spamBlock = false
+        }, 300)
+      }
     }
   }
 
