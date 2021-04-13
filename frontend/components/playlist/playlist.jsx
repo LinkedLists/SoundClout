@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PlaylistIndexItem from './playlist_index_item'
 
 class Playlist extends React.Component {
   constructor(props) {
@@ -65,7 +66,17 @@ class Playlist extends React.Component {
   }
 
   getTrackList() {
-
+    let playlistItems = this.props.nextTrack.map( (trackId, i) => {
+      return (
+        <PlaylistIndexItem 
+          key={i} 
+          track={this.props.tracks[trackId]}
+          currentTrack={this.props.currentTrack}
+          fetchUser={this.props.fetchUser}
+          />
+      )
+    })
+    return playlistItems
   }
 
   render() {
@@ -77,6 +88,9 @@ class Playlist extends React.Component {
             <button className="playlist-clear-btn">Clear</button>
             <button type="button" className="playlist-close-x noselect" onClick={this.handleClose}>X</button>
           </div>
+          <ul>
+            {this.getTrackList()}
+          </ul>
         </div>
         <span id="playlist-icon" onClick={this.handleOpen}>
           {/* <i className={`fas fa-bars fa-lg icon-${this.state.open}`} ></i> */}
@@ -85,9 +99,6 @@ class Playlist extends React.Component {
           <FontAwesomeIcon icon="play" className={`playlist icon-${this.state.open}`}/>
         </span>
         {/* <div className={`playlist-background-${this.state.open}`}></div> */}
-        <ul>
-
-        </ul>
       </div>
     )
   }

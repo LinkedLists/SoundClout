@@ -11,7 +11,7 @@ import { receiveHistory } from '../../actions/history_actions'
 // import { fetchTrack } from '../../actions/track_actions'
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     audio: document.getElementById('audio'),
     currentTrack: state.ui.playbar.currentTrack,
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
     track: state.entities.tracks,
     trackHistory: state.ui.history,
     prevTracks: state.ui.prevTracks,
-    nextTrack: state.ui.nextTrack
+    nextTrack: state.ui.nextTrack,
   }
 }
 

@@ -55,7 +55,8 @@ class PlaylistIndexItem extends React.Component {
   }
 
   handleRoute2() {
-    if (this.props.track.uploader_id !== this.props.currentUserShowPage) {
+    let currentUserShowPage = Number(window.location.href.split('/').pop())
+    if (this.props.track.uploader_id !== currentUserShowPage) {
       const background = document.getElementsByClassName("user-show-header-container")[0];
       this.props.fetchUser(this.props.track.uploader_id)
       this.cuteColors(background)
