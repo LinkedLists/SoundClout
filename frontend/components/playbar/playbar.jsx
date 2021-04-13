@@ -26,6 +26,7 @@ class Playbar extends React.Component {
 
     this.addPlaybarClickListener = this.addPlaybarClickListener.bind(this)
     this.addAudioEndListener = this.addAudioEndListener.bind(this)
+    this.handleEnd = this.handleEnd.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
 
     this.timeIncrementerInstance
@@ -170,27 +171,28 @@ class Playbar extends React.Component {
       audio.currentTime = currentTime
     })
   }
+
+  handleEnd(playbtn) {
+    if (!this.getNextTrackAuto()) {
+      clearInterval(this.timeIncrementerInstance)
+      this.props.pauseTrack()
+      playbtn ? playbtn.classList.remove("playing") : null
+      this.clearState()
+    }
+  }
   
   addAudioEndListener(playbtn) {
-  let audio = this.props.audio
-   // NOTE: looping is continous play and does not end or pause a track
-   audio.addEventListener("ended", () => {
-     if (!this.getNextTrackAuto()) {
-       clearInterval(this.timeIncrementerInstance)
-       this.props.pauseTrack()
-       playbtn ? playbtn.classList.remove("playing") : null
-       this.clearState()
+    let audio = this.props.audio
+    // NOTE: looping is continous play and does not end or pause a track
+    audio.addEventListener("ended", () => {
+      this.handleChange(playbtn)
 
-       // failsafe
-       setTimeout(() => {
-         audio.ended ? () => {
-           clearInterval(this.timeIncrementerInstance)
-           this.props.pauseTrack()
-           playbtn ? playbtn.classList.remove("playing") : null
-           this.clearState()
-         } : null
-       }, 10)
-     }
+      // failsafe
+      setTimeout(() => {
+        audio.ended ? () => {
+         this.handleChange(playbtn)
+        } : null
+      }, 30)
     })
   }
   

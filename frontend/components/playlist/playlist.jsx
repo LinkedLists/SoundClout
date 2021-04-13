@@ -49,18 +49,20 @@ class Playlist extends React.Component {
       setTimeout(() => {
         playlist.style.display = "none"
         this.spamBlocker = false
-      }, 200)
+      }, 380)
     }
   }  
 
   handleOpen() {
-    let playlist = document.getElementsByClassName(`playlist-container-${this.state.open}`)[0]
-    if (playlist) {
-      if (this.state.open === "open") {
-        this.handleClose()
-      } else if(this.state.open === "close"){
-        playlist.style.display = "block"
-        this.setState({open: "open"})
+    if (!this.spamBlocker) {
+      let playlist = document.getElementsByClassName(`playlist-container-${this.state.open}`)[0]
+      if (playlist) {
+        if (this.state.open === "open") {
+          this.handleClose()
+        } else if(this.state.open === "close"){
+          playlist.style.display = "block"
+          this.setState({open: "open"})
+        }
       }
     }
   }
@@ -76,6 +78,9 @@ class Playlist extends React.Component {
           />
       )
     })
+    if (playlistItems.length < 10) {
+
+    }
     return playlistItems
   }
 
@@ -88,9 +93,11 @@ class Playlist extends React.Component {
             <button className="playlist-clear-btn">Clear</button>
             <button type="button" className="playlist-close-x noselect" onClick={this.handleClose}>X</button>
           </div>
-          <ul>
-            {this.getTrackList()}
-          </ul>
+          <div className="playlist-ul-wrapper">
+            <ul className="playlist-ul">
+              {this.getTrackList()}
+            </ul>
+          </div>
         </div>
         <span id="playlist-icon" onClick={this.handleOpen}>
           {/* <i className={`fas fa-bars fa-lg icon-${this.state.open}`} ></i> */}
