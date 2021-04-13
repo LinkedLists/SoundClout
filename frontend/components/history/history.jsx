@@ -61,11 +61,11 @@ class History extends React.Component {
 
         <div className="history-social-links-footer-container">
           <div className="history-social-links-footer-wrapper">
-            <a href="google.com">AngelList</a>
+          <a href="https://angel.co/u/kenny-zeng" target="_blank">AngelList</a>
             &nbsp;⁃
-            <a href="google.com"> Github</a>
+            <a href="https://github.com/LinkedLists/fsp" target="_blank"> Github</a>
             &nbsp;⁃
-            <a href="google.com"> Linkedin</a>
+            <a href="https://linkedin.com/in/k-z-96a742208" target="_blank"> Linkedin</a>
           </div>
         </div>
         

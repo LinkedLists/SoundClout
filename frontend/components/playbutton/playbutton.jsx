@@ -33,9 +33,18 @@ class PlayButton extends React.Component {
       let trackKeys = Object.keys(this.props.tracks)
       let randTrackId
 
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 120; i++) {
+        // Make it more random
         randTrackId = this.getRandTrackId(trackKeys[0], trackKeys[trackKeys.length - 1])
-        playlist.push(randTrackId)
+        if (i % 3 === 0) {
+          randTrackId = this.getRandTrackId(trackKeys[0], trackKeys[trackKeys.length - 1])
+          // Not fun if the same track gets pushed often
+          if (playlist.length > 2 &&
+            playlist[playlist.length - 1] !== randTrackId && 
+            playlist[playlist.length - 2] !== randTrackId) {
+                  playlist.push(randTrackId)
+          }
+        }
       }
 
       this.props.generatePlaylist(playlist)

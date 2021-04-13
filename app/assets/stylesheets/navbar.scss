@@ -270,14 +270,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 5px;
 }
 
 .link-imgs {
   height: 20px;
   width: auto;
   padding: 5px;
+  margin-right: 5px;
 }
 
 #linkedin-img {
+  margin-right: -5px;
   height: 24px;
 }

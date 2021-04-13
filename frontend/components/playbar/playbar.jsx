@@ -10,7 +10,7 @@ class Playbar extends React.Component {
       muted: false,
       repeat: false,
       currentTime: '0:00',
-      duration: 0,
+      duration: '0:00',
       percentPlayed: 0,
       volume: 0.6,
       mounted: false,

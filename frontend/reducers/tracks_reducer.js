@@ -20,24 +20,10 @@ const TracksReducer = (oldState = {}, action) => {
       return newState
 
     case RECEIVE_COMMENT:
-      // // SUPER UGLY!!!!
-      // let key = Object.keys(newState)[0]
-      // const values = Object.values(newState)[0]
-      // if (!values.comments) {
-      //   values.comments = {}
-      // }
-      // const newValues = values.comments[action.comment.comment.id] = action.comment.comment
-      // newState[key].comments[newValues.id] = newValues
-      // return newState
-      // debugger
       newState[action.comment.comment.track_id].numComments = action.comment.comment.numComments
       return newState
 
-
     case REMOVE_COMMENT:
-      // key = Object.keys(newState)[0]
-      // delete newState[key].comments[action.trackCommentPair[1]]
-      // debugger
       newState[action.trackCommentPair[0].id].numComments = action.trackCommentPair[2]
       return newState
 

@@ -99,13 +99,16 @@ class NavBar extends React.Component {
               <li>
                 <Link to='/' className='nav-links-li noselect' id="logout" onClick={this.handleLogout}>Logout</Link>
               </li>
-              <li><a href="google.com" className="link-wrapper">
+
+              <li><a href="https://angel.co/u/kenny-zeng" target="_blank" className="link-wrapper">
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/angellist2.png" 
                 className="link-imgs" /></a></li>
-              <li><a href="google.com" className="link-wrapper">
+
+              <li><a href="https://github.com/LinkedLists/fsp" target="_blank" className="link-wrapper">
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/github2.png" 
                 className="link-imgs"/></a></li>
-              <li><a href="google.com" className="link-wrapper">
+                
+              <li><a href="https://linkedin.com/in/k-z-96a742208" target="_blank" className="link-wrapper">
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/linkedin.png" 
                 className="link-imgs"id="linkedin-img"/></a></li>
             </ul>
