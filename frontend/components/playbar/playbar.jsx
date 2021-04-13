@@ -229,18 +229,8 @@ class Playbar extends React.Component {
     if (!this.props.audio.loop) {
       let { nextTrack, track, currentTrack } = this.props
       if (nextTrack.length > 0) {
-        let length = nextTrack.length
         let nextTrackKey = nextTrack[nextTrack.length - 1]
-        if (this.props.prevTracks.length === 0 ) {
-          this.props.savePrevTrack(currentTrack)
-        }
-        if (nextTrackKey === currentTrack.id && length > 1) {
-          nextTrackKey = nextTrack[nextTrack.length - 2]
-          this.props.burpNextTrack(track[nextTrackKey + 1])
-          this.props.sendNextTrack(track[nextTrackKey])
-        } else {
-          this.props.sendNextTrack(track[nextTrackKey])
-        }
+        this.props.sendNextTrack(track[nextTrackKey])
         window.localStorage.setItem("currentTrack", JSON.stringify(track[nextTrackKey]))
       }
       else if (this.state.shuffle) {
@@ -265,18 +255,10 @@ class Playbar extends React.Component {
   getNextTrackManual() {
     let { nextTrack, track, currentTrack } = this.props
     if (nextTrack.length > 0) {
-      let length = nextTrack.length
       let nextTrackKey = nextTrack[nextTrack.length - 1]
-      if (nextTrackKey === currentTrack.id && length > 1) {
-        nextTrackKey = nextTrack[nextTrack.length - 2]
-        this.props.burpNextTrack(track[nextTrackKey + 1])
-        this.props.sendNextTrack(track[nextTrackKey])
-      } else {
-        this.props.sendNextTrack(track[nextTrackKey])
-      }
+      this.props.sendNextTrack(track[nextTrackKey])
       window.localStorage.setItem("currentTrack", JSON.stringify(track[nextTrackKey]))
     }
-
     else if (this.state.shuffle) {
       let trackKeys = Object.keys(track)
       let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
@@ -299,7 +281,7 @@ class Playbar extends React.Component {
       prevTrackKey = prevTracks[length - 1]
       if (prevTrackKey === currentTrack.id && length > 1) {
         prevTrackKey = prevTracks[length - 2]
-        this.props.burpPrevTrack(track[prevTrackKey + 1])  
+        this.props.burpPrevTrack(currentTrack)  
         this.props.sendPrevTrack(track[prevTrackKey])
       }
       window.localStorage.setItem("currentTrack", JSON.stringify(track[prevTrackKey]))
