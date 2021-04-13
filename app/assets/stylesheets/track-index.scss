@@ -1,0 +1,11 @@
+.library-main-content-wrapper {
+  // margin-left: 35px;
+}
+
+.library-tracks-ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 10px;
+}

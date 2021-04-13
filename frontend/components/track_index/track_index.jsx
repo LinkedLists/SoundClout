@@ -19,7 +19,7 @@ class TrackIndex extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    this.props.fetchTracks()
+    // this.props.fetchTracks()
     this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {
@@ -46,38 +46,34 @@ class TrackIndex extends React.Component {
     })
     return (
       <div className="content-container">
-      <History />
-      <div className="content-wrapper">
-
-        <div className="content-playlist-main-wrapper">
-          <div className="playlist-wrapper">
-            {/* <div className="playlist-header">Charts: New and hot</div> */}
-                  <div className="content-playlist-header-wrapper">
-                    <h3 className="content-playlist-header">Charts: New and hot</h3>
-                    <h6 className="content-playlist-header-description">The most played tracks on SoundCloud this week</h6>
-                  </div>
-            {
-              this.loading ?
-                <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> :
-                <ul className="content-playlist-ul">
-
-                  {trackItems}
-
-                </ul>
-            }
+        <History />
+        <div className="content-wrapper">
+          <div className="content-playlist-main-wrapper">
+            <div className="library-main-content-wrapper">
+              <div className="content-playlist-header-wrapper">
+                <h3 className="content-playlist-header">Library</h3>
+                <h6 className="content-playlist-header-description">All tracks from SoundClout users</h6>
+              </div>
+              {
+                // this.loading ?
+                  // <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> :
+                  <ul className="library-tracks-ul">
+                    {trackItems}
+                  </ul>
+              }
+            </div>
+          </div>
+          <div className="history-social-links-footer-container">
+            <div className="history-social-links-footer-wrapper">
+              <a href="https://angel.co/u/kenny-zeng" target="_blank">AngelList</a>
+              &nbsp;⁃
+              <a href="https://github.com/LinkedLists/fsp" target="_blank"> Github</a>
+              &nbsp;⁃
+              <a href="https://linkedin.com/in/k-z-96a742208" target="_blank"> Linkedin</a>
+            </div>
           </div>
         </div>
-            <div className="history-social-links-footer-container">
-              <div className="history-social-links-footer-wrapper">
-                <a href="https://angel.co/u/kenny-zeng" target="_blank">AngelList</a>
-                &nbsp;⁃
-                <a href="https://github.com/LinkedLists/fsp" target="_blank"> Github</a>
-                &nbsp;⁃
-                <a href="https://linkedin.com/in/k-z-96a742208" target="_blank"> Linkedin</a>
-              </div>
-            </div>
       </div>
-    </div>
     )
 
   }
