@@ -19,6 +19,7 @@
   right: 8px;
   width: 440px;
   height: 660px;
+  max-height: 69vh;
   background: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   animation: background-in2;
@@ -155,7 +156,20 @@
 
 .playlist-ul-container {
   position: relative;
-  height: 596px;
+  // height: 596px;
+  // height: 100%;
+  // max-height: 59vh;
+  // min-height: 88%;
+  // height: 500px;
+  // max-height: 87%;
+  /* Firefox */
+  height: -moz-calc(100% - 64px);
+  /* WebKit */
+  height: -webkit-calc(100% - 64px);
+  /* Opera */
+  height: -o-calc(100% - 64px);
+  /* Standard */
+  height: calc(100% - 64px);
 }
 
 /* width */
@@ -187,7 +201,8 @@
 
 .playlist-ul-wrapper {
   position: relative;
-  height: 596px;
+  // height: 596px;
+  max-height: 99%;
   overflow-y: scroll;
 }
 
