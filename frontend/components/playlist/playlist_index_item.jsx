@@ -72,6 +72,11 @@ class PlaylistIndexItem extends React.Component {
   }
 
   render() {
+    let sourceMsg
+    this.props.sourceMessage ? 
+      sourceMsg = <span className="playlist-src-msg">&#8226; {this.props.sourceMessage}</span> :
+      sourceMsg = <></>
+
     return (
       this.props.track ? 
       <li className="playlist-track-item">
@@ -88,16 +93,15 @@ class PlaylistIndexItem extends React.Component {
           </div>
 
           <div className="playlist-track-details">
-            {/* Why do I need to do an onClick to make user traversal work? */}
             <span>
               <div className="playlist-detail-wrapper noselect" onClick={this.handleRoute2}>
                 { 
                   this.props.track.uploader_id !== this.props.currentUserShowPage ? 
                     <Link to={`/users/${this.props.track.uploader_id}`} className="playlist-item-link"> 
-                      {this.props.track.username} 
+                      {this.props.track.username} {sourceMsg}
                     </Link> : 
                     <p className="playlist-item-link">
-                      {this.props.track.username}
+                      {this.props.track.username} {sourceMsg}
                     </p>
                 }
               </div>

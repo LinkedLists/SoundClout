@@ -76,6 +76,7 @@ class Playlist extends React.Component {
           currentTrack={this.props.currentTrack}
           fetchUser={this.props.fetchUser}
           clearNextTrack={this.props.clearNextTrack}
+          sourceMessage={"From your recent history"}
           />
       )
     })
@@ -103,6 +104,7 @@ class Playlist extends React.Component {
                 currentTrack={this.props.currentTrack}
                 fetchUser={this.props.fetchUser}
                 clearNextTrack={this.props.clearNextTrack}
+                sourceMessage={"Currently listening to"}
               />
             </ul>
           </div>

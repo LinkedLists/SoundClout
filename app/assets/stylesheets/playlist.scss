@@ -170,11 +170,19 @@
 
 .playlist-track-item:last-child {
   background: #f8f8f8;
+  color: #333;
   .playlist-track-icon {
     opacity: 1;
   }
   .playlist-play-btn-wrapper {
     display: block;
+  }
+}
+
+.playlist-track-item:hover {
+  .playlist-src-msg {
+    display: inline;
+    color: #333;
   }
 }
 
@@ -218,6 +226,9 @@
   // opacity: 1;
 }
 
+.playlist-src-msg {
+  display: none;
+}
 
 .playlist-track-details span:hover{
   color: black;
