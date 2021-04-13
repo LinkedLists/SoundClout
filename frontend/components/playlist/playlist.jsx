@@ -84,7 +84,7 @@ class Playlist extends React.Component {
     let playlistItems = []
     if (this.props.playlist.length > 0) {
       let genre = this.props.tracks[this.props.playlist[0]].genre
-        playlistItems = this.props.playlist.reverse().map( (trackId, i) => {
+        playlistItems = this.props.playlist.map( (trackId, i) => {
         return (
           <PlaylistIndexItem 
             key={i + 3584684} 
@@ -98,7 +98,7 @@ class Playlist extends React.Component {
       })
     }
 
-    return playlistItems.concat(historyItems)
+    return playlistItems.reverse().concat(historyItems)
   }
 
   render() {

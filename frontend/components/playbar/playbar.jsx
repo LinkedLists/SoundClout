@@ -237,6 +237,12 @@ class Playbar extends React.Component {
         this.props.sendTrack(track[randKey])
         window.localStorage.setItem("currentTrack", JSON.stringify(track[randKey]))
       }
+      else if (this.props.playlist.length > 0) {
+        let next = track[this.props.playlist[0]]
+        this.props.sendTrack(next)
+        this.props.shiftPlaylist()
+        window.localStorage.setItem("currentTrack", JSON.stringify(next))
+      }
       else if (currentTrack.id + 1 in track) {
         let nextTrack = track[currentTrack.id + 1]
         this.props.sendTrack(nextTrack)
@@ -261,6 +267,12 @@ class Playbar extends React.Component {
       let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
       this.props.sendTrack(track[randKey])
       window.localStorage.setItem("currentTrack", JSON.stringify(track[randKey]))
+    }
+    else if (this.props.playlist.length > 0) {
+      let next = track[this.props.playlist[0]]
+      this.props.sendTrack(next)
+      this.props.shiftPlaylist()
+      window.localStorage.setItem("currentTrack", JSON.stringify(next))
     }
     else if (currentTrack.id + 1 in track) {
       let nextTrack = track[currentTrack.id + 1]

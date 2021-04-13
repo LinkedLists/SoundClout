@@ -8,6 +8,7 @@ import { playTrack,
   saveNextTrack, savePrevTrack } from '../../actions/playbar_actions'
 
 import { receiveHistory } from '../../actions/history_actions'
+import { shiftPlaylist } from '../../actions/playlist_actions'
 // import { fetchTrack } from '../../actions/track_actions'
 
 
@@ -22,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
     trackHistory: state.ui.history,
     prevTracks: state.ui.prevTracks,
     nextTrack: state.ui.nextTrack,
+    playlist: state.ui.playlist
   }
 }
 
@@ -42,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
     savePrevTrack: (track) => dispatch(savePrevTrack(track)),
     burpPrevTrack: (track) => dispatch(burpPrevTrack(track)),
     burpNextTrack: (track) => dispatch(burpNextTrack(track)),
-
+    shiftPlaylist: () => dispatch(shiftPlaylist()),
   }
 }
 
