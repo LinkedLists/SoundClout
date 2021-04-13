@@ -81,7 +81,7 @@ class Playlist extends React.Component {
       )
     })
     if (playlistItems.length < 15) {
-      
+
     }
     return playlistItems
   }
@@ -92,7 +92,7 @@ class Playlist extends React.Component {
         <div className={`playlist-container-${this.state.open}`}>
           <div className="playlist-header noselect" onMouseDown={this.handleMouseDown}>
             <h3>Next up</h3>
-            <button className="playlist-clear-btn">Clear</button>
+            <button className="playlist-clear-btn" onClick={this.props.clearPlaylist}>Clear</button>
             <button type="button" className="playlist-close-x noselect" onClick={this.handleClose}>X</button>
           </div>
           <div className="playlist-ul-wrapper">

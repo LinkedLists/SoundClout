@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.localStorage.getItem('nextTrack')) {
     nextTrack = JSON.parse(window.localStorage.getItem("nextTrack"))
   }
+  let playlist
+  if (window.localStorage.getItem('playlist')) {
+    playlist = JSON.parse(window.localStorage.getItem("playlist"))
+  }
   let preloadedState = undefined;
   if (window.currentUser) {
     preloadedState = {

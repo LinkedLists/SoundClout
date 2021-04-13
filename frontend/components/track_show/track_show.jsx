@@ -113,8 +113,6 @@ class TrackShow extends React.Component {
       window.localStorage.setItem("currentTrack", JSON.stringify({}))
     }
     this.props.deleteTrack(this.props.track)  
-    // you get redirected and set the history anyways
-      // .then(() => this.setHistory());
     this.props.removeComments();
     this.props.history.push(`/`)
   }
@@ -236,9 +234,7 @@ class TrackShow extends React.Component {
                         <div className="track-show-uploader-name">{this.props.track.username}</div>
                       </div>
                     </div>
-                    <CommentShow 
-                      track={this.props.track}
-                      setHistory={this.setHistory} />
+                    <CommentShow track={this.props.track} />
                   </div>
                 }
               </div>

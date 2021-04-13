@@ -28,7 +28,6 @@ class TrackForm extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.switchModalState = this.switchModalState.bind(this);
-    this.setHistory = this.setHistory.bind(this);
   }
   
   componentDidMount() {
@@ -97,9 +96,6 @@ class TrackForm extends React.Component {
       }, 600)
     } else {
       setTimeout(() => {
-        // setHistory here so that when a track is updated it is reflected in localstorage
-        // UPDATE: this is no longer needed as history is an array of track ids
-        // this.setHistory()
         this.props.closeForm()
       }, 600)
     }
@@ -174,16 +170,6 @@ class TrackForm extends React.Component {
         this.props.trackAction(track, this.handleCloseForm(e))
       }
     }
-  }
-
-  setHistory() {
-    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-    setTimeout(() => {
-      let history = JSON.parse(window.localStorage.getItem("history"))
-      if (history.length !== this.props.trackHistory.length) {
-        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-      }
-    }, 70)
   }
   
   render() {

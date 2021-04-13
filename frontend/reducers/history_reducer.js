@@ -7,6 +7,7 @@ const HistoryReducer = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
       newState.push(action.track.id)
+      window.localStorage.setItem("history", JSON.stringify(newState))
       return newState
     case RECEIVE_HISTORY:
       return action.history

@@ -29,6 +29,7 @@ const nextTrackReducer = (state = [], action) => {
     case CLEAR_HISTORY:
       return []
     case CLEAR_PLAYLIST:
+      window.localStorage.setItem("nextTrack", JSON.stringify([]))
       return []
     case CLEAR_NEXT_TRACK:
       return []

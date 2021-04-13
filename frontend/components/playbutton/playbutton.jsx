@@ -6,20 +6,9 @@ class PlayButton extends React.Component {
 
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
-    this.setHistory = this.setHistory.bind(this)
     this.sendTrack = this.sendTrack.bind(this)
     this.intervalUp;
     this.intervalDown;
-  }
-
-  setHistory() {
-    window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-    setTimeout(() => {
-      let history = JSON.parse(window.localStorage.getItem("history"))
-      if (history.length !== this.props.trackHistory.length) {
-        window.localStorage.setItem("history", JSON.stringify(this.props.trackHistory))
-      }
-    }, 70)
   }
 
   sendTrack() {
@@ -32,7 +21,6 @@ class PlayButton extends React.Component {
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       // playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
-      this.setHistory()
 
       // failsafe
       setTimeout(() => {
