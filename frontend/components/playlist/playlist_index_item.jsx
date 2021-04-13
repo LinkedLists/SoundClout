@@ -108,22 +108,11 @@ class PlaylistIndexItem extends React.Component {
             </span>
             <span>
               <div className="playlist-detail-wrapper noselect" onClick={this.handleRoute}>
-                {
-                  // this.props.currentTrack  ?
-                  //  this.props.currentTrack.id !== this.props.track.id ? 
-                  //       <Link to={`/tracks/${this.props.track.id}`} className="playlist-item-link"> 
-                  //         {this.props.track.title}
-                  //       </Link> :
-                  //       <p className="playlist-item-link">
-                  //         {this.props.track.title}
-                  //       </p>
-                  //         : 
-                    <Link to={`/tracks/${this.props.track.id}`} className="playlist-item-link"> 
-                      <p className={`playlist-item-link ${this.props.track.id}`}>
-                        {this.props.track.title}
-                      </p>
-                    </Link>
-                }
+                <Link to={`/tracks/${this.props.track.id}`} className="playlist-item-link"> 
+                  <p className={`playlist-item-link ${this.props.track.id}`}>
+                    {this.props.track.title}
+                  </p>
+                </Link>
               </div>
             </span> 
           </div>
