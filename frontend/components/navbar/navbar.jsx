@@ -69,7 +69,7 @@ class NavBar extends React.Component {
             <li id="logo-container"><Link to='/discover'><span id="logo-icon"></span></Link></li>
             <li><Link to='/discover' className='nav-links-li'>Home</Link></li>
             <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
-            <li><Link to='/discover' className='nav-links-li'>Library</Link></li>
+            <li><Link to='/library' className='nav-links-li'>Library</Link></li>
           </ul>
           <form className="searchbar-form">
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts (soon)"></input>

@@ -5,6 +5,7 @@ import Modal from './modal/modal';
 import NotFound from './404/not_found'
 import ContentContainer from './content/content_container'
 import TrackShowContainer from './track_show/track_show_container'
+import TrackIndexContainer from './track_index/track_index_container'
 import UserShowContainer from './user_show/user_show_container'
 import Homepage from './homepage/homepage'
 import PlaybarContainer from './playbar/playbar_container'
@@ -26,6 +27,7 @@ const App = () => (
     */}
     <Switch>
       <ProtectedRoute exact path='/discover' component={ContentContainer} />
+      <ProtectedRoute exact path='/library' component={TrackIndexContainer} />
       <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
       <ProtectedRoute exact path='/users/:userId' component={UserShowContainer} />
       <ProtectedRoute exact path='/upload' component={UploadShowContainer} />
