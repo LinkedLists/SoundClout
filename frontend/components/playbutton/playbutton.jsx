@@ -12,17 +12,31 @@ class PlayButton extends React.Component {
     this.intervalDown;
   }
 
+  getRandTrackId(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
   generatePlaylist() {
     if (this.props.playlist.length === 0) {
       let playlist = []
       let genre = this.props.track.genre
       let tracks = Object.values(this.props.tracks)
-      
+
       tracks.forEach( track => {
         if (track.genre === genre && track !== this.props.track) {
           playlist.push(track.id)
         }
       })
+
+      let trackKeys = Object.keys(this.props.tracks)
+      let randTrackId
+
+      for (let i = 0; i < 40; i++) {
+        randTrackId = this.getRandTrackId(trackKeys[0], trackKeys[trackKeys.length - 1])
+        playlist.push(randTrackId)
+      }
 
       this.props.generatePlaylist(playlist)
     }

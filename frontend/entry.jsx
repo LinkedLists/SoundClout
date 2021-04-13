@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ui: {
         history: history,
         prevTracks: prevTracks,
-        nextTrack: nextTrack
+        nextTrack: nextTrack,
+        playlist: playlist
       }
     }
     store = configureStore(preloadedState);
