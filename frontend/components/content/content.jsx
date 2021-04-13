@@ -19,18 +19,16 @@ class Content extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    this.props.fetchTracks(setTimeout(() => {
-      this.loading = false
-    }, 1500))
+    this.props.fetchTracks()
     this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
-    // setTimeout(() => {
-    //   this.loading = false
-    // }, 350)
+    setTimeout(() => {
+      this.loading = false
+    }, 350)
   }
 
   enableCurrentUser() {
