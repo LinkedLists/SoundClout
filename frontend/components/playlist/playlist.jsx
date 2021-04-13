@@ -75,11 +75,12 @@ class Playlist extends React.Component {
           track={this.props.tracks[trackId]}
           currentTrack={this.props.currentTrack}
           fetchUser={this.props.fetchUser}
+          clearNextTrack={this.props.clearNextTrack}
           />
       )
     })
-    if (playlistItems.length < 10) {
-
+    if (playlistItems.length < 15) {
+      
     }
     return playlistItems
   }
@@ -88,7 +89,7 @@ class Playlist extends React.Component {
     return (
       <div>
         <div className={`playlist-container-${this.state.open}`}>
-          <div className="playlist-header noselect" onClick={this.handleMouseDown}>
+          <div className="playlist-header noselect" onMouseDown={this.handleMouseDown}>
             <h3>Next up</h3>
             <button className="playlist-clear-btn">Clear</button>
             <button type="button" className="playlist-close-x noselect" onClick={this.handleClose}>X</button>
@@ -101,6 +102,7 @@ class Playlist extends React.Component {
                 track={this.props.currentTrack}
                 currentTrack={this.props.currentTrack}
                 fetchUser={this.props.fetchUser}
+                clearNextTrack={this.props.clearNextTrack}
               />
             </ul>
           </div>

@@ -1,4 +1,4 @@
-import { RECEIVE_NEXT_TRACK, BURP_NEXT_TRACK, BURP_PREV_TRACK, SAVE_NEXT_TRACK } from '../actions/playbar_actions'
+import { RECEIVE_NEXT_TRACK, BURP_NEXT_TRACK, BURP_PREV_TRACK, SAVE_NEXT_TRACK, CLEAR_NEXT_TRACK } from '../actions/playbar_actions'
 import { CLEAR_HISTORY } from '../actions/history_actions'
 import { REMOVE_TRACK } from "../actions/track_actions";
 
@@ -21,6 +21,8 @@ const prevTracksReducer = (state = [], action) => {
       window.localStorage.setItem("nextTrack", JSON.stringify(newState))
       return newState
     case CLEAR_HISTORY:
+      return []
+    case CLEAR_NEXT_TRACK:
       return []
     case REMOVE_TRACK:
       let newArr = newState.filter(trackId => trackId !== action.track.id)

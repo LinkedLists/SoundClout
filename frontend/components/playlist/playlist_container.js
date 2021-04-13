@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Playlist from './playlist'
 import { fetchTracks } from '../../actions/track_actions'
-import { playTrack, pauseTrack, receiveNewTrack, refreshTrack, clearPlaybarState } from '../../actions/playbar_actions'
+import { playTrack, pauseTrack, receiveNewTrack, refreshTrack, clearPlaybarState, clearNextTrack } from '../../actions/playbar_actions'
 import { receiveHistory } from '../../actions/history_actions'
 import { fetchUser } from '../../actions/user_actions'
 
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     // receiveNewTrack: (track) => dispatch(receiveNewTrack(track)),
     receiveHistory: (history) => dispatch(receiveHistory(history)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
+    clearNextTrack: () => dispatch(clearNextTrack())
   }
 }
 

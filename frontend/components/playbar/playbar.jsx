@@ -70,8 +70,13 @@ class Playbar extends React.Component {
 
   handleChange(e) {
     let audio = this.props.audio
-    this.setState( {percentPlayed: e.target.value} )
-    audio.currentTime = e.target.value / 100 * audio.duration
+    if (e.target.value <= 0) {
+      this.setState( {percentPlayed: 0} )
+      audio.currentTime = 0
+    } else {
+      this.setState( {percentPlayed: e.target.value} )
+      audio.currentTime = e.target.value / 100 * audio.duration
+    }
   }
 
   clearState() {

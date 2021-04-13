@@ -65,7 +65,10 @@ class PlaylistIndexItem extends React.Component {
   }
 
   clickPlaybtn() {
-    document.getElementById(this.props.track.id).click()
+    // Condition to prevent a double click if this is the current track
+    if (this.props.track.id !== this.props.currentTrack.id) {
+      document.getElementById(this.props.track.id).click()
+    }
   }
 
   render() {
@@ -74,30 +77,14 @@ class PlaylistIndexItem extends React.Component {
       <li className="playlist-track-item">
         <div className="playlist-track-item-link">
           <div className="playlist-track-icon-container">
-            {
-              // Are you on a track show page?
-              // If not then have the image be a regular link
-              // this.props.currentTrack ? 
-              // If you are on the track show page and you select a different
-              // track from playlist then act as a link; otherwise, remove the
-              // link to itself
-              // this.props.currentTrack.id !== this.props.track.id ? 
-                <div className="playlist-img-container" onClick={this.clickPlaybtn}>
-                  <div className="playlist-play-btn-wrapper">
-                    <PlayButton track={this.props.track}/>
-                  </div>
-                  <div className="playlist-track-icon-link">
-                    <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
-                  </div>
-                </div> 
-              //   : 
-              //     <img src={this.props.track.photoUrl} className="playlist-track-icon"/>
-              //       :
-              // // You are not on the track show page so behave as a regular link
-              // <Link to={`/tracks/${this.props.track.id}`} className="playlist-track-icon-link">
-              //   <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
-              // </Link>
-            }
+            <div className="playlist-img-container" onClick={this.clickPlaybtn}>
+              <div className="playlist-play-btn-wrapper">
+                <PlayButton track={this.props.track}/>
+              </div>
+              <div className="playlist-track-icon-link">
+                <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
+              </div>
+            </div> 
           </div>
 
           <div className="playlist-track-details">
@@ -106,10 +93,10 @@ class PlaylistIndexItem extends React.Component {
               <div className="playlist-detail-wrapper noselect" onClick={this.handleRoute2}>
                 { 
                   this.props.track.uploader_id !== this.props.currentUserShowPage ? 
-                    <Link to={`/users/${this.props.track.uploader_id}`} className="history-item-link"> 
+                    <Link to={`/users/${this.props.track.uploader_id}`} className="playlist-item-link"> 
                       {this.props.track.username} 
                     </Link> : 
-                    <p className="history-item-link">
+                    <p className="playlist-item-link">
                       {this.props.track.username}
                     </p>
                 }
@@ -120,15 +107,15 @@ class PlaylistIndexItem extends React.Component {
                 {
                   this.props.currentTrack  ?
                    this.props.currentTrack.id !== this.props.track.id ? 
-                        <Link to={`/tracks/${this.props.track.id}`} className="history-item-link"> 
+                        <Link to={`/tracks/${this.props.track.id}`} className="playlist-item-link"> 
                           {this.props.track.title}
                         </Link> :
-                        <p className="history-item-link">
+                        <p className="playlist-item-link">
                           {this.props.track.title}
                         </p>
                           : 
-                    <Link to={`/tracks/${this.props.track.id}`} className="history-item-link"> 
-                      <p className={`history-item-link ${this.props.track.id}`}>
+                    <Link to={`/tracks/${this.props.track.id}`} className="playlist-item-link"> 
+                      <p className={`playlist-item-link ${this.props.track.id}`}>
                         {this.props.track.title}
                       </p>
                     </Link>
@@ -136,9 +123,9 @@ class PlaylistIndexItem extends React.Component {
               </div>
             </span> 
           </div>
-            <div>
-              <FontAwesomeIcon icon="comment-alt" color="#999" id="history-comment-icon"/>
-              <span style={{fontSize: 11}}>
+            <div className="playlist-comment-wrapper">
+              <FontAwesomeIcon icon="comment-alt" color="#999" id="playlist-comment-icon"/>
+              <span style={{fontSize: 12}}>
                 {this.props.track.numComments}
               </span>
             </div>  
