@@ -13,6 +13,7 @@ class PlaylistIndexItem extends React.Component {
     this.handleRoute = this.handleRoute.bind(this)
     this.handleRoute2 = this.handleRoute2.bind(this)
     this.cuteColors = this.cuteColors.bind(this)
+    this.clickPlaybtn = this.clickPlaybtn.bind(this)
   }
 
   getRandomInt(min, max) {
@@ -63,6 +64,10 @@ class PlaylistIndexItem extends React.Component {
     }
   }
 
+  clickPlaybtn() {
+    document.getElementById(this.props.track.id).click()
+  }
+
   render() {
     return (
       this.props.track ? 
@@ -72,20 +77,26 @@ class PlaylistIndexItem extends React.Component {
             {
               // Are you on a track show page?
               // If not then have the image be a regular link
-              this.props.currentTrack ? 
+              // this.props.currentTrack ? 
               // If you are on the track show page and you select a different
               // track from playlist then act as a link; otherwise, remove the
               // link to itself
-              this.props.currentTrack.id !== this.props.track.id ? 
-                  <Link to={`/tracks/${this.props.track.id}`} className="playlist-track-icon-link">
+              // this.props.currentTrack.id !== this.props.track.id ? 
+                <div className="playlist-img-container" onClick={this.clickPlaybtn}>
+                  <div className="playlist-play-btn-wrapper">
+                    <PlayButton track={this.props.track}/>
+                  </div>
+                  <div className="playlist-track-icon-link">
                     <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
-                  </Link> : 
-                  <img src={this.props.track.photoUrl} className="playlist-track-icon"/>
-                    :
-              // You are not on the track show page so behave as a regular link
-              <Link to={`/tracks/${this.props.track.id}`} className="playlist-track-icon-link">
-                <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
-              </Link>
+                  </div>
+                </div> 
+              //   : 
+              //     <img src={this.props.track.photoUrl} className="playlist-track-icon"/>
+              //       :
+              // // You are not on the track show page so behave as a regular link
+              // <Link to={`/tracks/${this.props.track.id}`} className="playlist-track-icon-link">
+              //   <img src={this.props.track.photoUrl} className="playlist-track-icon" onClick={this.handleRoute}/>
+              // </Link>
             }
           </div>
 

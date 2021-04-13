@@ -97,7 +97,7 @@ class Playlist extends React.Component {
             <ul className="playlist-ul">
               {this.getTrackList()}
               <PlaylistIndexItem 
-                key={this.props.currentTrack.id + 1000} 
+                key={this.props.currentTrack.id + 10000} 
                 track={this.props.currentTrack}
                 currentTrack={this.props.currentTrack}
                 fetchUser={this.props.fetchUser}

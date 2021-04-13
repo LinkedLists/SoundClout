@@ -109,7 +109,7 @@ class PlayButton extends React.Component {
 
   render() {
     return (
-      <div>
+      // <div>
         <div 
           onClick={this.sendTrack} 
           className={
@@ -117,8 +117,9 @@ class PlayButton extends React.Component {
             "variable-playbtn playing" :
             "variable-playbtn"
           }
+          id={this.props.track.id}
         />
-      </div>
+      // </div>
     )
   }
 
