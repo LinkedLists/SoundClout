@@ -68,7 +68,7 @@ class Playlist extends React.Component {
   }
 
   getTrackList() {
-    let playlistItems = this.props.nextTrack.map( (trackId, i) => {
+    let historyItems = this.props.nextTrack.map( (trackId, i) => {
       return (
         <PlaylistIndexItem 
           key={i} 
@@ -80,10 +80,25 @@ class Playlist extends React.Component {
           />
       )
     })
-    if (playlistItems.length < 15) {
 
+    let playlistItems = []
+    if (this.props.playlist.length > 0) {
+      let genre = this.props.tracks[this.props.playlist[0]].genre
+        playlistItems = this.props.playlist.reverse().map( (trackId, i) => {
+        return (
+          <PlaylistIndexItem 
+            key={i + 3584684} 
+            track={this.props.tracks[trackId]}
+            currentTrack={this.props.currentTrack}
+            fetchUser={this.props.fetchUser}
+            clearNextTrack={this.props.clearNextTrack}
+            sourceMessage={`Suggested from ${genre}`}
+            />
+        )
+      })
     }
-    return playlistItems
+
+    return playlistItems.concat(historyItems)
   }
 
   render() {

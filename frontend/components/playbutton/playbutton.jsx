@@ -7,15 +7,32 @@ class PlayButton extends React.Component {
     this.bringBackVolume = this.bringBackVolume.bind(this)
     this.bringDownVolume = this.bringDownVolume.bind(this)
     this.sendTrack = this.sendTrack.bind(this)
+    this.generatePlaylist = this.generatePlaylist.bind(this)
     this.intervalUp;
     this.intervalDown;
   }
 
-  sendTrack() {
-    // let playbtn = document.getElementsByClassName("track-show-list-item-playbtn")[0]
-    let audio = this.props.audio
+  generatePlaylist() {
+    if (this.props.playlist.length === 0) {
+      let playlist = []
+      let genre = this.props.track.genre
+      let tracks = Object.values(this.props.tracks)
+      
+      tracks.forEach( track => {
+        if (track.genre === genre && track !== this.props.track) {
+          playlist.push(track.id)
+        }
+      })
 
+      this.props.generatePlaylist(playlist)
+    }
+  }
+
+  sendTrack() {
+    let audio = this.props.audio
+    
     if (this.props.track.id !== this.props.currentTrack.id) {
+      this.generatePlaylist()
       this.props.sendTrack(this.props.track, () => audio.play())
       this.props.playTrack()
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))

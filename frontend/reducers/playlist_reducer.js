@@ -6,6 +6,8 @@ import { CLEAR_PLAYLIST, RECEIVE_PLAYLIST } from '../actions/playlist_actions'
 const PlaylistReducer = (state = [], action) => {
   // let newState = state.slice()
   switch (action.type) {
+    case RECEIVE_PLAYLIST:
+      return action.playlist
     case CLEAR_PLAYLIST:
       return []
     default:
