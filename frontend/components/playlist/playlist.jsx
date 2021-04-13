@@ -110,19 +110,30 @@ class Playlist extends React.Component {
             <button className="playlist-clear-btn" onClick={this.props.clearPlaylist}>Clear</button>
             <button type="button" className="playlist-close-x noselect" onClick={this.handleClose}>X</button>
           </div>
-          <div className="playlist-ul-wrapper">
-            <ul className="playlist-ul">
-              {this.getTrackList()}
-              <PlaylistIndexItem 
-                key={this.props.currentTrack.id + 10000} 
-                track={this.props.currentTrack}
-                currentTrack={this.props.currentTrack}
-                fetchUser={this.props.fetchUser}
-                clearNextTrack={this.props.clearNextTrack}
-                sourceMessage={"Currently listening to"}
-              />
-            </ul>
+
+          <div className="playlist-ul-container">
+
+            <div className={`playlist-shuffle-background-${this.props.shuffle}`}>
+              <h3 className={`playlist-shuffle-message-${this.props.shuffle}`}>
+                Your playlist will be paused while you shuffle around
+              </h3>
+            </div>
+
+            <div className="playlist-ul-wrapper">
+              <ul className="playlist-ul">
+                {this.getTrackList()}
+                <PlaylistIndexItem 
+                  key={this.props.currentTrack.id + 10000} 
+                  track={this.props.currentTrack}
+                  currentTrack={this.props.currentTrack}
+                  fetchUser={this.props.fetchUser}
+                  clearNextTrack={this.props.clearNextTrack}
+                  sourceMessage={"Currently listening to"}
+                  />
+              </ul>
+            </div>
           </div>
+
         </div>
         <span id="playlist-icon" onClick={this.handleOpen}>
           {/* <i className={`fas fa-bars fa-lg icon-${this.state.open}`} ></i> */}
