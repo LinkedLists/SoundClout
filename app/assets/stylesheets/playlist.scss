@@ -203,7 +203,7 @@
 }
 
 .playlist-ul-wrapper {
-  position: relative;
+  // position: relative;
   // height: 596px;
   max-height: 99%;
   overflow-y: scroll;
@@ -279,9 +279,10 @@
 
 .playlist-track-item:first-child {
   background: rgba(240, 240, 240, 0.9);
-  position: fixed;
   z-index: 50;
   width: 434px;
+  position: absolute;
+  bottom: 1%;
   .playlist-item-link {
     color: #333;
     padding-right: 24px;
