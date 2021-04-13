@@ -1,8 +1,14 @@
-import { RECEIVE_NEXT_TRACK, BURP_NEXT_TRACK, BURP_PREV_TRACK, SAVE_NEXT_TRACK, CLEAR_NEXT_TRACK } from '../actions/playbar_actions'
+import { 
+  RECEIVE_NEXT_TRACK, 
+  BURP_NEXT_TRACK, 
+  BURP_PREV_TRACK, 
+  SAVE_NEXT_TRACK, 
+  CLEAR_NEXT_TRACK } from '../actions/playbar_actions'
 import { CLEAR_HISTORY } from '../actions/history_actions'
 import { REMOVE_TRACK } from "../actions/track_actions";
+import { CLEAR_PLAYLIST } from '../actions/playlist_actions'
 
-const prevTracksReducer = (state = [], action) => {
+const nextTrackReducer = (state = [], action) => {
   let newState = state.slice()
   switch (action.type) {
     case SAVE_NEXT_TRACK:
@@ -22,6 +28,8 @@ const prevTracksReducer = (state = [], action) => {
       return newState
     case CLEAR_HISTORY:
       return []
+    case CLEAR_PLAYLIST:
+      return []
     case CLEAR_NEXT_TRACK:
       return []
     case REMOVE_TRACK:
@@ -32,4 +40,4 @@ const prevTracksReducer = (state = [], action) => {
   }
 }
 
-export default prevTracksReducer
+export default nextTrackReducer

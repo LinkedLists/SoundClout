@@ -85,11 +85,14 @@ class NavBar extends React.Component {
                   className='nav-links-li noselect' 
                   id="nav-currentUser" 
                   onClick={this.handleRoute}>
-                  <img src={ this.props.user.profileUrl ? 
+                  {/* Users can't change profile img so whats the point? */}
+                  {/* <img src={ this.props.user && this.props.user.profileUrl ? 
                     this.props.user.profileUrl : 
                     'https://fsp-seed.s3-us-west-1.amazonaws.com/rick.jpg'} 
+                    className="nav-currentUser-img"/> */}
+                  <img src={'https://fsp-seed.s3-us-west-1.amazonaws.com/rick.jpg'} 
                     className="nav-currentUser-img"/>
-                  <span className="nav-currentUser-name">{this.props.user.username}</span>
+                  <span className="nav-currentUser-name">{this.props.user ? this.props.user.username : null}</span>
                 </Link>
               </li>
               

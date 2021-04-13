@@ -1,4 +1,10 @@
-import { RECEIVE_NEW_TRACK, RECEIVE_PREV_TRACK, RECEIVE_NEXT_TRACK, BURP_NEXT_TRACK, BURP_PREV_TRACK, SAVE_PREV_TRACK } from '../actions/playbar_actions'
+import { 
+  RECEIVE_NEW_TRACK, 
+  RECEIVE_PREV_TRACK, 
+  RECEIVE_NEXT_TRACK, 
+  BURP_NEXT_TRACK, 
+  BURP_PREV_TRACK, 
+  SAVE_PREV_TRACK } from '../actions/playbar_actions'
 import { CLEAR_HISTORY } from '../actions/history_actions'
 import { REMOVE_TRACK } from "../actions/track_actions";
 
