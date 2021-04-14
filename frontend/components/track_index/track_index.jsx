@@ -14,7 +14,6 @@ class TrackIndex extends React.Component {
       // loading: true
     }
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
-    this.loading = true
   }
 
   componentDidMount() {
@@ -26,9 +25,6 @@ class TrackIndex extends React.Component {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
-    setTimeout(() => {
-      this.loading = false
-    }, 350)
   }
 
   enableCurrentUser() {
@@ -50,26 +46,22 @@ class TrackIndex extends React.Component {
         <div className="content-wrapper">
           <div className="content-playlist-main-wrapper">
             <div className="library-main-content-wrapper">
-              <div className="content-playlist-header-wrapper">
+              <div className="library-header-wrapper">
                 <h3 className="content-playlist-header">Library</h3>
                 <h6 className="content-playlist-header-description">All tracks from SoundClout users</h6>
               </div>
-              {
-                // this.loading ?
-                  // <FontAwesomeIcon icon="spinner" spin size="3x" className="homepage-spinner" /> :
-                  <ul className="library-tracks-ul">
-                    {trackItems}
-                  </ul>
-              }
-            </div>
-          </div>
-          <div className="history-social-links-footer-container">
-            <div className="history-social-links-footer-wrapper">
-              <a href="https://angel.co/u/kenny-zeng" target="_blank">AngelList</a>
-              &nbsp;⁃
-              <a href="https://github.com/LinkedLists/fsp" target="_blank"> Github</a>
-              &nbsp;⁃
-              <a href="https://linkedin.com/in/k-z-96a742208" target="_blank"> Linkedin</a>
+              <ul className="library-tracks-ul">
+                {trackItems}
+              </ul>
+              <div className="library-social-links-footer-container">
+                <div className="history-social-links-footer-wrapper">
+                  <a href="https://angel.co/u/kenny-zeng" target="_blank">AngelList</a>
+                  &nbsp;⁃
+                  <a href="https://github.com/LinkedLists/fsp" target="_blank"> Github</a>
+                  &nbsp;⁃
+                  <a href="https://linkedin.com/in/k-z-96a742208" target="_blank"> Linkedin</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

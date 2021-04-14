@@ -101,7 +101,7 @@ class Content extends React.Component {
               }
             </div>
 
-            <div className="history-social-links-footer-container">
+            <div className="library-social-links-footer-container">
               <div className="history-social-links-footer-wrapper">
                 <a href="https://angel.co/u/kenny-zeng" target="_blank">AngelList</a>
                 &nbsp;⁃
