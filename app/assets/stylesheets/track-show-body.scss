@@ -12,7 +12,6 @@
 .track-show-body-left-wrapper {
   display: block;
   margin-right: 330px;
-  // padding-top: 20px;
 }
 
 .track-show-body-left-content {
@@ -62,7 +61,6 @@
   color: #333;
   font-size: 14px;
   line-height: 20px;
-  // font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
   text-align: center;
   box-sizing: content-box;
 }
@@ -83,12 +81,6 @@
   margin-right: 7px;
 }
 
-// .test {
-//   content: "";
-//   background-image: url(https://a-v2.sndcdn.com/assets/images/edit-2fe52d66.svg);
-//   background-size: 20px 20px;
-// }
-
 .track-body-main-content {
   position: relative;
   position: relative;
@@ -99,7 +91,6 @@
 
 .track-show-uploader-container {
   width: 120px;
-  // position: absolute;
   top: 0;
   left: 0;
 }
@@ -162,7 +153,6 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  // box-sizing:border-box;
   padding: 10px 10px 10px 10px;
   margin-left: -10px;
   animation: background-in-comment;
@@ -195,7 +185,6 @@
 
 .comment-item-username-link {
   display: block;
-  // display: revert;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

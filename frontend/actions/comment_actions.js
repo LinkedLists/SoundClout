@@ -18,12 +18,6 @@ const removeComment = (trackCommentPair) => {
     trackCommentPair
   };
 };
-// const removeComment = (commentId) => {
-//   return {
-//     type: REMOVE_COMMENT,
-//     commentId
-//   };
-// };
 
 export const removeComments = () => {
   return {

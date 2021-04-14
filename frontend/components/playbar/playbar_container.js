@@ -4,13 +4,10 @@ import { playTrack,
   pauseTrack, receiveNewTrack, 
   receivePrevTrack, receiveNextTrack, 
   burpPrevTrack, burpNextTrack,
-  refreshTrack, clearPlaybarState,
-  saveNextTrack, savePrevTrack } from '../../actions/playbar_actions'
+  refreshTrack, clearPlaybarState, } from '../../actions/playbar_actions'
 
-import { receiveHistory } from '../../actions/history_actions'
+  import { receiveHistory } from '../../actions/history_actions'
 import { shiftPlaylist } from '../../actions/playlist_actions'
-// import { fetchTrack } from '../../actions/track_actions'
-
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -27,8 +24,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-// the playbar should not be fetching tracks on its own because they should be
-// sent when a user wants to play something
 const mapDispatchToProps = (dispatch) => {
   return {
     playTrack: () => dispatch(playTrack()),
@@ -40,8 +35,6 @@ const mapDispatchToProps = (dispatch) => {
     sendTrack: (track) => dispatch(receiveNewTrack(track)),
     sendPrevTrack: (track) => dispatch(receivePrevTrack(track)),
     sendNextTrack: (track) => dispatch(receiveNextTrack(track)),
-    saveNextTrack: (track) => dispatch(saveNextTrack(track)),
-    savePrevTrack: (track) => dispatch(savePrevTrack(track)),
     burpPrevTrack: (track) => dispatch(burpPrevTrack(track)),
     burpNextTrack: (track) => dispatch(burpNextTrack(track)),
     shiftPlaylist: () => dispatch(shiftPlaylist()),

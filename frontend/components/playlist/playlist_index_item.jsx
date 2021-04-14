@@ -23,9 +23,6 @@ class PlaylistIndexItem extends React.Component {
   }
 
   cuteColors(background) {
-    // Cannot use cuteColors() from props as it carries a redundant flag from the parent state
-    // Should not be using setState as it can cause a state update on an umounted component
-    // which will render an error. Instead use instance variable as a flag
     if (background) {
       const r1 = this.getRandomInt(160, 200)
       const g1 = this.getRandomInt(160, 200)
@@ -40,7 +37,6 @@ class PlaylistIndexItem extends React.Component {
           rgb(${r1}, ${g1}, ${b1}), 
           rgb(${r2}, ${g2}, ${b2}), 
           rgb(${r3}, ${g3}, ${b3}))`
-      // }
     }
   }
   

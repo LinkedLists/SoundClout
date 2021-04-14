@@ -23,7 +23,6 @@ class TrackForm extends React.Component {
     this.handlePhotoFile = this.handlePhotoFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
-    // this.resetState = this.resetState.bind(this);
     this.handleValidations = this.handleValidations.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -188,7 +187,6 @@ class TrackForm extends React.Component {
                 <button
                   type="button"
                   className="upload-btn" 
-                  // onKeyPress={this.preventKeyPress}
                   onClick={
                     e => {e.preventDefault(); this.grabInputElement("upload-photo")}
                     }>upload a photo</button>

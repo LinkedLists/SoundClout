@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTracks: () => dispatch(fetchTracks()),
     refreshTrack: (track) => dispatch(refreshTrack(track)),
-    // receiveNewTrack: (track) => dispatch(receiveNewTrack(track)),
     receiveHistory: (history) => dispatch(receiveHistory(history)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     clearNextTrack: () => dispatch(clearNextTrack()),

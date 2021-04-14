@@ -1,7 +1,4 @@
 
-
-// Login/signup header is a more accurate description of this scss file
-
 .login-signup-container {
   position: absolute;
   left: 0; 
@@ -15,7 +12,6 @@
 .login-signup-nav {
   display: flex;
   flex-direction: row;
-  // flex-direction: row-reverse;
   justify-content: space-between;
   text-align: center;
   width: 1200px;
@@ -38,13 +34,11 @@
   color: #fff;
   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
   border-radius: 3px;
-  // opacity: 0.7;
   height: 30px;
   transition: 0.4s;
 }
 
 .login-signup button:hover {
-  // background: rgba(255, 85, 0, 0.7);
   opacity: 0.7;
 }
 
@@ -99,8 +93,6 @@
   background: #333;
   width: 100%;
   display: flex;
-  // flex-direction: row;
-  // align-items: center;
   justify-content: center;
   font-size: 14px;
   z-index: 100;
@@ -157,19 +149,11 @@
 }
 
 .nav-links {
-  // consider if you still need to have flex items within the ul anymore
   display: flex;
-
-  // copied from soundcloud
   font: 100 14px/1.5 Interstate,Lucida Grande,Arial,sans-serif;
 }
 
-.nav-links>li {
-  // box-sizing: border-box;
-}
-
 .searchbar-form {
-  // height: 46px;
   width: 450px;
   padding: 9px 10px 8px;
   position: relative;

@@ -1,5 +1,5 @@
 import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK, UPDATE_TRACK } from "../actions/track_actions";
-import { RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_COMMENTS } from '../actions/comment_actions'
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions'
 import { RECEIVE_USER } from '../actions/user_actions';
 
 const TracksReducer = (oldState = {}, action) => {
@@ -14,7 +14,6 @@ const TracksReducer = (oldState = {}, action) => {
     case UPDATE_TRACK:
       newState[action.track.id] = action.track
       return newState
-      // return {[action.track.id]: action.track}
     case REMOVE_TRACK:
       delete newState[action.track.id]
       return newState

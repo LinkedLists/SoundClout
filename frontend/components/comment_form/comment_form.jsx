@@ -20,8 +20,6 @@ class CommentForm extends React.Component {
   }
 
   componentDidUpdate() {
-    // fail safe when track id does not properly update when
-    // navigating through user show pages
     if (this.state.track_id !== this.props.track.id) {
       this.setState({track_id: this.props.track.id})
     }
@@ -29,19 +27,12 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.track.numComments += 1
     this.props.createComment(this.state).then(() => this.setHistory())
     this.setState( {body: ''} )
   }
 
   setHistory() {
     window.localStorage.setItem("tracks", JSON.stringify(this.props.tracks))
-    // setTimeout(() => {
-    //   let tracks = JSON.parse(window.localStorage.getItem("tracks"))
-    //   if (history.length !== this.props.tracks.length) {
-    //     window.localStorage.setItem("tracks", JSON.stringify(this.props.tracks))
-    //   }
-    // }, 70)
   }
 
   handleChange(field) {

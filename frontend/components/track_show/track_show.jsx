@@ -216,9 +216,6 @@ class TrackShow extends React.Component {
                       </div>
                   }
                 </div>
-                {
-                  // this.loading ?
-                  // <FontAwesomeIcon icon="spinner" spin size="2x" className="homepage-spinner" /> :
                   <div className="track-body-main-content">
                     <div className="track-show-uploader-container">
                       <Link to={`/users/${this.props.track.uploader_id}`}>
@@ -236,7 +233,6 @@ class TrackShow extends React.Component {
                     </div>
                     <CommentShow track={this.props.track} />
                   </div>
-                }
               </div>
             </div>
           </div>

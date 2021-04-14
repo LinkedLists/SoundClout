@@ -2,7 +2,6 @@ import {
   RECEIVE_NEXT_TRACK, 
   BURP_NEXT_TRACK, 
   BURP_PREV_TRACK, 
-  SAVE_NEXT_TRACK, 
   CLEAR_NEXT_TRACK } from '../actions/playbar_actions'
 import { CLEAR_HISTORY } from '../actions/history_actions'
 import { REMOVE_TRACK } from "../actions/track_actions";
@@ -11,9 +10,6 @@ import { CLEAR_PLAYLIST } from '../actions/playlist_actions'
 const nextTrackReducer = (state = [], action) => {
   let newState = state.slice()
   switch (action.type) {
-    case SAVE_NEXT_TRACK:
-      newState.push(action.track.id)
-      return newState
     case RECEIVE_NEXT_TRACK:
       newState.pop()
       window.localStorage.setItem("nextTrack", JSON.stringify(newState))

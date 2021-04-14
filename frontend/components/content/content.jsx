@@ -7,12 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class Content extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      // if a user is on the main page then quickly leaves before the page fully loads
-      // there could be an issue where there is an attempt to update the state of
-      // an unmounted component.
-      // loading: true
-    }
+
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
     this.loading = true
   }

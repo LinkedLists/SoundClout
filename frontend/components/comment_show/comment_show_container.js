@@ -4,7 +4,6 @@ import CommentShow from './comment_show'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    // currentUser: state.entities.users[state.session.id],
     currentUserId: state.session.id,
     track: ownProps.track,
     comments: state.entities.comments,

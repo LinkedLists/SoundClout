@@ -28,13 +28,6 @@ const removeTrack = (track) => {
   })
 }
 
-// const removeTrack = (trackId) => {
-//   return({
-//     type: REMOVE_TRACK,
-//     trackId
-//   })
-// }
-
 const editTrack = (track) => {
   return({
     type: UPDATE_TRACK,
@@ -51,8 +44,6 @@ export const clearTrackErrors = () => ({
   type: CLEAR_TRACK_ERRORS
 })
 
-
-// should include an error callback on the promises
 
 export const fetchTracks = () => (dispatch) => (
   TrackApiUtil.fetchTracks().then((tracks) => dispatch(receiveAllTracks(tracks)))

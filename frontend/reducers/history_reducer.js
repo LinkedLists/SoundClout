@@ -1,6 +1,6 @@
 import { RECEIVE_NEW_TRACK } from '../actions/playbar_actions'
 import { RECEIVE_HISTORY, CLEAR_HISTORY } from '../actions/history_actions'
-import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK, REMOVE_TRACK, UPDATE_TRACK } from "../actions/track_actions";
+import { REMOVE_TRACK } from "../actions/track_actions";
 
 const HistoryReducer = (state = [], action) => {
   let newState = state.slice()

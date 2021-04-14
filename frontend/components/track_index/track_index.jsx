@@ -7,18 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class TrackIndex extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      // if a user is on the main page then quickly leaves before the page fully loads
-      // there could be an issue where there is an attempt to update the state of
-      // an unmounted component.
-      // loading: true
-    }
+
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
   }
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    // this.props.fetchTracks()
     this.enableCurrentUser()
     let track = JSON.parse(window.localStorage.getItem("currentTrack"))
     if (track && Object.keys(track).length > 0) {

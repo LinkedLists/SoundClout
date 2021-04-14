@@ -7,7 +7,6 @@
   height: 660px;
   max-height: 69vh;
   background: #fff;
-  // opacity: 0;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   animation: background-out2;
   animation-duration: 0.4s;
@@ -45,10 +44,6 @@
 }
 
 @keyframes background-out2 {
-  // 70% {
-  //   opacity: 0;
-  //   bottom: -1000px;
-  // }
   0% {
     opacity: 1;
     bottom: 54px;
@@ -59,7 +54,6 @@
   }
 
   100%{
-    // display: none;
     opacity: 0;
     bottom: -1000px;
   }
@@ -317,7 +311,6 @@
   justify-content: space-around;
   width: 100%;
   cursor: pointer;
-  // opacity: 1;
 }
 
 .playlist-src-msg {
@@ -341,12 +334,6 @@
   cursor: pointer;
   display: inline;
 }
-
-// .comment-item-username {
-//   display: inline;
-//   font-size: 12px;
-//   color: #999
-// }
 
 .playlist-item-link {
   display: block;

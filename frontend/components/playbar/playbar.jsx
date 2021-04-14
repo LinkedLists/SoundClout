@@ -129,7 +129,6 @@ class Playbar extends React.Component {
         percentPlayed: 0
       })
   
-      // EVENT LISTENERS ARE ALL UNIQUE!!!
       if (!this.state.mounted) {
         this.addBarListener()
         this.setState( {mounted: true} )
@@ -161,11 +160,8 @@ class Playbar extends React.Component {
     let width = playbar.getBoundingClientRect().width
     let x
     let audio = this.props.audio
-    // Although there is an input type range that handles play timeline,
-    // this is still necessary because it makes the pseudo hover effect possible.
-    // There is no solution that I know of that allows for thumb only hover via css
+
     playbar.addEventListener("click", (e) => {
-      // slider ball has a radius of 4
       x = e.offsetX + 4;
       percentPlayed = (x / width)
       currentTime = audio.duration * percentPlayed
@@ -193,7 +189,6 @@ class Playbar extends React.Component {
     audio.addEventListener("ended", () => {
       this.handleEnd(playbtn)
 
-      // failsafe
       setTimeout(() => {
         audio.ended ? () => {
          this.handleEnd(playbtn)
@@ -248,7 +243,6 @@ class Playbar extends React.Component {
         this.props.sendTrack(nextTrack)
         window.localStorage.setItem('currentTrack', JSON.stringify(nextTrack))
       } else {
-        // idk what to do if ur at the end
         return false
       }
     }
@@ -330,7 +324,6 @@ class Playbar extends React.Component {
     }, 3)
 
 
-    // from event listener
     if (this.timeIncrementerInstance) {
       clearInterval(this.timeIncrementerInstance)
       this.timeIncrementer()
@@ -339,7 +332,6 @@ class Playbar extends React.Component {
     }
     playbtn ? playbtn.classList.add("playing") : null
     
-    // failsafe
     setTimeout(() => {
       playbtn ? playbtn.classList.add("playing") : null
       audio.paused ? audio.play() : null
@@ -363,11 +355,9 @@ class Playbar extends React.Component {
       }
     }, 3)
 
-    // from event listener
     clearInterval(this.timeIncrementerInstance)
       playbtn ? playbtn.classList.remove("playing") : null
 
-      // failsafe
       setTimeout(() => {
         clearInterval(this.timeIncrementerInstance)
         playbtn ? playbtn.classList.remove("playing") : null
@@ -449,9 +439,6 @@ class Playbar extends React.Component {
     let audio = this.props.audio
     let volume = document.getElementsByClassName("slider-background")[0]
 
-    // Workaround to styling the input type range:
-    // Color only up to the progress value and fill
-    // remaining play time with white
     let progress_bar2 = document.getElementsByClassName("progress-bar2")[0]
     if (progress_bar2) {
       progress_bar2.style.background = `linear-gradient(to right, 
@@ -478,11 +465,8 @@ class Playbar extends React.Component {
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
             <div className="media-container">
-              {/* Autoplay should not be included or else the 
-              user will have music on autoplay on refresh. */}
               <audio 
                 id='audio' 
-                // autoPlay
                 onLoadedMetadata={this.setDuration}
                 src={this.props.currentTrack.audioUrl} 
               />
@@ -490,7 +474,6 @@ class Playbar extends React.Component {
               <button 
                 onClick={this.handlePlay}>
                   {
-                  // this.props.paused || audio.ended ? 
                   this.props.paused ? 
                     <FontAwesomeIcon icon="play"/> : 
                     <FontAwesomeIcon icon="pause"/>}

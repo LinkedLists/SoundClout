@@ -21,7 +21,6 @@ class Carousel extends React.Component {
 
   componentDidMount() {
     this.getTrackItems(this.props.genre)
-    // this.setState( {tracks: trackItems} )
   }
   
   getTrackItems(genre) {
@@ -38,7 +37,6 @@ class Carousel extends React.Component {
       tracks: trackItems,
       maxIndex: maxIndex
     } )
-    // this.tracks = trackItems
     return trackItems
   }
 
@@ -77,7 +75,6 @@ class Carousel extends React.Component {
           this.spamBlock2 = false
         }, 150)
       } else {
-        // this.setState( {index: 0} )
         let carouselWrapper = document.getElementById(this.props.genre)
         carouselWrapper.classList.add("peekNext")
         this.spamBlock = true

@@ -59,10 +59,8 @@ class PlayButton extends React.Component {
       this.props.sendTrack(this.props.track, () => audio.play())
       this.props.playTrack()
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
-      // playbtn.classList.add("playing");
       audio.setAttribute("autoPlay", true)
 
-      // failsafe
       setTimeout(() => {
         audio.paused? audio.play() : null
       }, 10)
@@ -72,11 +70,8 @@ class PlayButton extends React.Component {
       audio.setAttribute("autoPlay", true)
       this.bringBackVolume();
       clearInterval(this.intervalDown)
-      // playbtn.classList.add("playing");
 
-      // failsafe
       setTimeout(() => {
-        // playbtn.classList.add("playing");
         audio.paused ? audio.play() : null
       }, 10)
     } 
@@ -85,18 +80,13 @@ class PlayButton extends React.Component {
       this.bringDownVolume()
       clearInterval(this.intervalUp)
       audio.removeAttribute("autoPlay")
-      // playbtn.classList.remove("playing");
 
-      // failsafe
       setTimeout(() => {
-        // playbtn.classList.remove("playing");
         !audio.paused ? audio.pause() : null
       }, 10)
     }
   }
 
-  // volume swells to gradually change volume on pause/play
-  // so that user does not experience abrupt volume changes
   bringBackVolume() {
     const volume = document.getElementsByClassName("slider-background")[0].value
     if (volume) {
@@ -137,17 +127,15 @@ class PlayButton extends React.Component {
 
   render() {
     return (
-      // <div>
-        <div 
-          onClick={this.sendTrack} 
-          className={
-            !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
-            "variable-playbtn playing" :
-            "variable-playbtn"
-          }
-          id={this.props.track.id}
-        />
-      // </div>
+      <div 
+        onClick={this.sendTrack} 
+        className={
+          !this.props.playbar.paused && this.props.track.id === this.props.currentTrack.id && !audio.ended?
+          "variable-playbtn playing" :
+          "variable-playbtn"
+        }
+        id={this.props.track.id}
+      />
     )
   }
 

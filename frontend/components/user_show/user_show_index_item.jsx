@@ -1,7 +1,6 @@
 import React from 'react';
 import EditTrackContainer from '../track_form/edit_track_container'
 import { Link } from 'react-router-dom'
-// import CommentFormContainer from './comment_form_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PlayButton from '../playbutton/playbutton_container'
@@ -178,9 +177,6 @@ class UserShowIndexItem extends React.Component {
                 </button>
               </div> 
                 : <></>
-              // <div className="track-show-no-btns">
-              //   <span id="asterisk">*</span> You can update or delete a track if you are the uploader
-              // </div>
           }
       </li>
     )

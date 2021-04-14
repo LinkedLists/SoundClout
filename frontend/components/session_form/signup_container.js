@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
     action: (user) => dispatch(signup(user)),
     login: (user) => dispatch(login(user)),
 
-    // taken from open a/A
     otherForm: (
       <a   
         onClick={() => dispatch(openModal('login'))}

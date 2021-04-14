@@ -5,7 +5,6 @@ const trackErrorsReducer = (oldState = [], action) => {
   switch(action.type) {
     case RECEIVE_TRACK_ERRORS:
       return Object.assign({}, oldState, action.errors)
-      // return action.errors
     case CLEAR_TRACK_ERRORS:
       return []
     default:

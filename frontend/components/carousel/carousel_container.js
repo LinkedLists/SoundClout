@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Carousel from './carousel'
 import { fetchTracks } from '../../actions/track_actions'
-import { playTrack, pauseTrack, receiveNewTrack, refreshTrack, clearPlaybarState } from '../../actions/playbar_actions'
+import { refreshTrack } from '../../actions/playbar_actions'
 import { receiveHistory } from '../../actions/history_actions'
 
 
@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTracks: () => dispatch(fetchTracks()),
     refreshTrack: (track) => dispatch(refreshTrack(track)),
-    // receiveNewTrack: (track) => dispatch(receiveNewTrack(track)),
     receiveHistory: (history) => dispatch(receiveHistory(history)),
   }
 }
