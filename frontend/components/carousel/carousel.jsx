@@ -16,6 +16,7 @@ class Carousel extends React.Component {
     this.nextSlide = this.nextSlide.bind(this);
     this.getTrackItems = this.getTrackItems.bind(this)
     this.spamBlock = false;
+    this.spamBlock2 = false;
   }
 
   componentDidMount() {
@@ -42,8 +43,18 @@ class Carousel extends React.Component {
   }
 
   prevSlide() {
-    if (!this.spamBlock) {
+    if (!this.spamBlock && !this.spamBlock2) {
       if (this.state.index !== 0) {
+        this.spamBlock2 = true
+        if (this.state.index === 1) {
+          setTimeout(() => {
+            this.spamBlock2 = false
+          }, 500)
+        } else {
+          setTimeout(() => {
+            this.spamBlock2 = false
+          }, 150)
+        }
         this.setState( {index: this.state.index -= 1} )
       } else {
         let carouselWrapper = document.getElementById(this.props.genre)
@@ -58,9 +69,13 @@ class Carousel extends React.Component {
   }
 
   nextSlide() {
-    if (!this.spamBlock) {
+    if (!this.spamBlock && !this.spamBlock2) {
       if (this.state.index !== this.state.maxIndex) {
         this.setState( {index: this.state.index += 1} )
+        this.spamBlock2 = true
+        setTimeout(() => {
+          this.spamBlock2 = false
+        }, 150)
       } else {
         // this.setState( {index: 0} )
         let carouselWrapper = document.getElementById(this.props.genre)
