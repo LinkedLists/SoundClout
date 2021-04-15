@@ -24,19 +24,24 @@ Users can login to an existing account or they can create an account by filling 
 and pausing a track will gradually lower the volume to 0.
 
 ### Persisting State
-* User's listening history, current track, and current playlist all persists on refresh for a good user experience. All information about a user's playback persists when a user signs back in as well
+* A user's listening history, current track, and current playlist all persist on refresh for a good user experience. All information about a user's playback persist when a user signs back in as well
 
 ### Track CRUD
-* User's can upload audio to the site. After uploading the user is redirected to the show page of their new track.
+* Users can upload audio to the site. After uploading the user is redirected to the show page of their new track.
 * (Optional) Attaching an image to the track displays a preview of the image.
 * After a track is uploaded a user can edit details about their track. User's can also change the photo that is attached to the track.
 <img src="app/assets/images/crud.gif"/>
 
 ### Playlist
-* A playlist based on genre gets generated when a user plays a track
+* A playlist based on genre gets generated when a user plays a track. Users can view their playlist by clicking on the hamburger icon on the right most side of the playbar
+* A user can change the playlist by first clicking the `Clear` button on the playlist header then selecting a new track.
+* Clicking the back button on the playbar plays the previously played track and queues the current track to the playlist.
+
+<img src="app/assets/images/playlist.gif"/>
 
 ### Comments
-* Users can interact with other user's creations by leaving comments on their tracks
+* Users can interact with other user's creations by leaving comments on their tracks.
+* Users can delete their own comments as well as comments on any of their uploaded tracks.
 
 ### Listening History
 * Previously played tracks are saved in to user's listening history.
@@ -44,3 +49,7 @@ and pausing a track will gradually lower the volume to 0.
 * Previously played tracks can be traversed by using the skip and forward buttons on the playbar footer
 
 ## Future Features
+* Search feature
+* Drag and drop uploading
+* Improved playlist functionality
+* Audio waveforms
