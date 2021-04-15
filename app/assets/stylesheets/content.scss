@@ -27,10 +27,12 @@
 .content-playlist-li {
   margin-bottom: 34px;
   padding-bottom: 15px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .content-playlist-li:last-child {
   margin-bottom: 0px;
+  border: none;
 }
 
 .content-playlist-wrapper {
