@@ -3,7 +3,10 @@
 [Live Site](https://kenny-fsp.herokuapp.com/#/)
 
 ## Description
-SoundClout is a SoundCloud clone. An online music sharing platform that allows users to upload and listen to music uploaded to the site. Users will be able to like and comment on other users uploads.
+<img src="app/assets/images/black.jpg"/>
+
+SoundClout is a SoundCloud clone. An online music sharing platform that allows users to upload and listen to music uploaded to the site. Users can upload music, leave comments, or 
+put their favorite hits on repeat.
 
 ## Technologies
 * Ruby on Rails
@@ -15,16 +18,18 @@ SoundClout is a SoundCloud clone. An online music sharing platform that allows u
 ## Features
 
 ### Login/Signup
-Users can login to an existing account or they can create an account by filling out this modal form `future image here`.
+* Users can login to an existing account or they can create an account by filling out the login or sign up forms.
+
+<img src="app/assets/images/login.gif"/>
 
 ### Music Player
 * Users can play tracks and navigate through the site with continuous play.
-* Audio playback can be controlled by the media buttons located at the playbar footer. Users can play, pause, loop, shuffle, and skip tracks.
+* Audio playback can be controlled by the media buttons located at the playbar footer. Users can play, pause, mute, adjust volume, loop, shuffle, and skip tracks.
 * Volume swells when resuming and pausing tracks for a great user experience. Resuming and pausing a track does not immediately bring back or stop the volume. Resuming gradually brings the volume back up
 and pausing a track will gradually lower the volume to 0.
 
 ### Persisting State
-* A user's listening history, current track, and current playlist all persist on refresh for a good user experience. All information about a user's playback persist when a user signs back in as well
+* A user's listening history, current track, and current playlist all persist on refresh for a good user experience. All information about a user's playback persist when a user signs back in as well.
 
 ### Track CRUD
 * Users can upload audio to the site. After uploading the user is redirected to the show page of their new track.
@@ -33,7 +38,7 @@ and pausing a track will gradually lower the volume to 0.
 <img src="app/assets/images/crud.gif"/>
 
 ### Playlist
-* A playlist based on genre gets generated when a user plays a track. Users can view their playlist by clicking on the hamburger icon on the right most side of the playbar
+* A playlist based on genre gets generated when a user plays a track. Users can view their playlist by clicking on the hamburger icon on the right most side of the playbar.
 * A user can change the playlist by first clicking the `Clear` button on the playlist header then selecting a new track.
 * Clicking the back button on the playbar plays the previously played track and queues the current track to the playlist.
 

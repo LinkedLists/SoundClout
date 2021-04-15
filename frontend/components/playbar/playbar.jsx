@@ -459,7 +459,7 @@ class Playbar extends React.Component {
       else{
         volumeIcon = <FontAwesomeIcon icon="volume-up" className="scale-icon" />
       }
-    }
+    } 
 
     return (
       <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
