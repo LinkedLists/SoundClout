@@ -19,17 +19,18 @@ put their favorite hits on repeat.
 
 ### Login/Signup
 * Users can login to an existing account or they can create an account by filling out the login or sign up forms.
-
+* After a user is authenticated they are redirected to t
 <img src="app/assets/images/login.gif"/>
+<img src="app/assets/images/home.jpg"/>
 
+### Persisting State
+* A user's listening history, current track, and current playlist all persist on refresh for a good user experience. All information about a user's playback persist when a user signs back in as well.
 ### Music Player
 * Users can play tracks and navigate through the site with continuous play.
 * Audio playback can be controlled by the media buttons located at the playbar footer. Users can play, pause, mute, adjust volume, loop, shuffle, and skip tracks.
 * Volume swells when resuming and pausing tracks for a great user experience. Resuming and pausing a track does not immediately bring back or stop the volume. Resuming gradually brings the volume back up
 and pausing a track will gradually lower the volume to 0.
 
-### Persisting State
-* A user's listening history, current track, and current playlist all persist on refresh for a good user experience. All information about a user's playback persist when a user signs back in as well.
 
 ### Track CRUD
 * Users can upload audio to the site. After uploading the user is redirected to the show page of their new track.
