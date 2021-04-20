@@ -6,11 +6,14 @@ const HistoryReducer = (state = [], action) => {
   let newState = state.slice()
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
-      newState.push(action.track.id)
-      window.localStorage.setItem("history", JSON.stringify(newState))
-      return newState
+      if (action.track) {
+        newState.push(action.track.id)
+        window.localStorage.setItem("history", JSON.stringify(newState))
+        return newState
+      }
     case RECEIVE_HISTORY:
-      return action.history
+      let history = action.history && action.history.length ? action.history : []
+      return history
     case CLEAR_HISTORY:
       return []
     case REMOVE_TRACK:

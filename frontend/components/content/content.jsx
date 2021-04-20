@@ -16,7 +16,12 @@ class Content extends React.Component {
     window.scrollTo(0, 0)
     this.props.fetchTracks()
     this.enableCurrentUser()
-    let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    let track = {}
+    if (window.localStorage.getItem("currentTrack") !== 'undefined') {
+      track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    } else {
+      window.localStorage.setItem("currentTrack", JSON.stringify({}))
+    }
     let history 
 
     if (window.localStorage.getItem("history") && window.localStorage.getItem("history").length !== 0) {
@@ -25,7 +30,7 @@ class Content extends React.Component {
     this.props.receiveHistory(history)
 
     if (track && Object.keys(track).length > 0) {
-      if (!this.props.currentTrack.id)
+      if (!this.props.currentTrack.id && window.localStorage.getItem("currentTrack"))
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
 

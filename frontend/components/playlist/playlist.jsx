@@ -83,7 +83,12 @@ class Playlist extends React.Component {
 
     let playlistItems = []
     if (this.props.playlist.length > 0) {
-      let genre = this.props.tracks[this.props.playlist[0]].genre
+      let genre
+      if (!(this.props.playlist[0] in this.props.tracks)) {
+        this.props.playlist.shift()
+      } else {
+        genre = this.props.tracks[this.props.playlist[0]].genre
+      }
         playlistItems = this.props.playlist.map( (trackId, i) => {
         return (
           <PlaylistIndexItem 

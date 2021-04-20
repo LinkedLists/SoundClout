@@ -53,9 +53,14 @@ class Playbar extends React.Component {
   }
 
   componentDidMount() {
+    let track = {}
     clearInterval(this.timeIncrementerInstance)
     if (this.props.currentSessionId) {
-      let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+      if (window.localStorage.getItem("currentTrack") !== 'undefined') {
+        track = JSON.parse(window.localStorage.getItem("currentTrack"))
+      } else {
+        window.localStorage.setItem("currentTrack", JSON.stringify({}))
+      }
       if (track && Object.keys(track).length > 0 && !this.props.currentTrack.id) {
         this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
       }
@@ -263,10 +268,14 @@ class Playbar extends React.Component {
       window.localStorage.setItem("currentTrack", JSON.stringify(track[randKey]))
     }
     else if (this.props.playlist.length > 0) {
-      let next = track[this.props.playlist[0]]
-      this.props.sendTrack(next)
-      this.props.shiftPlaylist()
-      window.localStorage.setItem("currentTrack", JSON.stringify(next))
+      if (this.props.playlist[0] in track) {
+        let next = track[this.props.playlist[0]]
+        this.props.sendTrack(next)
+        this.props.shiftPlaylist()
+        window.localStorage.setItem("currentTrack", JSON.stringify(next))
+      } else {
+        this.props.playlist.shift()
+      }
     }
     else if (currentTrack.id + 1 in track) {
       let nextTrack = track[currentTrack.id + 1]
@@ -462,13 +471,13 @@ class Playbar extends React.Component {
     } 
 
     return (
-      <div className={this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
+      <div className={this.props.currentTrack && this.props.currentTrack.id ? "playbar-footer-open" : "playbar-footer-close"}>
           <div className="playbar-footer-wrapper">
             <div className="media-container">
               <audio 
                 id='audio' 
                 onLoadedMetadata={this.setDuration}
-                src={this.props.currentTrack.audioUrl} 
+                src={this.props.currentTrack && this.props.currentTrack.audioUrl} 
               />
               <button onClick={this.getPrevTrackManual}> <FontAwesomeIcon icon="step-backward"/> </button>
               <button 
@@ -531,7 +540,7 @@ class Playbar extends React.Component {
             <div className="current-track-info-container">
               <div className="current-track">
                 { 
-                  Object.keys(this.props.currentTrack).length > 0 ? 
+                  this.props.currentTrack && Object.keys(this.props.currentTrack).length > 0 ? 
                   <Link to={`/tracks/${this.props.currentTrack.id}`}>
                     <img src={this.props.currentTrack.photoUrl} className="current-track-img" /> 
                   </Link> : 
@@ -539,12 +548,23 @@ class Playbar extends React.Component {
                 }
                 <div className="current-track-description">
                   <div className="description-wrapper" > 
-                    <Link to={`/users/${this.props.currentTrack.uploader_id}`} className="current-track-username noselect">
+                    {
+                      this.props.currentTrack ? 
+                        <div>
+                          <Link to={`/users/${this.props.currentTrack.uploader_id}`} className="current-track-username noselect">
+                            {this.props.currentTrack.username}
+                          </Link>
+                          <Link to={`/tracks/${this.props.currentTrack.id}`} className="current-track-title noselect">
+                            {this.props.currentTrack.title}
+                          </Link>
+                        </div> : <></>
+                    }
+                    {/* <Link to={`/users/${this.props.currentTrack.uploader_id}`} className="current-track-username noselect">
                       {this.props.currentTrack.username}
                     </Link>
                     <Link to={`/tracks/${this.props.currentTrack.id}`} className="current-track-title noselect">
                       {this.props.currentTrack.title}
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </div>

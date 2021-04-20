@@ -11,9 +11,11 @@ const prevTracksReducer = (state = [], action) => {
   let newState = state.slice()
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
-      newState.push(action.track.id)
-      window.localStorage.setItem("prevTracks", JSON.stringify(newState))
-      return newState
+      if (action.track) {
+        newState.push(action.track.id)
+        window.localStorage.setItem("prevTracks", JSON.stringify(newState))
+        return newState
+      }
     case RECEIVE_PREV_TRACK:
       newState.pop()
       window.localStorage.setItem("prevTracks", JSON.stringify(newState))

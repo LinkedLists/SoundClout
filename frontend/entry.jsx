@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.localStorage.getItem('currentUser')) {
     currentUser = JSON.parse(window.localStorage.getItem("currentUser"))
   }
-  let currentTrack
-  if (window.localStorage.getItem('currentTrack')) {
-    currentTrack = JSON.parse(window.localStorage.getItem("currentTrack"))
-  }
+  // let currentTrack
+  // if (window.localStorage.getItem('currentTrack')) {
+  //   currentTrack = JSON.parse(window.localStorage.getItem("currentTrack"))
+  // }
   let prevTracks
   if (window.localStorage.getItem('prevTracks')) {
     prevTracks = JSON.parse(window.localStorage.getItem("prevTracks"))

@@ -14,7 +14,12 @@ class TrackIndex extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     this.enableCurrentUser()
-    let track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    let track = {}
+    if (window.localStorage.getItem("currentTrack") !== 'undefined') {
+      track = JSON.parse(window.localStorage.getItem("currentTrack"))
+    } else {
+      window.localStorage.setItem("currentTrack", JSON.stringify({}))
+    }
     if (track && Object.keys(track).length > 0) {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));

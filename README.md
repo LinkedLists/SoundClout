@@ -40,7 +40,7 @@ and pausing a track will gradually lower the volume to 0.
 
 ### Playlist
 * A playlist based on genre gets generated when a user plays a track. Users can view their playlist by clicking on the hamburger icon on the right most side of the playbar.
-* A user can change the playlist by first clicking the `Clear` button on the playlist header then selecting a new track.
+* A user can change the playlist by first clicking the `Clear` button on the playlist header then selecting a new track from one of the featured playlists.
 * Clicking the back button on the playbar plays the previously played track and queues the current track to the playlist.
 
 <img src="app/assets/images/playlist.gif"/>
