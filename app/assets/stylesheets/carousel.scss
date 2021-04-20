@@ -53,6 +53,9 @@
     border: 1px solid #f50;
   }
 
+  .carousel-prev-btn:after {
+    border-color: #f50;
+  }
 }
 
 .carousel-next-btn-shadow:hover {
@@ -60,6 +63,9 @@
   .carousel-next-btn {
     color: #f50;
     border: 1px solid #f50;
+  }
+  .carousel-next-btn:after {
+    border-color: #f50;
   }
 }
 
