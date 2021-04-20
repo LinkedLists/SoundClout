@@ -234,6 +234,9 @@ class Playbar extends React.Component {
       else if (this.state.shuffle) {
         let trackKeys = Object.keys(track)
         let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+        while (!(randKey in track)) {
+          randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+        }
         this.props.sendTrack(track[randKey])
         window.localStorage.setItem("currentTrack", JSON.stringify(track[randKey]))
       }
@@ -264,6 +267,9 @@ class Playbar extends React.Component {
     else if (this.state.shuffle) {
       let trackKeys = Object.keys(track)
       let randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+      while (!(randKey in track)) {
+        randKey = this.getRandTrack(trackKeys[0], trackKeys[trackKeys.length - 1])
+      }
       this.props.sendTrack(track[randKey])
       window.localStorage.setItem("currentTrack", JSON.stringify(track[randKey]))
     }

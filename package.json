@@ -21,7 +21,7 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^4.5.0"
   },
-  "description": "This will be a fullstack clone of Soundcloud. [Link to my wiki](https://github.com/LinkedLists/fsp/wiki)",
+  "description": "This will be a fullstack clone of Soundcloud. [Link to my wiki](https://github.com/LinkedLists/SoundClout/wiki)",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -39,13 +39,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LinkedLists/fsp.git"
+    "url": "git+https://github.com/LinkedLists/SoundClout.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LinkedLists/fsp/issues"
+    "url": "https://github.com/LinkedLists/SoundClout/issues"
   },
-  "homepage": "https://github.com/LinkedLists/fsp#readme"
+  "homepage": "https://github.com/LinkedLists/SoundClout#readme"
 }

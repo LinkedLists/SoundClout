@@ -9,6 +9,7 @@ import { REMOVE_TRACK } from "../actions/track_actions";
 
 const prevTracksReducer = (state = [], action) => {
   let newState = state.slice()
+  // if (!action.track) return state
   switch (action.type) {
     case RECEIVE_NEW_TRACK:
       if (action.track) {

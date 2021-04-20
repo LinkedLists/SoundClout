@@ -104,7 +104,7 @@ class NavBar extends React.Component {
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/angellist2.png" 
                 className="link-imgs" /></a></li>
 
-              <li><a href="https://github.com/LinkedLists/fsp" target="_blank" className="link-wrapper">
+              <li><a href="https://github.com/LinkedLists/SoundClout" target="_blank" className="link-wrapper">
                 <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/github2.png" 
                 className="link-imgs"/></a></li>
                 
