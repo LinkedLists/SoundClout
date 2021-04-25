@@ -69,7 +69,24 @@ the Redux method, `createStore`, to reconstruct the user's previous state.
 * Audio playback can be controlled by the media buttons located at the playbar footer. Users can play, pause, mute, adjust volume, loop, shuffle, and skip tracks.
 * Volume swells when resuming and pausing tracks for a great user experience. Resuming and pausing a track does not immediately bring back or stop the volume. Resuming gradually brings the volume back up
 and pausing a track will gradually lower the volume to 0.
+* Volume swells are done by creating a `setInterval` that increases or lowers the volume. Once the volume is brought down or brought up to the previous volume the audio is paused or resumed and the interval gets cleared.
 
+```js
+  let {audio} = this.props
+  playbtn ? playbtn.classList.remove("playing") : null
+  this.intervalDown = setInterval(() => {
+    if (audio.volume >= this.state.volume/60 ) {
+      if (this.state.volume/60 === 0 ) {
+        audio.pause()
+        clearInterval(this.intervalDown)
+      }
+      audio.volume -= this.state.volume/60 
+    } else {
+      audio.pause()
+      clearInterval(this.intervalDown)
+    }
+  }, 3)
+```
 
 ### Track CRUD
 * Users can upload audio to the site. After uploading the user is redirected to the show page of their new track.
