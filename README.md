@@ -19,12 +19,51 @@ put their favorite hits on repeat.
 
 ### Login/Signup
 * Users can login to an existing account or they can create an account by filling out the login or sign up forms.
-* After a user is authenticated they are redirected to t
 <img src="app/assets/images/login.gif"/>
+
+* After a user is authenticated they are redirected to to the homepage which contains featured playlists, listening history, and the playbar footer.
+* If an existing user logs in then their existing listening history, current track, and current playlist are brought back.
 <img src="app/assets/images/home.jpg"/>
 
 ### Persisting State
 * A user's listening history, current track, and current playlist all persist on refresh for a good user experience. All information about a user's playback persist when a user signs back in as well.
+* A Redux store gets cleared on refresh. So in order to save a user's play session localStorage is used to save state.
+* When certain actions are dispatched at the Redux reducers the new state gets saved into localStorage. For example, when a user plays a new track then the track gets saved into their listening
+history slice of state as well as being saved into localStorage.
+
+```js
+case RECEIVE_NEW_TRACK:
+  if (action.track) {
+    newState.push(action.track.id)
+    window.localStorage.setItem("history", JSON.stringify(newState))
+    return newState
+  }
+```
+* To retrieve data from localStorage an event listener listens for the `DOMContentLoaded` event and grabs data from localStorage. The state is then reconstructed and passed into `configureStore` which uses
+the Redux method, `createStore`, to reconstruct the user's previous state. 
+
+```js
+  let preloadedState = undefined;
+  if (window.currentUser) {
+    preloadedState = {
+      entities: { 
+        users: {[window.currentUser.id]: currentUser}, 
+        tracks: tracks
+      },
+      session: { id: window.currentUser.id },
+      ui: {
+        history: history,
+        prevTracks: prevTracks,
+        nextTrack: nextTrack,
+        playlist: playlist
+      }
+    }
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
+```
+
 ### Music Player
 * Users can play tracks and navigate through the site with continuous play.
 * Audio playback can be controlled by the media buttons located at the playbar footer. Users can play, pause, mute, adjust volume, loop, shuffle, and skip tracks.

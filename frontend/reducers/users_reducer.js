@@ -19,6 +19,9 @@ const userReducer = (oldState = {}, action) => {
       }
       return newState
     case UPDATE_TRACK:
+      if (!("tracks" in newState[action.track.uploader_id])) {
+        newState[action.track.uploader_id].tracks = {}
+      }
       newState[action.track.uploader_id].tracks[action.track.id] = action.track
       return newState
     default:
