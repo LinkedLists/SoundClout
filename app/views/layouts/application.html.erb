@@ -5,6 +5,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta property="og:title" content="SoundClout" />
+    <meta property='og:image' content="<%= image_url('black.jpg') %>"/>
+    <meta property="og:description"
+      content="SoundClout is a fullstack clone of SoundCloud. 
+      It is built using React, Redux, and Rails. Functionalities include tracks CRUD, music player with media controls, 
+      and discovering tracks from other user's profiles. Media content is hosted using AWS."
+    />
+    <meta property="og:url"
+      content="https://kenny-fsp.herokuapp.com/#/"
+    />
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <link rel="icon" href="<%= image_url('favicon2.png') %>">
