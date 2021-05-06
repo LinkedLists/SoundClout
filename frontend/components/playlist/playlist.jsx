@@ -18,13 +18,13 @@ class Playlist extends React.Component {
     this.spamBlocker = false
   }
   
-    componentDidMount() {
-      document.addEventListener('keydown', this.handleKeyPress);
-    }
-  
-    componentWillUnmount() {
-      document.removeEventListener('keydown', this.handleKeyPress);
-    }
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
+  }
 
   handleKeyPress(e) {
     if (e.key == "Escape") {
@@ -110,6 +110,11 @@ class Playlist extends React.Component {
     return (
       <div>
         <div className={`playlist-container-${this.state.open}`}>
+          <div className={`playlist-shuffle-background-${this.props.shuffle}`}>
+            <h3 className={`playlist-shuffle-message-${this.props.shuffle}`}>
+              Your playlist will be paused while you shuffle around
+            </h3>
+          </div>
           <div className="playlist-header noselect" onMouseDown={this.handleMouseDown}>
             <h3>Next up</h3>
             <button className="playlist-clear-btn" onClick={this.props.clearPlaylist}>Clear</button>
@@ -117,13 +122,6 @@ class Playlist extends React.Component {
           </div>
 
           <div className="playlist-ul-container">
-
-            <div className={`playlist-shuffle-background-${this.props.shuffle}`}>
-              <h3 className={`playlist-shuffle-message-${this.props.shuffle}`}>
-                Your playlist will be paused while you shuffle around
-              </h3>
-            </div>
-
             <div className="playlist-ul-wrapper">
               <ul className="playlist-ul">
                 <PlaylistIndexItem 
@@ -138,7 +136,6 @@ class Playlist extends React.Component {
               </ul>
             </div>
           </div>
-
         </div>
         <span id="playlist-icon" onClick={this.handleOpen}>
           {/* <i className={`fas fa-bars fa-lg icon-${this.state.open}`} ></i> */}
