@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
-
+import ReactGA from 'react-ga'
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const trackingId = "G-F20769KP2E"
+  ReactGA.initialize(trackingId)
+  ReactGA.pageview(window.location.pathname + window.location.search)
+  
   let store
 
   let tracks
