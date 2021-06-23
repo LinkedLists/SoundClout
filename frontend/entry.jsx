@@ -5,9 +5,7 @@ import ReactGA from 'react-ga'
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const trackingId = "UA-200233490-1"
-  ReactGA.initialize(trackingId)
-  ReactGA.pageview(window.location.pathname + window.location.search)
+
   
   let store
 
