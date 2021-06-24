@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import UploadTrackContainer from '../track_form/upload_track_container'
 
@@ -24,11 +25,22 @@ class UploadShow extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.showForm = this.showForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
+    this.trackPage = this.trackPage.bind(this)
   }
+
+  trackPage(page) {
+    ReactGA.set({
+      page
+    });
+    ReactGA.pageview(page);
+  };
 
   componentDidMount() {
     let userLink = document.getElementById("nav-currentUser");
     if (userLink) userLink.classList.remove("disable")
+    
+    const page = this.props.location.pathname;
+    this.trackPage(page);
   }
 
   componentWillUnmount() {

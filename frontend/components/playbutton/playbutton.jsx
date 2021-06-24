@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ReactGA from 'react-ga';
 class PlayButton extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +10,7 @@ class PlayButton extends React.Component {
     this.generatePlaylist = this.generatePlaylist.bind(this)
     this.intervalUp;
     this.intervalDown;
+    this.trackEvent = this.trackEvent.bind(this)
   }
 
   getRandTrackId(min, max) {
@@ -51,6 +52,14 @@ class PlayButton extends React.Component {
     }
   }
 
+  trackEvent(event) {
+    ReactGA.event({
+      category: 'Play',
+      action: 'Played new track',
+      label: event.title
+    });
+  }
+
   sendTrack() {
     let audio = this.props.audio
     
@@ -58,6 +67,7 @@ class PlayButton extends React.Component {
       this.generatePlaylist()
       this.props.sendTrack(this.props.track, () => audio.play())
       this.props.playTrack()
+      this.trackEvent(this.props.track)
       window.localStorage.setItem("currentTrack", JSON.stringify(this.props.track))
       audio.setAttribute("autoPlay", true)
 
