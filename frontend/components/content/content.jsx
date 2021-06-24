@@ -1,8 +1,9 @@
 import React from 'react';
-import ContentIndexItem from './content_index_item'
+// import ContentIndexItem from './content_index_item'
 import Carousel from '../carousel/carousel_container'
 import History from '../history/history'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ReactGA from 'react-ga';
 
 class Content extends React.Component {
   constructor(props) {
@@ -10,13 +11,26 @@ class Content extends React.Component {
 
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
     this.loading = true
+    this.trackPage = this.trackPage.bind(this)
   }
+
+  trackPage(page) {
+    ReactGA.set({
+      page
+    });
+    ReactGA.pageview(page);
+  };
 
   componentDidMount() {
     window.scrollTo(0, 0)
+
+    const page = this.props.location.pathname;
+    this.trackPage(page);
+    
     this.props.fetchTracks()
     this.enableCurrentUser()
     let track = {}
+
     if (window.localStorage.getItem("currentTrack") !== 'undefined') {
       track = JSON.parse(window.localStorage.getItem("currentTrack"))
     } else {
