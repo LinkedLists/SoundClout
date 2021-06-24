@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import ContentIndexItem from '../content/content_index_item'
 import Carousel from '../carousel/carousel_container'
 import History from '../history/history'
@@ -9,7 +10,15 @@ class TrackIndex extends React.Component {
     super(props)
 
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
+    this.trackPage = this.trackPage.bind(this)
   }
+
+  trackPage(page) {
+    ReactGA.set({
+      page
+    });
+    ReactGA.pageview(page);
+  };
 
   componentDidMount() {
     window.scrollTo(0, 0)
@@ -24,6 +33,9 @@ class TrackIndex extends React.Component {
       if (!this.props.currentTrack.id)
       this.props.refreshTrack(JSON.parse(window.localStorage.getItem("currentTrack")));
     }
+
+    const page = this.props.location.pathname;
+    this.trackPage(page);
   }
 
   enableCurrentUser() {

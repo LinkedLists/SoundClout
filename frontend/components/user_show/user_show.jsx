@@ -1,7 +1,8 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import History from '../history/history'
 import UserShowIndexItem from './user_show_index_item'
+import ReactGA from 'react-ga';
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -14,10 +15,21 @@ class UserShow extends React.Component {
     this.cuteColors = this.cuteColors.bind(this)
     this.checkCurrentUser = this.checkCurrentUser.bind(this)
     this.colored
+    this.trackPage = this.trackPage.bind(this)
   }
+
+  trackPage(page) {
+    ReactGA.set({
+      page
+    });
+    ReactGA.pageview(page);
+  };
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
+
+    const page = this.props.location.pathname;
+    this.trackPage(page);
   }
   
   componentDidUpdate() {

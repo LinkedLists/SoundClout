@@ -1,9 +1,8 @@
 import React from 'react';
-// import ContentIndexItem from './content_index_item'
+import ReactGA from 'react-ga';
 import Carousel from '../carousel/carousel_container'
 import History from '../history/history'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ReactGA from 'react-ga';
 
 class Content extends React.Component {
   constructor(props) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import EditTrackContainer from '../track_form/edit_track_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
@@ -19,13 +20,24 @@ class TrackShow extends React.Component {
     this.setHistory = this.setHistory.bind(this)
     this.enableCurrentUser = this.enableCurrentUser.bind(this)
     this.loading = true;
+    this.trackPage = this.trackPage.bind(this)
   }
+
+  trackPage(page) {
+    ReactGA.set({
+      page
+    });
+    ReactGA.pageview(page);
+  };
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId)
     this.enableCurrentUser();
     const background = document.getElementsByClassName("track-show-header-container")[0];
     if (background) this.cuteColors(background)
+    
+    const page = this.props.location.pathname;
+    this.trackPage(page);
   }
 
   componentDidUpdate() {
