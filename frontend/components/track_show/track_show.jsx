@@ -35,7 +35,7 @@ class TrackShow extends React.Component {
     this.enableCurrentUser();
     const background = document.getElementsByClassName("track-show-header-container")[0];
     if (background) this.cuteColors(background)
-    
+
     const page = this.props.location.pathname;
     this.trackPage(page);
   }

@@ -55,8 +55,7 @@ class PlayButton extends React.Component {
   trackEvent(event) {
     ReactGA.event({
       category: 'Play',
-      action: 'Played new track',
-      label: event.title
+      action: `Now Playing - ${event.title} by ${event.username}`
     });
   }
 
