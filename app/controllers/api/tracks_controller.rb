@@ -9,12 +9,12 @@ class Api::TracksController < ApplicationController
   end
 
   def index 
-    @tracks = Track.all
+    @tracks = Track.includes(:uploader).all
     render 'api/tracks/index'
   end
 
   def show
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(:comments, :uploader).find_by(id: params[:id])
     render 'api/tracks/show' if @track
   end
 

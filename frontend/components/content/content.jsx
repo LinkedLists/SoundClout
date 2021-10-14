@@ -74,7 +74,7 @@ class Content extends React.Component {
                     <li className="content-playlist-li">
                       <div className="content-playlist-header-wrapper">
                         <h3 className="content-playlist-header">Charts: New and hot</h3>
-                        <h6 className="content-playlist-header-description">The most played tracks on SoundCloud this week</h6>
+                        <h6 className="content-playlist-header-description">The most played tracks on SoundClout this week</h6>
                       </div>
                       <Carousel genre={"Top 100"} />
                     </li>
