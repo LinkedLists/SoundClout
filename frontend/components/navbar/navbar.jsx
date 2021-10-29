@@ -76,7 +76,7 @@ class NavBar extends React.Component {
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts (soon)"></input>
             <button type="submit" onClick={e => e.preventDefault()} className="search-btn"/>
           </form> */}
-          <SearchBar/>
+          <SearchBar tracks={this.props.tracks}/>
           <div className="right-nav">
             <ul className="nav-links">
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
