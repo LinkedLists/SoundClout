@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import SearchBar from '../search_bar/search_bar';
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -71,10 +72,11 @@ class NavBar extends React.Component {
             <li><Link to='/discover' className='nav-links-li'>Stream</Link></li>
             <li><Link to='/library' className='nav-links-li'>Library</Link></li>
           </ul>
-          <form className="searchbar-form">
+          {/* <form className="searchbar-form">
             <input type="text" placeholder="Search for artists, bands, tracks, podcasts (soon)"></input>
             <button type="submit" onClick={e => e.preventDefault()} className="search-btn"/>
-          </form>
+          </form> */}
+          <SearchBar/>
           <div className="right-nav">
             <ul className="nav-links">
               <li><Link to='/upload' className='nav-links-li'>Upload</Link></li>
