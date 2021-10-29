@@ -5,20 +5,31 @@ function SearchBar(props) {
   const [state, setState] = useState(null)
   const [searchInput, setSearchInput] = useState("")
 
+  useEffect( () => {
+    setState(setTracks())
+  }, [])
+
   function setTracks() {
+    let trackTitles = []
+    for (let keys in props['tracks']) {
+      trackTitles.push(props['tracks'][keys].title)
+    }
+
+    return trackTitles
   }
 
   function sortBySearch() {
     let title = ""
-    let tracks = [...state]
+    let filteredTracks = []
+
     if (searchInput.length > 0) {
-      tracks = tracks.filter( track => {
-        title = track.title.toLowerCase()
+      filteredTracks = state.filter( track => {
+        title = track.toLowerCase()
         return title.includes(searchInput)
       })
     }
-
-    return tracks
+    console.log(filteredTracks)
+    return filteredTracks
   }
 
   function renderTracks() {
@@ -37,6 +48,7 @@ function SearchBar(props) {
 
   return (
     <div className="searchbar-form">
+      {sortBySearch()}
       <input 
         type="text" 
         placeholder="Search for artists, bands, tracks, podcasts (soon)"
